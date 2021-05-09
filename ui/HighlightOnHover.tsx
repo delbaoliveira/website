@@ -2,7 +2,13 @@ import { useHover } from "@react-aria/interactions"
 import React from "react"
 import { RoughNotation } from "react-rough-notation"
 
-export const HighlightOnHover = ({ children, color = "#EAEAEA" }) => {
+export const HighlightOnHover = ({
+  children,
+  color = "#EAEAEA",
+}: {
+  children: React.ReactNode
+  color?: string
+}) => {
   let { hoverProps, isHovered } = useHover({})
 
   return (

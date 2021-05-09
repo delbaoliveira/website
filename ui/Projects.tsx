@@ -8,7 +8,15 @@ import { RoughNotation } from "react-rough-notation"
 import { FOCUS_VISIBLE_OUTLINE } from "@/ui/constants"
 import { getDarkColor } from "@/ui/useColorSeed"
 
-const data = [
+type Project = {
+  name: string
+  description: string
+  caseStudy: string
+  url: string
+  image: string
+}
+
+const data: Project[] = [
   {
     name: "Dough",
     description:
@@ -43,7 +51,15 @@ const data = [
   },
 ]
 
-const Project = ({ project, seed, index }) => {
+const Project = ({
+  project,
+  seed,
+  index,
+}: {
+  project: Project
+  seed: number[]
+  index: number
+}) => {
   let { hoverProps, isHovered } = useHover({})
 
   return (
@@ -93,7 +109,7 @@ const Project = ({ project, seed, index }) => {
   )
 }
 
-const Projects = ({ seed }) => {
+const Projects = ({ seed }: { seed: number[] }) => {
   return (
     <div className="container px-4 mx-auto">
       <h2 className="text-3xl font-bold text-gray-800">Projects</h2>

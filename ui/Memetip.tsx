@@ -6,7 +6,13 @@ import Image from "next/image"
 import React from "react"
 import { FOCUS_VISIBLE_OUTLINE } from "@/ui/constants"
 
-export function Memetip({ src, children }) {
+export function Memetip({
+  src,
+  children,
+}: {
+  src: string
+  children: React.ReactNode
+}) {
   const [isOpen, setIsOpen] = React.useState(false)
 
   return (
@@ -19,7 +25,7 @@ export function Memetip({ src, children }) {
       <TooltipPrimitive.Trigger as={Slot}>
         <button
           className={cx(
-            "py-1 transition-colors font-medium rounded-md hover:text-gray-900 focus:text-gray-900 focus:bg-gray-100 hover:bg-gray-100",
+            "transition-colors rounded-md hover:text-gray-900 focus:text-gray-900 focus:bg-gray-100 hover:bg-gray-100",
             FOCUS_VISIBLE_OUTLINE,
           )}
         >

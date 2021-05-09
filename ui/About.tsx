@@ -9,8 +9,8 @@ import { RainbowHighlight } from "@/ui/RainbowHighlight"
 import { getDarkColor } from "@/ui/useColorSeed"
 import { useIsFontReady } from "@/ui/useIsFontReady"
 
-const About = ({ seed }) => {
-  const isFontReady = useIsFontReady
+const About = ({ seed }: { seed: number[] }) => {
+  const isFontReady = useIsFontReady()
 
   const [fn, , reset] = useTimeout(
     // 🤮 magic number: roughly how long it takes for RoughNotationGroup to
@@ -24,11 +24,15 @@ const About = ({ seed }) => {
     reset()
   }, [isFontReady])
 
-  const isNotationDone = fn()
+  const isNotationDone = Boolean(fn())
 
-  const notationSettings = {
+  const notationSettings: {
+    type: string
+    multiline: boolean
+    padding: [number, number]
+    iterations: number
+  } = {
     type: "highlight",
-    padding: 0,
     multiline: true,
     padding: [0, 2],
     iterations: 1,
@@ -41,9 +45,11 @@ const About = ({ seed }) => {
           <RoughNotationGroup show={isFontReady}>
             <h1 className="text-2xl font-bold text-gray-900 lg:text-4xl">
               Hello! I'm Delba, a{" "}
-              <RainbowHighlight className="text-gray-900" colorIndex={seed[0]}>
-                developer
-              </RainbowHighlight>{" "}
+              <RainbowHighlight
+                className="text-gray-900"
+                colorIndex={seed[0]}
+                text="developer"
+              />{" "}
               based in England.
             </h1>
 
@@ -53,16 +59,14 @@ const About = ({ seed }) => {
                 <RainbowHighlight
                   className="text-gray-700"
                   colorIndex={seed[1]}
-                >
-                  user-friendly, simple{" "}
-                </RainbowHighlight>{" "}
+                  text="user-friendly, simple"
+                />{" "}
                 and{" "}
                 <RainbowHighlight
                   className="text-gray-700"
                   colorIndex={seed[2]}
-                >
-                  delightful
-                </RainbowHighlight>
+                  text="delightful"
+                />
                 .
               </p>
 
@@ -72,16 +76,14 @@ const About = ({ seed }) => {
                 <RainbowHighlight
                   className="text-gray-700"
                   colorIndex={seed[3]}
-                >
-                  front-end
-                </RainbowHighlight>{" "}
+                  text="front-end"
+                />{" "}
                 and{" "}
                 <RainbowHighlight
                   className="text-gray-700"
                   colorIndex={seed[4]}
-                >
-                  back-end web development
-                </RainbowHighlight>
+                  text="back-end web development"
+                />
                 .
               </p>
 
@@ -107,22 +109,19 @@ const About = ({ seed }) => {
                 <RainbowHighlight
                   className="text-gray-700"
                   colorIndex={seed[5]}
-                >
-                  flexibility,{" "}
-                </RainbowHighlight>{" "}
+                  text="flexibility,"
+                />
                 <RainbowHighlight
                   className="text-gray-700"
                   colorIndex={seed[6]}
-                >
-                  clarity
-                </RainbowHighlight>{" "}
+                  text="clarity,"
+                />{" "}
                 and{" "}
                 <RainbowHighlight
                   className="text-gray-700"
                   colorIndex={seed[0]}
-                >
-                  collaboration
-                </RainbowHighlight>
+                  text="collaboration"
+                />
                 .
               </p>
             </div>

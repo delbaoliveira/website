@@ -1,6 +1,6 @@
 import React from "react"
 
-function shuffleArray(array) {
+function shuffleArray(array: number[]) {
   for (let i = array.length - 1; i > 0; i--) {
     let j = Math.floor(Math.random() * (i + 1))
     let temp = array[i]
@@ -11,7 +11,7 @@ function shuffleArray(array) {
   return array
 }
 
-export const getLightColor = (x) => {
+export const getLightColor = (x: number) => {
   switch (x) {
     case 0: {
       return "text-rose-200"
@@ -37,7 +37,7 @@ export const getLightColor = (x) => {
   }
 }
 
-export const getDarkColor = (x) => {
+export const getDarkColor = (x: number) => {
   switch (x) {
     case 0: {
       return "text-rose-400"
@@ -64,7 +64,7 @@ export const getDarkColor = (x) => {
 }
 
 export const useColorSeed = () => {
-  const [seed, setSeed] = React.useState([])
+  const [seed, setSeed] = React.useState<number[]>([])
 
   React.useEffect(() => {
     setSeed(shuffleArray([0, 1, 2, 3, 4, 5, 6]))

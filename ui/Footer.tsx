@@ -4,7 +4,7 @@ const Footer = () => {
       <div className="mb-8 border-t border-gray-200"></div>
       <div className="text-gray-700">
         <p>
-          Built with Tailwind and Next.js{" "}
+          Built with TypeScript, Tailwind and Next.js{" "}
           <a
             className="hover:text-red-700"
             title="Much love <3"
