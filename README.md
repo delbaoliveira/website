@@ -1,1 +1,1 @@
-My website [`delbaoliveira.com`](https://www.delbaoliveira.com).
+[delbaoliveira.com](https://www.delbaoliveira.com)
