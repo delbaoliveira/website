@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* give titles some breathing room when we scroll to them */
+    scroll-padding-top: 40px;
+  }
+  p {
+    @apply my-3;
+  }
+  /**
+   * The highlight option of the rough-notation package can sometimes bleed
+   * over adjacent words making them unreadable. Use a negative z-index to
+   * place the highlight svg below text.
+   */
+  .rough-annotation {
+    z-index: -1;
+  }
+}
