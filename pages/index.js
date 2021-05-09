@@ -1,11 +1,11 @@
 import React from "react"
-import About from "../components/About"
-import Contact from "../components/Contact"
-import Layout from "../components/Layout"
-import Projects from "../components/Projects"
-import Skills from "../components/Skills"
-import { useColorSeed } from "../components/useColorSeed"
-import Words from "../components/Words"
+import About from "@/ui/About"
+import Contact from "@/ui/Contact"
+import Layout from "@/ui/Layout"
+import Projects from "@/ui/Projects"
+import Skills from "@/ui/Skills"
+import { useColorSeed } from "@/ui/useColorSeed"
+import Words from "@/ui/Words"
 
 export default function Home() {
   const seed = useColorSeed()

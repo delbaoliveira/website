@@ -1,4 +1,4 @@
-import { HighlightOnHover } from "../components/HighlightOnHover"
+import { HighlightOnHover } from "@/ui/HighlightOnHover"
 
 const Contact = () => {
   return (

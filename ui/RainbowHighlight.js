@@ -1,5 +1,5 @@
 import React from "react"
-import { getLightColor } from "../components/useColorSeed"
+import { getLightColor } from "@/ui/useColorSeed"
 import { RoughNotation } from "react-rough-notation"
 
 export const RainbowHighlight = ({ colorIndex, children, className }) => {

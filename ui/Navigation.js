@@ -1,8 +1,8 @@
 import cx from "clsx"
 import Link from "next/link"
 import React from "react"
-import { FOCUS_VISIBLE_OUTLINE } from "../components/constants"
-import { HighlightOnHover } from "../components/HighlightOnHover"
+import { FOCUS_VISIBLE_OUTLINE } from "@/ui/constants"
+import { HighlightOnHover } from "@/ui/HighlightOnHover"
 
 const Navigation = () => {
   return (

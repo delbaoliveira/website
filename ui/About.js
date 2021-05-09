@@ -4,10 +4,10 @@ import React from "react"
 import Tilt from "react-parallax-tilt"
 import { RoughNotation, RoughNotationGroup } from "react-rough-notation"
 import { useTimeout } from "react-use"
-import { FOCUS_VISIBLE_OUTLINE } from "../components/constants"
-import { RainbowHighlight } from "../components/RainbowHighlight"
-import { getDarkColor } from "../components/useColorSeed"
-import { useIsFontReady } from "../components/useIsFontReady"
+import { FOCUS_VISIBLE_OUTLINE } from "@/ui/constants"
+import { RainbowHighlight } from "@/ui/RainbowHighlight"
+import { getDarkColor } from "@/ui/useColorSeed"
+import { useIsFontReady } from "@/ui/useIsFontReady"
 
 const About = ({ seed }) => {
   const isFontReady = useIsFontReady

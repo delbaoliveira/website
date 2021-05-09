@@ -5,8 +5,8 @@ import Link from "next/link"
 import React from "react"
 import Tilt from "react-parallax-tilt"
 import { RoughNotation } from "react-rough-notation"
-import { FOCUS_VISIBLE_OUTLINE } from "../components/constants"
-import { getDarkColor } from "../components/useColorSeed"
+import { FOCUS_VISIBLE_OUTLINE } from "@/ui/constants"
+import { getDarkColor } from "@/ui/useColorSeed"
 
 const data = [
   {

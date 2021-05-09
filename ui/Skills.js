@@ -1,4 +1,4 @@
-import { Memetip } from "../components/Memetip"
+import { Memetip } from "@/ui/Memetip"
 import { IdProvider } from "@radix-ui/react-id"
 import React from "react"
 import cx from "clsx"

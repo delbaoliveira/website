@@ -4,7 +4,7 @@ import * as TooltipPrimitive from "@radix-ui/react-tooltip"
 import cx from "clsx"
 import Image from "next/image"
 import React from "react"
-import { FOCUS_VISIBLE_OUTLINE } from "../components/constants"
+import { FOCUS_VISIBLE_OUTLINE } from "@/ui/constants"
 
 export function Memetip({ src, children }) {
   const [isOpen, setIsOpen] = React.useState(false)
