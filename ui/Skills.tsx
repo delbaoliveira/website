@@ -12,7 +12,7 @@ const data: {
       [
         {
           text: "Figma",
-          // src: "/memes/figma.jpg",
+          src: "/memes/figma.jpg",
         },
       ],
       [
@@ -31,18 +31,18 @@ const data: {
       [
         {
           text: "JavaScript",
-          // src: "/memes/javascript.jpg",
+          src: "/memes/javascript.jpg",
         },
         {
           text: "TypeScript",
-          // src: "/memes/typescript.jpg",
+          src: "/memes/typescript.jpg",
         },
       ],
 
       [
         {
           text: "React",
-          // src: "/memes/react.jpg",
+          src: "/memes/react.jpg",
         },
         {
           text: "Next.js",
@@ -64,7 +64,7 @@ const data: {
       [
         {
           text: "Prisma",
-          // src: "/memes/prisma.jpg",
+          src: "/memes/prisma.jpg",
         },
       ],
     ],
@@ -75,11 +75,10 @@ const data: {
       [
         {
           text: "Vercel",
-          // src: "/memes/vercel.jpg",
         },
         {
           text: "AWS",
-          // src: "/memes/aws.gif",
+          src: "/memes/aws.gif",
         },
         { text: "Heroku" },
       ],
@@ -87,7 +86,7 @@ const data: {
       [
         {
           text: "Zapier & Airtable",
-          // src: "/memes/nocode.jpg",
+          src: "/memes/nocode.jpg",
         },
       ],
       [{ text: "Scrum & Kanban" }],
@@ -104,14 +103,14 @@ const Skills = () => {
       </h4>
 
       <IdProvider>
-        <div className="flex flex-wrap mt-5 -mx-4">
+        <div className="flex flex-wrap mt-5 -mx-4 group">
           {data.map((field, fieldIndex) => {
             return (
               <div key={fieldIndex} className="w-1/2 px-4 mt-4 lg:w-1/4">
                 <div className="text-lg font-bold text-gray-800">
                   {field.title}
                 </div>
-                <ul className="mt-2 space-y-1 text-sm text-gray-600">
+                <ul className="mt-2 space-y-1 text-sm text-gray-600 group-hover:text-gray-500">
                   {field.items.map((item, itemIndex) => {
                     return (
                       <li key={itemIndex} className="leading-8">
