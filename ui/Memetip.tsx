@@ -25,7 +25,7 @@ export function Memetip({
       <TooltipPrimitive.Trigger as={Slot}>
         <button
           className={cx(
-            "transition-colors rounded-md hover:text-gray-900 focus:text-gray-900 focus:bg-gray-100 hover:bg-gray-100",
+            "group-hover:text-lightBlue-400 transition-colors rounded-md hover:!text-lightBlue-600 focus:!text-lightBlue-600",
             FOCUS_VISIBLE_OUTLINE,
           )}
         >
