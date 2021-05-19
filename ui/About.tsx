@@ -1,42 +1,26 @@
+import { lightColors } from "@/ui/brandColors"
+import { FOCUS_VISIBLE_OUTLINE } from "@/ui/constants"
+import { RainbowHighlight } from "@/ui/RainbowHighlight"
+import { shuffleArray } from "@/ui/shuffleArray"
+import { useIsFontReady } from "@/ui/useIsFontReady"
 import cx from "clsx"
 import Image from "next/image"
 import React from "react"
 import Tilt from "react-parallax-tilt"
 import { RoughNotation, RoughNotationGroup } from "react-rough-notation"
-import { useTimeout } from "react-use"
-import { FOCUS_VISIBLE_OUTLINE } from "@/ui/constants"
-import { RainbowHighlight } from "@/ui/RainbowHighlight"
-import { getDarkColor } from "@/ui/useColorSeed"
-import { useIsFontReady } from "@/ui/useIsFontReady"
 
-const About = ({ seed }: { seed: number[] }) => {
+const About = () => {
+  // before animation, detect if custom fonts are loaded, so <RoughNotation />
+  // SVG's are correctly positioned over the elements
   const isFontReady = useIsFontReady()
 
-  const [fn, , reset] = useTimeout(
-    // 🤮 magic number: roughly how long it takes for RoughNotationGroup to
-    // finish animating
-    4500,
-  )
+  const [colors, setColors] = React.useState<string[]>([])
 
+  // shuffle our colors and store them in state so the order is persisted during
+  // React re-renders
   React.useEffect(() => {
-    // RoughNotationGroup starts animating *after* fonts are loaded, so reset
-    // the timer to ensure we're starting from the same point
-    reset()
-  }, [isFontReady])
-
-  const isNotationDone = Boolean(fn())
-
-  const notationSettings: {
-    type: string
-    multiline: boolean
-    padding: [number, number]
-    iterations: number
-  } = {
-    type: "highlight",
-    multiline: true,
-    padding: [0, 2],
-    iterations: 1,
-  }
+    setColors(shuffleArray(lightColors))
+  }, [])
 
   return (
     <div className="container px-4 mx-auto text-amber-200">
@@ -45,52 +29,40 @@ const About = ({ seed }: { seed: number[] }) => {
           <RoughNotationGroup show={isFontReady}>
             <h1 className="text-2xl font-bold text-gray-900 lg:text-4xl">
               Hello! I'm Delba, a{" "}
-              <RainbowHighlight
-                className="text-gray-900"
-                colorIndex={seed[0]}
-                text="developer"
-              />{" "}
+              <RainbowHighlight color={colors[0]}>developer</RainbowHighlight>{" "}
               based in England.
             </h1>
 
             <div className="mt-4 text-gray-700">
               <p>
                 I love building tools that are{" "}
-                <RainbowHighlight
-                  className="text-gray-700"
-                  colorIndex={seed[1]}
-                  text="user-friendly, simple"
-                />{" "}
+                <RainbowHighlight color={colors[1]}>
+                  user-friendly, simple
+                </RainbowHighlight>{" "}
                 and{" "}
-                <RainbowHighlight
-                  className="text-gray-700"
-                  colorIndex={seed[2]}
-                  text="delightful"
-                />
+                <RainbowHighlight color={colors[2]}>
+                  delightful
+                </RainbowHighlight>
                 .
               </p>
 
               <p>
                 I was a student at Lambda School where I spent 8 months learning
                 the fundamentals of{" "}
-                <RainbowHighlight
-                  className="text-gray-700"
-                  colorIndex={seed[3]}
-                  text="front-end"
-                />{" "}
+                <RainbowHighlight color={colors[3]}>front-end</RainbowHighlight>{" "}
                 and{" "}
-                <RainbowHighlight
-                  className="text-gray-700"
-                  colorIndex={seed[4]}
-                  text="back-end web development"
-                />
+                <RainbowHighlight color={colors[4]}>
+                  back-end web development
+                </RainbowHighlight>
                 .
               </p>
 
               <p>
                 <RoughNotation
-                  {...notationSettings}
                   type="strike-through"
+                  multiline={true}
+                  padding={[0, 2]}
+                  iterations={1}
                   color="#374151"
                   animationDuration={1200}
                   strokeWidth={1.2}
@@ -106,67 +78,28 @@ const About = ({ seed }: { seed: number[] }) => {
                 both small and large, specialised and cross-functional teams
                 across different time zones and developed a working style that
                 leans towards{" "}
-                <RainbowHighlight
-                  className="text-gray-700"
-                  colorIndex={seed[5]}
-                  text="flexibility,"
-                />
-                <RainbowHighlight
-                  className="text-gray-700"
-                  colorIndex={seed[6]}
-                  text="clarity,"
-                />{" "}
+                <RainbowHighlight color={colors[5]}>
+                  flexibility,
+                </RainbowHighlight>
+                <RainbowHighlight color={colors[6]}>clarity,</RainbowHighlight>{" "}
                 and{" "}
-                <RainbowHighlight
-                  className="text-gray-700"
-                  colorIndex={seed[0]}
-                  text="collaboration"
-                />
+                <RainbowHighlight color={colors[0]}>
+                  collaboration
+                </RainbowHighlight>
                 .
               </p>
-            </div>
-          </RoughNotationGroup>
 
-          <div>
-            <div className="text-gray-700">
-              <span
-                className={cx("transition duration-1000 ease-in-out", {
-                  "opacity-0": !isNotationDone,
-                  "opacity-100": isNotationDone,
-                })}
-              >
-                I'm currently looking for
-              </span>{" "}
-              <span
-                className={cx(
-                  "transition duration-1000 ease-in-out delay-300",
-                  {
-                    "opacity-0": !isNotationDone,
-                    "opacity-100": isNotationDone,
-                  },
-                )}
-              >
-                a new role as a developer.{" "}
-              </span>
-              <span
-                className={cx(
-                  "transition duration-1000 ease-in-out delay-500",
-                  {
-                    "opacity-0": !isNotationDone,
-                    "opacity-100": isNotationDone,
-                  },
-                  getDarkColor(seed[1]),
-                )}
-              >
+              <p>
+                I'm currently looking for a new role as a developer.{" "}
                 <RoughNotation
-                  {...notationSettings}
-                  show={isNotationDone}
                   type="circle"
+                  multiline={true}
                   animationDuration={1500}
                   animationDelay={1700}
-                  strokeWidth={1.5}
+                  strokeWidth={2}
                   iterations={3}
                   padding={5}
+                  color={colors[1]}
                 >
                   <a
                     href="#contact"
@@ -175,9 +108,11 @@ const About = ({ seed }: { seed: number[] }) => {
                     Hire me?
                   </a>
                 </RoughNotation>
-              </span>
+              </p>
             </div>
+          </RoughNotationGroup>
 
+          <div>
             <div className="flex flex-wrap mt-6 space-x-4">
               <a
                 href="/delba-resume.pdf"

@@ -1,3 +1,5 @@
+import { darkColors } from "@/ui/brandColors"
+import { FOCUS_VISIBLE_OUTLINE } from "@/ui/constants"
 import { useHover } from "@react-aria/interactions"
 import clsx from "clsx"
 import Image from "next/image"
@@ -5,8 +7,6 @@ import Link from "next/link"
 import React from "react"
 import Tilt from "react-parallax-tilt"
 import { RoughNotation } from "react-rough-notation"
-import { FOCUS_VISIBLE_OUTLINE } from "@/ui/constants"
-import { getDarkColor } from "@/ui/useColorSeed"
 
 type Project = {
   name: string
@@ -51,15 +51,7 @@ const data: Project[] = [
   },
 ]
 
-const Project = ({
-  project,
-  seed,
-  index,
-}: {
-  project: Project
-  seed: number[]
-  index: number
-}) => {
+const Project = ({ project, color }: { project: Project; color: string }) => {
   let { hoverProps, isHovered } = useHover({})
 
   return (
@@ -91,7 +83,7 @@ const Project = ({
             </span>
           </p>{" "}
           <p className="text-gray-700">{project.description}</p>
-          <div className={getDarkColor(seed[index])}>
+          <div>
             <RoughNotation
               type="underline"
               show={isHovered}
@@ -99,6 +91,7 @@ const Project = ({
               iterations={1}
               padding={2}
               animationDuration={300}
+              color={color}
             >
               <span className="font-medium text-gray-800">View Project</span>
             </RoughNotation>
@@ -109,7 +102,7 @@ const Project = ({
   )
 }
 
-const Projects = ({ seed }: { seed: number[] }) => {
+const Projects = () => {
   return (
     <div className="container px-4 mx-auto">
       <h2 className="text-3xl font-bold text-gray-800">Projects</h2>
@@ -118,10 +111,10 @@ const Projects = ({ seed }: { seed: number[] }) => {
       </h4>
 
       <div className="-mt-2 lg:flex lg:flex-wrap lg:-mx-6">
-        {data.map((project, i) => {
+        {data.map((project, index) => {
           return (
-            <div key={i} className="mt-12 lg:w-1/2 lg:px-6">
-              <Project project={project} seed={seed} index={i} />
+            <div key={index} className="mt-12 lg:w-1/2 lg:px-6">
+              <Project project={project} color={darkColors[index]} />
             </div>
           )
         })}
