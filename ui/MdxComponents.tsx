@@ -13,11 +13,7 @@ export const components = {
     <h2 className="mt-8 mb-3 text-3xl font-bold text-gray-900" {...props} />
   ),
   h3: (props: any) => (
-    <h3
-      className="mt-8 mb-3 text-2xl font-semibold text-gray-900"
-      {...props}
-      {...props}
-    />
+    <h3 className="mt-8 mb-3 text-2xl font-semibold text-gray-900" {...props} />
   ),
   h4: (props: any) => (
     <h4 className="mt-6 mb-2 text-lg font-semibold text-gray-900" {...props} />
@@ -26,10 +22,12 @@ export const components = {
     <p className="mb-5 text-lg leading-7 text-gray-700" {...props} />
   ),
   a: ({ href = "", ...props }) => {
+    const cn =
+      "bg-clip-text font-medium text-transparent bg-gradient-to-br from-lightBlue-500 to-purple-400 hover:text-lightBlue-500 hover:bg-none"
     if (href.startsWith("http")) {
       return (
         <a
-          className="underline text-lightBlue-600"
+          className={cn}
           href={href}
           target="_blank"
           rel="noopener"
@@ -40,14 +38,14 @@ export const components = {
 
     return (
       <NextLink href={href} passHref>
-        <a className="underline text-lightBlue-600" {...props} />
+        <a className={cn} {...props} />
       </NextLink>
     )
   },
-  hr: (props: any) => <hr className="" {...props} />,
+  hr: (props: any) => <hr {...props} />,
   ul: (props: any) => <ul className="mb-4" {...props} />,
   ol: (props: any) => <ol className="mb-4" {...props} />,
-  li: (props: any) => <li className="" {...props} />,
+  li: (props: any) => <li {...props} />,
   strong: (props: any) => <strong className="font-semibold" {...props} />,
   Image: ({ children, ...props }: { children: React.ReactNode }) => (
     <figure className="my-5">
@@ -81,7 +79,7 @@ export const components = {
   },
   code: ({ children }: { children: React.ReactNode }) => {
     return (
-      <code className="px-1 py-0.5 font-mono text-base font-semibold text-gray-900 bg-gray-200 rounded">
+      <code className="px-1.5 py-0.5 font-mono text-base font-semibold text-gray-700 bg-gray-100 rounded-md">
         {children}
       </code>
     )
