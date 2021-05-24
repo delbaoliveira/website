@@ -11,43 +11,35 @@ import { RoughNotation } from "react-rough-notation"
 type Project = {
   name: string
   description: string
-  caseStudy: string
-  url: string
   image: string
+  url?: string
 }
 
 const data: Project[] = [
   {
+    name: "30 day front-end challenge",
+    description:
+      "30 days of front-end is a series of daily challenges recreating simple yet delightful UI elements from around the web.",
+    url: "https://30day-frontend-challenge.vercel.app/",
+    image: "/challenge.png",
+  },
+  {
     name: "Dough",
     description:
       "A personal budgeting app that makes it easier to manage my finances in one place by pulling data from my UK bank accounts using TrueLayer.",
-    caseStudy: "/dough",
-    url: "#",
     image: "/dough.png",
   },
   {
     name: "Contra",
     description:
       "An iOS app that allows users to create custom pomodoro timers and sessions. It connects to Google Calendar so users can see an overview of their day.",
-    caseStudy: "/contra",
-    url: "#",
     image: "/contra.jpeg",
   },
   {
     name: "Bella Pilates",
     description:
       "A pilates platform offering beginner to advanced programs and nutritional plans for Portuguese-speaking audiences.",
-    caseStudy: "/bella-pilates",
-    url: "#",
     image: "/bella-julia.png",
-  },
-  {
-    name: "Twitter for Dopaholics",
-    description:
-      "A browser extension that hides all feel good features for those of us who can't handle the kick. Like Adblocker, but for that sweet brain juice.",
-    caseStudy: "/twitter-dopaholics",
-    url: "#",
-    image: "/twitter.png",
   },
 ]
 
@@ -55,7 +47,7 @@ const Project = ({ project, color }: { project: Project; color: string }) => {
   let { hoverProps, isHovered } = useHover({})
 
   return (
-    <Link href="/oops">
+    <Link href={project.url ? project.url : "/"}>
       <a className={clsx("block rounded-xl", FOCUS_VISIBLE_OUTLINE)}>
         <div {...hoverProps}>
           <Tilt
@@ -78,24 +70,28 @@ const Project = ({ project, color }: { project: Project; color: string }) => {
           </Tilt>
           <p className="mt-4 text-xl font-bold text-gray-800">
             {project.name}{" "}
-            <span className="text-base font-normal text-gray-500">
-              &middot; Under development
-            </span>
+            {!project.url ? (
+              <span className="text-base font-normal text-gray-500">
+                &middot; Under development
+              </span>
+            ) : null}
           </p>{" "}
           <p className="text-gray-700">{project.description}</p>
-          <div>
-            <RoughNotation
-              type="underline"
-              show={isHovered}
-              strokeWidth={2}
-              iterations={1}
-              padding={2}
-              animationDuration={300}
-              color={color}
-            >
-              <span className="font-medium text-gray-800">View Project</span>
-            </RoughNotation>
-          </div>
+          {project.url ? (
+            <div>
+              <RoughNotation
+                type="underline"
+                show={isHovered}
+                strokeWidth={2}
+                iterations={1}
+                padding={2}
+                animationDuration={300}
+                color={color}
+              >
+                <span className="font-medium text-gray-800">View Project</span>
+              </RoughNotation>
+            </div>
+          ) : null}
         </div>
       </a>
     </Link>
