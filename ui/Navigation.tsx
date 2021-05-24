@@ -2,7 +2,6 @@ import cx from "clsx"
 import Link from "next/link"
 import React from "react"
 import { FOCUS_VISIBLE_OUTLINE } from "@/ui/constants"
-import { HighlightOnHover } from "@/ui/HighlightOnHover"
 
 const Navigation = () => {
   return (
@@ -11,60 +10,58 @@ const Navigation = () => {
         <Link href="/">
           <a
             className={cx(
-              "font-medium tracking-wider transition-colors text-gray-600 hover:text-gray-800 focus:text-gray-800 uppercase rounded-sm",
+              "font-medium tracking-wider transition-colors text-gray-700 hover:text-gray-900 focus:text-gray-900 uppercase rounded-sm",
               FOCUS_VISIBLE_OUTLINE,
             )}
           >
-            <HighlightOnHover>Delba de Oliveira</HighlightOnHover>
+            Delba de Oliveira
           </a>
         </Link>
 
-        <div className="flex flex-wrap -ml-5 text-gray-600 lg:-ml-8">
-          <a
-            className={cx(
-              "font-medium block transition-colors mt-1.5 lg:mt-0 lg:ml-8 ml-5 hover:text-gray-800 focus:text-gray-800 rounded",
-              FOCUS_VISIBLE_OUTLINE,
-            )}
-            href="#about"
-          >
-            <HighlightOnHover>About</HighlightOnHover>
-          </a>
-          <a
-            className={cx(
-              "font-medium block transition-colors mt-1.5 lg:mt-0 lg:ml-8 ml-5 hover:text-gray-800 focus:text-gray-800 rounded",
-              FOCUS_VISIBLE_OUTLINE,
-            )}
-            href="#skills"
-          >
-            <HighlightOnHover>Skills</HighlightOnHover>
-          </a>
-          <a
-            className={cx(
-              "font-medium block transition-colors mt-1.5 lg:mt-0 lg:ml-8 ml-5 hover:text-gray-800 focus:text-gray-800 rounded",
-              FOCUS_VISIBLE_OUTLINE,
-            )}
-            href="#projects"
-          >
-            <HighlightOnHover>Projects</HighlightOnHover>
-          </a>
-          <a
-            className={cx(
-              "font-medium block transition-colors mt-1.5 lg:mt-0 lg:ml-8 ml-5 hover:text-gray-800 focus:text-gray-800 rounded",
-              FOCUS_VISIBLE_OUTLINE,
-            )}
-            href="#words"
-          >
-            <HighlightOnHover>Words</HighlightOnHover>
-          </a>
-          <a
-            className={cx(
-              "font-medium block transition-colors mt-1.5 lg:mt-0 lg:ml-8 ml-5 hover:text-gray-800 focus:text-gray-800 rounded",
-              FOCUS_VISIBLE_OUTLINE,
-            )}
-            href="#contact"
-          >
-            <HighlightOnHover>Contact</HighlightOnHover>
-          </a>
+        <div className="flex flex-wrap -ml-5 text-gray-700 lg:-ml-8">
+          <Link href="/#about">
+            <a
+              className={cx(
+                "font-medium block transition-colors mt-1.5 lg:mt-0 lg:ml-8 ml-5 hover:text-gray-900 focus:text-gray-900 rounded",
+                FOCUS_VISIBLE_OUTLINE,
+              )}
+            >
+              About
+            </a>
+          </Link>
+
+          <Link href="/#projects">
+            <a
+              className={cx(
+                "font-medium block transition-colors mt-1.5 lg:mt-0 lg:ml-8 ml-5 hover:text-gray-900 focus:text-gray-900 rounded",
+                FOCUS_VISIBLE_OUTLINE,
+              )}
+            >
+              Projects
+            </a>
+          </Link>
+
+          <Link href="/blog">
+            <a
+              className={cx(
+                "font-medium block transition-colors mt-1.5 lg:mt-0 lg:ml-8 ml-5 hover:text-gray-900 focus:text-gray-900 rounded",
+                FOCUS_VISIBLE_OUTLINE,
+              )}
+            >
+              Blog
+            </a>
+          </Link>
+
+          <Link href="/#contact">
+            <a
+              className={cx(
+                "font-medium block transition-colors mt-1.5 lg:mt-0 lg:ml-8 ml-5 hover:text-gray-900 focus:text-gray-900 rounded",
+                FOCUS_VISIBLE_OUTLINE,
+              )}
+            >
+              Contact
+            </a>
+          </Link>
         </div>
       </div>
     </div>

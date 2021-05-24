@@ -5,7 +5,17 @@ import Projects from "@/ui/Projects"
 import Skills from "@/ui/Skills"
 import Words from "@/ui/Words"
 
-export default function Home() {
+import { BlogPreview } from "@/ui/BlogPreview"
+import { getAllPostsMeta } from "@/ui/mdx"
+import React from "react"
+import type { PostMeta } from "types/post"
+
+export function getStaticProps() {
+  const posts = getAllPostsMeta()
+  return { props: { posts } }
+}
+
+export default function Home({ posts }: { posts: PostMeta[] }) {
   return (
     <Layout>
       <div className="space-y-14 lg:space-y-24">
@@ -15,6 +25,21 @@ export default function Home() {
 
         <div id="skills">
           <Skills />
+        </div>
+
+        <div id="blog">
+          <div className="container px-4 mx-auto">
+            <h2 className="text-3xl font-bold text-gray-800">Posts</h2>
+            <h4 className="text-gray-700 lg:text-lg">
+              Thoughts on what I'm learning and building in web development
+            </h4>
+
+            <div className="mt-8 space-y-12">
+              {posts.map((post) => (
+                <BlogPreview key={post.slug} post={post} />
+              ))}
+            </div>
+          </div>
         </div>
 
         <div id="projects">
