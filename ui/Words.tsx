@@ -1,24 +1,20 @@
 const data = [
   {
+    name: "Gabriel Cabrejas",
+    title: "Web Instructor, Lambda School",
+    text: "Delba is a talented Web Developer with a keen eye for detail, but also a compassionate and effective leader, capable of managing difficult situations with incredible ease. This combination of skills - technical and human - made her perfect at her job helping aspiring junior programmers break into software development. The months I spent working with Delba training our African and EU students where some of the most amazing times of my working life. Delba is everywhere at once, knows how to make the most of limited resources and gets the job done. But it's the finesse in her technical work what makes me particularly envious! I hope I'm lucky enough to work with Delba again in the future.",
+  },
+  {
     name: "Bob Lauer",
     title: "Principal Engineer, Lambda School",
-    text:
-      "I had the privilege of working closely with Delba while rolling out a very complex program over the course of eight months. Delba was instrumental to the program's successful roll out and continued operations. She was always eager to help wherever she could and provided excellent documentation to the rest of the team, ensuring everyone knew exactly what to do. At our weekly planning meetings she would often raise points that the rest of the team had not considered while also providing solutions to the questions of other team members. I have enjoyed working with her immensely, and would jump at the opportunity to do so again in the future.",
+    text: "I had the privilege of working closely with Delba while rolling out a very complex program over the course of eight months. Delba was instrumental to the program's successful roll out and continued operations. She was always eager to help wherever she could and provided excellent documentation to the rest of the team, ensuring everyone knew exactly what to do. At our weekly planning meetings she would often raise points that the rest of the team had not considered while also providing solutions to the questions of other team members. I have enjoyed working with her immensely, and would jump at the opportunity to do so again in the future.",
   },
 
   {
     name: "Lukasz Busk",
     title: "Technical Project Lead, Lambda School",
-    text:
-      "Delba was the core of the team for inspiration and ideas, providing tremendous help on the design and overall front-end userflow. She was a very dependable person, helping the team fix crucial bugs, pair programming and making the whole team feel great around her. She displayed strong mastery of React and CSS, implemented a chat feature using socket.io and even added emojis. She really showed devotion to the team and the project, and the outcome was an amazing application.",
+    text: "Delba was the core of the team for inspiration and ideas, providing tremendous help on the design and overall front-end userflow. She was a very dependable person, helping the team fix crucial bugs, pair programming and making the whole team feel great around her. She displayed strong mastery of React and CSS, implemented a chat feature using socket.io and even added emojis. She really showed devotion to the team and the project, and the outcome was an amazing application.",
   },
-
-  // {
-  //   title: "Senior Program Manager, Lambda School",
-  //   name: "Sasha Valle",
-  //   text:
-  //     "Delba, you were one of the best things to happen to the EU Program and Lambda at large. And even more memorably, you’re an exceptional human - a rather rare combination of acumen, empathy, values, drive and so many other traits I deeply admire. It was an honor working with you. Thank you for the opportunity to know you and I can't wait to see what the future has in store for you.",
-  // },
 ]
 
 const QuoteIcon = () => {
