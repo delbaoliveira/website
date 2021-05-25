@@ -68,6 +68,7 @@ export const components = {
       {...props}
     />
   ),
+  del: (props: any) => <del className="line-through" {...props} />,
 
   // TODO:
   pre: ({ children, ...props }: { children: React.ReactNode }) => {

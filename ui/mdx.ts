@@ -3,7 +3,8 @@ import glob from "glob"
 import matter from "gray-matter"
 import { bundleMDX } from "mdx-bundler"
 import path from "path"
-import remarkSlug from "remark-slug"
+import gfmPlugin from "remark-gfm"
+import slugPlugin from "remark-slug"
 import type { PostMeta } from "types/post"
 
 const ROOT_PATH = process.cwd()
@@ -35,7 +36,11 @@ export const getPostBySlug = async (slug: string) => {
 
   const { code, frontmatter } = await bundleMDX(source, {
     xdmOptions(options) {
-      options.remarkPlugins = [...(options?.remarkPlugins ?? []), remarkSlug]
+      options.remarkPlugins = [
+        ...(options?.remarkPlugins ?? []),
+        slugPlugin,
+        gfmPlugin,
+      ]
 
       return options
     },
