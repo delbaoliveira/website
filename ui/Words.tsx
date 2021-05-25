@@ -1,15 +1,14 @@
 const data = [
   {
-    name: "Gabriel Cabrejas",
-    title: "Web Instructor, Lambda School",
-    text: "Delba is a talented Web Developer with a keen eye for detail, but also a compassionate and effective leader, capable of managing difficult situations with incredible ease. This combination of skills - technical and human - made her perfect at her job helping aspiring junior programmers break into software development. The months I spent working with Delba training our African and EU students where some of the most amazing times of my working life. Delba is everywhere at once, knows how to make the most of limited resources and gets the job done. But it's the finesse in her technical work what makes me particularly envious! I hope I'm lucky enough to work with Delba again in the future.",
-  },
-  {
     name: "Bob Lauer",
     title: "Principal Engineer, Lambda School",
     text: "I had the privilege of working closely with Delba while rolling out a very complex program over the course of eight months. Delba was instrumental to the program's successful roll out and continued operations. She was always eager to help wherever she could and provided excellent documentation to the rest of the team, ensuring everyone knew exactly what to do. At our weekly planning meetings she would often raise points that the rest of the team had not considered while also providing solutions to the questions of other team members. I have enjoyed working with her immensely, and would jump at the opportunity to do so again in the future.",
   },
-
+  {
+    name: "Gabriel Cabrejas",
+    title: "Web Instructor, Lambda School",
+    text: "Delba is a talented Web Developer with a keen eye for detail, but also a compassionate and effective leader, capable of managing difficult situations with incredible ease. This combination of skills - technical and human - made her perfect at her job helping aspiring junior programmers break into software development. The months I spent working with Delba training our African and EU students where some of the most amazing times of my working life. Delba is everywhere at once, knows how to make the most of limited resources and gets the job done. But it's the finesse in her technical work what makes me particularly envious! I hope I'm lucky enough to work with Delba again in the future.",
+  },
   {
     name: "Lukasz Busk",
     title: "Technical Project Lead, Lambda School",

@@ -8,7 +8,7 @@ export const BlogPreview = ({ post }: { post: PostMeta }) => {
     <div key={post.slug}>
       <h2 className="text-xl font-bold">
         <Link href={`/blog/${post.slug}`}>
-          <a className="text-gray-800 transition-colors hover:text-gray-600">
+          <a className="text-gray-800 transition-colors hover:text-gray-500">
             {post.title}
           </a>
         </Link>

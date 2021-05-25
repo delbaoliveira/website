@@ -31,7 +31,7 @@ export default function Home({ posts }: { posts: PostMeta[] }) {
           <div className="container px-4 mx-auto">
             <h2 className="text-3xl font-bold text-gray-800">Posts</h2>
             <h4 className="text-gray-700 lg:text-lg">
-              Thoughts on what I'm learning and building in web development
+              Thoughts on what I'm building and learning
             </h4>
 
             <div className="mt-8 space-y-12">

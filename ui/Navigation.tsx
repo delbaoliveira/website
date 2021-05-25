@@ -10,7 +10,7 @@ const Navigation = () => {
         <Link href="/">
           <a
             className={cx(
-              "font-medium tracking-wider transition-colors text-gray-700 hover:text-gray-900 focus:text-gray-900 uppercase rounded-sm",
+              "font-medium tracking-wider transition-colors text-gray-700 hover:text-gray-500 focus:text-gray-500 uppercase rounded-sm",
               FOCUS_VISIBLE_OUTLINE,
             )}
           >
@@ -22,7 +22,7 @@ const Navigation = () => {
           <Link href="/#about">
             <a
               className={cx(
-                "font-medium block transition-colors mt-1.5 lg:mt-0 lg:ml-8 ml-5 hover:text-gray-900 focus:text-gray-900 rounded",
+                "font-medium block transition-colors mt-1.5 lg:mt-0 lg:ml-8 ml-5 hover:text-gray-500 focus:text-gray-500 rounded",
                 FOCUS_VISIBLE_OUTLINE,
               )}
             >
@@ -33,7 +33,7 @@ const Navigation = () => {
           <Link href="/#projects">
             <a
               className={cx(
-                "font-medium block transition-colors mt-1.5 lg:mt-0 lg:ml-8 ml-5 hover:text-gray-900 focus:text-gray-900 rounded",
+                "font-medium block transition-colors mt-1.5 lg:mt-0 lg:ml-8 ml-5 hover:text-gray-500 focus:text-gray-500 rounded",
                 FOCUS_VISIBLE_OUTLINE,
               )}
             >
@@ -44,7 +44,7 @@ const Navigation = () => {
           <Link href="/blog">
             <a
               className={cx(
-                "font-medium block transition-colors mt-1.5 lg:mt-0 lg:ml-8 ml-5 hover:text-gray-900 focus:text-gray-900 rounded",
+                "font-medium block transition-colors mt-1.5 lg:mt-0 lg:ml-8 ml-5 hover:text-gray-500 focus:text-gray-500 rounded",
                 FOCUS_VISIBLE_OUTLINE,
               )}
             >
@@ -55,7 +55,7 @@ const Navigation = () => {
           <Link href="/#contact">
             <a
               className={cx(
-                "font-medium block transition-colors mt-1.5 lg:mt-0 lg:ml-8 ml-5 hover:text-gray-900 focus:text-gray-900 rounded",
+                "font-medium block transition-colors mt-1.5 lg:mt-0 lg:ml-8 ml-5 hover:text-gray-500 focus:text-gray-500 rounded",
                 FOCUS_VISIBLE_OUTLINE,
               )}
             >
