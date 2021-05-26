@@ -4,7 +4,7 @@ const Contact = () => {
   return (
     <div className="container px-4 mx-auto">
       <h2 className="text-3xl font-bold text-gray-800">Get in touch</h2>
-      <p className="text-gray-700 lg:text-lg">
+      <p className="mt-2 text-gray-700 lg:text-lg">
         Do you have a job opportunity or idea you'd like to discuss? Feel free
         to reach me at{" "}
         <HighlightOnHover>

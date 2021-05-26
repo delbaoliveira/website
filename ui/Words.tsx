@@ -33,7 +33,7 @@ const Words = () => {
   return (
     <div className="container px-4 mx-auto">
       <h2 className="text-3xl font-bold text-gray-800">Nice words</h2>
-      <h4 className="text-gray-700 lg:text-lg">
+      <h4 className="mt-2 text-gray-700 lg:text-lg">
         Some feedback from the people I've had the privilege of working with.
       </h4>
 
@@ -45,7 +45,7 @@ const Words = () => {
               <div className="text-gray-700">{testimonial.text}</div>
             </div>
 
-            <footer className="mt-1 font-bold text-gray-500">
+            <footer className="mt-2 font-bold text-gray-500">
               {testimonial.name}{" "}
               <span className="font-normal">&middot; {testimonial.title}</span>
             </footer>

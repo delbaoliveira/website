@@ -20,7 +20,7 @@ const data: Project[] = [
     name: "30 day front-end challenge",
     description:
       "30 days of front-end is a series of daily challenges recreating simple yet delightful UI elements from around the web.",
-    url: "https://30day-frontend-challenge.vercel.app/",
+    url: "/challenge",
     image: "/challenge.png",
   },
   {
@@ -76,9 +76,9 @@ const Project = ({ project, color }: { project: Project; color: string }) => {
               </span>
             ) : null}
           </p>{" "}
-          <p className="text-gray-700">{project.description}</p>
+          <p className="mt-2 text-gray-700">{project.description}</p>
           {project.url ? (
-            <div>
+            <div className="mt-2">
               <RoughNotation
                 type="underline"
                 show={isHovered}
@@ -102,7 +102,7 @@ const Projects = () => {
   return (
     <div className="container px-4 mx-auto">
       <h2 className="text-3xl font-bold text-gray-800">Projects</h2>
-      <h4 className="text-gray-700 lg:text-lg">
+      <h4 className="mt-2 text-gray-700 lg:text-lg">
         Some of the side projects I've been working on in the last few months.
       </h4>
 

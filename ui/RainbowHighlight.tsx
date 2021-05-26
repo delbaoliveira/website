@@ -8,7 +8,7 @@ export const RainbowHighlight = ({
   color: string
   children: string
 }) => {
-  // change the animation duration depending on length of text we're animating
+  // Change the animation duration depending on length of text we're animating (speed = distance / time)
   const animationDuration = Math.floor(30 * children.length)
 
   return (
