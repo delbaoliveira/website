@@ -1,12 +1,12 @@
-import { components } from "@/ui/MdxComponents"
+import Layout from "@/ui/Layout"
 import { getAllPostsMeta, getPostBySlug } from "@/ui/mdx"
+import { components } from "@/ui/MdxComponents"
 import { format, parseISO } from "date-fns"
 import { getMDXComponent } from "mdx-bundler/client"
+import { GetStaticProps } from "next"
+import Image from "next/image"
 import React from "react"
 import type { Post } from "types/post"
-import Layout from "@/ui/Layout"
-import Image from "next/image"
-import { GetStaticProps } from "next"
 
 export const getStaticPaths = () => {
   const posts = getAllPostsMeta()
