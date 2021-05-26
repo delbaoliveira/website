@@ -23,8 +23,10 @@ const Screen = ({ day, description, link, children }) => {
             </div>
           </div>
           {/* Browser Screen*/}
-          <div className="h-56 mx-auto my-auto bg-white rounded-lg md:h-72">
-            {children}
+          <div className="w-full h-56 mx-auto my-auto bg-white rounded-lg md:h-72 ">
+            <div className="flex items-center justify-center h-full">
+              {children}
+            </div>
           </div>
         </div>
       </a>

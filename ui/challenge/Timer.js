@@ -9,7 +9,7 @@ const Timer = () => {
   })
 
   return (
-    <div className="flex flex-col justify-center h-full py-10 font-mono text-center bg-black rounded-b-lg polka-bg">
+    <div className="flex flex-col justify-center w-full h-full py-10 font-mono text-center bg-black rounded-b-lg polka-bg">
       <div className="text-4xl font-medium text-white md:text-5xl">
         <span>
           {days < 10 ? `0` : ""}
