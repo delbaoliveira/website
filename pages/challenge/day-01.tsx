@@ -6,7 +6,7 @@ export default function Page() {
     <Layout>
       <div className="container px-4 mx-auto">
         <div className="flex items-center justify-center">
-          <div className="px-16 py-6 border border-gray-100 shadow-sm rounded-xl ">
+          <div className="px-16 py-6 border border-gray-100 shadow-sm rounded-xl">
             <LikeButton id="day-01" />
           </div>
         </div>

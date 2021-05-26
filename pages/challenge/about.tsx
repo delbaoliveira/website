@@ -4,7 +4,7 @@ import Link from "next/link"
 
 const About = () => {
   return (
-    <div className="h-screen font-mono bg-black polka-bg">
+    <div className="h-screen font-mono bg-black polka-bg-white">
       <div className="max-w-3xl pt-10 mx-auto text-gray-100">
         <h1 className="py-4 text-3xl">Day 0: About this challenge</h1>
         <p className="my-4">

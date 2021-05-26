@@ -19,11 +19,17 @@
   }
 }
 
-.polka-bg {
+.polka-bg-white {
   background-image: radial-gradient(
     rgba(255, 255, 255, 0.15) 1px,
     transparent 1px
   );
+  background-position: 50%;
+  background-size: 20px 20px;
+}
+
+.polka-bg-gray {
+  background-image: radial-gradient(#e4e4e7 1px, transparent 1px);
   background-position: 50%;
   background-size: 20px 20px;
 }
