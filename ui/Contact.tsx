@@ -1,6 +1,6 @@
 import { HighlightOnHover } from "@/ui/HighlightOnHover"
 
-const Contact = () => {
+export const Contact = () => {
   return (
     <div className="container px-4 mx-auto">
       <h2 className="text-3xl font-bold text-gray-800">Get in touch</h2>
@@ -47,5 +47,3 @@ const Contact = () => {
     </div>
   )
 }
-
-export default Contact

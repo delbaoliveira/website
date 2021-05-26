@@ -1,5 +1,5 @@
 import { BlogPreview } from "@/ui/BlogPreview"
-import Layout from "@/ui/Layout"
+import { Layout } from "@/ui/Layout"
 import { getAllPostsMeta } from "@/ui/mdx"
 import React from "react"
 import type { PostMeta } from "types/post"

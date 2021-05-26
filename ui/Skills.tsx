@@ -94,7 +94,7 @@ const data: {
   },
 ]
 
-const Skills = () => {
+export const Skills = () => {
   return (
     <div className="container px-4 mx-auto">
       <h2 className="text-3xl font-bold text-gray-800">Skills and tools</h2>
@@ -147,5 +147,3 @@ const Skills = () => {
     </div>
   )
 }
-
-export default Skills

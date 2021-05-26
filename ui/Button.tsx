@@ -1,8 +1,14 @@
 import Link from "next/link"
 
-const Button = ({ children, link, ...props }) => {
+export const Button = ({
+  children,
+  href,
+  ...props
+}: {
+  href: string
+} & Omit<React.HTMLProps<HTMLAnchorElement>, "href">) => {
   return (
-    <Link href={link}>
+    <Link href={href}>
       <a
         className="block px-8 py-2 text-center text-white transition duration-200 bg-gray-900 border border-transparent rounded hover:bg-white hover:text-gray-800 hover:border-gray-800 focus:outline-none"
         {...props}
@@ -12,5 +18,3 @@ const Button = ({ children, link, ...props }) => {
     </Link>
   )
 }
-
-export default Button

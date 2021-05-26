@@ -1,4 +1,4 @@
-import Layout from "@/ui/Layout"
+import { Layout } from "@/ui/Layout"
 import { getAllPostsMeta, getPostBySlug } from "@/ui/mdx"
 import { components } from "@/ui/MdxComponents"
 import { format, parseISO } from "date-fns"

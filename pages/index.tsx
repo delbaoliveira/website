@@ -1,12 +1,11 @@
-import About from "@/ui/About"
-import Contact from "@/ui/Contact"
-import Layout from "@/ui/Layout"
-import Projects from "@/ui/Projects"
-import Skills from "@/ui/Skills"
-import Words from "@/ui/Words"
-
+import { About } from "@/ui/About"
 import { BlogPreview } from "@/ui/BlogPreview"
+import { Contact } from "@/ui/Contact"
+import { Layout } from "@/ui/Layout"
 import { getAllPostsMeta } from "@/ui/mdx"
+import { Projects } from "@/ui/Projects"
+import { Skills } from "@/ui/Skills"
+import { Words } from "@/ui/Words"
 import React from "react"
 import type { PostMeta } from "types/post"
 

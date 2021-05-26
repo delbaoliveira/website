@@ -29,7 +29,7 @@ const QuoteIcon = () => {
   )
 }
 
-const Words = () => {
+export const Words = () => {
   return (
     <div className="container px-4 mx-auto">
       <h2 className="text-3xl font-bold text-gray-800">Nice words</h2>
@@ -55,5 +55,3 @@ const Words = () => {
     </div>
   )
 }
-
-export default Words

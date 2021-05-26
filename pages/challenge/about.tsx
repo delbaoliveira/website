@@ -1,6 +1,6 @@
-import Timer from "@/ui/challenge/Timer"
-import Link from "next/link"
+import { Timer } from "@/ui/challenge/Timer"
 import { ArrowLeftIcon } from "@heroicons/react/solid"
+import Link from "next/link"
 
 const About = () => {
   return (

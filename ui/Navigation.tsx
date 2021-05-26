@@ -1,9 +1,9 @@
+import { FOCUS_VISIBLE_OUTLINE } from "@/ui/constants"
 import cx from "clsx"
 import Link from "next/link"
 import React from "react"
-import { FOCUS_VISIBLE_OUTLINE } from "@/ui/constants"
 
-const Navigation = () => {
+export const Navigation = () => {
   return (
     <div className="container px-4 mx-auto mt-4 mb-10 lg:mt-8 lg:mb-20">
       <div className="lg:flex lg:items-center lg:justify-between">
@@ -67,5 +67,3 @@ const Navigation = () => {
     </div>
   )
 }
-
-export default Navigation

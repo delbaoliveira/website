@@ -1,8 +1,8 @@
-import Screen from "@/ui/challenge/Screen"
-import Timer from "@/ui/challenge/Timer"
+import { Screen } from "@/ui/challenge/Screen"
+import { Timer } from "@/ui/challenge/Timer"
 import { LikeButton } from "@/ui/LikeButton"
 
-const Gallery = () => {
+export const Gallery = () => {
   return (
     <div className="container px-4">
       <div className="grid grid-cols-1 gap-10 mx-auto md:grid-cols-2">
@@ -24,5 +24,3 @@ const Gallery = () => {
     </div>
   )
 }
-
-export default Gallery

@@ -1,10 +1,10 @@
 import React from "react"
 import { useTimer } from "react-timer-hook"
 
-const Timer = () => {
+export const Timer = () => {
   const { seconds, minutes, hours, days } = useTimer({
     expiryTimestamp: 1624575599000,
-    onExpire: () => console.warn("onExpire called"),
+    // @ts-ignore it DOES exist and IS required
     autoStart: true,
   })
 
@@ -35,5 +35,3 @@ const Timer = () => {
     </div>
   )
 }
-
-export default Timer

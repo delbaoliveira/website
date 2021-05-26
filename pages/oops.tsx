@@ -1,7 +1,7 @@
+import { HighlightOnHover } from "@/ui/HighlightOnHover"
+import { Layout } from "@/ui/Layout"
 import Image from "next/image"
 import Link from "next/link"
-import { HighlightOnHover } from "@/ui/HighlightOnHover"
-import Layout from "@/ui/Layout"
 
 export default function Oops() {
   return (

@@ -1,4 +1,4 @@
-import Layout from "@/ui/Layout"
+import { Layout } from "@/ui/Layout"
 import { LikeButton } from "@/ui/LikeButton"
 
 export default function Page() {

@@ -1,12 +1,22 @@
 import { ArrowRightIcon } from "@heroicons/react/solid"
 import Link from "next/link"
 
-const Screen = ({ day, description, link, children }) => {
+export const Screen = ({
+  day,
+  description,
+  link,
+  children,
+}: {
+  day: number
+  description: string
+  link: string
+  children: React.ReactNode
+}) => {
   return (
-    <Link href={link ? `${link}` : "/"}>
+    <Link href={link}>
       <a>
         <div className="shadow-xl rounded-lg w-full mx-auto transition hover:shadow-2xl transform hover:scale-[1.02]">
-          {/* Browser UI*/}
+          {/* Browser UI */}
           <div className="flex items-center justify-between px-4 py-2 bg-gray-100 rounded-t-lg">
             <div className="hidden w-12 space-x-1 md:flex">
               <div className="w-3 h-3 bg-gray-300 rounded-full"></div>
@@ -22,7 +32,7 @@ const Screen = ({ day, description, link, children }) => {
               <ArrowRightIcon className="w-4 h-4 text-gray-500 transition transform hover:text-gray-700 hover:translate-x-2" />
             </div>
           </div>
-          {/* Browser Screen*/}
+          {/* Browser Screen */}
           <div className="w-full h-56 mx-auto my-auto bg-white rounded-lg md:h-72 ">
             <div className="flex items-center justify-center h-full">
               {children}
@@ -33,5 +43,3 @@ const Screen = ({ day, description, link, children }) => {
     </Link>
   )
 }
-
-export default Screen

@@ -1,9 +1,9 @@
-import Button from "@/ui/Button"
-import { useInterval } from "react-use"
-import React from "react"
+import { Button } from "@/ui/Button"
 import cx from "clsx"
+import React from "react"
+import { useInterval } from "react-use"
 
-const Hero = () => {
+export const Hero = () => {
   const [currentSlide, setSlide] = React.useState(0)
 
   const totalSlides = 3
@@ -85,7 +85,7 @@ const Hero = () => {
       </div>
       <div className="flex justify-center mt-8">
         <Button
-          link="https://github.com/delbaoliveira/website/tree/main/pages/challenge"
+          href="https://github.com/delbaoliveira/website/tree/main/pages/challenge"
           target="_blank"
         >
           Source code
@@ -94,5 +94,3 @@ const Hero = () => {
     </div>
   )
 }
-
-export default Hero

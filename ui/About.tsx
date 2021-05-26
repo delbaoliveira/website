@@ -1,14 +1,14 @@
 import { lightColors } from "@/ui/brandColors"
+import { Button } from "@/ui/Button"
 import { RainbowHighlight } from "@/ui/RainbowHighlight"
 import { shuffleArray } from "@/ui/shuffleArray"
 import { useIsFontReady } from "@/ui/useIsFontReady"
-import Button from "@/ui/Button"
 import Image from "next/image"
 import React from "react"
 import Tilt from "react-parallax-tilt"
 import { RoughNotation, RoughNotationGroup } from "react-rough-notation"
 
-const About = () => {
+export const About = () => {
   // Before animation, detect if custom fonts are loaded, so <RoughNotation />
   // SVG's are correctly positioned over the elements
   const isFontReady = useIsFontReady()
@@ -112,9 +112,9 @@ const About = () => {
           </RoughNotationGroup>
 
           <div className="mt-4 space-y-3 md:space-y-0 md:space-x-3 md:flex">
-            <Button link="/delba-resume.pdf">View Resume</Button>
+            <Button href="/delba-resume.pdf">View Resume</Button>
             <Button
-              link="https://www.linkedin.com/in/delbaoliveira/"
+              href="https://www.linkedin.com/in/delbaoliveira/"
               target="_blank"
             >
               View Linkedin
@@ -156,4 +156,4 @@ const About = () => {
   )
 }
 
-export default About
+About

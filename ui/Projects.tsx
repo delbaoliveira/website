@@ -98,7 +98,7 @@ const Project = ({ project, color }: { project: Project; color: string }) => {
   )
 }
 
-const Projects = () => {
+export const Projects = () => {
   return (
     <div className="container px-4 mx-auto">
       <h2 className="text-3xl font-bold text-gray-800">Projects</h2>
@@ -118,5 +118,3 @@ const Projects = () => {
     </div>
   )
 }
-
-export default Projects
