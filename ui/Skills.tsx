@@ -98,7 +98,7 @@ const Skills = () => {
   return (
     <div className="container px-4 mx-auto">
       <h2 className="text-3xl font-bold text-gray-800">Skills and tools</h2>
-      <h4 className="text-gray-700 lg:text-lg">
+      <h4 className="mt-2 text-gray-700 lg:text-lg">
         Some of the languages, tools and concepts I have experience with.
       </h4>
 

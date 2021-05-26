@@ -10,13 +10,13 @@ import Tilt from "react-parallax-tilt"
 import { RoughNotation, RoughNotationGroup } from "react-rough-notation"
 
 const About = () => {
-  // before animation, detect if custom fonts are loaded, so <RoughNotation />
+  // Before animation, detect if custom fonts are loaded, so <RoughNotation />
   // SVG's are correctly positioned over the elements
   const isFontReady = useIsFontReady()
 
   const [colors, setColors] = React.useState<string[]>([])
 
-  // shuffle our colors and store them in state so the order is persisted during
+  // Shuffle our colors and store them in state so the order is persisted during
   // React re-renders
   React.useEffect(() => {
     setColors(shuffleArray(lightColors))
@@ -34,7 +34,7 @@ const About = () => {
             </h1>
 
             <div className="mt-4 text-gray-700">
-              <p>
+              <p className="my-2">
                 I love building tools that are{" "}
                 <RainbowHighlight color={colors[1]}>
                   user-friendly, simple
@@ -46,7 +46,7 @@ const About = () => {
                 .
               </p>
 
-              <p>
+              <p className="my-2">
                 I was a student at Lambda School where I spent 8 months learning
                 the fundamentals of{" "}
                 <RainbowHighlight color={colors[3]}>front-end</RainbowHighlight>{" "}
@@ -57,7 +57,7 @@ const About = () => {
                 .
               </p>
 
-              <p>
+              <p className="my-2">
                 <RoughNotation
                   type="strike-through"
                   multiline={true}
@@ -73,7 +73,7 @@ const About = () => {
                 </RoughNotation>
               </p>
 
-              <p>
+              <p className="my-2">
                 Through these experiences, I had the opportunity to work with
                 both small and large, specialised and cross-functional teams
                 across different time zones and developed a working style that
@@ -89,7 +89,7 @@ const About = () => {
                 .
               </p>
 
-              <p>
+              <p className="my-2">
                 I'm currently looking for a new role as a developer.{" "}
                 <RoughNotation
                   type="circle"
@@ -118,7 +118,7 @@ const About = () => {
                 href="/delba-resume.pdf"
                 target="_blank"
                 className={cx(
-                  "inline-flex items-center lg:px-8 px-4 py-2 font-medium text-white bg-gray-700 border border-transparent rounded-full shadow-sm hover:bg-gray-800",
+                  "inline-flex items-center lg:px-8 px-4 py-2 font-medium text-white bg-gray-700 border border-transparent rounded-2xl shadow-sm hover:bg-gray-800",
                   FOCUS_VISIBLE_OUTLINE,
                 )}
               >
@@ -128,7 +128,7 @@ const About = () => {
                 href="https://www.linkedin.com/in/delbaoliveira/"
                 target="_blank"
                 className={cx(
-                  "inline-flex items-center lg:px-8 px-4 py-2 font-medium text-white bg-gray-700 border border-transparent rounded-full shadow-sm hover:bg-gray-800",
+                  "inline-flex items-center lg:px-8 px-4 py-2 font-medium text-white bg-gray-700 border border-transparent rounded-2xl shadow-sm hover:bg-gray-800",
                   FOCUS_VISIBLE_OUTLINE,
                 )}
               >
