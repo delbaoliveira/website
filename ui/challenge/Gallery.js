@@ -1,5 +1,6 @@
 import Screen from "@/ui/challenge/Screen"
 import Timer from "@/ui/challenge/Timer"
+import { LikeButton } from "@/ui/LikeButton"
 
 const Gallery = () => {
   return (
@@ -10,13 +11,15 @@ const Gallery = () => {
           description="About the challenge"
           link="/challenge/about"
         >
-          <Timer></Timer>
+          <Timer />
         </Screen>
         <Screen
           day={1}
           description="A delightful like button"
           link="/challenge/day-01"
-        ></Screen>
+        >
+          <LikeButton id="day-01" />
+        </Screen>
       </div>
     </div>
   )
