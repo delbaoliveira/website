@@ -15,7 +15,7 @@ export const Gallery = () => {
         </Screen>
         <Screen
           day={1}
-          description="A delightful like button"
+          description="A like button that likes you back"
           link="/challenge/day-01"
         >
           <LikeButton id="day-01" />
