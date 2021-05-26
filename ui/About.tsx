@@ -1,9 +1,8 @@
 import { lightColors } from "@/ui/brandColors"
-import { FOCUS_VISIBLE_OUTLINE } from "@/ui/constants"
 import { RainbowHighlight } from "@/ui/RainbowHighlight"
 import { shuffleArray } from "@/ui/shuffleArray"
 import { useIsFontReady } from "@/ui/useIsFontReady"
-import cx from "clsx"
+import Button from "@/ui/Button"
 import Image from "next/image"
 import React from "react"
 import Tilt from "react-parallax-tilt"
@@ -112,29 +111,14 @@ const About = () => {
             </div>
           </RoughNotationGroup>
 
-          <div>
-            <div className="flex flex-wrap mt-6 space-x-4">
-              <a
-                href="/delba-resume.pdf"
-                target="_blank"
-                className={cx(
-                  "inline-flex items-center lg:px-8 px-4 py-2 font-medium text-white bg-gray-700 border border-transparent rounded-2xl shadow-sm hover:bg-gray-800",
-                  FOCUS_VISIBLE_OUTLINE,
-                )}
-              >
-                View Resume
-              </a>
-              <a
-                href="https://www.linkedin.com/in/delbaoliveira/"
-                target="_blank"
-                className={cx(
-                  "inline-flex items-center lg:px-8 px-4 py-2 font-medium text-white bg-gray-700 border border-transparent rounded-2xl shadow-sm hover:bg-gray-800",
-                  FOCUS_VISIBLE_OUTLINE,
-                )}
-              >
-                View LinkedIn
-              </a>
-            </div>
+          <div className="mt-4 space-y-3 md:space-y-0 md:space-x-3 md:flex">
+            <Button link="/delba-resume.pdf">View Resume</Button>
+            <Button
+              link="https://www.linkedin.com/in/delbaoliveira/"
+              target="_blank"
+            >
+              View Linkedin
+            </Button>
           </div>
         </div>
         <div className="max-w-sm mt-12 lg:w-1/3 lg:px-4 lg:mt-0">

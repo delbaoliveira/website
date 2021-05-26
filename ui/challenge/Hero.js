@@ -1,4 +1,4 @@
-import Button from "@/ui/challenge/Button"
+import Button from "@/ui/Button"
 import { useInterval } from "react-use"
 import React from "react"
 import cx from "clsx"
@@ -83,8 +83,11 @@ const Hero = () => {
           recreating simple yet delightful UI elements from around the web.
         </p>
       </div>
-      <div className="mt-10">
-        <Button link="https://github.com/delbaoliveira/website/tree/main/pages/challenge">
+      <div className="flex justify-center mt-8">
+        <Button
+          link="https://github.com/delbaoliveira/website/tree/main/pages/challenge"
+          target="_blank"
+        >
           Source code
         </Button>
       </div>
