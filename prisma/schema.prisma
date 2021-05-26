@@ -1,0 +1,26 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL_PRODUCTION")
+}
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["orderByRelation", "selectRelationCount"]
+}
+
+model PostMeta {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  slug      String   @unique
+  likes     Int      @default(1)
+  views     Int      @default(0)
+}
+
+model LikesByUser {
+  id        String   @id
+  createdAt DateTime @default(now())
+  likes     Int      @default(1)
+}
