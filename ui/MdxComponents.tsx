@@ -1,8 +1,10 @@
 import NextImage from "next/image"
 import NextLink from "next/link"
 import React from "react"
+import { LikeButton } from "@/ui/LikeButton"
 
 export const components = {
+  LikeButton,
   h1: (props: any) => (
     <h1
       className="mt-8 mb-4 text-4xl font-extrabold text-gray-900"
@@ -43,9 +45,9 @@ export const components = {
     )
   },
   hr: (props: any) => <hr {...props} />,
-  ul: (props: any) => <ul className="mb-4" {...props} />,
+  ul: (props: any) => <ul className="mb-4 list-disc list-inside" {...props} />,
   ol: (props: any) => <ol className="mb-4" {...props} />,
-  li: (props: any) => <li {...props} />,
+  li: (props: any) => <li className="" {...props} />,
   strong: (props: any) => <strong className="font-semibold" {...props} />,
   Image: ({ children, ...props }: { children: React.ReactNode }) => (
     <figure className="my-5">

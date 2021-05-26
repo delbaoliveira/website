@@ -36,14 +36,14 @@ const HeartButton = ({
   return (
     <button className="focus:outline-none" onClick={() => increment()}>
       <div className="relative">
-        {/* thank you emojis */}
+        {/* Thank you emojis */}
         <div className="absolute text-2xl">
           {emojis.map((item, i) => (
             <motion.div
               key={i}
               initial="hidden"
               className="absolute"
-              // animate each emoji after a like action
+              // Animate each emoji after a like action
               animate={currentUserLikes === i + 1 && "show"}
               variants={emojiVariants}
             >
@@ -52,7 +52,7 @@ const HeartButton = ({
           ))}
         </div>
 
-        {/* heart */}
+        {/* Heart */}
         <motion.svg
           initial={false}
           animate={String(currentUserLikes)}
@@ -70,22 +70,38 @@ const HeartButton = ({
             },
           }}
         >
-          {/* heart shape mask */}
+          <defs>
+            <linearGradient id="grad1" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop
+                offset="0%"
+                style={{ stopColor: "#FACC15", stopOpacity: 1 }}
+              />
+              <stop
+                offset="50%"
+                style={{ stopColor: "#EF4444", stopOpacity: 1 }}
+              />
+              <stop
+                offset="100%"
+                style={{ stopColor: "#EC4899", stopOpacity: 1 }}
+              />
+            </linearGradient>
+          </defs>
+          {/* Heart shape mask */}
           <mask id="mask" mask-type="alpha" maskUnits="userSpaceOnUse">
             <path d={path} />
           </mask>
 
           <g mask="url(#mask)">
-            {/* bg */}
+            {/* Background */}
             <rect width="20" height="20" fill={bgColor} />
 
-            {/* fill */}
+            {/* Fill */}
             <motion.rect
               width="16"
               height="16"
               x="2"
               y="2"
-              fill="currentColor"
+              fill="url(#grad1)"
               variants={fillVariants}
             />
           </g>
@@ -122,7 +138,8 @@ export const LikeButton = ({ id }: { id: string }) => {
       <div
         className={cx("mt-1 font-medium transition-colors", {
           "text-gray-500": currentUserLikes === 0,
-          "text-rose-500": currentUserLikes !== 0,
+          "bg-clip-text text-transparent bg-gradient-to-b from-yellow-400 via-red-500 to-pink-500":
+            currentUserLikes !== 0,
         })}
       >
         {totalPostLikes}
