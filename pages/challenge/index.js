@@ -1,11 +1,10 @@
-import Hero from "@/ui/challenge/Hero"
+import ChallengeLayout from "@/ui/challenge/ChallengeLayout"
 import Gallery from "@/ui/challenge/Gallery"
 
-export default function Home() {
+export default function ChallengeHome() {
   return (
-    <>
-      <Hero />
-      <Gallery />
-    </>
+    <ChallengeLayout>
+      <Gallery></Gallery>
+    </ChallengeLayout>
   )
 }

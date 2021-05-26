@@ -17,7 +17,7 @@ const Hero = () => {
   }, 2000)
 
   return (
-    <div className="max-w-3xl mx-auto my-24 text-center">
+    <div className="max-w-4xl mx-auto my-24 text-center">
       {/* TO DO: Abstract this into its own component */}
       <h1 className="text-6xl font-extrabold leading-snug md:text-8xl">
         <span className="relative block">
@@ -87,7 +87,6 @@ const Hero = () => {
         <Button link="https://github.com/delbaoliveira/website/tree/main/pages/challenge">
           Source code
         </Button>
-        <Button link="/">Portfolio</Button>
       </div>
     </div>
   )

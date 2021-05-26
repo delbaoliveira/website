@@ -3,8 +3,8 @@ import Timer from "@/ui/challenge/Timer"
 
 const Gallery = () => {
   return (
-    <div className="grid w-10/12 grid-cols-1 gap-10 mx-auto md:grid-cols-3">
-      <Screen day={0} description="About this page" link="/challenge/about">
+    <div className="grid grid-cols-1 gap-10 mx-auto md:grid-cols-2">
+      <Screen day={0} description="About the challenge" link="/challenge/about">
         <Timer></Timer>
       </Screen>
       <Screen

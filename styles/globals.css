@@ -18,3 +18,12 @@
     z-index: -1;
   }
 }
+
+.polka-bg {
+  background-image: radial-gradient(
+    rgba(255, 255, 255, 0.15) 1px,
+    transparent 1px
+  );
+  background-position: 50%;
+  background-size: 20px 20px;
+}
