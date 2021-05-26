@@ -17,7 +17,7 @@ const Hero = () => {
   }, 2000)
 
   return (
-    <div className="max-w-4xl mx-auto my-24 text-center">
+    <div className="container px-4 my-24 text-center ">
       {/* TO DO: Abstract this into its own component */}
       <h1 className="text-6xl font-extrabold leading-snug md:text-8xl">
         <span className="relative block">
@@ -77,7 +77,7 @@ const Hero = () => {
         </span>
       </h1>
 
-      <div className="text-center">
+      <div className="w-3/4 mx-auto text-center">
         <p className="mt-10 text-lg text-gray-600">
           Welcome! 30 days of front-end is a series of daily challenges
           recreating simple yet delightful UI elements from around the web.
