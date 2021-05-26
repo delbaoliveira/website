@@ -95,9 +95,9 @@ const HeartButton = ({
   )
 }
 
-export const LikeButton = ({ slug }: { slug: string }) => {
+export const LikeButton = ({ id }: { id: string }) => {
   const { currentUserLikes, totalPostLikes, isLoading, increment } =
-    usePostLikes(slug)
+    usePostLikes(id)
 
   return (
     <div className="flex items-center space-x-2">

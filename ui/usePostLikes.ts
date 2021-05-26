@@ -1,4 +1,4 @@
-import type { LikesPayload } from "pages/api/likes/[slug]"
+import type { LikesPayload } from "pages/api/likes/[id]"
 import useSWR from "swr"
 
 const API_URL = `/api/likes/`
@@ -9,10 +9,10 @@ export async function getPostLikes(url: string): Promise<LikesPayload> {
 }
 
 export async function updatePostLikes(
-  slug: string,
+  id: string,
   count: number,
 ): Promise<LikesPayload> {
-  const res = await fetch(API_URL + slug, {
+  const res = await fetch(API_URL + id, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ count }),
@@ -20,8 +20,8 @@ export async function updatePostLikes(
   return res.json()
 }
 
-export const usePostLikes = (slug: string) => {
-  const { data, error, mutate } = useSWR(API_URL + slug, getPostLikes)
+export const usePostLikes = (id: string) => {
+  const { data, error, mutate } = useSWR(API_URL + id, getPostLikes)
 
   const increment = async () => {
     if (!data || data.user >= 3) {
@@ -38,7 +38,8 @@ export const usePostLikes = (slug: string) => {
     )
 
     // update db
-    await updatePostLikes(slug, 1)
+    // TODO: debounce
+    await updatePostLikes(id, 1)
 
     // trigger refetch
     mutate()
