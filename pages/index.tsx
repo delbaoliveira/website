@@ -6,15 +6,19 @@ import { getAllPostsMeta } from "@/ui/mdx"
 import { Projects } from "@/ui/Projects"
 import { Skills } from "@/ui/Skills"
 import { Words } from "@/ui/Words"
+import { InferGetStaticPropsType } from "next"
 import React from "react"
-import type { PostMeta } from "types/post"
 
-export function getStaticProps() {
-  const posts = getAllPostsMeta().filter((x) => x.status !== "draft")
-  return { props: { posts } }
+export const getStaticProps = async () => {
+  const posts = getAllPostsMeta()
+  const projects = getAllPostsMeta({ category: "challenge" })
+  return { props: { posts, projects } }
 }
 
-export default function Home({ posts }: { posts: PostMeta[] }) {
+export default function Home({
+  posts,
+  projects,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Layout>
       <div className="space-y-14 lg:space-y-24">

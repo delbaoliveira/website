@@ -10,7 +10,10 @@ import type { PostMeta } from "types/post"
 const ROOT_PATH = process.cwd()
 export const POSTS_PATH = path.join(ROOT_PATH, "posts")
 
-export const getAllPostsMeta = () => {
+export const getAllPostsMeta = (filters?: {
+  category?: PostMeta["category"]
+  status?: PostMeta["status"]
+}) => {
   const PATH = path.join(POSTS_PATH)
   const paths = glob.sync(`${PATH}/**/*.mdx`)
 
@@ -24,6 +27,21 @@ export const getAllPostsMeta = () => {
         ...data,
         slug,
       }
+    })
+    .filter((post) => {
+      if (!filters) return true
+
+      let include = true
+
+      if (filters.category) {
+        include = post.category === filters.category
+      }
+
+      if (filters.status) {
+        include = post.status === filters.status
+      }
+
+      return include
     })
     .sort(
       (a, b) =>

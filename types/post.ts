@@ -4,6 +4,8 @@ export type PostMeta = {
   description: string
   slug?: any
   status?: "draft"
+  category?: "challenge"
+  image?: string
 }
 
 export type Post = {

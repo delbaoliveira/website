@@ -31,6 +31,10 @@ export default function PostPage({ meta, code }: Post) {
   return (
     <Layout>
       <div className="container max-w-3xl px-4 mx-auto mt-36">
+        {meta.category ? (
+          <div className="mb-2 text-gray-400 uppercase">{meta.category}</div>
+        ) : null}
+
         <h1 className="text-3xl font-bold lg:text-5xl">{meta.title}</h1>
 
         <div className="flex items-center mt-4 space-x-2 text-gray-600">
