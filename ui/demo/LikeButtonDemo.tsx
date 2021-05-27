@@ -27,7 +27,7 @@ export const LikeButtonDemo = ({
   }, [likes])
 
   return (
-    <div className="flex items-center space-x-5">
+    <div className="flex items-center space-x-4">
       {isLoading ? (
         <>
           <div className="text-gray-300 animate-pulse">
@@ -59,7 +59,7 @@ export const LikeButtonDemo = ({
           >
             <Heart
               likes={likes}
-              enableEmojis={direction === "up" && enableEmojis}
+              enableEmojis={(direction === "up" || likes === 3) && enableEmojis}
               className="w-20"
             />
           </button>

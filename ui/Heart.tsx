@@ -4,10 +4,9 @@ export const HEART_PATH =
   "M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
 
 const emojiVariants = {
-  hidden: { x: 10, y: 0, opacity: 0 },
+  hide: { y: -80, opacity: 0 },
   show: {
-    x: 10,
-    y: [-24, -50, -80],
+    y: [0, -50, -80],
     opacity: [0, 1, 0],
   },
 }
@@ -36,15 +35,15 @@ export const Heart = ({
     <div className="relative">
       {/* Thank you emojis */}
       {enableEmojis ? (
-        <div className="absolute text-2xl">
+        <div className="absolute w-full text-2xl text-center">
           {emojis.map((item, i) => {
             return (
               <motion.div
                 key={i}
-                initial="hidden"
-                className="absolute"
+                initial="hide"
+                className="absolute w-full"
                 // Animate each emoji after a like action
-                animate={likes === i + 1 && "show"}
+                animate={likes === i + 1 ? "show" : "hide"}
                 variants={emojiVariants}
               >
                 {item}
