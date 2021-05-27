@@ -59,7 +59,7 @@ export const components = {
       {...props}
     />
   ),
-  li: (props: any) => <li className="mt-3" {...props} />,
+  li: (props: any) => <li className="mt-2" {...props} />,
   strong: (props: any) => <strong className="font-semibold" {...props} />,
   Image: ({ children, ...props }: { children: React.ReactNode }) => (
     <figure className="my-5">
