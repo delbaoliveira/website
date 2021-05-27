@@ -6,15 +6,19 @@ import { getAllPostsMeta } from "@/ui/mdx"
 import { Projects } from "@/ui/Projects"
 import { Skills } from "@/ui/Skills"
 import { Words } from "@/ui/Words"
+import { InferGetStaticPropsType } from "next"
 import React from "react"
-import type { PostMeta } from "types/post"
 
-export function getStaticProps() {
-  const posts = getAllPostsMeta().filter((x) => x.status !== "draft")
-  return { props: { posts } }
+export const getStaticProps = async () => {
+  const posts = getAllPostsMeta().filter((x) => x.category !== "challenge")
+  const projects = getAllPostsMeta({ category: "challenge" })
+  return { props: { posts, projects } }
 }
 
-export default function Home({ posts }: { posts: PostMeta[] }) {
+export default function Home({
+  posts,
+  projects,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Layout>
       <div className="space-y-14 lg:space-y-24">
@@ -22,14 +26,14 @@ export default function Home({ posts }: { posts: PostMeta[] }) {
           <About />
         </div>
 
-        <div id="skills">
-          <Skills />
+        <div id="projects">
+          <Projects projects={projects} />
         </div>
 
         <div id="blog">
           <div className="container px-4 mx-auto">
             <h2 className="text-3xl font-bold text-gray-800">Posts</h2>
-            <h4 className="text-gray-700 lg:text-lg">
+            <h4 className="mt-2 text-gray-500 lg:text-lg">
               Thoughts on what I'm building and learning
             </h4>
 
@@ -41,8 +45,8 @@ export default function Home({ posts }: { posts: PostMeta[] }) {
           </div>
         </div>
 
-        <div id="projects">
-          <Projects />
+        <div id="skills">
+          <Skills />
         </div>
 
         <div id="words">

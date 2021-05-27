@@ -53,6 +53,7 @@ module.exports = {
     extend: {},
   },
   plugins: [
+    require("@tailwindcss/line-clamp"),
     plugin(function ({ addUtilities }) {
       const newUtilities = {
         ".rounded-tl-xl": {

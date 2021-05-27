@@ -1,10 +1,12 @@
 import { LikeButton } from "@/ui/LikeButton"
+import { Playground } from "@/ui/Playground"
 import NextImage from "next/image"
 import NextLink from "next/link"
 import React from "react"
 
 export const components = {
   LikeButton,
+  Playground,
   h1: (props: any) => (
     <h1
       className="mt-8 mb-4 text-4xl font-extrabold text-gray-900"
@@ -57,7 +59,7 @@ export const components = {
       {...props}
     />
   ),
-  li: (props: any) => <li className="mt-3" {...props} />,
+  li: (props: any) => <li className="mt-2" {...props} />,
   strong: (props: any) => <strong className="font-semibold" {...props} />,
   Image: ({ children, ...props }: { children: React.ReactNode }) => (
     <figure className="my-5">
