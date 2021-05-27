@@ -14,7 +14,7 @@ export function Playground({
     <div className="mb-6">
       <div
         className={cx(
-          "flex items-center justify-center p-10 rounded-md lg:p-20 ",
+          "flex items-center justify-center px-6 py-12 rounded-md md:px-10 md:py-20",
           {
             "polka-bg-gray border border-gray-100": !isDark,
             "polka-bg-white bg-black": isDark,

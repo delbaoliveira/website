@@ -4,8 +4,10 @@ import { useInterval } from "react-use"
 
 export const TextSlider = ({
   slides,
+  delay = 2000,
 }: {
   slides: [string, string, string]
+  delay?: number
 }) => {
   const [currentSlide, setSlide] = React.useState(0)
 
@@ -17,7 +19,7 @@ export const TextSlider = ({
     } else {
       setSlide(currentSlide + 1)
     }
-  }, 2000)
+  }, delay)
 
   return (
     <>

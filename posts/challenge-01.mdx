@@ -1,10 +1,12 @@
 ---
-title: "Day 1: Text slider"
-description: "Inspired by Vercel's iconic 'Develop, Preview, Ship' hero text, this component animates a set of words line by line."
+title: "Day 1: Hero text gradient animation"
+description: "Inspired by Vercel's iconic 'Develop, Preview, Ship' hero text animation, I created a component that animates a set of words line by line."
 publishedAt: "2021-05-22"
 category: "challenge"
 image: "challenge-01.png"
 ---
+
+Inspired by Vercel's iconic [Develop, Preview, Ship](https://vercel.com/home) hero text animation, I created a component that animates a set of words line by line.
 
 import { TextSlider } from "../ui/challenge/TextSlider"
 
@@ -14,4 +16,26 @@ import { TextSlider } from "../ui/challenge/TextSlider"
   </span>
 </Playground>
 
-Inspired by Vercel's iconic [Develop, Preview, Ship](https://vercel.com/home) hero text, this component animates a set of words line by line.
+### How it works
+
+Ignoring animations for now. We separate each line of text into a "slide". When the slide is active it will have `background-image: linear-gradient(...)` and `background-clip: text` applied and when it is not active it will be a plain black color.
+
+We create a `useState` hook that stores the `currentSlide` and using another hook that wraps `setInterval()`, we increment the `currentSlide` up by 1 every 2 seconds until it reaches the last slide, then we reset back to 0.
+
+When currentSlide equals a slides index, we toggle its active state.
+
+#### Animation
+
+The animation seems quite simple at first: use a CSS transition to change from black text to a gradient text. Unfortunately, this wont work because CSS transitions do not support `background-image`.
+
+#### Non elegant solution
+
+One way to solve this is to create two spans with the same text and absolutely position them on top of eachother. One span with the black text version and the other with the gradient. When the slide is active, you transition the opacity of the black text to 0 to reveal the gradient span underneath. When the slide becomes inactive, you transition the opacity of the black text back to 100.
+
+#### The Vercel way
+
+If you look at Vercel's implementation, instead of creating two absolutely positioned spans, they use a single span with a `::before` pseudo element. They store the slide content and gradient stop colors in CSS variables in the inline style attribute of each slides span. They then reference the CSS variables in the styles of the pseudo element. It's a pretty neat solution.
+
+Finally, rather than using React state to manage the current slide, they use an infinitely repeating CSS animation.
+
+Fun challenge today. Looking forward to tomorrow. Hint: you’ll like it!
