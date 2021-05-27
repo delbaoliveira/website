@@ -51,8 +51,13 @@ export const components = {
       {...props}
     />
   ),
-  ol: (props: any) => <ol className="mb-4" {...props} />,
-  li: (props: any) => <li className="" {...props} />,
+  ol: (props: any) => (
+    <ol
+      className="pl-10 my-12 text-lg leading-7 text-gray-700 list-decimal"
+      {...props}
+    />
+  ),
+  li: (props: any) => <li className="mt-3" {...props} />,
   strong: (props: any) => <strong className="font-semibold" {...props} />,
   Image: ({ children, ...props }: { children: React.ReactNode }) => (
     <figure className="my-5">
