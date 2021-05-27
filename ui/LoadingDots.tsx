@@ -1,3 +1,5 @@
+// Based on the fantastic https://vercel.com/design/loading-dots
+
 export const LoadingDots = () => {
   return (
     <div className="flex space-x-1">
