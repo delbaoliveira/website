@@ -1,4 +1,5 @@
 import { Layout } from "@/ui/Layout"
+import { LikeButton } from "@/ui/LikeButton"
 import { getAllPostsMeta, getPostBySlug } from "@/ui/mdx"
 import { components } from "@/ui/MdxComponents"
 import { format, parseISO } from "date-fns"
@@ -49,6 +50,10 @@ export default function PostPage({ meta, code }: Post) {
 
         <div className="mt-12">
           <Component components={components as any} />
+        </div>
+
+        <div className="mt-8">
+          <LikeButton id={meta.slug} />
         </div>
       </div>
     </Layout>
