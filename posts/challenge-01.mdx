@@ -1,0 +1,58 @@
+---
+title: "FE Challenge 01: A like button that likes you back"
+description: "WIP"
+publishedAt: "2021-05-26"
+---
+
+I'm a big fan of [Josh Comeau's work](https://www.joshwcomeau.com/). The like button on his blog is one of the most delightful UI elements I've come across. It's also a deceptively complex component (I honestly thought I could re-implement it in an hour, haha) that contains an SVG, sounds, mouse tracking, animations and of course, exploding confetti. 🎉
+
+After reading his [How I built my blog](https://www.joshwcomeau.com/blog/how-i-built-my-blog/) article where he talked about persisting the number of likes to a database, I knew I wanted to learn how to create something similar. I thought this would be a good component to begin my 30 day front-end challenge because its an isolated component that connects the front-end with the back-end.
+
+So I started by writing down everything I noticed with Josh's component and ended up with a list of 15 things triggered by user interaction (i.e. onClick: change number color from gray to pink, increment counter, scale heart, show and fade +1 sign, etc). The attention to detail is ridiculous, but it's what makes it so good.
+
+Although I didn't have the time to recreate everything, I thought I'd try to get the basic functionality down and maybe add some animations. Here's how my version works:
+
+import { LikeButtonDemo1 } from "../ui/demo/LikeButtonDemo1"
+import { Playground } from "../ui/Playground"
+
+### The Heart
+
+<Playground>
+  <LikeButtonDemo1 />
+</Playground>
+
+At its most basic level, the like button is an `SVG` with two rectangles "under" a heart shaped `mask`. The first rectangle is filled with gray and serves as the background and the second rectangle is filled with a gradient and is what fills the heart as the user clicks. To animate the fill, I used transform/translate to position the gradient offscreen. I then filled the heart, by translating the y axis of the gradient up until the user hits the maximum number of likes. For the purpose of the demo the gradient is also translating down so you can keep interacting. Try clicking above!
+
+As the user interacts with the heart, `framer-motion` scales the hearts size depending on whether they hover or click. Finally, I bumped the like count up using a `useState` hook.
+
+### Making it playful
+
+<Playground>
+  <LikeButtonDemo1 enableEmojis initialLikes={0} />
+</Playground>
+
+We can make things a little more playful and show our appreciation for the user liking our content by using the worlds most expressive language: Emojis! 👍 🙏 🥰
+
+### Persisting state
+
+<Playground>
+  <LikeButton id="day-01" />
+</Playground>
+
+A like button is not very useful if users can't see each others likes or the like count is lost whenever the user leaves the page.
+
+Because we want to limit the number of times a user can like a post we need to keep track of two things: the number of likes a user has liked a post and the total number of likes across all users of a post.
+
+Josh already found out the hard way that persisting the users likes to `localStorage` can be circumvented after a friendly-naughty [user](https://twitter.com/wongmjane/status/1232325459842482176) added 40,000 likes to one of his posts. So persisting it to a database seemed like the best solution.
+
+Each time a user likes a post, I send a POST request to a `Next.js` api route. The api route receives the post slug and the users IP address (which Vercel conveniently forwards).
+
+Using the slug and the hashed user IP address, I'm using `prisma` (a bit overkill for two fields but love is blind) to get the users likes for that post from a PostgreSQL database.
+
+Where I increment the total number of likes of the post AND the total number of times that user has liked the post.
+
+### Finishing touches
+
+To complete the circle, when the user first loads the page, we're using the excellent `useSWR` to fetch the users likes and total post likes.
+
+STILL WRITING... 😬
