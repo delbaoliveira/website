@@ -24,23 +24,30 @@ const data: Project[] = [
     image: "/challenge.png",
   },
   {
-    name: "Dough",
+    name: "Next.js & MDX blog",
     description:
-      "A personal budgeting app that makes it easier to manage my finances in one place by pulling data from my UK bank accounts using TrueLayer.",
-    image: "/dough.png",
+      "A blog using MDX which allows us to import and embed components inside markdown files.",
+    url: "/blog/mdx-nextjs-blog",
+    image: "/blog.png",
   },
-  {
-    name: "Contra",
-    description:
-      "An iOS app that allows users to create custom pomodoro timers and sessions. It connects to Google Calendar so users can see an overview of their day.",
-    image: "/contra.jpeg",
-  },
-  {
-    name: "Bella Pilates",
-    description:
-      "A pilates platform offering beginner to advanced programs and nutritional plans for Portuguese-speaking audiences.",
-    image: "/bella-julia.png",
-  },
+  // {
+  //   name: "Dough",
+  //   description:
+  //     "A personal budgeting app that makes it easier to manage my finances in one place by pulling data from my UK bank accounts using TrueLayer.",
+  //   image: "/dough.png",
+  // },
+  // {
+  //   name: "Contra",
+  //   description:
+  //     "An iOS app that allows users to create custom pomodoro timers and sessions. It connects to Google Calendar so users can see an overview of their day.",
+  //   image: "/contra.jpeg",
+  // },
+  // {
+  //   name: "Bella Pilates",
+  //   description:
+  //     "A pilates platform offering beginner to advanced programs and nutritional plans for Portuguese-speaking audiences.",
+  //   image: "/bella-julia.png",
+  // },
 ]
 
 const Project = ({ project, color }: { project: Project; color: string }) => {
@@ -103,7 +110,7 @@ export const Projects = () => {
     <div className="container px-4 mx-auto">
       <h2 className="text-3xl font-bold text-gray-800">Projects</h2>
       <h4 className="mt-2 text-gray-700 lg:text-lg">
-        Some of the side projects I've been working on in the last few months.
+        Some of the side projects I'm currently working on:
       </h4>
 
       <div className="-mt-2 lg:flex lg:flex-wrap lg:-mx-6">
