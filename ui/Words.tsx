@@ -33,7 +33,7 @@ export const Words = () => {
   return (
     <div className="container px-4 mx-auto">
       <h2 className="text-3xl font-bold text-gray-800">Nice words</h2>
-      <h4 className="mt-2 text-gray-700 lg:text-lg">
+      <h4 className="mt-2 text-gray-500 lg:text-lg">
         Some feedback from the people I've had the privilege of working with.
       </h4>
 
