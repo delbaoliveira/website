@@ -73,7 +73,7 @@ export const Projects = ({ projects }: { projects: PostMeta[] }) => {
     <div className="container px-4 mx-auto">
       <h2 className="text-3xl font-bold text-gray-800">Projects</h2>
       <h4 className="mt-2 text-gray-500 lg:text-lg">
-        Some of the side projects I'm currently working on
+        Some of the side projects I'm currently working on:
       </h4>
 
       <div className="-mt-2 lg:flex lg:flex-wrap lg:-mx-6">
