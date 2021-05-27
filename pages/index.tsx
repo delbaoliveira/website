@@ -26,10 +26,6 @@ export default function Home({
           <About />
         </div>
 
-        <div id="skills">
-          <Skills />
-        </div>
-
         <div id="blog">
           <div className="container px-4 mx-auto">
             <h2 className="text-3xl font-bold text-gray-800">Posts</h2>
@@ -46,7 +42,11 @@ export default function Home({
         </div>
 
         <div id="projects">
-          <Projects />
+          <Projects projects={projects} />
+        </div>
+
+        <div id="skills">
+          <Skills />
         </div>
 
         <div id="words">
