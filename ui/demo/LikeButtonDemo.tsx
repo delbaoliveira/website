@@ -65,7 +65,7 @@ export const LikeButtonDemo = ({
           </button>
 
           {enableCounts ? (
-            <div className="mt-1 font-mono text-3xl font-medium text-transparent bg-clip-text bg-gradient-to-b from-yellow-400 via-red-500 to-pink-500">
+            <div className="mt-1 font-mono text-3xl font-medium text-transparent decoration-clone bg-clip-text bg-gradient-to-b from-yellow-400 via-red-500 to-pink-500">
               {likes}
             </div>
           ) : null}

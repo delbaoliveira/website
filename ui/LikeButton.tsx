@@ -28,13 +28,13 @@ export const LikeButton = ({ id }: { id: string }) => {
       )}
 
       <div
-        className={cx("mt-1 font-medium transition-colors", {
+        className={cx("mt-1 font-medium", {
           "text-gray-500": currentUserLikes === 0,
-          "bg-clip-text text-transparent bg-gradient-to-b from-yellow-400 via-red-500 to-pink-500":
+          "decoration-clone bg-clip-text text-transparent bg-gradient-to-b from-yellow-400 via-red-500 to-pink-500":
             currentUserLikes !== 0,
         })}
       >
-        {isLoading ? <LoadingDots /> : totalPostLikes}
+        {isLoading ? <LoadingDots /> : <span>{totalPostLikes}</span>}
       </div>
     </div>
   )

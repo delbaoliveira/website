@@ -35,11 +35,14 @@ export const TextSlider = ({
             </span>
 
             <span
-              className={cx("bg-clip-text text-transparent bg-gradient-to-r", {
-                "from-green-400 to-blue-500": i === 0,
-                "from-purple-400 via-pink-500 to-red-500": i === 1,
-                "from-yellow-400 via-red-500 to-pink-500": i === 2,
-              })}
+              className={cx(
+                "decoration-clone bg-clip-text text-transparent bg-gradient-to-r",
+                {
+                  "from-green-400 to-blue-500": i === 0,
+                  "from-purple-400 via-pink-500 to-red-500": i === 1,
+                  "from-yellow-400 via-red-500 to-pink-500": i === 2,
+                },
+              )}
             >
               {text}
             </span>

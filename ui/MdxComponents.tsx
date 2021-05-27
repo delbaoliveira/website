@@ -27,7 +27,7 @@ export const components = {
   ),
   a: ({ href = "", ...props }) => {
     const cn =
-      "bg-clip-text font-medium text-transparent bg-gradient-to-br from-lightBlue-500 to-purple-400 hover:text-lightBlue-500 hover:bg-none"
+      "decoration-clone bg-clip-text font-medium text-transparent bg-gradient-to-br from-lightBlue-500 to-purple-400 hover:text-lightBlue-500 hover:bg-none"
     if (href.startsWith("http")) {
       return (
         <a
