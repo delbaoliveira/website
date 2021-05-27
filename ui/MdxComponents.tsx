@@ -1,7 +1,7 @@
+import { LikeButton } from "@/ui/LikeButton"
 import NextImage from "next/image"
 import NextLink from "next/link"
 import React from "react"
-import { LikeButton } from "@/ui/LikeButton"
 
 export const components = {
   LikeButton,

@@ -7,6 +7,7 @@ module.exports = {
   purge: [
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./ui/**/*.{js,ts,jsx,tsx}",
+    "./posts/**/*.mdx",
     // force tailwind jit to include css rules in compiled css
     "./safelist.txt",
   ],

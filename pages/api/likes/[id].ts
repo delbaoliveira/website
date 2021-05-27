@@ -11,11 +11,6 @@ const postMetaSelect = Prisma.validator<Prisma.PostMetaSelect>()({
   likes: true,
 })
 
-export type LikesPayload = {
-  post: number
-  user: number
-}
-
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,

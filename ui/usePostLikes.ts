@@ -1,7 +1,11 @@
-import type { LikesPayload } from "pages/api/likes/[id]"
 import useSWR from "swr"
 
 const API_URL = `/api/likes/`
+
+type LikesPayload = {
+  post: number
+  user: number
+}
 
 export async function getPostLikes(url: string): Promise<LikesPayload> {
   const res = await fetch(url)
