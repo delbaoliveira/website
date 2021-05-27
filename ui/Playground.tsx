@@ -1,15 +1,26 @@
 import React from "react"
+import cx from "clsx"
 
 export function Playground({
   children,
   description,
+  isDark,
 }: {
   children: React.ReactNode
   description?: string
+  isDark?: boolean
 }) {
   return (
     <div className="mb-6">
-      <div className="flex items-center justify-center p-20 border border-gray-100 rounded-md polka-bg-gray">
+      <div
+        className={cx(
+          "flex items-center justify-center p-10 rounded-md lg:p-20 ",
+          {
+            "polka-bg-gray border border-gray-100": !isDark,
+            "polka-bg-white bg-black": isDark,
+          },
+        )}
+      >
         {children}
       </div>
       {description ? (
