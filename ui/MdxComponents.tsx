@@ -45,7 +45,12 @@ export const components = {
     )
   },
   hr: (props: any) => <hr {...props} />,
-  ul: (props: any) => <ul className="mb-4 list-disc list-inside" {...props} />,
+  ul: (props: any) => (
+    <ul
+      className="mb-4 text-lg leading-relaxed text-gray-700 list-disc list-inside"
+      {...props}
+    />
+  ),
   ol: (props: any) => <ol className="mb-4" {...props} />,
   li: (props: any) => <li className="" {...props} />,
   strong: (props: any) => <strong className="font-semibold" {...props} />,

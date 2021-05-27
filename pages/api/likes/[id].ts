@@ -1,15 +1,6 @@
 import prisma from "@/ui/prisma"
-import { Prisma } from "@prisma/client"
 import { createHash } from "crypto"
 import type { NextApiRequest, NextApiResponse } from "next"
-
-const likesByUserSelect = Prisma.validator<Prisma.LikesByUserSelect>()({
-  likes: true,
-})
-
-const postMetaSelect = Prisma.validator<Prisma.PostMetaSelect>()({
-  likes: true,
-})
 
 export default async function handler(
   req: NextApiRequest,
@@ -39,12 +30,16 @@ export default async function handler(
         ] = await Promise.all([
           prisma.postMeta.findUnique({
             where: { slug: id },
-            select: postMetaSelect,
+            select: {
+              likes: true,
+            },
           }),
 
           prisma.likesByUser.findUnique({
             where: { id: interactionId },
-            select: likesByUserSelect,
+            select: {
+              likes: true,
+            },
           }),
         ])
 
@@ -59,19 +54,6 @@ export default async function handler(
 
         const count = Number(req.body.count)
 
-        console.log(
-          JSON.stringify(
-            {
-              method: req.method,
-
-              interactionId,
-              count,
-            },
-            null,
-            2,
-          ),
-        )
-
         const [post, user] = await Promise.all([
           prisma.postMeta.upsert({
             where: { slug: id },
@@ -84,7 +66,9 @@ export default async function handler(
                 increment: count,
               },
             },
-            select: postMetaSelect,
+            select: {
+              likes: true,
+            },
           }),
 
           prisma.likesByUser.upsert({
@@ -98,7 +82,9 @@ export default async function handler(
                 increment: count,
               },
             },
-            select: likesByUserSelect,
+            select: {
+              likes: true,
+            },
           }),
         ])
 
