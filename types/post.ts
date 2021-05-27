@@ -3,6 +3,7 @@ export type PostMeta = {
   publishedAt: string
   description: string
   slug?: any
+  status?: "draft"
 }
 
 export type Post = {
