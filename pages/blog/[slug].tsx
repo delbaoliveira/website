@@ -11,9 +11,10 @@ import type { Post } from "types/post"
 
 export const getStaticPaths = () => {
   const posts = getAllPostsMeta()
+  const paths = posts.map(({ slug }) => ({ params: { slug } }))
 
   return {
-    paths: posts.map(({ slug }) => ({ params: { slug } })),
+    paths: paths,
     fallback: false,
   }
 }
@@ -26,8 +27,8 @@ export const getStaticProps: GetStaticProps<Post> = async (context) => {
 }
 
 export default function PostPage({ meta, code }: Post) {
+  // 'Tis weird, but that's how mdx-bundler recommends it.
   const Component = React.useMemo(() => getMDXComponent(code), [code])
-
   return (
     <Layout>
       <div className="container max-w-3xl px-4 mx-auto mt-36">
