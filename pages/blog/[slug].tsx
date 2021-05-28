@@ -1,6 +1,6 @@
+import { getAllPostsMeta, getPostBySlug } from "@/lib/mdx"
 import { Layout } from "@/ui/Layout"
 import { LikeButton } from "@/ui/LikeButton"
-import { getAllPostsMeta, getPostBySlug } from "@/ui/mdx"
 import { components } from "@/ui/MdxComponents"
 import { format, parseISO } from "date-fns"
 import { getMDXComponent } from "mdx-bundler/client"

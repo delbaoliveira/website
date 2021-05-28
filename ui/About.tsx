@@ -1,8 +1,8 @@
-import { lightColors } from "@/ui/brandColors"
+import { LIGHT_COLORS } from "@/lib/constants"
+import { shuffleArray } from "@/lib/shuffleArray"
+import { useIsFontReady } from "@/lib/useIsFontReady"
 import { Button } from "@/ui/Button"
 import { RainbowHighlight } from "@/ui/RainbowHighlight"
-import { shuffleArray } from "@/ui/shuffleArray"
-import { useIsFontReady } from "@/ui/useIsFontReady"
 import Image from "next/image"
 import React from "react"
 import Tilt from "react-parallax-tilt"
@@ -18,7 +18,7 @@ export const About = () => {
   // Shuffle our colors and store them in state so the order is persisted during
   // React re-renders
   React.useEffect(() => {
-    setColors(shuffleArray(lightColors))
+    setColors(shuffleArray(LIGHT_COLORS))
   }, [])
 
   return (

@@ -1,10 +1,10 @@
+import { FOCUS_VISIBLE_OUTLINE } from "@/lib/constants"
 import { Transition } from "@headlessui/react"
 import { Slot } from "@radix-ui/react-slot"
 import * as TooltipPrimitive from "@radix-ui/react-tooltip"
 import cx from "clsx"
 import Image from "next/image"
 import React from "react"
-import { FOCUS_VISIBLE_OUTLINE } from "@/ui/constants"
 
 export function Memetip({
   src,

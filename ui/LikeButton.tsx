@@ -1,6 +1,6 @@
+import { usePostLikes } from "@/lib/usePostLikes"
 import { Heart, HEART_PATH } from "@/ui/Heart"
 import { LoadingDots } from "@/ui/LoadingDots"
-import { usePostLikes } from "@/ui/usePostLikes"
 import cx from "clsx"
 import React from "react"
 

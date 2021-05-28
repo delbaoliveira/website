@@ -1,5 +1,4 @@
-import { darkColors } from "@/ui/brandColors"
-import { FOCUS_VISIBLE_OUTLINE } from "@/ui/constants"
+import { DARK_COLORS, FOCUS_VISIBLE_OUTLINE } from "@/lib/constants"
 import { useHover } from "@react-aria/interactions"
 import cx from "clsx"
 import Image from "next/image"
@@ -87,7 +86,7 @@ export const Projects = ({ projects }: { projects: PostMeta[] }) => {
                   image: `/${project.image}`,
                   url: `/blog/${project.slug}`,
                 }}
-                color={darkColors[index]}
+                color={DARK_COLORS[index]}
               />
             </div>
           )

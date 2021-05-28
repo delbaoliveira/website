@@ -1,4 +1,4 @@
-import { FOCUS_VISIBLE_OUTLINE } from "@/ui/constants"
+import { FOCUS_VISIBLE_OUTLINE } from "@/lib/constants"
 import cx from "clsx"
 import Link from "next/link"
 import React from "react"
