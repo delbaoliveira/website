@@ -1,4 +1,4 @@
-import { FOCUS_VISIBLE_OUTLINE } from "@/lib/constants"
+import { FOCUS_VISIBLE_OUTLINE, GRADIENT_LINK } from "@/lib/constants"
 import { Transition } from "@headlessui/react"
 import { Slot } from "@radix-ui/react-slot"
 import * as TooltipPrimitive from "@radix-ui/react-tooltip"
@@ -23,12 +23,7 @@ export function Memetip({
       }}
     >
       <TooltipPrimitive.Trigger as={Slot}>
-        <button
-          className={cx(
-            "group-hover:text-lightBlue-400 transition-colors rounded-md hover:!text-lightBlue-600 focus:!text-lightBlue-600",
-            FOCUS_VISIBLE_OUTLINE,
-          )}
-        >
+        <button className={`${GRADIENT_LINK} ${FOCUS_VISIBLE_OUTLINE}`}>
           {children}
         </button>
       </TooltipPrimitive.Trigger>

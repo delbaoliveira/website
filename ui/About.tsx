@@ -50,7 +50,7 @@ export const About = () => {
                 the fundamentals of{" "}
                 <RainbowHighlight color={colors[3]}>front-end</RainbowHighlight>{" "}
                 and{" "}
-                <RainbowHighlight color={colors[4]}>
+                <RainbowHighlight color={colors[0]}>
                   back-end web development
                 </RainbowHighlight>
                 .
@@ -77,12 +77,12 @@ export const About = () => {
                 both small and large, specialised and cross-functional teams
                 across different time zones and developed a working style that
                 leans towards{" "}
-                <RainbowHighlight color={colors[5]}>
+                <RainbowHighlight color={colors[1]}>
                   flexibility,
                 </RainbowHighlight>
-                <RainbowHighlight color={colors[6]}>clarity,</RainbowHighlight>{" "}
+                <RainbowHighlight color={colors[2]}>clarity,</RainbowHighlight>{" "}
                 and{" "}
-                <RainbowHighlight color={colors[0]}>
+                <RainbowHighlight color={colors[3]}>
                   collaboration
                 </RainbowHighlight>
                 .

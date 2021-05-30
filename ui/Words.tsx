@@ -45,7 +45,7 @@ export const Words = () => {
               <div className="text-gray-700">{testimonial.text}</div>
             </div>
 
-            <footer className="mt-2 font-bold text-gray-500">
+            <footer className="mt-2 italic font-bold text-gray-500">
               {testimonial.name}{" "}
               <span className="font-normal">&middot; {testimonial.title}</span>
             </footer>

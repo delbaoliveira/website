@@ -21,12 +21,10 @@ const fillVariants = {
 const emojis = ["👍", "🙏", "🥰"]
 
 export const Heart = ({
-  bgColor = "#ccc",
   likes,
   enableEmojis = true,
   className = "w-12",
 }: {
-  bgColor?: string
   likes: number
   enableEmojis?: boolean
   className?: string
@@ -95,7 +93,7 @@ export const Heart = ({
 
         <g mask="url(#mask)">
           {/* Background */}
-          <rect width="20" height="20" fill={bgColor} />
+          <rect width="20" height="20" fill="#E5E7EB" />
 
           {/* Fill */}
           <motion.rect

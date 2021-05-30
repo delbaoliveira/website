@@ -1,4 +1,8 @@
-import { DARK_COLORS, FOCUS_VISIBLE_OUTLINE } from "@/lib/constants"
+import {
+  DARK_COLORS,
+  LIGHT_COLORS,
+  FOCUS_VISIBLE_OUTLINE,
+} from "@/lib/constants"
 import { useHover } from "@react-aria/interactions"
 import cx from "clsx"
 import Image from "next/image"
@@ -51,12 +55,12 @@ const Project = ({ project, color }: { project: Project; color: string }) => {
             {project.description}
           </p>
           {project.url ? (
-            <div className="mt-2">
+            <div className="mt-3">
               <RoughNotation
                 type="underline"
                 show={isHovered}
                 strokeWidth={2}
-                iterations={1}
+                iterations={2}
                 padding={2}
                 animationDuration={300}
                 color={color}
@@ -90,7 +94,7 @@ export const Projects = ({ projects }: { projects: PostMeta[] }) => {
                   image: `/${project.image}`,
                   url: `/blog/${project.slug}`,
                 }}
-                color={DARK_COLORS[index]}
+                color={LIGHT_COLORS[index]}
               />
             </div>
           )

@@ -34,7 +34,7 @@ export default function Home({
           <div className="container px-4 mx-auto">
             <h2 className="text-3xl font-bold text-gray-800">Posts</h2>
             <h4 className="mt-2 text-gray-500 lg:text-lg">
-              Thoughts on what I'm building and learning
+              Thoughts on what I'm building and learning.
             </h4>
 
             <div className="mt-8 space-y-12">

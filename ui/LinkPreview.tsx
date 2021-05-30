@@ -1,4 +1,4 @@
-import { FOCUS_VISIBLE_OUTLINE } from "@/lib/constants"
+import { FOCUS_VISIBLE_OUTLINE, GRADIENT_LINK } from "@/lib/constants"
 import { Transition } from "@headlessui/react"
 import * as HoverCardPrimitive from "@radix-ui/react-hover-card"
 import cx from "clsx"
@@ -29,10 +29,7 @@ export const LinkPreview = ({
     >
       <HoverCardPrimitive.Trigger
         href={url}
-        className={cx(
-          "decoration-clone bg-clip-text font-medium text-transparent bg-gradient-to-br from-lightBlue-500 to-purple-400 hover:text-lightBlue-500 hover:bg-none",
-          FOCUS_VISIBLE_OUTLINE,
-        )}
+        className={cx(GRADIENT_LINK, FOCUS_VISIBLE_OUTLINE)}
       >
         {children}
       </HoverCardPrimitive.Trigger>

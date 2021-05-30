@@ -1,4 +1,4 @@
-import { HighlightOnHover } from "@/ui/HighlightOnHover"
+import { GRADIENT_LINK } from "@/lib/constants"
 
 export const Contact = () => {
   return (
@@ -7,41 +7,33 @@ export const Contact = () => {
       <p className="mt-2 text-gray-700 lg:text-lg">
         Do you have a job opportunity or idea you'd like to discuss? Feel free
         to reach me at{" "}
-        <HighlightOnHover>
-          <a href="mailto:hello@delbaoliveira.com" className="font-medium">
-            hello@delbaoliveira.com
-          </a>
-        </HighlightOnHover>
+        <a href="mailto:hello@delbaoliveira.com" className={GRADIENT_LINK}>
+          hello@delbaoliveira.com
+        </a>
         . You can also find me on{" "}
-        <HighlightOnHover>
-          <a
-            href="https://twitter.com/delba_oliveira"
-            target="_blank"
-            className="font-medium"
-          >
-            Twitter
-          </a>
-        </HighlightOnHover>
+        <a
+          href="https://twitter.com/delba_oliveira"
+          target="_blank"
+          className={GRADIENT_LINK}
+        >
+          Twitter
+        </a>
         ,{" "}
-        <HighlightOnHover>
-          <a
-            href="https://github.com/delbaoliveira"
-            target="_blank"
-            className="font-medium"
-          >
-            Github
-          </a>
-        </HighlightOnHover>{" "}
+        <a
+          href="https://github.com/delbaoliveira"
+          target="_blank"
+          className={GRADIENT_LINK}
+        >
+          Github
+        </a>{" "}
         and{" "}
-        <HighlightOnHover>
-          <a
-            href="https://www.linkedin.com/in/delbaoliveira/"
-            target="_blank"
-            className="font-medium"
-          >
-            Linkedin
-          </a>
-        </HighlightOnHover>
+        <a
+          href="https://www.linkedin.com/in/delbaoliveira/"
+          target="_blank"
+          className={GRADIENT_LINK}
+        >
+          Linkedin
+        </a>
         .
       </p>
     </div>

@@ -4,6 +4,7 @@ import { LinkPreview } from "@/ui/LinkPreview"
 import NextImage from "next/image"
 import NextLink from "next/link"
 import React from "react"
+import { GRADIENT_LINK } from "@/lib/constants"
 
 export const components = {
   LikeButton,
@@ -24,12 +25,9 @@ export const components = {
   h4: (props: any) => (
     <h4 className="mt-6 mb-2 text-lg font-semibold text-gray-900" {...props} />
   ),
-  p: (props: any) => (
-    <p className="mb-5 text-lg leading-7 text-gray-700" {...props} />
-  ),
+  p: (props: any) => <p className="mb-5 leading-7 text-gray-700" {...props} />,
   a: ({ href = "", ...props }) => {
-    const cn =
-      "decoration-clone bg-clip-text font-medium text-transparent bg-gradient-to-br from-lightBlue-500 to-purple-400 hover:text-lightBlue-500 hover:bg-none"
+    const cn = GRADIENT_LINK
     if (href.startsWith("http")) {
       return (
         <a
@@ -51,13 +49,13 @@ export const components = {
   hr: (props: any) => <hr {...props} />,
   ul: (props: any) => (
     <ul
-      className="mb-4 text-lg leading-relaxed text-gray-700 list-disc list-inside"
+      className="mb-4 leading-relaxed text-gray-700 list-disc list-inside"
       {...props}
     />
   ),
   ol: (props: any) => (
     <ol
-      className="pl-10 my-12 text-lg leading-7 text-gray-700 list-decimal"
+      className="pl-10 my-12 leading-7 text-gray-700 list-decimal"
       {...props}
     />
   ),
@@ -96,7 +94,7 @@ export const components = {
   },
   code: ({ children }: { children: React.ReactNode }) => {
     return (
-      <code className="px-1.5 py-0.5 font-mono text-base font-semibold text-gray-700 bg-gray-100 rounded-md">
+      <code className="px-1.5 py-0.5 text-sm font-mono font-medium text-gray-700 bg-orange-100 rounded-md">
         {children}
       </code>
     )
