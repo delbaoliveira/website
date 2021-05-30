@@ -2,12 +2,9 @@ import { FOCUS_VISIBLE_OUTLINE, GRADIENT_LINK } from "@/lib/constants"
 import { Transition } from "@headlessui/react"
 import * as HoverCardPrimitive from "@radix-ui/react-hover-card"
 import cx from "clsx"
+import Head from "next/head"
 import Image from "next/image"
 import React from "react"
-
-// Stretch:
-// - Add exit animation
-// - Add CSS perspective to imitate Apple (perspective is not supported by Tailwind)
 
 export const LinkPreview = ({
   children,
@@ -16,17 +13,24 @@ export const LinkPreview = ({
   children: React.ReactNode
   url: string
 }) => {
-  const [isOpen, setOpen] = React.useState(false)
+  const src = `https://api.microlink.io/?url=${url}&screenshot&meta=false&embed=screenshot.url`
+  const quality = 50
+  const width = 256
+  // Prefetch link preview image because microlink + next/image can take a few
+  // seconds to return and generate screenshot.
+  const nextSrc = `/_next/image?url=${encodeURIComponent(
+    src,
+  )}&w=${width}&q=${quality}`
 
-  const _url = `https://api.microlink.io/?url=${url}&screenshot&meta=false&embed=screenshot.url`
+  const [isOpen, setOpen] = React.useState(false)
 
   return (
     <>
-      <div className="hidden">
-        <Image src={_url} width={240} height={150} priority={true} />
-      </div>
+      <Head>
+        <link rel="prefetch" href={nextSrc} as="image" />
+      </Head>
       <HoverCardPrimitive.Root
-        openDelay={300}
+        openDelay={50}
         onOpenChange={(open) => {
           setOpen(open)
         }}
@@ -38,38 +42,31 @@ export const LinkPreview = ({
           {children}
         </HoverCardPrimitive.Trigger>
 
-        <HoverCardPrimitive.Content
-          side="top"
-          align="center"
-          sideOffset={8}
-          forceMount={true}
-        >
+        <HoverCardPrimitive.Content side="top" align="center" sideOffset={10}>
           <Transition
             show={isOpen}
             appear={true}
             enter="transform transition duration-300 origin-bottom ease-out"
-            enterFrom="opacity-0 translate-y-4 scale-0"
+            enterFrom="opacity-0 translate-y-2 scale-0"
             enterTo="opacity-100 translate-y-0 scale-100"
-            // Stretch: Add exit animation
-            // leave="transition-opacity duration-1000"
-            // leaveFrom="opacity-100"
-            // leaveTo="opacity-0"
-            className="shadow-2xl rounded-xl"
+            className="shadow-xl rounded-xl"
           >
             <a
               href={url}
-              className="block p-1.5 bg-white shadow rounded-xl"
+              className="block p-1 bg-white border border-transparent shadow rounded-xl hover:border-pink-500"
               // Unfortunate hack to remove the weird whitespace left by
               // next/image wrapper div
               // https://github.com/vercel/next.js/issues/18915
               style={{ fontSize: 0 }}
             >
               <Image
-                src={_url}
-                width={240}
-                height={150}
+                src={src}
+                width={200}
+                height={125}
                 className="rounded-lg"
                 priority={true}
+                quality={quality}
+                layout="fixed"
               />
             </a>
           </Transition>
