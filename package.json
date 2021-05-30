@@ -12,6 +12,7 @@
     "@headlessui/react": "^1.1.1",
     "@heroicons/react": "^1.0.1",
     "@prisma/client": "^2.23.0",
+    "@radix-ui/react-hover-card": "^0.0.2",
     "@radix-ui/react-id": "^0.0.6",
     "@radix-ui/react-slot": "^0.0.10",
     "@radix-ui/react-tooltip": "^0.0.17",

@@ -218,6 +218,15 @@
     "@radix-ui/react-polymorphic" "0.0.11"
     "@radix-ui/react-primitive" "0.0.12"
 
+"@radix-ui/react-arrow@0.0.13":
+  version "0.0.13"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-arrow/-/react-arrow-0.0.13.tgz#06b5a17f33bbc1af1c88d2827f25f37be95daa38"
+  integrity sha512-BHBAULgQYmj36BrJ+1AGhC5p4QjJaE+szJgJ1a1EYOM3G6QOeIQKYvIm8TPEdKAiJhAivK+jZFccsE4Blzqc9g==
+  dependencies:
+    "@babel/runtime" "^7.13.10"
+    "@radix-ui/react-polymorphic" "0.0.11"
+    "@radix-ui/react-primitive" "0.0.13"
+
 "@radix-ui/react-compose-refs@0.0.5":
   version "0.0.5"
   resolved "https://registry.yarnpkg.com/@radix-ui/react-compose-refs/-/react-compose-refs-0.0.5.tgz#0f71f0de1dec341f30cebd420b6bc3d12a3037dd"
@@ -231,6 +240,21 @@
   integrity sha512-bwrzAc0qc2EPepSTLBT4+93uCiI9wP78VSmPg2K+k71O/vpx7dPs0VqrewwCBNCHT54NIwaRr2hEsm2uqYi02A==
   dependencies:
     "@babel/runtime" "^7.13.10"
+
+"@radix-ui/react-hover-card@^0.0.2":
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-hover-card/-/react-hover-card-0.0.2.tgz#94656888f973f07493e7c4e97efcebd10373b75e"
+  integrity sha512-gJFagAodixVYzMDib9otGP6uCij/QPHRUJUBPp3NnS3HLTv/H3ws8UkYsnp2KUdVCa2VspCajl72Bvz5kTab8g==
+  dependencies:
+    "@babel/runtime" "^7.13.10"
+    "@radix-ui/primitive" "0.0.5"
+    "@radix-ui/react-context" "0.0.5"
+    "@radix-ui/react-polymorphic" "0.0.11"
+    "@radix-ui/react-popper" "0.0.16"
+    "@radix-ui/react-portal" "0.0.13"
+    "@radix-ui/react-presence" "0.0.14"
+    "@radix-ui/react-primitive" "0.0.13"
+    "@radix-ui/react-use-controllable-state" "0.0.6"
 
 "@radix-ui/react-id@0.0.6", "@radix-ui/react-id@^0.0.6":
   version "0.0.6"
@@ -262,6 +286,22 @@
     "@radix-ui/react-use-size" "0.0.6"
     "@radix-ui/rect" "0.0.5"
 
+"@radix-ui/react-popper@0.0.16":
+  version "0.0.16"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-popper/-/react-popper-0.0.16.tgz#62cccb7d920dc89e076bbdc3421db8c84078f428"
+  integrity sha512-njciQ/eIKaDF9h+27Pwi1H6NliQbzTgaHOsT0w/Lxx4vfMe8zcHtiEigYVGErNR4zAYlbW72KzLjtngtNnaorg==
+  dependencies:
+    "@babel/runtime" "^7.13.10"
+    "@radix-ui/popper" "0.0.10"
+    "@radix-ui/react-arrow" "0.0.13"
+    "@radix-ui/react-compose-refs" "0.0.5"
+    "@radix-ui/react-context" "0.0.5"
+    "@radix-ui/react-polymorphic" "0.0.11"
+    "@radix-ui/react-primitive" "0.0.13"
+    "@radix-ui/react-use-rect" "0.0.7"
+    "@radix-ui/react-use-size" "0.0.6"
+    "@radix-ui/rect" "0.0.5"
+
 "@radix-ui/react-portal@0.0.12":
   version "0.0.12"
   resolved "https://registry.yarnpkg.com/@radix-ui/react-portal/-/react-portal-0.0.12.tgz#cfedf5535b9beaaf0b228274fbe50be559363a75"
@@ -272,6 +312,16 @@
     "@radix-ui/react-primitive" "0.0.12"
     "@radix-ui/react-use-layout-effect" "0.0.5"
 
+"@radix-ui/react-portal@0.0.13":
+  version "0.0.13"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-portal/-/react-portal-0.0.13.tgz#8e60e9ee9b1594f98ee4a8f24a9851ef7ef2ad31"
+  integrity sha512-Mw5hrxds2T9HTGwdDbvlKGvTUfcuKhPtqxLnizOrM685e80j+pfjAAfMSXSyfmra9KFQvk3XxmUP0d4U6+kzMg==
+  dependencies:
+    "@babel/runtime" "^7.13.10"
+    "@radix-ui/react-polymorphic" "0.0.11"
+    "@radix-ui/react-primitive" "0.0.13"
+    "@radix-ui/react-use-layout-effect" "0.0.5"
+
 "@radix-ui/react-presence@0.0.13":
   version "0.0.13"
   resolved "https://registry.yarnpkg.com/@radix-ui/react-presence/-/react-presence-0.0.13.tgz#ac66f2f8b509440031b9dd015cfe9d793011efad"
@@ -280,10 +330,26 @@
     "@babel/runtime" "^7.13.10"
     "@radix-ui/react-compose-refs" "0.0.5"
 
+"@radix-ui/react-presence@0.0.14":
+  version "0.0.14"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-presence/-/react-presence-0.0.14.tgz#6a86058bbbf46234dd8840dacd620b3ac5797025"
+  integrity sha512-ufof9B76DHXV0sC8H7Lswh2AepdJFG8qEtF32JWrbA9N1bl2Jnf9px76KsagyC0MA8crGEZO5A96wizGuSgGWQ==
+  dependencies:
+    "@babel/runtime" "^7.13.10"
+    "@radix-ui/react-compose-refs" "0.0.5"
+
 "@radix-ui/react-primitive@0.0.12":
   version "0.0.12"
   resolved "https://registry.yarnpkg.com/@radix-ui/react-primitive/-/react-primitive-0.0.12.tgz#b4bad44d95c415cf16aa3ac6cf83de7813d6f27f"
   integrity sha512-qJz8Rb95MOD+w/y6NQnEhNp/Lm8XEDfiwAIF/HRwEVBGYZ82qV/vWjfWCAtnoWlMoN6MpI2YN1pdU5mu/qQyzA==
+  dependencies:
+    "@babel/runtime" "^7.13.10"
+    "@radix-ui/react-polymorphic" "0.0.11"
+
+"@radix-ui/react-primitive@0.0.13":
+  version "0.0.13"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-primitive/-/react-primitive-0.0.13.tgz#79c606c3e7da9c377b77a7b3f4ec879b45de47a2"
+  integrity sha512-6xxWzw67t7ZuN9Ikn9NNQdb/HSF7dNHPN3kPcgjiVgTEZa3tKk1xjSxGjjQztE61g9GrnTLpu7mBjmEuZDI/lA==
   dependencies:
     "@babel/runtime" "^7.13.10"
     "@radix-ui/react-polymorphic" "0.0.11"
