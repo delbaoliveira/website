@@ -30,7 +30,7 @@ export const LinkPreview = ({
       <HoverCardPrimitive.Trigger
         href={url}
         className={cx(
-          "group-hover:text-lightBlue-400 transition-colors rounded-md hover:!text-lightBlue-600 focus:!text-lightBlue-600",
+          "decoration-clone bg-clip-text font-medium text-transparent bg-gradient-to-br from-lightBlue-500 to-purple-400 hover:text-lightBlue-500 hover:bg-none",
           FOCUS_VISIBLE_OUTLINE,
         )}
       >

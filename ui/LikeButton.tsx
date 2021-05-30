@@ -11,7 +11,7 @@ export const LikeButton = ({ id }: { id: string }) => {
   return (
     <div className="flex items-center space-x-2">
       {isLoading ? (
-        <div className="text-gray-300 animate-pulse">
+        <div className="text-gray-200 animate-pulse">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="w-12 h-12"
@@ -29,7 +29,7 @@ export const LikeButton = ({ id }: { id: string }) => {
 
       <div
         className={cx("mt-1 font-medium", {
-          "text-gray-500": currentUserLikes === 0,
+          "text-gray-400": currentUserLikes === 0,
           "decoration-clone bg-clip-text text-transparent bg-gradient-to-b from-yellow-400 via-red-500 to-pink-500":
             currentUserLikes !== 0,
         })}

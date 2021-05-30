@@ -7,6 +7,7 @@ import React from "react"
 import Tilt from "react-parallax-tilt"
 import { RoughNotation } from "react-rough-notation"
 import { PostMeta } from "types/post"
+import { Screen } from "@/ui/challenge/Screen"
 
 type Project = {
   name: string
@@ -20,7 +21,7 @@ const Project = ({ project, color }: { project: Project; color: string }) => {
 
   return (
     <Link href={project.url ? project.url : "/"}>
-      <a className={cx("block rounded-xl", FOCUS_VISIBLE_OUTLINE)}>
+      <a className={cx("block", FOCUS_VISIBLE_OUTLINE)}>
         <div {...hoverProps}>
           {project.image ? (
             <Tilt
@@ -32,17 +33,20 @@ const Project = ({ project, color }: { project: Project; color: string }) => {
               glareMaxOpacity={0.3}
               glareBorderRadius="11px"
             >
-              <Image
-                src={project.image}
-                alt="Project Preview"
-                width={500}
-                height={300}
-                priority={true}
-                className="rounded-xl"
-              />
+              <Screen>
+                <div style={{ fontSize: 0 }}>
+                  <Image
+                    src={project.image}
+                    alt="Project Preview"
+                    width={500}
+                    height={300}
+                    priority={true}
+                  />
+                </div>
+              </Screen>
             </Tilt>
           ) : null}
-          <p className="mt-4 text-xl font-bold text-gray-800">{project.name}</p>
+          <p className="mt-6 text-xl font-bold text-gray-800">{project.name}</p>
           <p className="mt-2 text-gray-700 line-clamp-2">
             {project.description}
           </p>
