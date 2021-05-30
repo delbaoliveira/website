@@ -21,44 +21,60 @@ export const LinkPreview = ({
   const _url = `https://api.microlink.io/?url=${url}&screenshot&meta=false&embed=screenshot.url`
 
   return (
-    <HoverCardPrimitive.Root
-      openDelay={300}
-      onOpenChange={(open) => {
-        setOpen(open)
-      }}
-    >
-      <HoverCardPrimitive.Trigger
-        href={url}
-        className={cx(GRADIENT_LINK, FOCUS_VISIBLE_OUTLINE)}
+    <>
+      <div className="hidden">
+        <Image src={_url} width={240} height={150} priority={true} />
+      </div>
+      <HoverCardPrimitive.Root
+        openDelay={300}
+        onOpenChange={(open) => {
+          setOpen(open)
+        }}
       >
-        {children}
-      </HoverCardPrimitive.Trigger>
-
-      <HoverCardPrimitive.Content side="top" align="center" sideOffset={8}>
-        <Transition
-          show={isOpen}
-          appear={true}
-          enter="transform transition duration-300 origin-bottom ease-out"
-          enterFrom="opacity-0 translate-y-4 scale-0"
-          enterTo="opacity-100 translate-y-0 scale-100"
-          // Stretch: Add exit animation
-          // leave="transition-opacity duration-1000"
-          // leaveFrom="opacity-100"
-          // leaveTo="opacity-0"
-          className="shadow-2xl rounded-xl"
+        <HoverCardPrimitive.Trigger
+          href={url}
+          className={cx(GRADIENT_LINK, FOCUS_VISIBLE_OUTLINE)}
         >
-          <a
-            href={url}
-            className="block p-1.5 bg-white shadow rounded-xl"
-            // Unfortunate hack to remove the weird whitespace left by
-            // next/image wrapper div
-            // https://github.com/vercel/next.js/issues/18915
-            style={{ fontSize: 0 }}
+          {children}
+        </HoverCardPrimitive.Trigger>
+
+        <HoverCardPrimitive.Content
+          side="top"
+          align="center"
+          sideOffset={8}
+          forceMount={true}
+        >
+          <Transition
+            show={isOpen}
+            appear={true}
+            enter="transform transition duration-300 origin-bottom ease-out"
+            enterFrom="opacity-0 translate-y-4 scale-0"
+            enterTo="opacity-100 translate-y-0 scale-100"
+            // Stretch: Add exit animation
+            // leave="transition-opacity duration-1000"
+            // leaveFrom="opacity-100"
+            // leaveTo="opacity-0"
+            className="shadow-2xl rounded-xl"
           >
-            <Image src={_url} width={240} height={150} className="rounded-lg" />
-          </a>
-        </Transition>
-      </HoverCardPrimitive.Content>
-    </HoverCardPrimitive.Root>
+            <a
+              href={url}
+              className="block p-1.5 bg-white shadow rounded-xl"
+              // Unfortunate hack to remove the weird whitespace left by
+              // next/image wrapper div
+              // https://github.com/vercel/next.js/issues/18915
+              style={{ fontSize: 0 }}
+            >
+              <Image
+                src={_url}
+                width={240}
+                height={150}
+                className="rounded-lg"
+                priority={true}
+              />
+            </a>
+          </Transition>
+        </HoverCardPrimitive.Content>
+      </HoverCardPrimitive.Root>
+    </>
   )
 }
