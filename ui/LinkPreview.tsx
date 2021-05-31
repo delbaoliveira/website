@@ -13,13 +13,12 @@ export const LinkPreview = ({
   children: React.ReactNode
   url: string
 }) => {
-  const [isOpen, setOpen] = React.useState(false)
-
   const width = 200
   const height = 125
   const quality = 50
   const layout = "fixed"
 
+  // Simplifies things by encoding our microlink params into a query string.
   const params = encode({
     url,
     screenshot: true,
@@ -37,7 +36,10 @@ export const LinkPreview = ({
 
   const src = `https://api.microlink.io/?${params}`
 
+  const [isOpen, setOpen] = React.useState(false)
+
   const [isMounted, setIsMounted] = React.useState(false)
+
   React.useEffect(() => {
     setIsMounted(true)
   }, [])

@@ -8,7 +8,7 @@ export default async function handler(
 ) {
   try {
     const ipAddress = req.headers["x-forwarded-for"] || "0.0.0.0"
-    const id = req.query.id as string
+    const postId = req.query.id as string
 
     const hashedIpAddress =
       // hash users ip address to protect their privacy
@@ -18,7 +18,7 @@ export default async function handler(
 
     const sep = "___"
 
-    const interactionId = id + sep + hashedIpAddress
+    const currentUserId = postId + sep + hashedIpAddress
 
     switch (req.method) {
       case "GET": {
@@ -29,21 +29,24 @@ export default async function handler(
           user,
         ] = await Promise.all([
           prisma.postMeta.findUnique({
-            where: { slug: id },
+            where: { slug: postId },
             select: {
               likes: true,
             },
           }),
 
           prisma.likesByUser.findUnique({
-            where: { id: interactionId },
+            where: { id: currentUserId },
             select: {
               likes: true,
             },
           }),
         ])
 
-        res.json({ post: post?.likes || 0, user: user?.likes || 0 })
+        res.json({
+          totalPostLikes: post?.likes || 0,
+          currentUserLikes: user?.likes || 0,
+        })
         return
       }
 
@@ -56,9 +59,9 @@ export default async function handler(
 
         const [post, user] = await Promise.all([
           prisma.postMeta.upsert({
-            where: { slug: id },
+            where: { slug: postId },
             create: {
-              slug: id,
+              slug: postId,
               likes: count,
             },
             update: {
@@ -72,9 +75,9 @@ export default async function handler(
           }),
 
           prisma.likesByUser.upsert({
-            where: { id: interactionId },
+            where: { id: currentUserId },
             create: {
-              id: interactionId,
+              id: currentUserId,
               likes: count,
             },
             update: {
@@ -88,7 +91,10 @@ export default async function handler(
           }),
         ])
 
-        res.json({ post: post?.likes || 0, user: user?.likes || 0 })
+        res.json({
+          totalPostLikes: post?.likes || 0,
+          currentUserLikes: user?.likes || 0,
+        })
 
         return
       }

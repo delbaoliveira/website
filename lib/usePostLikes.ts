@@ -3,8 +3,8 @@ import useSWR from "swr"
 const API_URL = `/api/likes/`
 
 type LikesPayload = {
-  post: number
-  user: number
+  totalPostLikes: number
+  currentUserLikes: number
 }
 
 export async function getPostLikes(url: string): Promise<LikesPayload> {
@@ -28,15 +28,15 @@ export const usePostLikes = (id: string) => {
   const { data, error, mutate } = useSWR(API_URL + id, getPostLikes)
 
   const increment = async () => {
-    if (!data || data.user >= 3) {
+    if (!data || data.currentUserLikes >= 3) {
       return
     }
 
     // optimistic ui
     mutate(
       {
-        post: data.post + 1,
-        user: data.user + 1,
+        totalPostLikes: data.totalPostLikes + 1,
+        currentUserLikes: data.currentUserLikes + 1,
       },
       false,
     )
@@ -50,8 +50,8 @@ export const usePostLikes = (id: string) => {
   }
 
   return {
-    currentUserLikes: data?.user || 0,
-    totalPostLikes: data?.post || 0,
+    currentUserLikes: data?.currentUserLikes || 0,
+    totalPostLikes: data?.totalPostLikes || 0,
     isLoading: !error && !data,
     isError: error,
     increment,
