@@ -1,9 +1,9 @@
 import { FOCUS_VISIBLE_OUTLINE, GRADIENT_LINK } from "@/lib/constants"
-import { Transition } from "@headlessui/react"
+import { Portal, Transition } from "@headlessui/react"
 import * as HoverCardPrimitive from "@radix-ui/react-hover-card"
 import cx from "clsx"
-import Head from "next/head"
 import Image from "next/image"
+import { encode } from "qss"
 import React from "react"
 
 export const LinkPreview = ({
@@ -13,22 +13,61 @@ export const LinkPreview = ({
   children: React.ReactNode
   url: string
 }) => {
-  const src = `https://api.microlink.io/?url=${url}&screenshot&meta=false&embed=screenshot.url`
-  const quality = 50
-  const width = 256
-  // Prefetch link preview image because microlink + next/image can take a few
-  // seconds to return and generate screenshot.
-  const nextSrc = `/_next/image?url=${encodeURIComponent(
-    src,
-  )}&w=${width}&q=${quality}`
-
   const [isOpen, setOpen] = React.useState(false)
+
+  const width = 200
+  const height = 125
+  const quality = 50
+  const layout = "fixed"
+
+  const params = encode({
+    url,
+    screenshot: true,
+    meta: false,
+    embed: "screenshot.url",
+    colorScheme: "dark",
+    "viewport.isMobile": true,
+    "viewport.deviceScaleFactor": 1,
+
+    // To capture useful content, the screenshot viewport needs to be bigger
+    // than our images but maintain the same ratio
+    "viewport.width": width * 3,
+    "viewport.height": height * 3,
+  })
+
+  const src = `https://api.microlink.io/?${params}`
+
+  const [isMounted, setIsMounted] = React.useState(false)
+  React.useEffect(() => {
+    setIsMounted(true)
+  }, [])
 
   return (
     <>
-      <Head>
-        <link rel="prefetch" href={nextSrc} as="image" />
-      </Head>
+      {/**
+       * Microlink.io + next/image can take a few seconds to fetch and generate
+       * a screenshot. The delay makes <LinkPreview> pointless. As a hacky
+       * solution we create a second <Image> in a Portal after the component has
+       * mounted. This <Image> triggers microlink.io + next/image so that the
+       * image itself is ready by the time the user hovers on a <LinkPreview>.
+       * Not concerned about the performance impact because <Image>'s are cached
+       * after they are generated and the images themselves are tiny (< 10kb).
+       */}
+      {isMounted ? (
+        <Portal>
+          <div className="hidden">
+            <Image
+              src={src}
+              width={width}
+              height={height}
+              quality={quality}
+              layout={layout}
+              priority={true}
+            />
+          </div>
+        </Portal>
+      ) : null}
+
       <HoverCardPrimitive.Root
         openDelay={50}
         onOpenChange={(open) => {
@@ -61,12 +100,12 @@ export const LinkPreview = ({
             >
               <Image
                 src={src}
-                width={200}
-                height={125}
-                className="rounded-lg"
-                priority={true}
+                width={width}
+                height={height}
                 quality={quality}
-                layout="fixed"
+                layout={layout}
+                priority={true}
+                className="rounded-lg"
               />
             </a>
           </Transition>
