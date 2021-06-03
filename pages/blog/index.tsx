@@ -5,7 +5,7 @@ import React from "react"
 import type { PostMeta } from "types/post"
 
 export function getStaticProps() {
-  const posts = getAllPostsMeta()
+  const posts = getAllPostsMeta("post")
   return { props: { posts } }
 }
 

@@ -10,8 +10,8 @@ import { InferGetStaticPropsType } from "next"
 import React from "react"
 
 export const getStaticProps = async () => {
-  const posts = getAllPostsMeta().filter((x) => x.category !== "challenge")
-  const projects = getAllPostsMeta({ category: "challenge" })
+  const posts = getAllPostsMeta("post")
+  const projects = getAllPostsMeta("project")
   return { props: { posts, projects } }
 }
 

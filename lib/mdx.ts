@@ -10,10 +10,7 @@ import type { PostMeta } from "types/post"
 const ROOT_PATH = process.cwd()
 export const POSTS_PATH = path.join(ROOT_PATH, "posts")
 
-export const getAllPostsMeta = (filters?: {
-  category?: PostMeta["category"]
-  status?: PostMeta["status"]
-}) => {
+export const getAllPostsMeta = (category?: PostMeta["category"]) => {
   const PATH = path.join(POSTS_PATH)
 
   // Get all file paths in the posts folder (that end with .mdx)
@@ -35,22 +32,15 @@ export const getAllPostsMeta = (filters?: {
           slug,
         }
       })
-      // Poor mans post filtering
+
+      // filter post by category if specified
       .filter((post) => {
-        if (!filters) return true
+        // default to all posts
+        if (!category) return true
 
-        let include = true
-
-        if (filters.category) {
-          include = post.category === filters.category
-        }
-
-        if (filters.status) {
-          include = post.status === filters.status
-        }
-
-        return include
+        return post.category === category
       })
+
       // Sort posts by published date
       .sort(
         (a, b) =>
