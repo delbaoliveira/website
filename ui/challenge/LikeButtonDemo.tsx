@@ -11,6 +11,8 @@ const SkeletonHeart = ({
   className?: string
 }) => {
   return (
+    // viewbox is taller here to ensure we show the offscreen gradient in the
+    // demo
     <svg viewBox="0 0 20 40" className={className}>
       <defs>
         <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
@@ -37,19 +39,18 @@ const SkeletonHeart = ({
           "0": { translateY: 18 },
           "1": { translateY: 12 },
           "2": { translateY: 8 },
-          "3": { translateY: 0 },
+          "3": { translateY: 1 },
         }}
       />
 
       <path
         d={HEART_PATH}
         fill="none"
-        stroke="#1F2937"
+        stroke="black"
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeOpacity={0.5}
+        strokeOpacity={0.3}
         strokeWidth={0.4}
-        strokeDasharray={1}
       />
     </svg>
   )
@@ -113,10 +114,20 @@ export const LikeButtonDemo = ({
           }
         }}
       >
-        <div className="flex space-x-8">
-          <SkeletonHeart className="w-20" likes={likes} />
+        <div className="flex space-x-8 text-center">
+          <div>
+            <div className="mb-2 text-[11px] font-bold tracking-wide uppercase text-gray-600 bg-white shadow-sm border px-1 py-0.5 rounded-full">
+              Mask off
+            </div>
+            <SkeletonHeart className="w-20" likes={likes} />
+          </div>
 
-          <Heart likes={likes} className="w-20" enableEmojis={false} />
+          <div>
+            <div className="mb-2 text-[11px] font-bold tracking-wide uppercase text-gray-600 bg-white shadow-sm border px-1 py-0.5 rounded-full">
+              Mask on
+            </div>
+            <Heart likes={likes} className="w-20" enableEmojis={false} />
+          </div>
         </div>
       </button>
     )
