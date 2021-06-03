@@ -1,5 +1,4 @@
 import { ArrowRightIcon } from "@heroicons/react/solid"
-import Link from "next/link"
 
 export const Screen = ({ children }: { children: React.ReactNode }) => {
   return (

@@ -1,8 +1,5 @@
-import {
-  DARK_COLORS,
-  LIGHT_COLORS,
-  FOCUS_VISIBLE_OUTLINE,
-} from "@/lib/constants"
+import { FOCUS_VISIBLE_OUTLINE, LIGHT_COLORS } from "@/lib/constants"
+import { Screen } from "@/ui/challenge/Screen"
 import { useHover } from "@react-aria/interactions"
 import cx from "clsx"
 import Image from "next/image"
@@ -11,7 +8,6 @@ import React from "react"
 import Tilt from "react-parallax-tilt"
 import { RoughNotation } from "react-rough-notation"
 import { PostMeta } from "types/post"
-import { Screen } from "@/ui/challenge/Screen"
 
 type Project = {
   name: string

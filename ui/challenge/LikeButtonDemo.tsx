@@ -3,17 +3,11 @@ import { LoadingDots } from "@/ui/LoadingDots"
 import { motion } from "framer-motion"
 import React from "react"
 
-const SkeletonHeart = ({
-  likes,
-  className = "w-12",
-}: {
-  likes: number
-  className?: string
-}) => {
+// Special version of LikeButtonHeart for demo purposes, replaces mask with a path
+const LikeButtonHeartSkeleton = ({ likes }: { likes: number }) => {
   return (
-    // viewbox is taller here to ensure we show the offscreen gradient in the
-    // demo
-    <svg viewBox="0 0 20 40" className={className}>
+    // Viewbox is taller here to ensure we show the offscreen gradient in the demo
+    <svg viewBox="0 0 20 40" className="w-20">
       <defs>
         <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
           <stop offset="0%" style={{ stopColor: "#FACC15", stopOpacity: 1 }} />
@@ -47,8 +41,6 @@ const SkeletonHeart = ({
         d={HEART_PATH}
         fill="none"
         stroke="black"
-        strokeLinecap="round"
-        strokeLinejoin="round"
         strokeOpacity={0.3}
         strokeWidth={0.4}
       />
@@ -108,9 +100,9 @@ export const LikeButtonDemo = ({
         className="focus:outline-none"
         onClick={() => {
           if (countDirection === "up") {
-            setLikes((p) => p + 1)
+            setLikes((previousLikes) => previousLikes + 1)
           } else {
-            setLikes((p) => p - 1)
+            setLikes((previousLikes) => previousLikes - 1)
           }
         }}
       >
@@ -119,7 +111,7 @@ export const LikeButtonDemo = ({
             <div className="mb-2 text-[11px] font-bold tracking-wide uppercase text-gray-600 bg-white shadow-sm border px-1 py-0.5 rounded-full">
               Mask off
             </div>
-            <SkeletonHeart className="w-20" likes={likes} />
+            <LikeButtonHeartSkeleton likes={likes} />
           </div>
 
           <div>
@@ -143,9 +135,9 @@ export const LikeButtonDemo = ({
         className="focus:outline-none"
         onClick={() => {
           if (countDirection === "up") {
-            setLikes((p) => p + 1)
+            setLikes((previousLikes) => previousLikes + 1)
           } else {
-            setLikes((p) => p - 1)
+            setLikes((previousLikes) => previousLikes - 1)
           }
         }}
       >
@@ -154,7 +146,7 @@ export const LikeButtonDemo = ({
           enableEmojis={
             (countDirection === "up" || likes === 3) && enableEmojis
           }
-          className="w-20"
+          isLarge={true}
         />
       </button>
 

@@ -7,12 +7,12 @@ type LikesPayload = {
   currentUserLikes: number
 }
 
-export async function getPostLikes(url: string): Promise<LikesPayload> {
+async function getPostLikes(url: string): Promise<LikesPayload> {
   const res = await fetch(url)
   return res.json()
 }
 
-export async function updatePostLikes(
+async function updatePostLikes(
   id: string,
   count: number,
 ): Promise<LikesPayload> {
@@ -24,6 +24,7 @@ export async function updatePostLikes(
   return res.json()
 }
 
+// A custom hook to abstract away fetching and updating a user's likes
 export const usePostLikes = (id: string) => {
   const { data, error, mutate } = useSWR(API_URL + id, getPostLikes)
 
@@ -32,7 +33,7 @@ export const usePostLikes = (id: string) => {
       return
     }
 
-    // optimistic ui
+    // optimistic ui - update the cache so like count updates immediately for the user while we update the database
     mutate(
       {
         totalPostLikes: data.totalPostLikes + 1,

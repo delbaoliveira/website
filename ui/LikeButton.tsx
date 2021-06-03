@@ -27,6 +27,7 @@ export const LikeButton = ({ id }: { id: string }) => {
         </button>
       )}
 
+      {/* Like counter text */}
       <div
         className={cx("mt-1 font-medium", {
           "text-gray-400": currentUserLikes === 0,

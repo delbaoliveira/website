@@ -15,6 +15,7 @@ export const getStaticPaths = () => {
 
   return {
     paths: paths,
+    // Return 404 page if path is not returned by getStaticPaths
     fallback: false,
   }
 }
@@ -27,8 +28,9 @@ export const getStaticProps: GetStaticProps<Post> = async (context) => {
 }
 
 export default function PostPage({ meta, code }: Post) {
-  // 'Tis weird, but that's how mdx-bundler recommends it.
+  // This is a bit weird, but this is how mdx-bundler recommends it.
   const Component = React.useMemo(() => getMDXComponent(code), [code])
+
   return (
     <Layout>
       <div className="container max-w-3xl px-4 mx-auto mt-36">
