@@ -28,7 +28,7 @@ import { LikeButtonDemo } from "../ui/challenge/LikeButtonDemo"
 
 At its most basic level, the like button is an `SVG` with two rectangles "under" a heart shaped `mask`. The first rectangle is filled with gray and serves as the background. The second rectangle is filled with a gradient and is what fills the heart as the user clicks. To animate the fill, I used transform and translate to position the gradient offscreen. I then filled the heart, by translating the y axis of the gradient up until the user hits the maximum number of likes (3 at most). For the purpose of the demo the gradient is also translating down so you can keep interacting. Try clicking above ☝️
 
-I'm using `framer-motion` to scale the hearts size as the user interacts (hover and click) with the like button. Finally, I bumped the like count up using a `useState` hook.
+I'm using `framer-motion` to help with the easing between each animation state. The first animation grows the hearts size on hover and click, and the second animation gently translates the gradients position.
 
 ### Making it playful
 
@@ -60,7 +60,7 @@ We can use the post slug and a hashed user IP address to create a unique id. We 
   <LikeButtonDemo isLoading />
 </Playground>
 
-To complete the circle, when the user first loads the page, we send a `GET` request to the api route to retrieve likes data for the post. I'm using the [SWR](https://swr.vercel.app/) library to simplify the data fetching process. With very little ceremony, SWR gives us a loading state, client side caching, revalidation on page focus and optimistic UI (increment the like count instantly while updating the database in the background).
+To complete the circle, when the user first loads the page, we send a `GET` request to the api route to retrieve data for the post. I'm using [SWR](https://swr.vercel.app/) to simplify the data fetching process. With very little ceremony, SWR gives us a loading state, client side caching, revalidation on page focus and optimistic UI (increment the like count instantly while updating the database in the background).
 
 ### Stretch
 
