@@ -23,7 +23,7 @@ import { LikeButtonDemo } from "../ui/challenge/LikeButtonDemo"
 ### The Heart
 
 <Playground>
-  <LikeButtonDemo />
+  <LikeButtonDemo isSkeleton />
 </Playground>
 
 At its most basic level, the like button is an `SVG` with two rectangles "under" a heart shaped `mask`. The first rectangle is filled with gray and serves as the background. The second rectangle is filled with a gradient and is what fills the heart as the user clicks. To animate the fill, I used transform and translate to position the gradient offscreen. I then filled the heart, by translating the y axis of the gradient up until the user hits the maximum number of likes (3 at most). For the purpose of the demo the gradient is also translating down so you can keep interacting. Try clicking above ☝️
