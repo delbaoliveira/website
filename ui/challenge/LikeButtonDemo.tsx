@@ -11,7 +11,7 @@ const SkeletonHeart = ({
   className?: string
 }) => {
   return (
-    <svg viewBox="0 0 20 20" className={className}>
+    <svg viewBox="0 0 20 40" className={className}>
       <defs>
         <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
           <stop offset="0%" style={{ stopColor: "#FACC15", stopOpacity: 1 }} />
@@ -113,7 +113,7 @@ export const LikeButtonDemo = ({
           }
         }}
       >
-        <div className="relative flex items-center space-x-6">
+        <div className="flex space-x-8">
           <SkeletonHeart className="w-20" likes={likes} />
 
           <Heart likes={likes} className="w-20" enableEmojis={false} />
