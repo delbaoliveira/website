@@ -24,12 +24,14 @@ const SkeletonHeart = ({
       </defs>
 
       <motion.rect
-        width="18"
-        height="18"
+        fill="url(#gradient)"
+        width={18}
+        height={18}
+        rx={3}
+        // Animation
         animate={String(likes)}
         x="1"
         y="1"
-        fill="url(#gradient)"
         initial="0"
         variants={{
           "0": { translateY: 18 },

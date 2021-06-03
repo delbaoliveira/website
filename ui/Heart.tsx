@@ -23,7 +23,6 @@ export const Heart = ({
             return (
               <motion.div
                 key={index}
-                initial="hide"
                 className="absolute w-full"
                 // Animate each emoji after a like action
                 animate={likes === index + 1 ? "show" : "hide"}
@@ -34,6 +33,7 @@ export const Heart = ({
                     opacity: [0, 1, 0],
                   },
                 }}
+                initial="hide"
               >
                 {item}
               </motion.div>
@@ -48,7 +48,7 @@ export const Heart = ({
         className={className}
         // Grow heart from center
         style={{ originX: "50%", originY: "50%" }}
-        // animated onHover and onClick
+        // Animated onHover and onClick
         whileHover="hover"
         whileTap="active"
         variants={{
@@ -84,23 +84,24 @@ export const Heart = ({
 
         <g mask="url(#mask)">
           {/* Background */}
-          <rect width="20" height="20" fill="#E5E7EB" />
+          <rect width={20} height={20} fill="#E5E7EB" />
 
           {/* Fill */}
           <motion.rect
-            width="16"
-            height="16"
-            animate={String(likes)}
-            x="2"
-            y="2"
             fill="url(#gradient)"
-            initial="0"
+            width={16}
+            height={16}
+            x={2}
+            y={2}
+            // Animation
+            animate={String(likes)}
             variants={{
               "0": { translateY: 17 },
               "1": { translateY: 12 },
               "2": { translateY: 8 },
               "3": { translateY: 1 },
             }}
+            initial="0"
           />
         </g>
       </motion.svg>
