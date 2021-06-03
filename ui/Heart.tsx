@@ -5,6 +5,9 @@ export const HEART_PATH =
 
 const emojis = ["👍", "🙏", "🥰"]
 
+// A dumb component that...
+// 1. Fills a heart shape with a gradient depending on the number of likes passed
+// 2. Animates a thank you emoji as the number of likes increase
 export const Heart = ({
   likes,
   enableEmojis = true,
@@ -42,7 +45,7 @@ export const Heart = ({
         </div>
       ) : null}
 
-      {/* Heart */}
+      {/* Heart SVG */}
       <motion.svg
         viewBox="0 0 20 20"
         className={className}
@@ -61,6 +64,7 @@ export const Heart = ({
         }}
       >
         <defs>
+          {/* Gradient definition */}
           <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
             <stop
               offset="0%"
@@ -75,18 +79,19 @@ export const Heart = ({
               style={{ stopColor: "#EC4899", stopOpacity: 1 }}
             />
           </linearGradient>
+
+          {/* Heart shape mask definition */}
+          <mask id="mask" mask-type="alpha" maskUnits="userSpaceOnUse">
+            <path d={HEART_PATH} />
+          </mask>
         </defs>
 
-        {/* Heart shape mask */}
-        <mask id="mask" mask-type="alpha" maskUnits="userSpaceOnUse">
-          <path d={HEART_PATH} />
-        </mask>
-
+        {/* Wrap children in the mask */}
         <g mask="url(#mask)">
-          {/* Background */}
+          {/* Heart background */}
           <rect width={20} height={20} fill="#E5E7EB" />
 
-          {/* Fill */}
+          {/* Heart gradient fill */}
           <motion.rect
             fill="url(#gradient)"
             width={16}
