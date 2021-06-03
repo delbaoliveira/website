@@ -1,4 +1,4 @@
-import { Heart, HEART_PATH } from "@/ui/Heart"
+import { LikeButtonHeart, HEART_PATH } from "@/ui/LikeButtonHeart"
 import { LoadingDots } from "@/ui/LoadingDots"
 import { motion } from "framer-motion"
 import React from "react"
@@ -126,7 +126,11 @@ export const LikeButtonDemo = ({
             <div className="mb-2 text-[11px] font-bold tracking-wide uppercase text-gray-600 bg-white shadow-sm border px-1 py-0.5 rounded-full">
               Mask on
             </div>
-            <Heart likes={likes} className="w-20" enableEmojis={false} />
+            <LikeButtonHeart
+              likes={likes}
+              isLarge={true}
+              enableEmojis={false}
+            />
           </div>
         </div>
       </button>
@@ -145,7 +149,7 @@ export const LikeButtonDemo = ({
           }
         }}
       >
-        <Heart
+        <LikeButtonHeart
           likes={likes}
           enableEmojis={
             (countDirection === "up" || likes === 3) && enableEmojis

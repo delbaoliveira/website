@@ -5,17 +5,17 @@ export const HEART_PATH =
 
 const emojis = ["👍", "🙏", "🥰"]
 
-// A dumb component that...
+// A visual component that...
 // 1. Fills a heart shape with a gradient depending on the number of likes passed
 // 2. Animates a thank you emoji as the number of likes increase
-export const Heart = ({
+export const LikeButtonHeart = ({
   likes,
   enableEmojis = true,
-  className = "w-12",
+  isLarge = false,
 }: {
   likes: number
   enableEmojis?: boolean
-  className?: string
+  isLarge?: boolean
 }) => {
   return (
     <div className="relative">
@@ -48,7 +48,7 @@ export const Heart = ({
       {/* Heart SVG */}
       <motion.svg
         viewBox="0 0 20 20"
-        className={className}
+        className={isLarge ? "w-20" : "w-12"}
         // Grow heart from center
         style={{ originX: "50%", originY: "50%" }}
         // Animated onHover and onClick

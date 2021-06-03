@@ -1,5 +1,5 @@
 import { usePostLikes } from "@/lib/usePostLikes"
-import { Heart, HEART_PATH } from "@/ui/Heart"
+import { LikeButtonHeart, HEART_PATH } from "@/ui/LikeButtonHeart"
 import { LoadingDots } from "@/ui/LoadingDots"
 import cx from "clsx"
 import React from "react"
@@ -23,7 +23,7 @@ export const LikeButton = ({ id }: { id: string }) => {
         </div>
       ) : (
         <button className="focus:outline-none" onClick={() => increment()}>
-          <Heart likes={currentUserLikes} />
+          <LikeButtonHeart likes={currentUserLikes} />
         </button>
       )}
 
