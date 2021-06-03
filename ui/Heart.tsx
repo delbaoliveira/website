@@ -44,7 +44,6 @@ export const Heart = ({
 
       {/* Heart */}
       <motion.svg
-        initial={false}
         viewBox="0 0 20 20"
         className={className}
         // Grow heart from center
@@ -95,6 +94,7 @@ export const Heart = ({
             x="2"
             y="2"
             fill="url(#gradient)"
+            initial="0"
             variants={{
               "0": { translateY: 17 },
               "1": { translateY: 12 },
