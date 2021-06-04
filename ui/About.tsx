@@ -53,23 +53,9 @@ export const About = () => {
                 <RainbowHighlight color={colors[0]}>
                   back-end web development
                 </RainbowHighlight>
-                .
-              </p>
-
-              <p className="my-2">
-                <RoughNotation
-                  type="strike-through"
-                  multiline={true}
-                  padding={[0, 2]}
-                  iterations={1}
-                  color="#374151"
-                  animationDuration={1200}
-                  strokeWidth={1.2}
-                >
-                  I currently work at Lambda where my role is split between
-                  helping scale processes through automations and overseeing
-                  student teams.
-                </RoughNotation>
+                . I also worked at Lambda where my role was split between
+                helping scale processes through automations and overseeing
+                student teams.
               </p>
 
               <p className="my-2">
@@ -112,12 +98,17 @@ export const About = () => {
           </RoughNotationGroup>
 
           <div className="mt-4 space-y-3 md:space-y-0 md:space-x-3 md:flex">
-            <Button href="/delba-resume.pdf">View Resume</Button>
             <Button
               href="https://www.linkedin.com/in/delbaoliveira/"
               target="_blank"
             >
               View Linkedin
+            </Button>
+            <Button
+              kind="secondary"
+              href="https://github.com/delbaoliveira/website"
+            >
+              View Github
             </Button>
           </div>
         </div>
