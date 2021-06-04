@@ -32,7 +32,7 @@ export const LikeButton = ({ id }: { id: string }) => {
         className={cx("mt-1 font-medium", {
           "text-gray-400": currentUserLikes === 0,
 
-          // Add a gradient if a user has liked a post
+          // Change plain text to gradient text if a user has liked a post
           "decoration-clone bg-clip-text text-transparent bg-gradient-to-b from-yellow-400 via-red-500 to-pink-500":
             currentUserLikes !== 0,
         })}

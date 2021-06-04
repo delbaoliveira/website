@@ -27,7 +27,7 @@ export const LikeButtonHeart = ({
               <motion.div
                 key={index}
                 className="absolute w-full"
-                // Animate each emoji after a like action
+                // Animate each emoji when `likes` equals their index
                 animate={likes === index + 1 ? "show" : "hide"}
                 variants={{
                   hide: { translateY: -80, opacity: 0 },
@@ -98,10 +98,13 @@ export const LikeButtonHeart = ({
             height={16}
             x={2}
             y={2}
-            // Animation
+            // `animate` passes a stringified `like` to the variants map below
             animate={String(likes)}
+            // Move gradient up or down depending on number of likes
             variants={{
+              // 0 likes
               "0": { translateY: 17 },
+              // 1 like etc
               "1": { translateY: 12 },
               "2": { translateY: 8 },
               "3": { translateY: 1 },

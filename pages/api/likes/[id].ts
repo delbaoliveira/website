@@ -7,39 +7,36 @@ export default async function handler(
   res: NextApiResponse,
 ) {
   try {
-    const ipAddress = req.headers["x-forwarded-for"] || "0.0.0.0"
+    const ipAddress =
+      req.headers["x-forwarded-for"] ||
+      // Fallback for localhost or non Vercel deployments
+      "0.0.0.0"
+
     const postId = req.query.id as string
 
-    const hashedIpAddress =
-      // hash users ip address to protect their privacy
+    const currentUserId =
+      // Since a users IP address is part of the sessionId in our database, we
+      // hash it to protect their privacy. By combining it with a salt, we get
+      // get a unique id we can refer to, but we won't know what their ip
+      // address was.
       createHash("md5")
         .update(ipAddress + process.env.IP_ADDRESS_SALT!, "utf8")
         .digest("hex")
 
-    const sep = "___"
-
-    const currentUserId = postId + sep + hashedIpAddress
+    // Identify a specific users interactions with a specific post
+    const sessionId = postId + "___" + currentUserId
 
     switch (req.method) {
       case "GET": {
-        const [
+        const [post, user] = await Promise.all([
           // the number of likes this post has
-          post,
-          // the number of times this user has liked this post
-          user,
-        ] = await Promise.all([
           prisma.postMeta.findUnique({
             where: { slug: postId },
-            select: {
-              likes: true,
-            },
           }),
 
+          // the number of times the current user has liked this post
           prisma.likesByUser.findUnique({
-            where: { id: currentUserId },
-            select: {
-              likes: true,
-            },
+            where: { id: sessionId },
           }),
         ])
 
@@ -57,7 +54,11 @@ export default async function handler(
 
         const count = Number(req.body.count)
 
+        // Upsert: if a row exists, update it by incrementing likes. If it
+        // doesn't exist, create a new row the number of likes passed to the
+        // api route
         const [post, user] = await Promise.all([
+          // increment the number of times everyone has liked this post
           prisma.postMeta.upsert({
             where: { slug: postId },
             create: {
@@ -69,24 +70,19 @@ export default async function handler(
                 increment: count,
               },
             },
-            select: {
-              likes: true,
-            },
           }),
 
+          // increment the number of times this user has liked this post
           prisma.likesByUser.upsert({
-            where: { id: currentUserId },
+            where: { id: sessionId },
             create: {
-              id: currentUserId,
+              id: sessionId,
               likes: count,
             },
             update: {
               likes: {
                 increment: count,
               },
-            },
-            select: {
-              likes: true,
             },
           }),
         ])
