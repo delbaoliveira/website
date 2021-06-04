@@ -6,7 +6,7 @@ export const HEART_PATH =
 const emojis = ["👍", "🙏", "🥰"]
 
 // A visual component that...
-// 1. Fills a heart shape with a gradient depending on the number of likes passed
+// 1. Fills a heart s≈ape with a gradient depending on the number of likes passed
 // 2. Animates a thank you emoji as the number of likes increase
 export const LikeButtonHeart = ({
   likes,

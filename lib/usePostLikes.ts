@@ -28,7 +28,7 @@ async function updatePostLikes(
 export const usePostLikes = (id: string) => {
   const { data, error, mutate } = useSWR(id, getPostLikes)
 
-  const increment = async () => {
+  const increment = () => {
     // Prevent the user from liking more than 3 times
     if (!data || data.currentUserLikes >= 3) {
       return
@@ -47,6 +47,7 @@ export const usePostLikes = (id: string) => {
 
     // update the database and use the data updatePostLikes returns to update
     // the local cache with database data
+    // TO DO: Fix race condition bug for when a user who has not liked a post rapidly clicks. Possibly fix with debounce?
     mutate(updatePostLikes(id, 1))
   }
 
