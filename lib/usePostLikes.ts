@@ -35,8 +35,8 @@ export const usePostLikes = (id: string) => {
     }
 
     // Optimistic ui pattern
-    // update the swr cache so like count updates immediately for the user while
-    // we update the database
+    // update the local swr cache so like count updates immediately for the user
+    // while we update the database
     mutate(
       {
         totalPostLikes: data.totalPostLikes + 1,
@@ -45,12 +45,9 @@ export const usePostLikes = (id: string) => {
       false,
     )
 
-    // update db
-    // TODO: debounce
-    await updatePostLikes(id, 1)
-
-    // trigger refetch
-    mutate()
+    // update the database and use the data updatePostLikes returns to update
+    // the local cache with database data
+    mutate(updatePostLikes(id, 1))
   }
 
   return {

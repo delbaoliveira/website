@@ -29,12 +29,12 @@ export default async function handler(
     switch (req.method) {
       case "GET": {
         const [post, user] = await Promise.all([
-          // the number of likes this post has
+          // get the number of likes this post has
           prisma.postMeta.findUnique({
             where: { slug: postId },
           }),
 
-          // the number of times the current user has liked this post
+          // get the number of times the current user has liked this post
           prisma.likesByUser.findUnique({
             where: { id: sessionId },
           }),
@@ -55,8 +55,8 @@ export default async function handler(
         const count = Number(req.body.count)
 
         // Upsert: if a row exists, update it by incrementing likes. If it
-        // doesn't exist, create a new row the number of likes passed to the
-        // api route
+        // doesn't exist, create a new row the number of likes this api route
+        // receives
         const [post, user] = await Promise.all([
           // increment the number of times everyone has liked this post
           prisma.postMeta.upsert({
