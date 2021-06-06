@@ -105,7 +105,7 @@ export const About = () => {
               View Linkedin
             </Button>
             <Button
-              kind="secondary"
+              color="secondary"
               href="https://github.com/delbaoliveira/website"
             >
               View Github

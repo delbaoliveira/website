@@ -1,16 +1,27 @@
 import Link from "next/link"
+import cx from "clsx"
 
 export const Button = ({
   children,
   href,
+  color = "primary",
   ...props
 }: {
   href: string
+  color?: "primary" | "secondary"
 } & Omit<React.HTMLProps<HTMLAnchorElement>, "href">) => {
   return (
     <Link href={href}>
       <a
-        className="block px-8 py-2 text-center text-white transition duration-200 bg-gray-900 border border-transparent rounded hover:bg-white hover:text-gray-800 hover:border-gray-800 focus:outline-none"
+        className={cx(
+          "block px-8 py-2 text-center transition duration-200 border rounded focus:outline-none",
+          {
+            "text-white bg-gray-900  border-transparent  hover:bg-white hover:text-gray-800 hover:border-gray-800":
+              color === "primary",
+            "text-gray-600 border-gray-300 hover:border-gray-800 hover:text-gray-800":
+              color === "secondary",
+          },
+        )}
         {...props}
       >
         {children}
