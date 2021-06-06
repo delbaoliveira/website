@@ -1,4 +1,5 @@
 import { getAllPostsMeta, getPostBySlug } from "@/lib/mdx"
+import { Button } from "@/ui/Button"
 import { Layout } from "@/ui/Layout"
 import { LikeButton } from "@/ui/LikeButton"
 import { components } from "@/ui/MdxComponents"
@@ -34,9 +35,6 @@ export default function PostPage({ meta, code }: Post) {
   return (
     <Layout>
       <div className="container max-w-3xl px-4 mx-auto mt-36">
-        {/* {meta.category ? (
-          <div className="mb-2 text-gray-400 uppercase">{meta.category}</div>
-        ) : null} */}
         <h1 className="text-3xl font-bold md:text-4xl">{meta.title}</h1>
 
         <div className="flex items-center mt-4 space-x-2 text-gray-600">
@@ -58,7 +56,12 @@ export default function PostPage({ meta, code }: Post) {
           <Component components={components as any} />
         </div>
 
-        <div className="mt-8">
+        <div className="flex justify-center mt-16 space-x-8">
+          {meta.source ? (
+            <Button href={meta.source} target="_blank">
+              View Source Code
+            </Button>
+          ) : null}
           <LikeButton id={meta.slug} />
         </div>
       </div>

@@ -6,12 +6,14 @@ import NextImage from "next/image"
 import NextLink from "next/link"
 import React from "react"
 import { GRADIENT_LINK } from "@/lib/constants"
+import { Button } from "@/ui/Button"
 
 export const components = {
   LikeButton,
   Playground,
   LinkPreview,
   GradientBorder,
+  Button,
   h1: (props: any) => (
     <h1
       className="mt-8 mb-4 text-4xl font-extrabold text-gray-900"

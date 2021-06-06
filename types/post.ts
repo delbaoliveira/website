@@ -5,6 +5,7 @@ export type PostMeta = {
   slug?: any
   category?: "draft" | "project" | "post"
   image?: string
+  source?: string
 }
 
 export type Post = {

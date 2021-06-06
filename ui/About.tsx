@@ -97,7 +97,7 @@ export const About = () => {
             </div>
           </RoughNotationGroup>
 
-          <div className="mt-4 space-y-3 md:space-y-0 md:space-x-3 md:flex">
+          <div className="md:space-x-4 md:flex">
             <Button
               href="https://www.linkedin.com/in/delbaoliveira/"
               target="_blank"
@@ -107,6 +107,7 @@ export const About = () => {
             <Button
               color="secondary"
               href="https://github.com/delbaoliveira/website"
+              target="_blank"
             >
               View Github
             </Button>

@@ -32,7 +32,7 @@ export const LikeButtonHeart = ({
                 variants={{
                   hide: { translateY: -80, opacity: 0 },
                   show: {
-                    translateY: [0, -50, -80],
+                    translateY: [0, -40, -60],
                     opacity: [0, 1, 0],
                   },
                 }}
