@@ -23,13 +23,13 @@ export const TextSlider = ({
 
   return (
     <>
-      {slides.map((text, i) => {
+      {slides.map((text, index) => {
         return (
-          <span key={text} className="relative block">
+          <span key={text} className="relative block text-center">
             <span
               className={cx("absolute text-gray-800 transition duration-1000", {
-                "opacity-0": currentSlide === i,
-                "opacity-100": currentSlide !== i,
+                "opacity-0": currentSlide === index,
+                "opacity-100": currentSlide !== index,
               })}
               aria-hidden={true}
             >
@@ -40,9 +40,9 @@ export const TextSlider = ({
               className={cx(
                 "decoration-clone bg-clip-text text-transparent bg-gradient-to-r",
                 {
-                  "from-green-400 to-blue-500": i === 0,
-                  "from-purple-400 via-pink-500 to-red-500": i === 1,
-                  "from-yellow-400 via-red-500 to-pink-500": i === 2,
+                  "from-green-400 to-blue-500": index === 0,
+                  "from-purple-400 via-pink-500 to-red-500": index === 1,
+                  "from-yellow-400 via-red-500 to-pink-500": index === 2,
                 },
               )}
             >

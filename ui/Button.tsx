@@ -11,7 +11,7 @@ export const Button = ({
   color?: "primary" | "secondary"
 } & Omit<React.HTMLProps<HTMLAnchorElement>, "href">) => {
   return (
-    <div className="justify-center mt-4 mb-4 md:flex">
+    <div>
       <Link href={href}>
         <a
           className={cx(

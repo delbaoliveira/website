@@ -1,7 +1,6 @@
 import { LikeButton } from "@/ui/LikeButton"
 import { Playground } from "@/ui/Playground"
 import { LinkPreview } from "@/ui/LinkPreview"
-import { GradientBorder } from "@/ui/challenge/GradientBorder"
 import NextImage from "next/image"
 import NextLink from "next/link"
 import React from "react"
@@ -12,7 +11,6 @@ export const components = {
   LikeButton,
   Playground,
   LinkPreview,
-  GradientBorder,
   Button,
   h1: (props: any) => (
     <h1
@@ -24,10 +22,10 @@ export const components = {
     <h2 className="mt-8 mb-3 text-3xl font-bold text-gray-900" {...props} />
   ),
   h3: (props: any) => (
-    <h3 className="mt-8 mb-3 text-2xl font-semibold text-gray-900" {...props} />
+    <h3 className="mt-8 mb-5 text-2xl font-semibold text-gray-900" {...props} />
   ),
   h4: (props: any) => (
-    <h4 className="mt-6 mb-2 text-lg font-semibold text-gray-900" {...props} />
+    <h4 className="mt-6 mb-5 text-lg font-semibold text-gray-900" {...props} />
   ),
   p: (props: any) => <p className="mb-5 leading-7 text-gray-700" {...props} />,
   a: ({ href = "", ...props }) => {
