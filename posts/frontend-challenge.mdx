@@ -1,0 +1,96 @@
+---
+title: "Front-end challenges"
+description: "A twist on the 30 Days of Code and 100 days of CSS challenges to recreate real UI elements from around the web for the next 30 days"
+publishedAt: "2021-06-09"
+category: "project"
+image: "slider.gif"
+---
+
+import { Timer } from "../ui/challenge/Timer"
+import { TextSlider } from "../ui/challenge/TextSlider"
+import { GradientBorder } from "../ui/challenge/GradientBorder"
+
+I love finding delightful UI elements on the web and I think recreating components is a great way for front-end developers to apply their skills.
+
+If you visited my site before, you probably know I started this challenge with an _ambitious goal_ to recreate 30 front-end components in 30 days. But alas, between job interviews, work and home, I fell behind.
+
+So I'll be continuing the series of front-end challenges, but without a timeframe to allow myself to create **polished** components. Here are some I've been working on:
+
+### 01: [Vercel's text slider](/blog/challenge-01)
+
+<Playground>
+  <span className="text-4xl font-extrabold leading-snug md:text-8xl">
+    <TextSlider slides={["Develop.", "Preview.", "Ship."]} />
+  </span>
+</Playground>
+
+Inspired by Vercel's iconic ['Develop, Preview, Ship'](https://vercel.com/) hero text animation, I created a component that animates a set of given words line by line.
+
+<div className="mt-6 mb-16 md:space-x-4 md:flex justify-center">
+  <Button color="secondary" href="/blog/challenge-01" children="Case Study" />
+  <Button
+    color="secondary"
+    href="https://github.com/delbaoliveira/website/blob/main/ui/challenge/TextSlider.tsx"
+    children="Source Code"
+  />
+</div>
+
+### 02: [A like button that likes you back](/blog/challenge-02)
+
+<Playground description="Click the like button above 😊">
+  <LikeButton id="frontend-challenge" />
+</Playground>
+
+Inspired by [Josh Comeau's](https://www.joshwcomeau.com/) like button, I created an animated SVG heart and I'm persisting the number of likes to a `PostgreSQL` database using [Prisma](https://www.prisma.io/).
+
+<div className="mt-6 mb-16 md:space-x-4 md:flex justify-center">
+  <Button color="secondary" href="/blog/challenge-02" children="Case Study" />
+  <Button
+    color="secondary"
+    href="https://github.com/delbaoliveira/website/blob/main/ui/LikeButton.tsx"
+    children="Source Code"
+  />
+</div>
+
+### 03: [Link preview](blog/challenge-03)
+
+<Playground description="Hover over the links above to see it in action. ☝️">
+  <p className="mt-20">
+    This Link Preview is inspired by
+    <LinkPreview url="https://uiw.tf/link-preview">uiw.tf</LinkPreview> - it uses{" "}
+    <LinkPreview url="https://microlink.io/">Microlink</LinkPreview> and <LinkPreview url="https://radix-ui.com/primitives/docs/components/hover-card">
+      Radix UI.
+    </LinkPreview>.
+  </p>
+</Playground>
+
+<div className="mt-6 mb-16 md:space-x-4 md:flex justify-center">
+  <Button color="secondary" href="/blog/challenge-03" children="Case Study" />
+  <Button
+    color="secondary"
+    href="https://github.com/delbaoliveira/website/blob/main/ui/LinkPreview.tsx"
+    children="Source Code"
+  />
+</div>
+
+### 04: [Customizable gradient border](blog/challenge-04)
+
+<Playground
+  isDark
+  description="Click the options above to change the border color. ☝️"
+>
+  <GradientBorder />
+</Playground>
+
+Inspired by the ticket on the [Next.js Conf Website](https://nextjs.org/conf). This component uses a CSS workaround to create the gradient border effect and `useState()` to change its color.
+
+<div className="mt-6 mb-16 md:space-x-4 md:flex justify-center">
+  <Button color="secondary" href="/blog/challenge-04" children="Case Study" />
+  <Button
+    color="secondary"
+    href="https://github.com/delbaoliveira/website/blob/main/ui/challenge/GradientBorder.tsx"
+    children="Source Code"
+  />
+</div>
+
+If you have any ideas of any UI elements I can tackle next, please let me know on [Twitter](https://twitter.com/delba_oliveira)!
