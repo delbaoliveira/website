@@ -30,7 +30,7 @@ export default function Home({
           <Projects projects={projects} />
         </div>
 
-        <div id="blog">
+        {/* <div id="blog">
           <div className="container px-4 mx-auto">
             <h2 className="text-3xl font-bold text-gray-800">Posts</h2>
             <h4 className="mt-2 text-gray-500 lg:text-lg">
@@ -43,15 +43,15 @@ export default function Home({
               ))}
             </div>
           </div>
-        </div>
+        </div> */}
 
-        <div id="skills">
+        {/* <div id="skills">
           <Skills />
-        </div>
+        </div> */}
 
-        <div id="words">
+        {/* <div id="words">
           <Words />
-        </div>
+        </div> */}
 
         <div id="contact">
           <Contact />
