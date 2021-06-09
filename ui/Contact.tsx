@@ -1,40 +1,28 @@
-import { GRADIENT_LINK } from "@/lib/constants"
+import { RoughNotation } from "react-rough-notation"
 
 export const Contact = () => {
   return (
     <div className="container px-4 mx-auto">
       <h2 className="text-3xl font-bold text-gray-800">Get in touch</h2>
       <p className="mt-2 text-gray-700 lg:text-lg">
-        Do you have a job opportunity or idea you'd like to discuss? Feel free
-        to reach me at{" "}
-        <a href="mailto:hello@delbaoliveira.com" className={GRADIENT_LINK}>
-          hello@delbaoliveira.com
-        </a>
-        . You can also find me on{" "}
-        <a
-          href="https://twitter.com/delba_oliveira"
-          target="_blank"
-          className={GRADIENT_LINK}
+        Do you have an idea you'd like to discuss? Feel free to reach me at{" "}
+        <RoughNotation
+          show={true}
+          type="underline"
+          multiline={true}
+          animationDuration={1500}
+          strokeWidth={2}
+          iterations={2}
+          padding={5}
+          color="#BFDBFE"
         >
-          Twitter
-        </a>
-        ,{" "}
-        <a
-          href="https://github.com/delbaoliveira"
-          target="_blank"
-          className={GRADIENT_LINK}
-        >
-          Github
-        </a>{" "}
-        and{" "}
-        <a
-          href="https://www.linkedin.com/in/delbaoliveira/"
-          target="_blank"
-          className={GRADIENT_LINK}
-        >
-          Linkedin
-        </a>
-        .
+          <a
+            href="mailto:hello@delbaoliveira.com"
+            className="transition-colors hover:text-gray-900 focus:text-gray-600 focus:outline-none"
+          >
+            hello@delbaoliveira.com.
+          </a>
+        </RoughNotation>
       </p>
     </div>
   )
