@@ -2,6 +2,7 @@ import { FOCUS_VISIBLE_OUTLINE, GRADIENT_LINK } from "@/lib/constants"
 import { Transition } from "@headlessui/react"
 import { Slot } from "@radix-ui/react-slot"
 import * as TooltipPrimitive from "@radix-ui/react-tooltip"
+import cx from "clsx"
 import Image from "next/image"
 import React from "react"
 
@@ -22,8 +23,10 @@ export function Memetip({
       }}
     >
       <TooltipPrimitive.Trigger as={Slot}>
-        <button className={`${GRADIENT_LINK} ${FOCUS_VISIBLE_OUTLINE}`}>
-          {children}
+        <button>
+          <span className={cx(GRADIENT_LINK, FOCUS_VISIBLE_OUTLINE)}>
+            {children}
+          </span>
         </button>
       </TooltipPrimitive.Trigger>
       <TooltipPrimitive.Content side="top" align="center" sideOffset={8}>

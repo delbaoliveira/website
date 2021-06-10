@@ -29,11 +29,10 @@ export const components = {
   ),
   p: (props: any) => <p className="mb-5 leading-7 text-gray-700" {...props} />,
   a: ({ href = "", ...props }) => {
-    const cn = GRADIENT_LINK
     if (href.startsWith("http")) {
       return (
         <a
-          className={cn}
+          className={GRADIENT_LINK}
           href={href}
           target="_blank"
           rel="noopener"
@@ -44,7 +43,7 @@ export const components = {
 
     return (
       <NextLink href={href} passHref>
-        <a className={cn} {...props} />
+        <a className={GRADIENT_LINK} {...props} />
       </NextLink>
     )
   },
