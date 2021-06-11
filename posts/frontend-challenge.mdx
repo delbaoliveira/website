@@ -24,7 +24,7 @@ So I'll be continuing the series of front-end challenges, but without a timefram
   </span>
 </Playground>
 
-Inspired by Vercel's iconic ['Develop, Preview, Ship'](https://vercel.com/) hero text animation, I created a component that animates a set of given words line by line.
+Inspired by Vercel's iconic ['Develop, Preview, Ship'](https://vercel.com/) hero text animation, I created a component that animates a set of given words line by line with `useInterval()`.
 
 <div className="mt-6 mb-16 md:space-x-4 md:flex justify-center">
   <Button color="secondary" href="/blog/challenge-01" children="Case Study" />
@@ -41,7 +41,7 @@ Inspired by Vercel's iconic ['Develop, Preview, Ship'](https://vercel.com/) hero
   <LikeButton id="frontend-challenge" />
 </Playground>
 
-Inspired by [Josh Comeau's](https://www.joshwcomeau.com/) like button, I created an animated SVG heart and I'm persisting the number of likes to a `PostgreSQL` database using [Prisma](https://www.prisma.io/).
+Inspired by [Josh Comeau's](https://www.joshwcomeau.com/) like button, this component animates an SVG and persists the number of likes to a `PostgreSQL` database using [Prisma](https://www.prisma.io/).
 
 <div className="mt-6 mb-16 md:space-x-4 md:flex justify-center">
   <Button color="secondary" href="/blog/challenge-02" children="Case Study" />
@@ -89,6 +89,22 @@ Inspired by the ticket on the [Next.js Conf Website](https://nextjs.org/conf). T
   <Button
     color="secondary"
     href="https://github.com/delbaoliveira/website/blob/main/ui/challenge/GradientBorder.tsx"
+    children="Source Code"
+  />
+</div>
+
+### 05: Instagram's animated background
+
+<Playground>
+  <AnimatedBackground />
+</Playground>
+
+Inspired by Instagram's signature gradient backgrounds. This component uses CSS keyframes to create a slight spin effect. The same effect can be found on [Instagram's blog headers](https://about.instagram.com/blog/announcements/shedding-more-light-on-how-instagram-works).
+
+<div className="mt-6 mb-16 md:space-x-4 md:flex justify-center">
+  <Button
+    color="secondary"
+    href="https://github.com/delbaoliveira/website/blob/main/ui/challenge/AnimatedBackground.tsx"
     children="Source Code"
   />
 </div>
