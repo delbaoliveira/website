@@ -38,6 +38,11 @@ module.exports = {
         "loading-0": "loading 1.4s ease-in-out infinite",
         "loading-1": "loading 1.4s ease-in-out 0.2s infinite",
         "loading-2": "loading 1.4s ease-in-out 0.4s infinite",
+        "background-spin": "halfSpin 15s ease-in-out infinite",
+      },
+      scale: {
+        200: "2",
+        300: "3",
       },
       keyframes: {
         loading: {
@@ -49,6 +54,17 @@ module.exports = {
           },
           to: {
             opacity: ".2",
+          },
+        },
+        halfSpin: {
+          "0%": {
+            transform: "rotate(0deg)",
+          },
+          "50%": {
+            transform: "rotate(150deg)",
+          },
+          to: {
+            transform: "rotate(0deg)",
           },
         },
       },
