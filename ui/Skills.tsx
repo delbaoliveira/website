@@ -1,10 +1,16 @@
+import figmaImg from "@/public/memes/figma.jpg"
+import javascriptImg from "@/public/memes/javascript.jpg"
+import nocodeImg from "@/public/memes/nocode.jpg"
+import prismaImg from "@/public/memes/prisma.jpg"
+import reactImg from "@/public/memes/react.jpg"
+import typescriptImg from "@/public/memes/typescript.jpg"
 import { Memetip } from "@/ui/Memetip"
 import { IdProvider } from "@radix-ui/react-id"
 import React from "react"
 
 const data: {
   title: string
-  items: { text: string; src?: string }[][]
+  items: { text: string; src?: any }[][]
 }[] = [
   {
     title: "Design",
@@ -12,7 +18,7 @@ const data: {
       [
         {
           text: "Figma",
-          src: "/memes/figma.jpg",
+          src: figmaImg,
         },
       ],
       [
@@ -31,18 +37,18 @@ const data: {
       [
         {
           text: "JavaScript",
-          src: "/memes/javascript.jpg",
+          src: javascriptImg,
         },
         {
           text: "TypeScript",
-          src: "/memes/typescript.jpg",
+          src: typescriptImg,
         },
       ],
 
       [
         {
           text: "React",
-          src: "/memes/react.jpg",
+          src: reactImg,
         },
         {
           text: "Next.js",
@@ -64,7 +70,7 @@ const data: {
       [
         {
           text: "Prisma",
-          src: "/memes/prisma.jpg",
+          src: prismaImg,
         },
       ],
     ],
@@ -78,7 +84,6 @@ const data: {
         },
         {
           text: "AWS",
-          src: "/memes/aws.gif",
         },
         { text: "Heroku" },
       ],
@@ -86,7 +91,7 @@ const data: {
       [
         {
           text: "Zapier & Airtable",
-          src: "/memes/nocode.jpg",
+          src: nocodeImg,
         },
       ],
       [{ text: "Scrum & Kanban" }],
