@@ -36,7 +36,7 @@ export const LinkPreview = ({
 
   const src = `https://api.microlink.io/?${params}`
 
-  const [isOpen, setOpen] = React.useState(false)
+  const [isOpen, setIsOpen] = React.useState(false)
 
   const [isMounted, setIsMounted] = React.useState(false)
 
@@ -73,7 +73,7 @@ export const LinkPreview = ({
       <HoverCardPrimitive.Root
         openDelay={50}
         onOpenChange={(open) => {
-          setOpen(open)
+          setIsOpen(open)
         }}
       >
         <HoverCardPrimitive.Trigger
@@ -95,9 +95,6 @@ export const LinkPreview = ({
             <a
               href={url}
               className="block p-1 bg-white border border-transparent shadow rounded-xl hover:border-pink-500"
-              // Unfortunate hack to remove the weird whitespace left by
-              // next/image wrapper div
-              // https://github.com/vercel/next.js/issues/18915
               style={{ fontSize: 0 }}
             >
               <Image
@@ -106,7 +103,6 @@ export const LinkPreview = ({
                 height={height}
                 quality={quality}
                 layout={layout}
-                priority={true}
                 className="rounded-lg"
               />
             </a>
