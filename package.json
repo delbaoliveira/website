@@ -14,8 +14,6 @@
     "@prisma/client": "^2.23.0",
     "@radix-ui/react-hover-card": "^0.0.2",
     "@radix-ui/react-id": "^0.0.6",
-    "@radix-ui/react-slot": "^0.0.10",
-    "@radix-ui/react-tooltip": "^0.0.17",
     "@react-aria/interactions": "^3.3.4",
     "@tailwindcss/line-clamp": "^0.2.1",
     "clsx": "^1.1.1",
