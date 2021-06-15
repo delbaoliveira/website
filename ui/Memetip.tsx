@@ -40,11 +40,10 @@ export function Memetip({
         >
           <Image
             src={src}
-            width={320}
-            height={200}
             layout="intrinsic"
             className="rounded-xl"
             quality={60}
+            placeholder="blur"
           />
         </Transition>
       </HoverCardPrimitive.Content>

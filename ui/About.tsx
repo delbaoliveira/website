@@ -7,6 +7,7 @@ import Image from "next/image"
 import React from "react"
 import Tilt from "react-parallax-tilt"
 import { RoughNotation, RoughNotationGroup } from "react-rough-notation"
+import delbaImg from "@/public/delba.jpg"
 
 export const About = () => {
   // Before animation, detect if custom fonts are loaded, so <RoughNotation />
@@ -132,10 +133,9 @@ export const About = () => {
                 style={{ fontSize: "0" }}
               >
                 <Image
-                  src="/delba.jpg"
+                  src={delbaImg}
                   alt="Profile"
-                  width={752}
-                  height={1001}
+                  placeholder="blur"
                   priority={true}
                   className="rounded-xl"
                 />
