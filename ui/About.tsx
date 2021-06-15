@@ -97,7 +97,7 @@ export const About = () => {
             </div>
           </RoughNotationGroup>
 
-          <div className="my-6 md:space-x-4 md:flex">
+          <div className="my-6 space-y-3 md:space-y-0 md:space-x-4 md:flex">
             <Button
               href="https://www.linkedin.com/in/delbaoliveira/"
               target="_blank"
