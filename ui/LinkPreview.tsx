@@ -15,7 +15,6 @@ export const LinkPreview = ({
 }) => {
   const width = 200
   const height = 125
-  const quality = 50
   const layout = "fixed"
 
   // Simplifies things by encoding our microlink params into a query string.
@@ -26,7 +25,6 @@ export const LinkPreview = ({
     embed: "screenshot.url",
     colorScheme: "dark",
     "viewport.isMobile": true,
-    "viewport.deviceScaleFactor": 1,
 
     // To capture useful content, the screenshot viewport needs to be bigger
     // than our images but maintain the same ratio
@@ -62,7 +60,6 @@ export const LinkPreview = ({
               src={src}
               width={width}
               height={height}
-              quality={quality}
               layout={layout}
               priority={true}
             />
@@ -101,7 +98,6 @@ export const LinkPreview = ({
                 src={src}
                 width={width}
                 height={height}
-                quality={quality}
                 layout={layout}
                 className="rounded-lg"
               />
