@@ -2,6 +2,7 @@ import { FOCUS_VISIBLE_OUTLINE, GRADIENT_LINK } from "@/lib/constants"
 import { Portal, Transition } from "@headlessui/react"
 import * as HoverCardPrimitive from "@radix-ui/react-hover-card"
 import cx from "clsx"
+import { useTheme } from "next-themes"
 import Image from "next/image"
 import { encode } from "qss"
 import React from "react"
@@ -13,6 +14,11 @@ export const LinkPreview = ({
   children: React.ReactNode
   url: string
 }) => {
+  const { theme, systemTheme } = useTheme()
+
+  const isDark =
+    theme === "dark" || (theme === "system" && systemTheme === "dark")
+
   const width = 200
   const height = 125
   const layout = "fixed"
@@ -23,7 +29,10 @@ export const LinkPreview = ({
     screenshot: true,
     meta: false,
     embed: "screenshot.url",
-    colorScheme: "dark",
+
+    // Capture the external site in dark mode if the current user prefers dark
+    // mode and the external site uses a `prefers-color-scheme` based solution.
+    colorScheme: isDark ? "dark" : "light",
     "viewport.isMobile": true,
 
     // To capture useful content, the screenshot viewport needs to be bigger
