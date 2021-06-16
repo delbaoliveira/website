@@ -12,7 +12,7 @@
     "@headlessui/react": "^1.1.1",
     "@heroicons/react": "^1.0.1",
     "@prisma/client": "^2.23.0",
-    "@radix-ui/react-hover-card": "^0.0.2",
+    "@radix-ui/react-hover-card": "^0.0.3",
     "@radix-ui/react-id": "^0.0.6",
     "@react-aria/interactions": "^3.3.4",
     "@tailwindcss/forms": "^0.3.3",
