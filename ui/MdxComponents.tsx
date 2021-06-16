@@ -3,6 +3,7 @@ import { Button } from "@/ui/Button"
 import { LikeButton } from "@/ui/LikeButton"
 import { LinkPreview } from "@/ui/LinkPreview"
 import { Playground } from "@/ui/Playground"
+import { ThemeSelect } from "@/ui/ThemeSelect"
 import NextImage from "next/image"
 import NextLink from "next/link"
 import React from "react"
@@ -12,6 +13,7 @@ export const components = {
   Playground,
   LinkPreview,
   Button,
+  ThemeSelect,
   h1: (props: any) => (
     <h1
       className="mt-8 mb-4 text-4xl font-extrabold text-gray-900"
