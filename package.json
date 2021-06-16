@@ -15,6 +15,7 @@
     "@radix-ui/react-hover-card": "^0.0.2",
     "@radix-ui/react-id": "^0.0.6",
     "@react-aria/interactions": "^3.3.4",
+    "@tailwindcss/forms": "^0.3.3",
     "@tailwindcss/line-clamp": "^0.2.1",
     "clsx": "^1.1.1",
     "date-fns": "^2.21.3",
@@ -23,6 +24,7 @@
     "gray-matter": "^4.0.3",
     "mdx-bundler": "^4.0.0",
     "next": "11.0.1-canary.0",
+    "next-themes": "^0.0.14",
     "qss": "^2.0.3",
     "react": "17.0.2",
     "react-dom": "17.0.2",
@@ -43,7 +45,7 @@
     "autoprefixer": "^10.2.5",
     "postcss": "^8.2.13",
     "prisma": "2.23.0",
-    "tailwindcss": "^2.2.0-canary.9",
+    "tailwindcss": "^2.2.0-canary.16",
     "typescript": "^4.3.2"
   }
 }

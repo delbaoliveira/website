@@ -16,7 +16,7 @@ module.exports = {
     // https://tailwindcss.com/docs/just-in-time-mode#known-limitations
     "./safelist.txt",
   ],
-  darkMode: false,
+  darkMode: "class",
   theme: {
     extend: {
       fontFamily: {
@@ -75,6 +75,7 @@ module.exports = {
   },
   plugins: [
     require("@tailwindcss/line-clamp"),
+    require("@tailwindcss/forms"),
     plugin(function ({ addUtilities }) {
       const newUtilities = {
         ".rounded-tl-xl": {
