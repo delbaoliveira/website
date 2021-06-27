@@ -12,8 +12,8 @@ export function getStaticProps() {
 export default function BlogPage({ posts }: { posts: PostMeta[] }) {
   return (
     <Layout>
-      <div className="container max-w-3xl px-4 mx-auto mt-36">
-        <h1 className="text-5xl font-extrabold text-gray-800">Blog</h1>
+      <div className="container max-w-3xl px-4 mx-auto mt-24">
+        <h1 className="text-4xl font-extrabold text-gray-800">Blog</h1>
         <h4 className="mt-2 text-gray-700 lg:text-lg">
           Thoughts on what I'm building and learning.
         </h4>
