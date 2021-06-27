@@ -6,7 +6,7 @@
   html {
     scroll-behavior: smooth;
     /* give titles some breathing room when we scroll to them */
-    scroll-padding-top: 40px;
+    scroll-padding-top: 120px;
   }
 
   /**
