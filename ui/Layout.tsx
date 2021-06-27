@@ -4,11 +4,9 @@ import React from "react"
 
 export const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="max-w-5xl mx-auto antialiased">
+    <div>
       <Navigation />
-
-      <main>{children}</main>
-
+      <main className="max-w-4xl mx-auto mt-16 antialiased">{children}</main>
       <Footer />
     </div>
   )
