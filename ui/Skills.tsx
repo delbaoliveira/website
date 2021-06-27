@@ -115,7 +115,7 @@ export const Skills = () => {
                 <div className="text-lg font-bold text-gray-800">
                   {field.title}
                 </div>
-                <ul className="mt-2 space-y-1 text-sm text-gray-600 transition-colors group-hover:text-gray-500">
+                <ul className="mt-2 space-y-1 text-sm text-gray-600 transition-colors group-hover:text-sky-500">
                   {field.items.map((item, itemIndex) => {
                     return (
                       <li key={itemIndex} className="leading-8">

@@ -59,7 +59,7 @@ const Project = ({ project, color }: { project: Project; color: string }) => {
                 iterations={2}
                 padding={2}
                 animationDuration={300}
-                color={color}
+                color="#6EE7B7"
               >
                 <span className="font-medium text-gray-800">View Project</span>
               </RoughNotation>
@@ -74,10 +74,7 @@ const Project = ({ project, color }: { project: Project; color: string }) => {
 export const Projects = ({ projects }: { projects: PostMeta[] }) => {
   return (
     <div className="container px-4 mx-auto">
-      <h2 className="text-3xl font-bold text-gray-800">Projects</h2>
-      <h4 className="mt-2 text-gray-500 lg:text-lg">
-        Some of the side projects I'm currently working on:
-      </h4>
+      <h2 className="text-2xl font-bold text-gray-800">Projects</h2>
 
       <div className="-mt-2 lg:flex lg:flex-wrap lg:-mx-6">
         {projects.map((project, index) => {

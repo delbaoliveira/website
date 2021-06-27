@@ -2,15 +2,16 @@ import { FOCUS_VISIBLE_OUTLINE } from "@/lib/constants"
 import cx from "clsx"
 import Link from "next/link"
 import React from "react"
+import { AiOutlineTwitter, AiOutlineGithub } from "react-icons/ai"
 
 export const Navigation = () => {
   return (
-    <div className="container px-4 mx-auto mt-4 mb-10 lg:mt-8 lg:mb-20">
-      <div className="lg:flex lg:items-center lg:justify-between">
+    <div className="sticky top-0 z-10 px-4 mx-auto bg-white lg:pt-6 lg:pb-8 lg:mb-6">
+      <div className="max-w-4xl px-4 m-auto lg:flex lg:items-center lg:justify-between">
         <Link href="/">
           <a
             className={cx(
-              "font-medium tracking-wider transition-colors text-gray-700 hover:text-gray-500 focus:text-gray-500 uppercase rounded-sm",
+              "font-medium tracking-wider transition-colors text-gray-900 hover:text-sky-500 focus:text-emerald-500 uppercase",
               FOCUS_VISIBLE_OUTLINE,
             )}
           >
@@ -18,11 +19,11 @@ export const Navigation = () => {
           </a>
         </Link>
 
-        <div className="flex flex-wrap -ml-5 text-gray-700 lg:-ml-8">
+        <div className="flex items-center -ml-5 text-gray-900 lg:-ml-8">
           <Link href="/#about">
             <a
               className={cx(
-                "font-medium block transition-colors mt-1.5 lg:mt-0 lg:ml-8 ml-5 hover:text-gray-500 focus:text-gray-500 rounded",
+                "font-medium block transition-colors mt-1.5 lg:mt-0 lg:ml-8 ml-5 hover:text-sky-500 focus:text-emerald-500 rounded",
                 FOCUS_VISIBLE_OUTLINE,
               )}
             >
@@ -30,21 +31,10 @@ export const Navigation = () => {
             </a>
           </Link>
 
-          <Link href="/#projects">
-            <a
-              className={cx(
-                "font-medium block transition-colors mt-1.5 lg:mt-0 lg:ml-8 ml-5 hover:text-gray-500 focus:text-gray-500 rounded",
-                FOCUS_VISIBLE_OUTLINE,
-              )}
-            >
-              Projects
-            </a>
-          </Link>
-
           <Link href="/blog">
             <a
               className={cx(
-                "font-medium block transition-colors mt-1.5 lg:mt-0 lg:ml-8 ml-5 hover:text-gray-500 focus:text-gray-500 rounded",
+                "font-medium block transition-colors mt-1.5 lg:mt-0 lg:ml-8 ml-5 hover:text-sky-500 focus:text-emerald-500 rounded",
                 FOCUS_VISIBLE_OUTLINE,
               )}
             >
@@ -52,16 +42,49 @@ export const Navigation = () => {
             </a>
           </Link>
 
+          <Link href="/#projects">
+            <a
+              className={cx(
+                "font-medium block transition-colors mt-1.5 lg:mt-0 lg:ml-8 ml-5 hover:text-sky-500 focus:text-emerald-500 rounded",
+                FOCUS_VISIBLE_OUTLINE,
+              )}
+            >
+              Projects
+            </a>
+          </Link>
+
           <Link href="/#contact">
             <a
               className={cx(
-                "font-medium block transition-colors mt-1.5 lg:mt-0 lg:ml-8 ml-5 hover:text-gray-500 focus:text-gray-500 rounded",
+                "font-medium block transition-colors mt-1.5 lg:mt-0 lg:ml-8 ml-5 hover:text-sky-500 focus:text-emerald-500 rounded",
                 FOCUS_VISIBLE_OUTLINE,
               )}
             >
               Contact
             </a>
           </Link>
+          <p className="flex pl-6 space-x-3 text-xl">
+            <a
+              href="https://twitter.com/delba_oliveira"
+              className={cx(
+                "transition-colors text-gray-900 hover:text-sky-500 focus:text-emerald-500 cursor-pointer rounded",
+                FOCUS_VISIBLE_OUTLINE,
+              )}
+              target="_blank"
+            >
+              <AiOutlineTwitter></AiOutlineTwitter>
+            </a>
+            <a
+              href="https://github.com/delbaoliveira"
+              className={cx(
+                "transition-colors text-gray-900 hover:text-sky-500 focus:text-emerald-500 cursor-pointer rounded",
+                FOCUS_VISIBLE_OUTLINE,
+              )}
+              target="_blank"
+            >
+              <AiOutlineGithub></AiOutlineGithub>{" "}
+            </a>
+          </p>
         </div>
       </div>
     </div>

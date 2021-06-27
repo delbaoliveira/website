@@ -34,7 +34,7 @@ export const components = {
     if (href.startsWith("http")) {
       return (
         <a
-          className={GRADIENT_LINK}
+          className="font-medium transition-colors text-emerald-500 hover:text-sky-500"
           href={href}
           target="_blank"
           rel="noopener"
@@ -45,7 +45,10 @@ export const components = {
 
     return (
       <NextLink href={href} passHref>
-        <a className={GRADIENT_LINK} {...props} />
+        <a
+          className="font-medium transition-colors text-emerald-500 hover:text-sky-500"
+          {...props}
+        />
       </NextLink>
     )
   },
@@ -97,7 +100,7 @@ export const components = {
   },
   code: ({ children }: { children: React.ReactNode }) => {
     return (
-      <code className="px-1.5 py-0.5 text-sm font-mono font-medium text-gray-700 bg-orange-100 rounded-md">
+      <code className="px-1.5 py-0.5 text-sm font-mono font-medium text-gray-700 bg-sky-100 rounded-md">
         {children}
       </code>
     )
