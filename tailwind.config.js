@@ -33,6 +33,7 @@ module.exports = {
         violet: colors.violet,
         fuchsia: colors.fuchsia,
         rose: colors.rose,
+        sky: colors.sky,
       },
       animation: {
         "loading-0": "loading 1.4s ease-in-out infinite",
