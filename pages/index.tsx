@@ -4,8 +4,6 @@ import { BlogPreview } from "@/ui/BlogPreview"
 import { Contact } from "@/ui/Contact"
 import { Layout } from "@/ui/Layout"
 import { Projects } from "@/ui/Projects"
-import { Skills } from "@/ui/Skills"
-import { Words } from "@/ui/Words"
 import { InferGetStaticPropsType } from "next"
 import React from "react"
 
@@ -26,18 +24,13 @@ export default function Home({
           <About />
         </div>
 
-        <div id="projects">
-          <Projects projects={projects} />
-        </div>
-
         <div id="blog">
           <div className="container px-4 mx-auto">
-            <h2 className="text-3xl font-bold text-gray-800">Posts</h2>
-            <h4 className="mt-2 text-gray-500 lg:text-lg">
+            <h2 className="text-2xl font-bold text-gray-800">Recent Posts</h2>
+            <h4 className="mt-2 text-gray-500">
               Thoughts on what I'm building and learning.
             </h4>
-
-            <div className="mt-8 space-y-12">
+            <div className="mt-6 space-y-8">
               {posts.map((post) => (
                 <BlogPreview key={post.slug} post={post} />
               ))}
@@ -45,12 +38,8 @@ export default function Home({
           </div>
         </div>
 
-        <div id="skills">
-          <Skills />
-        </div>
-
-        <div id="words">
-          <Words />
+        <div id="projects">
+          <Projects projects={projects} />
         </div>
 
         <div id="contact">
