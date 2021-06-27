@@ -25,14 +25,22 @@ export const About = () => {
       <div className="space-x-5 lg:flex item-center lg:-mx-4">
         <div className="lg:px-4 ">
           <RoughNotationGroup show={isFontReady}>
-            <h1 className="text-2xl font-bold text-gray-900  lg:text-4xl">
-              Hello! I'm Delba.
+            <h1 className="text-2xl font-bold text-gray-900 lg:text-4xl">
+              Hi there, I'm Delba.
             </h1>
 
             <div className="mt-6 text-gray-800">
-              <p>
-                I love building tools that are user-friendly, simple and
-                delightful. I work as a 🤫
+              <p className="mt-2">
+                Welcome to my digital garden where I share what I'm learning
+                about{" "}
+                <RainbowHighlight color={colors[2]}>
+                  becoming a better developer
+                </RainbowHighlight>{" "}
+                and{" "}
+                <RainbowHighlight color={colors[3]}>
+                  growing a career in tech
+                </RainbowHighlight>
+                . I work as a 🤫
                 {/* <RainbowHighlight color={colors[1]}>🤫</RainbowHighlight> */}{" "}
                 at{" "}
                 <a
@@ -42,22 +50,13 @@ export const About = () => {
                 >
                   {" "}
                   🤫
-                </a>
-                .
+                </a>{" "}
+                and enjoy building delightful and user-friendly tools.
               </p>
+              <p className="mt-2"></p>
+
               <p className="mt-2">
-                Welcome to my digital garden where I share notes on what I'm
-                learning about{" "}
-                <RainbowHighlight color={colors[2]}>
-                  becoming a better developer
-                </RainbowHighlight>{" "}
-                and{" "}
-                <RainbowHighlight color={colors[3]}>
-                  growing a career in tech.
-                </RainbowHighlight>{" "}
-              </p>
-              <p className="mt-2">
-                You can find me hanging out on{" "}
+                Let's hang out on{" "}
                 <RoughNotation
                   type="underline"
                   multiline={true}
