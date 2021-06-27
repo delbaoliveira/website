@@ -25,7 +25,7 @@ export const About = () => {
       <div className="space-x-5 lg:flex item-center lg:-mx-4">
         <div className="lg:px-4 ">
           <RoughNotationGroup show={isFontReady}>
-            <h1 className="text-lg font-bold text-gray-900 lg:text-4xl">
+            <h1 className="text-2xl font-bold text-gray-900  lg:text-4xl">
               Hello! I'm Delba.
             </h1>
 

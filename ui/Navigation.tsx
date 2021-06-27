@@ -6,8 +6,8 @@ import { AiOutlineTwitter, AiOutlineGithub } from "react-icons/ai"
 
 export const Navigation = () => {
   return (
-    <div className="sticky top-0 z-10 px-4 mx-auto bg-white lg:pt-6 lg:pb-8 lg:mb-6">
-      <div className="max-w-4xl px-4 m-auto lg:flex lg:items-center lg:justify-between">
+    <div className="sticky top-0 z-10 px-4 py-2 mx-auto bg-white lg:py-6 lg:mb-6">
+      <div className="max-w-4xl m-auto lg:px-4 lg:flex lg:items-center lg:justify-between">
         <Link href="/">
           <a
             className={cx(

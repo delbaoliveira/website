@@ -7,9 +7,9 @@ export const Footer = () => {
     <div className="mt-24 pb-36">
       <div className="max-w-4xl px-4 mx-auto text-gray-700">
         <div className="pb-8 mb-2 border-t-2 border-gray-300"></div>
-        <div className="flex justify-between ">
+        <div className="flex flex-col justify-between lg:flex-row">
           <p>Built with Tailwind and Next.js 🖤</p>
-          <div className="space-x-6 font-medium">
+          <div className="pt-2 space-x-6 font-medium lg:pt-0">
             <a
               href="https://twitter.com/delba_oliveira"
               className={cx(
