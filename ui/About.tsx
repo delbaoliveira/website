@@ -29,50 +29,47 @@ export const About = () => {
               Hi there, I'm Delba.
             </h1>
 
-            <div className="mt-6 text-gray-800">
+            <div className="mt-4 text-gray-800">
+              <p>
+                I love making tools that are user-friendly, simple and
+                delightful. I work as a{" "}
+                <RainbowHighlight color={colors[1]}>
+                  Developer Advocate
+                </RainbowHighlight>{" "}
+                at{" "}
+                <a href="https://vercel.com/" className="font-bold">
+                  ▲ Vercel
+                </a>{" "}
+                &mdash; focusing on DX and helping the community create
+                wonderful things.
+              </p>
               <p className="mt-2">
                 Welcome to my digital garden where I share what I'm learning
-                about{" "}
+                about shipping{" "}
                 <RainbowHighlight color={colors[2]}>
-                  becoming a better developer
-                </RainbowHighlight>{" "}
-                and{" "}
-                <RainbowHighlight color={colors[3]}>
-                  growing a career in tech
+                  great products
                 </RainbowHighlight>
-                . I work as a 🤫
-                {/* <RainbowHighlight color={colors[1]}>🤫</RainbowHighlight> */}{" "}
-                at{" "}
-                <a
-                  href="https://company.com/"
-                  className="font-semibold transition-colors hover:text-sky-500"
-                  target="_blank"
-                >
-                  {" "}
-                  🤫
-                </a>{" "}
-                and enjoy building delightful and user-friendly tools.
+                , becoming a{" "}
+                <RainbowHighlight color={colors[3]}>
+                  better developer
+                </RainbowHighlight>{" "}
+                and growing a{" "}
+                <RainbowHighlight color={colors[0]}>
+                  career in tech
+                </RainbowHighlight>
+                .
               </p>
-              <p className="mt-2"></p>
 
               <p className="mt-2">
                 Let's hang out on{" "}
-                <RoughNotation
-                  type="underline"
-                  multiline={true}
-                  iterations={2}
-                  strokeWidth={2}
-                  color={colors[0]}
+                <a
+                  href="https://twitter.com/delba_oliveira"
+                  className="font-semibold transition-colors hover:text-sky-500"
+                  target="_blank"
                 >
-                  <a
-                    href="https://twitter.com/delba_oliveira"
-                    className="font-semibold transition-colors hover:text-sky-500"
-                    target="_blank"
-                  >
-                    Twitter
-                  </a>
-                  .
-                </RoughNotation>
+                  Twitter
+                </a>
+                .
               </p>
             </div>
           </RoughNotationGroup>
