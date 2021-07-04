@@ -16,7 +16,7 @@ type Project = {
   url?: string
 }
 
-const Project = ({ project, color }: { project: Project; color: string }) => {
+const Project = ({ project }: { project: Project }) => {
   let { hoverProps, isHovered } = useHover({})
 
   return (
@@ -47,7 +47,7 @@ const Project = ({ project, color }: { project: Project; color: string }) => {
             </Tilt>
           ) : null}
           <p className="mt-6 text-xl font-bold text-gray-800">{project.name}</p>
-          <p className="mt-2 text-gray-700 line-clamp-2">
+          <p className="mt-2 text-gray-800 line-clamp-2">
             {project.description}
           </p>
           {project.url ? (
@@ -58,8 +58,8 @@ const Project = ({ project, color }: { project: Project; color: string }) => {
                 strokeWidth={2}
                 iterations={2}
                 padding={2}
-                animationDuration={300}
-                color="#6EE7B7"
+                animationDuration={600}
+                color="#7DD3FC"
               >
                 <span className="font-medium text-gray-800">View Project</span>
               </RoughNotation>
@@ -76,7 +76,7 @@ export const Projects = ({ projects }: { projects: PostMeta[] }) => {
     <div className="container px-4 mx-auto">
       <h2 className="text-2xl font-bold text-gray-800">Projects</h2>
       <h4 className="mt-2 text-gray-500">
-        Some of the side projects I'm currently working on:
+        Some of the side projects I'm currently working on.
       </h4>
       <div className="-mt-2 lg:flex lg:flex-wrap lg:-mx-6">
         {projects.map((project, index) => {
@@ -89,7 +89,6 @@ export const Projects = ({ projects }: { projects: PostMeta[] }) => {
                   image: `/${project.image}`,
                   url: `/blog/${project.slug}`,
                 }}
-                color={LIGHT_COLORS[index]}
               />
             </div>
           )
