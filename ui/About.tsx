@@ -6,8 +6,6 @@ import { RainbowHighlight } from "@/ui/RainbowHighlight"
 import Image from "next/image"
 import React from "react"
 import { RoughNotationGroup } from "react-rough-notation"
-import { FOCUS_VISIBLE_OUTLINE } from "@/lib/constants"
-import cx from "cslx"
 
 export const About = () => {
   // Before animation, detect if custom fonts are loaded, so <RoughNotation />
