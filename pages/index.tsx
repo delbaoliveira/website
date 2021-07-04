@@ -41,10 +41,6 @@ export default function Home({
         <div id="projects">
           <Projects projects={projects} />
         </div>
-
-        <div id="contact">
-          <Contact />
-        </div>
       </div>
     </Layout>
   )
