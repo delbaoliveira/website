@@ -9,7 +9,7 @@ export const Contact = () => {
         Do you have an idea you'd like to discuss? Feel free to reach me at{" "}
         <a
           href="mailto:hello@delbaoliveira.com"
-          className="font-medium transition-colors text-emerald-500 hover:text-sky-500"
+          className="font-medium transition-colors hover:text-sky-500"
         >
           hello@delbaoliveira.com
         </a>

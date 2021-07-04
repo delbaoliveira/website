@@ -11,7 +11,7 @@ export const Navigation = () => {
         <Link href="/">
           <a
             className={cx(
-              "font-medium tracking-wider transition-colors text-gray-900 hover:text-sky-500 focus:text-emerald-500 uppercase",
+              "font-medium tracking-wider transition-colors text-gray-900 hover:text-sky-500 focus:text-sky-500 uppercase",
               FOCUS_VISIBLE_OUTLINE,
             )}
           >
@@ -23,7 +23,7 @@ export const Navigation = () => {
           <Link href="/#about">
             <a
               className={cx(
-                "font-medium block transition-colors mt-1.5 lg:mt-0 lg:ml-8 ml-5 hover:text-sky-500 focus:text-emerald-500 rounded",
+                "font-medium block transition-colors mt-1.5 lg:mt-0 lg:ml-8 ml-5 hover:text-sky-500 focus:text-sky-500 rounded",
                 FOCUS_VISIBLE_OUTLINE,
               )}
             >
@@ -34,7 +34,7 @@ export const Navigation = () => {
           <Link href="/blog">
             <a
               className={cx(
-                "font-medium block transition-colors mt-1.5 lg:mt-0 lg:ml-8 ml-5 hover:text-sky-500 focus:text-emerald-500 rounded",
+                "font-medium block transition-colors mt-1.5 lg:mt-0 lg:ml-8 ml-5 hover:text-sky-500 focus:text-sky-500 rounded",
                 FOCUS_VISIBLE_OUTLINE,
               )}
             >
@@ -45,7 +45,7 @@ export const Navigation = () => {
           <Link href="/#projects">
             <a
               className={cx(
-                "font-medium block transition-colors mt-1.5 lg:mt-0 lg:ml-8 ml-5 hover:text-sky-500 focus:text-emerald-500 rounded",
+                "font-medium block transition-colors mt-1.5 lg:mt-0 lg:ml-8 ml-5 hover:text-sky-500 focus:text-sky-500 rounded",
                 FOCUS_VISIBLE_OUTLINE,
               )}
             >
@@ -57,7 +57,7 @@ export const Navigation = () => {
             <a
               href="https://twitter.com/delba_oliveira"
               className={cx(
-                "transition-colors text-gray-900 hover:text-sky-500 focus:text-emerald-500 cursor-pointer rounded",
+                "transition-colors text-gray-900 hover:text-sky-500 focus:text-sky-500 cursor-pointer rounded",
                 FOCUS_VISIBLE_OUTLINE,
               )}
               target="_blank"
@@ -67,7 +67,7 @@ export const Navigation = () => {
             <a
               href="https://github.com/delbaoliveira"
               className={cx(
-                "transition-colors text-gray-900 hover:text-sky-500 focus:text-emerald-500 cursor-pointer rounded",
+                "transition-colors text-gray-900 hover:text-sky-500 focus:text-sky-500 cursor-pointer rounded",
                 FOCUS_VISIBLE_OUTLINE,
               )}
               target="_blank"

@@ -34,7 +34,7 @@ export const components = {
     if (href.startsWith("http")) {
       return (
         <a
-          className="font-medium transition-colors text-emerald-500 hover:text-sky-500"
+          className="font-medium transition-colors text-sky-500 hover:text-sky-700"
           href={href}
           target="_blank"
           rel="noopener"
@@ -46,7 +46,7 @@ export const components = {
     return (
       <NextLink href={href} passHref>
         <a
-          className="font-medium transition-colors text-emerald-500 hover:text-sky-500"
+          className="font-medium transition-colors text-sky-500 hover:text-sky-700"
           {...props}
         />
       </NextLink>

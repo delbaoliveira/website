@@ -5,7 +5,9 @@ import delbaImg from "@/public/delba.jpg"
 import { RainbowHighlight } from "@/ui/RainbowHighlight"
 import Image from "next/image"
 import React from "react"
-import { RoughNotation, RoughNotationGroup } from "react-rough-notation"
+import { RoughNotationGroup } from "react-rough-notation"
+import FOCUS_VISIBLE_OUTLINE from "@/lib/constants"
+import cx from "cslx"
 
 export const About = () => {
   // Before animation, detect if custom fonts are loaded, so <RoughNotation />
@@ -37,7 +39,10 @@ export const About = () => {
                   Developer Advocate
                 </RainbowHighlight>{" "}
                 at{" "}
-                <a href="https://vercel.com/" className="font-bold">
+                <a
+                  href="https://vercel.com/"
+                  className="font-bold transition-colors hover:text-sky-500"
+                >
                   ▲ Vercel
                 </a>{" "}
                 &mdash; focusing on DX and helping the community create
@@ -64,7 +69,7 @@ export const About = () => {
                 Let's hang out on{" "}
                 <a
                   href="https://twitter.com/delba_oliveira"
-                  className="font-semibold transition-colors hover:text-sky-500"
+                  className="font-bold transition-colors hover:text-sky-500"
                   target="_blank"
                 >
                   Twitter

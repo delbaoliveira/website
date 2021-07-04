@@ -13,7 +13,7 @@ export const Footer = () => {
             <a
               href="https://twitter.com/delba_oliveira"
               className={cx(
-                "transition-colors hover:text-sky-500 focus:text-emerald-500 rounded",
+                "transition-colors hover:text-sky-500 focus:text-sky-500 rounded",
                 FOCUS_VISIBLE_OUTLINE,
               )}
             >
@@ -22,7 +22,7 @@ export const Footer = () => {
             <a
               href="https://github.com/delbaoliveira"
               className={cx(
-                "transition-colors hover:text-sky-500 focus:text-emerald-500 rounded",
+                "transition-colors hover:text-sky-500 focus:text-sky-500 rounded",
                 FOCUS_VISIBLE_OUTLINE,
               )}
             >
@@ -31,7 +31,7 @@ export const Footer = () => {
             <a
               href="https://www.linkedin.com/in/delbaoliveira/"
               className={cx(
-                "transition-colors hover:text-sky-500 focus:text-emerald-500 rounded",
+                "transition-colors hover:text-sky-500 focus:text-sky-500 rounded",
                 FOCUS_VISIBLE_OUTLINE,
               )}
             >
@@ -40,7 +40,7 @@ export const Footer = () => {
             <a
               href="https://www.instagram.com/delba.oliveira/"
               className={cx(
-                "transition-colors hover:text-sky-500 focus:text-emerald-500 rounded",
+                "transition-colors hover:text-sky-500 focus:text-sky-500 rounded",
                 FOCUS_VISIBLE_OUTLINE,
               )}
             >
