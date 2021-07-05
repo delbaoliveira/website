@@ -6,6 +6,8 @@ import { RainbowHighlight } from "@/ui/RainbowHighlight"
 import Image from "next/image"
 import React from "react"
 import { RoughNotationGroup } from "react-rough-notation"
+import cx from "clsx"
+import { FOCUS_VISIBLE_OUTLINE } from "@/lib/constants"
 
 export const About = () => {
   // Before animation, detect if custom fonts are loaded, so <RoughNotation />
@@ -39,7 +41,10 @@ export const About = () => {
                 at{" "}
                 <a
                   href="https://vercel.com/"
-                  className="font-bold transition-colors hover:text-sky-500"
+                  className={cx(
+                    "font-bold transition-colors hover:text-sky-500",
+                    FOCUS_VISIBLE_OUTLINE,
+                  )}
                 >
                   ▲ Vercel
                 </a>{" "}
@@ -67,7 +72,10 @@ export const About = () => {
                 Let's hang out on{" "}
                 <a
                   href="https://twitter.com/delba_oliveira"
-                  className="font-bold transition-colors hover:text-sky-500"
+                  className={cx(
+                    "font-bold transition-colors hover:text-sky-500",
+                    FOCUS_VISIBLE_OUTLINE,
+                  )}
                   target="_blank"
                 >
                   Twitter

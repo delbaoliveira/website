@@ -1,4 +1,3 @@
-import { GRADIENT_LINK } from "@/lib/constants"
 import { Button } from "@/ui/Button"
 import { LikeButton } from "@/ui/LikeButton"
 import { LinkPreview } from "@/ui/LinkPreview"
@@ -7,6 +6,8 @@ import { ThemeSelect } from "@/ui/ThemeSelect"
 import NextImage from "next/image"
 import NextLink from "next/link"
 import React from "react"
+import { FOCUS_VISIBLE_OUTLINE } from "@/lib/constants"
+import cx from "clsx"
 
 export const components = {
   LikeButton,
@@ -34,7 +35,10 @@ export const components = {
     if (href.startsWith("http")) {
       return (
         <a
-          className="font-medium transition-colors text-sky-500 hover:text-sky-700"
+          className={cx(
+            "font-medium transition-colors text-sky-500 hover:text-sky-700",
+            FOCUS_VISIBLE_OUTLINE,
+          )}
           href={href}
           target="_blank"
           rel="noopener"
@@ -46,7 +50,10 @@ export const components = {
     return (
       <NextLink href={href} passHref>
         <a
-          className="font-medium transition-colors text-sky-500 hover:text-sky-700"
+          className={cx(
+            "font-medium transition-colors text-sky-500 hover:text-sky-700",
+            FOCUS_VISIBLE_OUTLINE,
+          )}
           {...props}
         />
       </NextLink>
