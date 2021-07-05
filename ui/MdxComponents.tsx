@@ -30,7 +30,7 @@ export const components = {
   h4: (props: any) => (
     <h4 className="mt-6 mb-5 text-lg font-semibold text-gray-900" {...props} />
   ),
-  p: (props: any) => <p className="mb-5 leading-7 text-gray-700" {...props} />,
+  p: (props: any) => <p className="mb-5 leading-7 text-gray-800" {...props} />,
   a: ({ href = "", ...props }) => {
     if (href.startsWith("http")) {
       return (
@@ -62,13 +62,13 @@ export const components = {
   hr: (props: any) => <hr {...props} />,
   ul: (props: any) => (
     <ul
-      className="mb-4 leading-relaxed text-gray-700 list-disc list-inside"
+      className="mb-4 leading-relaxed text-gray-800 list-disc list-inside"
       {...props}
     />
   ),
   ol: (props: any) => (
     <ol
-      className="pl-10 my-12 leading-7 text-gray-700 list-decimal"
+      className="pl-10 my-12 leading-7 text-gray-800 list-decimal"
       {...props}
     />
   ),
@@ -107,7 +107,7 @@ export const components = {
   },
   code: ({ children }: { children: React.ReactNode }) => {
     return (
-      <code className="px-1.5 py-0.5 text-sm font-mono font-medium text-gray-700 bg-sky-100 rounded-md">
+      <code className="px-1.5 py-0.5 text-sm font-mono font-medium text-gray-800 bg-sky-100 rounded-md">
         {children}
       </code>
     )

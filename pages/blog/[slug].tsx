@@ -35,9 +35,9 @@ export default function PostPage({ meta, code }: Post) {
   return (
     <Layout>
       <div className="container max-w-3xl px-4 mx-auto mt-36">
-        <h1 className="text-3xl font-bold md:text-4xl">{meta.title}</h1>
+        <h1 className="text-2xl font-extrabold md:text-3xl">{meta.title}</h1>
 
-        <div className="flex items-center mt-4 space-x-2 text-gray-600">
+        <div className="flex items-center mt-4 space-x-2 text-gray-500">
           <Image
             src="/avatar.jpg"
             height={24}
