@@ -42,17 +42,6 @@ export const Navigation = () => {
             </a>
           </Link>
 
-          <Link href="/#projects">
-            <a
-              className={cx(
-                "font-medium block transition-colors mt-1.5 lg:mt-0 lg:ml-8 ml-5 hover:text-sky-500",
-                FOCUS_VISIBLE_OUTLINE,
-              )}
-            >
-              Projects
-            </a>
-          </Link>
-
           <p className="flex pl-6 space-x-3 text-xl">
             <a
               href="https://twitter.com/delba_oliveira"

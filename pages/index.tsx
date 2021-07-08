@@ -1,9 +1,7 @@
 import { getAllPostsMeta } from "@/lib/mdx"
 import { About } from "@/ui/About"
 import { BlogPreview } from "@/ui/BlogPreview"
-import { Contact } from "@/ui/Contact"
 import { Layout } from "@/ui/Layout"
-import { Projects } from "@/ui/Projects"
 import { InferGetStaticPropsType } from "next"
 import React from "react"
 
@@ -36,10 +34,6 @@ export default function Home({
               ))}
             </div>
           </div>
-        </div>
-
-        <div id="projects">
-          <Projects projects={projects} />
         </div>
       </div>
     </Layout>
