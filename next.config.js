@@ -20,6 +20,6 @@ module.exports = {
   },
   // Enable image optimization for microlinks.io
   images: {
-    domains: ["api.microlink.io"],
+    domains: ["api.microlink.io", "twemoji.maxcdn.com"],
   },
 }
