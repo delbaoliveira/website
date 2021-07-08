@@ -9,6 +9,7 @@ import { GetStaticProps } from "next"
 import Image from "next/image"
 import React from "react"
 import type { Post } from "types/post"
+import { NextSeo } from "next-seo"
 
 export const getStaticPaths = () => {
   const posts = getAllPostsMeta()
@@ -33,38 +34,65 @@ export default function PostPage({ meta, code }: Post) {
   const Component = React.useMemo(() => getMDXComponent(code), [code])
 
   return (
-    <Layout>
-      <div className="container max-w-3xl px-4 mx-auto mt-36">
-        <h1 className="text-2xl font-extrabold md:text-3xl">{meta.title}</h1>
+    <>
+      <NextSeo
+        title={`${meta.title} • Delba de Oliveira`}
+        description={meta.description}
+        canonical="https://www.delbaoliveira.com/"
+        openGraph={{
+          type: "website",
+          url: `https://www.delbaoliveira.com/blog/${meta.slug}`,
+          title: meta.title,
+          description: meta.description,
+          images: [
+            {
+              url: `https://www.delbaoliveira.com/${meta.image}`,
+              width: 1200,
+              height: 630,
+              alt: meta.title,
+            },
+          ],
+          site_name: "Delba de Oliveira",
+        }}
+        twitter={{
+          handle: "@delba_oliveira",
+          cardType: "summary_large_image",
+        }}
+      />
 
-        <div className="flex items-center mt-4 space-x-2 text-gray-500">
-          <Image
-            src="/avatar.jpg"
-            height={24}
-            width={24}
-            className="rounded-full"
-          />
+      <Layout>
+        <div className="container max-w-3xl px-4 mx-auto mt-36">
+          <h1 className="text-2xl font-extrabold md:text-3xl">{meta.title}</h1>
 
-          <div>Delba de Oliveira</div>
+          <div className="flex items-center mt-4 space-x-2 text-gray-500">
+            <Image
+              src="/avatar.jpg"
+              height={24}
+              width={24}
+              className="rounded-full"
+            />
 
-          <div className="text-gray-300">&middot;</div>
+            <div>Delba de Oliveira</div>
 
-          <div>{format(parseISO(meta.publishedAt), "MMMM dd, yyyy")}</div>
+            <div className="text-gray-300">&middot;</div>
+
+            <div>{format(parseISO(meta.publishedAt), "MMMM dd, yyyy")}</div>
+          </div>
+
+          <div className="mt-12">
+            <Component components={components as any} />
+          </div>
+
+          <div className="flex justify-center mt-16 space-x-8">
+            {meta.source ? (
+              <Button href={meta.source} target="_blank">
+                View Source Code
+              </Button>
+            ) : null}
+            <LikeButton id={meta.slug} />
+          </div>
         </div>
-
-        <div className="mt-12">
-          <Component components={components as any} />
-        </div>
-
-        <div className="flex justify-center mt-16 space-x-8">
-          {meta.source ? (
-            <Button href={meta.source} target="_blank">
-              View Source Code
-            </Button>
-          ) : null}
-          <LikeButton id={meta.slug} />
-        </div>
-      </div>
-    </Layout>
+      </Layout>
+    </>
   )
 }

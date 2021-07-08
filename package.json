@@ -24,6 +24,7 @@
     "gray-matter": "^4.0.3",
     "mdx-bundler": "^4.0.0",
     "next": "11.0.1-canary.0",
+    "next-seo": "^4.26.0",
     "next-themes": "^0.0.14",
     "qss": "^2.0.3",
     "react": "17.0.2",
