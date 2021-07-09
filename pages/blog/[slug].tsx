@@ -10,6 +10,7 @@ import Image from "next/image"
 import React from "react"
 import type { Post } from "types/post"
 import { NextSeo } from "next-seo"
+import { MenuAlt1Icon } from "@heroicons/react/solid"
 
 export const getStaticPaths = () => {
   const posts = getAllPostsMeta()
@@ -42,7 +43,7 @@ export default function PostPage({ meta, code }: Post) {
         openGraph={{
           type: "website",
           url: `https://www.delbaoliveira.com/blog/${meta.slug}`,
-          title: meta.title,
+          title: `${meta.title} • Delba de Oliveira`,
           description: meta.description,
           images: [
             {
@@ -62,7 +63,7 @@ export default function PostPage({ meta, code }: Post) {
 
       <Layout>
         <div className="container max-w-3xl px-4 mx-auto mt-36">
-          <h1 className="text-2xl font-extrabold md:text-3xl">{meta.title}</h1>
+          <h1 className="text-2xl font-bold md:text-4xl">{meta.title}</h1>
 
           <div className="flex items-center mt-4 space-x-2 text-gray-500">
             <Image
@@ -79,7 +80,10 @@ export default function PostPage({ meta, code }: Post) {
             <div>{format(parseISO(meta.publishedAt), "MMMM dd, yyyy")}</div>
           </div>
 
-          <div className="mt-12">
+          <div className="mt-10 overflow-hidden rounded-2xl text-[0px]">
+            <Image src={`/${meta.image}`} width={1920} height={960} />
+          </div>
+          <div className="mt-10">
             <Component components={components as any} />
           </div>
 

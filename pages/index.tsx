@@ -28,7 +28,7 @@ export default function Home({
             <h4 className="mt-2 text-gray-500">
               Thoughts on what I'm building and learning.
             </h4>
-            <div className="mt-6 space-y-8">
+            <div className="grid grid-cols-2 gap-10 mt-6">
               {posts.map((post) => (
                 <BlogPreview key={post.slug} post={post} />
               ))}
