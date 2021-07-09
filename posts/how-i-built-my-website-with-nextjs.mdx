@@ -1,0 +1,109 @@
+---
+title: "How I built my site with Next.js"
+description: "An overview of how I built my site with Next.js - how I chose the tech stack, how I made design and content decisions, and the resources I found helpful."
+publishedAt: "2021-07-09"
+category: "post"
+image: "blog/how-i-built-my-website-with-nextjs.png"
+---
+
+I've always loved the idea of creating my own space on the internet. A _digital garden_ where I can share what I enjoy, keep notes on different programming topics, and experiment with new tools.
+
+After playing with code for almost 3 years, I decided to transition into a technical role. I created this site to make it easy for potential employers to find my work. One of those leads came from Vercel, the company [I am now working for](https://twitter.com/leeerob/status/1410957812528816133).
+
+Since this site has been so beneficial for me, I wanted to share an overview of how I built it — how I chose the stack, how I made design and content decisions, the resources I found helpful, and my future plans for it.
+
+## Tech Stack
+
+When choosing the stack, I made decisions based on three things:
+
+- **Speed** - I needed to publish quickly and avoided tools with steep learning curves.
+- **Experience** - I wanted to use what I personally enjoyed, because side projects should be fun.
+- **Learning opportunities** - Once I got the basic information out there, I also wanted to experiment with new tools and use my site as a playground.
+
+In the end, I settled for Next.js, MDX, Tailwind, Prisma and Typescript.
+
+### Next.js
+
+[Next.js](https://nextjs.org/) is a React.js framework that handles the setup and requirements of building modern websites.
+
+I personally enjoy using Next for a few reasons including:
+
+- It’s flexible enough to handle my current and future content and data requirements.
+- It helps with things that are normally tedious to set up such as [Webpack](https://nextjs.org/docs/api-reference/next.config.js/custom-webpack-config), [Babel](https://nextjs.org/docs/advanced-features/customizing-babel-config), [TypeScript](https://nextjs.org/docs/basic-features/typescript) and [ESlint](https://nextjs.org/docs/basic-features/eslint).
+- It comes with in-built performance benefits such as code-splitting, [image](https://nextjs.org/docs/basic-features/image-optimization) and [script](https://nextjs.org/docs/basic-features/script) optimizations. Flexible, per-page, [data fetching methods](https://nextjs.org/docs/basic-features/data-fetching) and [API Routes](https://nextjs.org/blog/next-9).
+- It offers a great developer experience with little to zero config such as [fast refresh](https://nextjs.org/docs/basic-features/fast-refresh#how-it-works).
+
+What I have appreciated about Next.js over the years is that it has allowed me to implement advanced features that would normally be outside of the league of a solo developer and following its recommendations has naturally led me to build better front-end applications.
+
+### MDX
+
+[MDX](https://mdxjs.com/) allows us to use JSX components inside markdown files. This ability makes MDX a great blogging solution for me because I eventually want to create highly interactive articles and demos.
+
+I think of each post as a unique project and MDX allows me to include whatever compelling interactive components I need to best explain the subject of the post.
+
+### Tailwind
+
+[Tailwind](https://tailwindcss.com/) is a utility-first CSS framework that allows us to style components using predefined class names. Tailwind was easy to pick up and significantly sped up my workflow. There are a few reasons why getting started with Tailwind was frictionless:
+
+- **Easy-to-navigate[ docs](https://tailwindcss.com/docs)** - not just in how it's structured but also how polished their search and examples are.
+- **Guides on how to set up Tailwind with[ CRA](https://tailwindcss.com/docs/guides/create-react-app) or [Next.js](https://tailwindcss.com/docs/guides/nextjs)**.
+- **VS Code extensions**: [Tailwind CSS IntelliSense](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss) for its excellent autocomplete which reduced the number of times I referenced class names in the docs. [Headwind](https://marketplace.visualstudio.com/items?itemName=heybourn.headwind) (3rd party) which re-orders class names on save.
+- **[Clsx](https://www.npmjs.com/package/clsx)** - A package that makes it easier to use conditional class names.
+
+Having both the structure and style of my component in the same file meant…
+
+- Making stylistic changes didn’t involve constant switching between files to sync class names with CSS declarations.
+- I didn’t have to come up with my own class names for every component. E.g `.component-wrapper`, `.component-header`, `.component-body-image`.
+- I didn’t have unused CSS rules lying around when I deleted a component I was no longer using.
+
+### TypeScript
+
+TypeScript is a language built on top of JavaScript and essentially helps you validate your code is working in the editor before it runs.
+
+There are many perks to using [TypeScript with VS Code](https://code.visualstudio.com/docs/languages/typescript) and the benefits compound when using it in combination with tools that have great type support such as [Prisma](https://www.prisma.io/docs/concepts/overview/what-is-prisma#usage-with-typescript).
+
+TypeScript has seriously increased my speed and accuracy. I spot more errors as I edit (rather than it breaking in the browser when run) and I find I don't have to look at documentation as much because I can tell a lot about the requirements of a function or component right in the editor.
+
+### Prisma
+
+Prisma is a _tool_ for interacting with databases and is a delight to use.
+
+With Prisma, the complexity of building a back end is reduced. I can easily define my schema and use the[ Prisma Client](https://www.prisma.io/docs/concepts/components/prisma-client) to make database queries. Add Next.js and I can query my database directly inside my pages with `getStaticProps` / `getServerSideProps` or write my endpoints inside [API Routes](https://nextjs.org/docs/api-routes/introduction) (here’s a great [guide](https://www.prisma.io/nextjs) from Prisma). All without leaving my front-end repository.
+
+Furthermore,[ Prisma Studio](https://www.prisma.io/studio) gives me the ability to see and edit my data. So the only thing I have to worry about is what database to use and where to host it.
+
+Which brings us to the database. I’m using Postgres, a relational SQL database which can be hosted on [Heroku](https://www.heroku.com/postgres) - a cloud platform that has a free tier plan and is perfect for side projects.
+
+In the future, I’d like to explore [PlanetScale](https://www.planetscale.com/) - a serverless friendly database platform that has [easy integration with Vercel](https://vercel.com/integrations/planetscale) and [eventual support](https://github.com/prisma/prisma/issues/7292) in Prisma. 👀
+
+### Vercel
+
+Vercel is a deployment and collaboration platform for frontend developers.
+
+Whenever I push a change to my main Github branch, it is automatically deployed to my website using Vercels [Github integration](https://vercel.com/docs/git/vercel-for-github). This allows me to focus on coding and lets Vercel take care of continuous deployment and all the complexities of hosting a performant globally distributed website.
+
+### Design
+
+My main focus when designing this site was **hierarchy** - putting the information and call-to-action people needed to see first.
+
+I don’t consider myself a strong designer and naturally gravitate towards minimalist websites that emphasize content. But just because a design is simple, it doesn’t mean it should be plain. Design is an extension of the identity of a company or a person. It’s a form of communication, and as one of my colleagues recently shared with me, it makes people **feel** _something_.
+
+I wanted people to be **delighted** when they visited my website, so I added a set of animated annotations to the hero text of the landing page using a library called [RoughNotation](https://roughnotation.com/). This allowed me to animate keywords when a user visited the site. It was also a way for me to infuse a bit of my personality as I'm someone who loves taking notes. 🌈
+
+<HeroDemo />
+
+While adding the feature itself was not technically demanding, it was what I received the most positive feedback for. One thing I realised in this project is that before someone delves into your technical prowess, they might make a quick judgement call by how things look. This is especially true for recruiters who don’t have a lot of time. So adding **visual elements** that capture the emotion you’re trying to convey can make all the difference.
+
+### Content
+
+Knowing what to include and most importantly, leave out, is hard and it depends on the **target audience**.
+
+Initially, my target audience were recruiters so this website followed a layout similar to a portfolio. One resource that helped me immensely was Josh Comeau’s free eBook “[How to build an effective Dev Portfolio](https://www.joshwcomeau.com/effective-portfolio/)”.
+
+Now that I have a job, my focus for this space is changing more to **passion** and **value**. What are the things that I’m passionate about and excited to share with others? What value can I provide back to the community?
+
+### The Future
+
+I want this to be a place that grows with me and hopefully helps others on their journey. I don’t have an answer to how I’ll go about doing everything yet and expect some iterations, but for now, I’m happy with the starting point.
+
+If you have any questions, feedback or suggestions for this site, feel free to reach out to me on [Twitter](https://twitter.com/delba_oliveira) or [Github](https://github.com/delbaoliveira/website). I’d love to meet you!
