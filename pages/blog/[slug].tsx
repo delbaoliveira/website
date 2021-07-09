@@ -6,11 +6,10 @@ import { components } from "@/ui/MdxComponents"
 import { format, parseISO } from "date-fns"
 import { getMDXComponent } from "mdx-bundler/client"
 import { GetStaticProps } from "next"
+import { NextSeo } from "next-seo"
 import Image from "next/image"
 import React from "react"
 import type { Post } from "types/post"
-import { NextSeo } from "next-seo"
-import { MenuAlt1Icon } from "@heroicons/react/solid"
 
 export const getStaticPaths = () => {
   const posts = getAllPostsMeta()
@@ -39,7 +38,7 @@ export default function PostPage({ meta, code }: Post) {
       <NextSeo
         title={`${meta.title} • Delba de Oliveira`}
         description={meta.description}
-        canonical="https://www.delbaoliveira.com/"
+        canonical={`https://www.delbaoliveira.com/blog/${meta.slug}`}
         openGraph={{
           type: "website",
           url: `https://www.delbaoliveira.com/blog/${meta.slug}`,
@@ -80,9 +79,12 @@ export default function PostPage({ meta, code }: Post) {
             <div>{format(parseISO(meta.publishedAt), "MMMM dd, yyyy")}</div>
           </div>
 
-          <div className="mt-10 overflow-hidden rounded-2xl text-[0px]">
-            <Image src={`/${meta.image}`} width={1920} height={960} />
-          </div>
+          {meta.image ? (
+            <div className="mt-10 overflow-hidden rounded-2xl text-[0px]">
+              <Image src={`/${meta.image}`} width={1920} height={960} />
+            </div>
+          ) : null}
+
           <div className="mt-10 text-gray-900">
             <Component components={components as any} />
           </div>
