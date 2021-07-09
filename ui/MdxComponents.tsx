@@ -3,6 +3,7 @@ import { LikeButton } from "@/ui/LikeButton"
 import { LinkPreview } from "@/ui/LinkPreview"
 import { Playground } from "@/ui/Playground"
 import { ThemeSelect } from "@/ui/ThemeSelect"
+import { HeroDemo } from "@/ui/blog/HeroDemo"
 import NextImage from "next/image"
 import NextLink from "next/link"
 import React from "react"
@@ -15,20 +16,18 @@ export const components = {
   LinkPreview,
   Button,
   ThemeSelect,
+  HeroDemo,
   h1: (props: any) => (
-    <h1
-      className="mt-8 mb-4 text-4xl font-extrabold text-gray-900"
-      {...props}
-    />
+    <h1 className="mt-8 mb-4 text-4xl font-bold text-gray-800" {...props} />
   ),
   h2: (props: any) => (
-    <h2 className="mt-8 mb-3 text-3xl font-bold text-gray-900" {...props} />
+    <h2 className="mt-8 mb-3 text-2xl font-bold text-gray-800" {...props} />
   ),
   h3: (props: any) => (
-    <h3 className="mt-8 mb-5 text-2xl font-semibold text-gray-900" {...props} />
+    <h3 className="mt-8 mb-5 text-xl font-bold text-gray-800" {...props} />
   ),
   h4: (props: any) => (
-    <h4 className="mt-6 mb-5 text-lg font-semibold text-gray-900" {...props} />
+    <h4 className="mt-6 mb-5 text-lg font-bold text-gray-800" {...props} />
   ),
   p: (props: any) => <p className="mb-5 leading-7 text-gray-800" {...props} />,
   a: ({ href = "", ...props }) => {
@@ -60,19 +59,19 @@ export const components = {
     )
   },
   hr: (props: any) => <hr {...props} />,
-  ul: (props: any) => (
-    <ul
-      className="mb-4 leading-relaxed text-gray-800 list-disc list-inside"
-      {...props}
-    />
-  ),
+  ul: (props: any) => <ul className="mb-6" {...props} />,
   ol: (props: any) => (
     <ol
       className="pl-10 my-12 leading-7 text-gray-800 list-decimal"
       {...props}
     />
   ),
-  li: (props: any) => <li className="mt-2" {...props} />,
+  li: (props: any) => (
+    <li
+      className="relative pl-7 my-3 before:absolute before:bg-gray-300 before:rounded-full before:w-1.5 before:h-1.5 before:left-1 before:top-2"
+      {...props}
+    />
+  ),
   strong: (props: any) => <strong className="font-semibold" {...props} />,
   Image: ({ children, ...props }: { children: React.ReactNode }) => (
     <figure className="my-5">
