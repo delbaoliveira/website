@@ -83,7 +83,7 @@ export default function PostPage({ meta, code }: Post) {
           <div className="mt-10 overflow-hidden rounded-2xl text-[0px]">
             <Image src={`/${meta.image}`} width={1920} height={960} />
           </div>
-          <div className="mt-10">
+          <div className="mt-10 text-gray-900">
             <Component components={components as any} />
           </div>
 

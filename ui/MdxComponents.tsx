@@ -18,18 +18,14 @@ export const components = {
   ThemeSelect,
   HeroDemo,
   h1: (props: any) => (
-    <h1 className="mt-8 mb-4 text-4xl font-bold text-gray-800" {...props} />
+    <h1 className="mt-8 mb-4 text-4xl font-bold" {...props} />
   ),
   h2: (props: any) => (
-    <h2 className="mt-8 mb-3 text-2xl font-bold text-gray-800" {...props} />
+    <h2 className="mt-8 mb-3 text-2xl font-bold" {...props} />
   ),
-  h3: (props: any) => (
-    <h3 className="mt-8 mb-5 text-xl font-bold text-gray-800" {...props} />
-  ),
-  h4: (props: any) => (
-    <h4 className="mt-6 mb-5 text-lg font-bold text-gray-800" {...props} />
-  ),
-  p: (props: any) => <p className="mb-5 leading-7 text-gray-800" {...props} />,
+  h3: (props: any) => <h3 className="mt-8 mb-5 text-xl font-bold" {...props} />,
+  h4: (props: any) => <h4 className="mt-6 mb-5 text-lg font-bold" {...props} />,
+  p: (props: any) => <p className="mb-5 leading-7" {...props} />,
   a: ({ href = "", ...props }) => {
     if (href.startsWith("http")) {
       return (
@@ -61,10 +57,7 @@ export const components = {
   hr: (props: any) => <hr {...props} />,
   ul: (props: any) => <ul className="mb-6" {...props} />,
   ol: (props: any) => (
-    <ol
-      className="pl-10 my-12 leading-7 text-gray-800 list-decimal"
-      {...props}
-    />
+    <ol className="pl-10 my-12 leading-7 list-decimal" {...props} />
   ),
   li: (props: any) => (
     <li
@@ -106,7 +99,7 @@ export const components = {
   },
   code: ({ children }: { children: React.ReactNode }) => {
     return (
-      <code className="px-1.5 py-0.5 text-sm font-mono font-medium text-gray-800 bg-sky-100 rounded-md">
+      <code className="px-1.5 py-0.5 text-sm font-mono font-medium bg-sky-100 rounded-md">
         {children}
       </code>
     )
