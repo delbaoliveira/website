@@ -2,7 +2,11 @@ import { FOCUS_VISIBLE_OUTLINE } from "@/lib/constants"
 import cx from "clsx"
 import Link from "next/link"
 import React from "react"
-import { AiOutlineTwitter, AiOutlineGithub } from "react-icons/ai"
+import {
+  AiOutlineTwitter,
+  AiOutlineGithub,
+  AiFillYoutube,
+} from "react-icons/ai"
 
 export const Navigation = () => {
   return (
@@ -19,30 +23,32 @@ export const Navigation = () => {
           </a>
         </Link>
 
-        <div className="flex items-center -ml-5 text-gray-900 lg:-ml-8">
-          <Link href="/#about">
-            <a
-              className={cx(
-                "font-medium block transition-colors mt-1.5 lg:mt-0 lg:ml-8 ml-5 hover:text-sky-500",
-                FOCUS_VISIBLE_OUTLINE,
-              )}
-            >
-              About
-            </a>
-          </Link>
+        <div className="flex items-center justify-between space-x-8 text-gray-900 md:justify-start">
+          <div className="flex space-x-4">
+            <Link href="/#about">
+              <a
+                className={cx(
+                  "font-medium block transition-colors hover:text-sky-500",
+                  FOCUS_VISIBLE_OUTLINE,
+                )}
+              >
+                About
+              </a>
+            </Link>
 
-          <Link href="/blog">
-            <a
-              className={cx(
-                "font-medium block transition-colors mt-1.5 lg:mt-0 lg:ml-8 ml-5 hover:text-sky-500",
-                FOCUS_VISIBLE_OUTLINE,
-              )}
-            >
-              Blog
-            </a>
-          </Link>
+            <Link href="/blog">
+              <a
+                className={cx(
+                  "font-medium block transition-colors hover:text-sky-500",
+                  FOCUS_VISIBLE_OUTLINE,
+                )}
+              >
+                Blog
+              </a>
+            </Link>
+          </div>
 
-          <p className="flex pl-6 space-x-3 text-xl">
+          <p className="flex space-x-3 text-xl">
             <a
               href="https://twitter.com/delba_oliveira"
               className={cx(
@@ -51,8 +57,19 @@ export const Navigation = () => {
               )}
               target="_blank"
             >
-              <AiOutlineTwitter></AiOutlineTwitter>
+              <AiOutlineTwitter />
             </a>
+            <a
+              href="https://www.youtube.com/c/delba"
+              className={cx(
+                "transition-colors text-gray-900 hover:text-sky-500 cursor-pointer",
+                FOCUS_VISIBLE_OUTLINE,
+              )}
+              target="_blank"
+            >
+              <AiFillYoutube />
+            </a>
+
             <a
               href="https://github.com/delbaoliveira"
               className={cx(
@@ -61,7 +78,7 @@ export const Navigation = () => {
               )}
               target="_blank"
             >
-              <AiOutlineGithub></AiOutlineGithub>{" "}
+              <AiOutlineGithub />
             </a>
           </p>
         </div>

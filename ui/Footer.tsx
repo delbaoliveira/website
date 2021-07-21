@@ -20,6 +20,15 @@ export const Footer = () => {
               Twitter
             </a>
             <a
+              href="https://www.youtube.com/c/delba"
+              className={cx(
+                "transition-colors hover:text-sky-500 focus:text-sky-500 rounded",
+                FOCUS_VISIBLE_OUTLINE,
+              )}
+            >
+              YouTube
+            </a>
+            <a
               href="https://github.com/delbaoliveira"
               className={cx(
                 "transition-colors hover:text-sky-500 focus:text-sky-500 rounded",
@@ -27,24 +36,6 @@ export const Footer = () => {
               )}
             >
               Github
-            </a>
-            <a
-              href="https://www.linkedin.com/in/delbaoliveira/"
-              className={cx(
-                "transition-colors hover:text-sky-500 focus:text-sky-500 rounded",
-                FOCUS_VISIBLE_OUTLINE,
-              )}
-            >
-              Linkedin
-            </a>
-            <a
-              href="https://www.instagram.com/delba.oliveira/"
-              className={cx(
-                "transition-colors hover:text-sky-500 focus:text-sky-500 rounded",
-                FOCUS_VISIBLE_OUTLINE,
-              )}
-            >
-              Instagram
             </a>
           </div>
         </div>
