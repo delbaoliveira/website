@@ -1,6 +1,6 @@
 import { getAllPostsMeta } from "@/lib/mdx"
-import { BlogPreview } from "@/ui/BlogPreview"
 import { Layout } from "@/ui/Layout"
+import { PostPreview } from "@/ui/PostPreview"
 import React from "react"
 import type { PostMeta } from "types/post"
 
@@ -19,7 +19,12 @@ export default function BlogPage({ posts }: { posts: PostMeta[] }) {
         </h4>
         <div className="mt-8 space-y-8">
           {posts.map((post) => (
-            <BlogPreview key={post.slug} post={post} />
+            <div
+              key={post.slug}
+              className="mt-6 sm:grid sm:grid-cols-2 sm:gap-10"
+            >
+              <PostPreview post={post} />
+            </div>
           ))}
         </div>
       </div>
