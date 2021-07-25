@@ -5,7 +5,7 @@ import React from "react"
 
 export const Navigation = () => {
   return (
-    <div className="sticky top-0 z-10 py-2 bg-white md:py-6 md:mb-6">
+    <div className="sticky top-0 z-20 py-2 bg-white md:py-6 md:mb-6">
       <div className="container px-4 mx-auto lg:max-w-4xl md:flex md:items-center md:justify-between">
         <Link href="/">
           <a
