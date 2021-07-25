@@ -14,10 +14,7 @@ export const LinkPreview = ({
   children: React.ReactNode
   url: string
 }) => {
-  const { theme, systemTheme } = useTheme()
-
-  const isDark =
-    theme === "dark" || (theme === "system" && systemTheme === "dark")
+  const { resolvedTheme } = useTheme()
 
   const width = 200
   const height = 125
@@ -32,7 +29,7 @@ export const LinkPreview = ({
 
     // Capture the external site in dark mode if the current user prefers dark
     // mode and the external site uses a `prefers-color-scheme` based solution.
-    colorScheme: isDark ? "dark" : "light",
+    colorScheme: resolvedTheme,
     "viewport.isMobile": true,
 
     // To capture useful content, the screenshot viewport needs to be bigger
