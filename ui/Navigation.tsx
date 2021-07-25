@@ -2,11 +2,6 @@ import { FOCUS_VISIBLE_OUTLINE } from "@/lib/constants"
 import cx from "clsx"
 import Link from "next/link"
 import React from "react"
-import {
-  AiOutlineTwitter,
-  AiOutlineGithub,
-  AiFillYoutube,
-} from "react-icons/ai"
 
 export const Navigation = () => {
   return (
@@ -23,64 +18,57 @@ export const Navigation = () => {
           </a>
         </Link>
 
-        <div className="flex items-center justify-between space-x-8 text-gray-900 md:justify-start">
-          <div className="flex space-x-4">
-            <Link href="/#about">
-              <a
-                className={cx(
-                  "font-medium block transition-colors hover:text-sky-500",
-                  FOCUS_VISIBLE_OUTLINE,
-                )}
-              >
-                About
-              </a>
-            </Link>
-
-            <Link href="/blog">
-              <a
-                className={cx(
-                  "font-medium block transition-colors hover:text-sky-500",
-                  FOCUS_VISIBLE_OUTLINE,
-                )}
-              >
-                Blog
-              </a>
-            </Link>
-          </div>
-
-          <p className="flex space-x-3 text-xl">
+        <div className="flex space-x-4 font-medium text-gray-800">
+          <Link href="/#about">
             <a
-              href="https://twitter.com/delba_oliveira"
               className={cx(
-                "transition-colors text-gray-900 hover:text-sky-500 cursor-pointer",
+                "transition-colors hover:text-sky-500",
                 FOCUS_VISIBLE_OUTLINE,
               )}
-              target="_blank"
             >
-              <AiOutlineTwitter />
+              About
             </a>
+          </Link>
+          <Link href="/blog">
             <a
-              href="https://www.youtube.com/c/delba"
               className={cx(
-                "transition-colors text-gray-900 hover:text-sky-500 cursor-pointer",
+                "transition-colors hover:text-sky-500",
                 FOCUS_VISIBLE_OUTLINE,
               )}
-              target="_blank"
             >
-              <AiFillYoutube />
+              Blog
             </a>
+          </Link>
 
-            <a
-              href="https://github.com/delbaoliveira"
-              className={cx(
-                "transition-colors text-gray-900 hover:text-sky-500 cursor-pointer",
-                FOCUS_VISIBLE_OUTLINE,
-              )}
-              target="_blank"
-            >
-              <AiOutlineGithub />
-            </a>
-          </p>
+          <div className="text-gray-300">&bull;</div>
+
+          <a
+            href="https://twitter.com/delba_oliveira"
+            className={cx(
+              "transition-colors hover:text-sky-500",
+              FOCUS_VISIBLE_OUTLINE,
+            )}
+          >
+            Twitter
+          </a>
+          <a
+            href="https://www.youtube.com/c/delba"
+            className={cx(
+              "transition-colors hover:text-sky-500",
+              FOCUS_VISIBLE_OUTLINE,
+            )}
+          >
+            YouTube
+          </a>
+          <a
+            href="https://github.com/delbaoliveira"
+            className={cx(
+              "transition-colors hover:text-sky-500",
+              FOCUS_VISIBLE_OUTLINE,
+            )}
+          >
+            GitHub
+          </a>
         </div>
       </div>
     </div>
