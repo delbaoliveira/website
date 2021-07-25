@@ -19,6 +19,7 @@
     "@tailwindcss/line-clamp": "^0.2.1",
     "clsx": "^1.1.1",
     "date-fns": "^2.21.3",
+    "fathom-client": "^3.1.0",
     "framer-motion": "^4.1.17",
     "glob": "^7.1.7",
     "gray-matter": "^4.0.3",
