@@ -8,7 +8,7 @@ export const useAnalytics = () => {
   useEffect(() => {
     if (process.env.NODE_ENV === "production") {
       Fathom.load(process.env.NEXT_PUBLIC_FATHOM_SITE_ID!, {
-        url: "iguana.delbaoliveira.com",
+        url: "//iguana.delbaoliveira.com",
         includedDomains: ["www.delbaoliveira.com"],
       })
     }
