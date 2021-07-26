@@ -22,5 +22,5 @@ export const useAnalytics = () => {
     return () => {
       router.events.off("routeChangeComplete", onRouteChangeComplete)
     }
-  }, [])
+  }, [router.events])
 }
