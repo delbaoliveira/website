@@ -1,4 +1,16 @@
 module.exports = {
+  async rewrites() {
+    return [
+      {
+        source: "/iguana/js/script.js",
+        destination: "https://plausible.io/js/plausible.js",
+      },
+      {
+        source: "/iguana/api/event",
+        destination: "https://plausible.io/api/event",
+      },
+    ]
+  },
   async redirects() {
     return [
       {
