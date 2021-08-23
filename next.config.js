@@ -2,6 +2,11 @@ module.exports = {
   async redirects() {
     return [
       {
+        source: "/challenge-02",
+        destination: "/blog/a-like-button-that-likes-you-back",
+        permanent: true,
+      },
+      {
         source: "/challenge",
         destination: "/#projects",
         permanent: true,

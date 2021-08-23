@@ -1,13 +1,14 @@
 ---
-title: "02: A like button that likes you back"
+title: "A like button that likes you back"
 description: "Inspired by Josh Comeau, I've recreated a like button that delightfully animates and persists state to a database."
 publishedAt: "2021-05-26"
-image: "like-button.gif"
+category: "post"
 source: "https://github.com/delbaoliveira/website/blob/main/ui/LikeButton.tsx"
+image: "blog/a-like-button-that-likes-you-back.png"
 ---
 
 <Playground description="What we're building today">
-  <LikeButton id="day-02-example" />
+  <LikeButton id="a-like-button-that-likes-you-back" />
 </Playground>
 
 I'm a big fan of <LinkPreview url="https://www.joshwcomeau.com/">Josh Comeau's work</LinkPreview>. The like button on his blog is one of the most delightful UI elements I've come across. It's also a deceptively complex component (I honestly thought I could re-implement it in an hour, haha) that contains an SVG, sounds, mouse tracking, animations and of course, exploding confetti. 🎉
@@ -41,7 +42,7 @@ We can make things a little more playful and show our appreciation for the user 
 ### Persisting state
 
 <Playground description="This component persists data, like and refresh the page to see it.">
-  <LikeButton id="day-02-final" />
+  <LikeButton id="a-like-button-that-likes-you-back-db" />
 </Playground>
 
 A like button is not very useful if users can't see each other's likes or the like count is lost whenever the user leaves the page.
