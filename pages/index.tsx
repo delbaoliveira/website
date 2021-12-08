@@ -1,76 +1,104 @@
 import { getAllPostsMeta } from "@/lib/mdx"
-import { About } from "@/ui/About"
+import { videos } from "@/lib/videos"
+import { ContentLink } from "@/ui/ContentLink"
 import { Layout } from "@/ui/Layout"
-import { MediaPreview } from "@/ui/MediaPreview"
-import { PostPreview } from "@/ui/PostPreview"
-import { InferGetStaticPropsType } from "next"
+import { Navigation } from "@/ui/Navigation"
+import { ProfileImage } from "@/ui/ProfileImage"
+import AnnotationIcon from "@heroicons/react/solid/AnnotationIcon"
+import VideoCameraIcon from "@heroicons/react/solid/VideoCameraIcon"
+import type { InferGetStaticPropsType } from "next"
 import React from "react"
+import { useIntersection } from "react-use"
 
 export const getStaticProps = async () => {
   const posts = getAllPostsMeta("post")
   return { props: { posts } }
 }
 
-const videos = [
-  {
-    title: "My Story & How I Became a Developer without a Degree",
-    image: "/blog/nqLNe92yIqw.png",
-    url: "https://www.youtube.com/watch?v=nqLNe92yIqw",
-    text: "The story of how I dropped out of medical school, left home at 18, and eventually learned how to code. It spans 3 countries and a decade, it's been a long journey with a few detours, but I eventually found my career path.",
-  },
-  {
-    title:
-      "How I Built the Portfolio That Landed Me a Dev Role (Tech Stack Explained)",
-    image: "/blog/zl9iXZrw_dw.png",
-    url: "https://www.youtube.com/watch?v=zl9iXZrw_dw",
-    text: "In this video, I go through how I built the website/portfolio that helped me land my first developer role at one of my dream companies.",
-  },
-]
-
 export default function Home({
   posts,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
+  const intersectionRef = React.useRef(null)
+  const intersection = useIntersection(intersectionRef, {
+    root: null,
+  })
+
+  let showNav = false
+  if (intersection && !intersection.isIntersecting) {
+    showNav = true
+  }
+
   return (
-    <Layout>
-      <div className="space-y-14 lg:space-y-24">
-        <div id="about">
-          <About />
+    <Layout showNav={showNav}>
+      <div className="mt-14 sm:mt-32 space-y-14 sm:space-y-32">
+        <div id="about" ref={intersectionRef}>
+          <div className="space-y-12">
+            <div className="flex items-center space-x-6">
+              <ProfileImage size="large" />
+
+              <div>
+                <h1 className="text-4xl font-medium text-rose-50/80">Delba</h1>
+                <h2 className="text-lg text-rose-100/60">
+                  Developer Advocate at Vercel
+                </h2>
+              </div>
+            </div>
+
+            <p className="text-xl text-rose-50/80">
+              Welcome to my digital garden where I share what I'm learning about
+              shipping great products, becoming a better developer and growing a
+              career in tech.
+            </p>
+
+            <Navigation />
+          </div>
         </div>
 
         <div id="reel">
-          <div className="container px-4 mx-auto">
-            <h2 className="text-2xl font-bold text-gray-800">Recent Videos</h2>
-            <h4 className="mt-2 text-gray-500">
-              Videos on what I'm building and learning.
-            </h4>
-            <div className="sm:grid sm:grid-cols-2 sm:gap-10">
-              {videos.map((video) => (
-                <div key={video.url} className="mt-10">
-                  <MediaPreview
-                    type="youtube"
-                    url={video.url}
-                    title={video.title}
-                    text={video.text}
-                    image={video.image}
-                  />
-                </div>
+          <div className="">
+            <div className="flex items-center space-x-4">
+              <div className="p-2 bg-gray-900 rounded-2xl shadow-surface-elevation-low">
+                <VideoCameraIcon className="w-6 text-gray-600/90" />
+              </div>
+
+              <div>
+                <h2 className="text-2xl text-gray-500/90">Videos</h2>
+              </div>
+            </div>
+            <div className="mt-12 space-y-10">
+              {videos.map((post) => (
+                <ContentLink
+                  key={post.url}
+                  title={post.title}
+                  text={post.description}
+                  href={post.url}
+                  meta={[post.category, post.date]}
+                />
               ))}
             </div>
           </div>
         </div>
 
         <div id="blog">
-          <div className="container px-4 mx-auto">
-            <h2 className="text-2xl font-bold text-gray-800">Recent Posts</h2>
-            <h4 className="mt-2 text-gray-500">
-              Thoughts on what I'm building and learning.
-            </h4>
+          <div className="">
+            <div className="flex items-center space-x-4">
+              <div className="p-2 bg-gray-900 rounded-2xl shadow-surface-elevation-low">
+                <AnnotationIcon className="w-6 text-gray-600/90" />
+              </div>
 
-            <div className="sm:grid sm:grid-cols-2 sm:gap-10">
+              <div>
+                <h2 className="text-2xl text-gray-500/90">Posts</h2>
+              </div>
+            </div>
+            <div className="mt-12 space-y-10">
               {posts.map((post) => (
-                <div key={post.slug} className="mt-10">
-                  <PostPreview post={post} />
-                </div>
+                <ContentLink
+                  key={post.slug}
+                  title={post.title}
+                  text={post.description}
+                  href={`/blog/${post.slug}`}
+                  meta={[post.publishedAtFormatted]}
+                />
               ))}
             </div>
           </div>

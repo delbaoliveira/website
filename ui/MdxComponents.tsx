@@ -1,37 +1,33 @@
-import { Button } from "@/ui/Button"
-import { LikeButton } from "@/ui/LikeButton"
+import { FOCUS_VISIBLE_OUTLINE } from "@/lib/constants"
 import { LinkPreview } from "@/ui/LinkPreview"
 import { Playground } from "@/ui/Playground"
-import { ThemeSelect } from "@/ui/ThemeSelect"
-import { HeroDemo } from "@/ui/blog/HeroDemo"
+import cx from "clsx"
 import NextImage from "next/image"
 import NextLink from "next/link"
 import React from "react"
-import { FOCUS_VISIBLE_OUTLINE } from "@/lib/constants"
-import cx from "clsx"
 
 export const components = {
-  LikeButton,
   Playground,
   LinkPreview,
-  Button,
-  ThemeSelect,
-  HeroDemo,
   h1: (props: any) => (
-    <h1 className="mt-8 mb-4 text-4xl font-bold" {...props} />
+    <h1 className="mt-8 mb-4 text-5xl font-medium" {...props} />
   ),
   h2: (props: any) => (
-    <h2 className="mt-8 mb-3 text-2xl font-bold" {...props} />
+    <h2 className="mt-8 mb-3 text-3xl font-medium" {...props} />
   ),
-  h3: (props: any) => <h3 className="mt-8 mb-5 text-xl font-bold" {...props} />,
-  h4: (props: any) => <h4 className="mt-6 mb-5 text-lg font-bold" {...props} />,
+  h3: (props: any) => (
+    <h3 className="mt-8 mb-5 text-xl font-medium" {...props} />
+  ),
+  h4: (props: any) => (
+    <h4 className="mt-6 mb-5 text-lg font-medium" {...props} />
+  ),
   p: (props: any) => <p className="mb-5 leading-7" {...props} />,
   a: ({ href = "", ...props }) => {
     if (href.startsWith("http")) {
       return (
         <a
           className={cx(
-            "font-medium transition-colors text-sky-500 hover:text-sky-700",
+            "transition-colors text-fuchsia-300/90 hover:text-purple-500/90",
             FOCUS_VISIBLE_OUTLINE,
           )}
           href={href}
@@ -46,7 +42,7 @@ export const components = {
       <NextLink href={href} passHref>
         <a
           className={cx(
-            "font-medium transition-colors text-sky-500 hover:text-sky-700",
+            "transition-colors text-fuchsia-300/90 hover:text-purple-500/90",
             FOCUS_VISIBLE_OUTLINE,
           )}
           {...props}
@@ -61,7 +57,7 @@ export const components = {
   ),
   li: (props: any) => (
     <li
-      className="relative pl-7 my-3 before:absolute before:bg-gray-300 before:rounded-full before:w-1.5 before:h-1.5 before:left-1 before:top-2"
+      className="relative pl-7 my-3 before:absolute before:bg-gray-600 before:rounded-full before:w-1.5 before:h-1.5 before:left-1 before:top-3"
       {...props}
     />
   ),
@@ -99,7 +95,7 @@ export const components = {
   },
   code: ({ children }: { children: React.ReactNode }) => {
     return (
-      <code className="px-1.5 py-0.5 text-sm font-mono font-medium bg-sky-100 rounded-md">
+      <code className="px-2 py-0.5 text-sm font-mono bg-gray-700/60 text-gray-300/90 rounded-md">
         {children}
       </code>
     )

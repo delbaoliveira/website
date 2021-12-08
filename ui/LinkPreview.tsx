@@ -1,5 +1,6 @@
-import { FOCUS_VISIBLE_OUTLINE, GRADIENT_LINK } from "@/lib/constants"
+import { FOCUS_VISIBLE_OUTLINE } from "@/lib/constants"
 import { Portal, Transition } from "@headlessui/react"
+import DotsCircleHorizontalIcon from "@heroicons/react/solid/DotsCircleHorizontalIcon"
 import * as HoverCardPrimitive from "@radix-ui/react-hover-card"
 import cx from "clsx"
 import { useTheme } from "next-themes"
@@ -81,9 +82,14 @@ export const LinkPreview = ({
       >
         <HoverCardPrimitive.Trigger
           href={url}
-          className={cx(GRADIENT_LINK, FOCUS_VISIBLE_OUTLINE)}
+          className={cx(
+            "inline-flex transition-colors text-rose-300/90 hover:text-rose-400/90",
+            FOCUS_VISIBLE_OUTLINE,
+          )}
         >
           {children}
+
+          <DotsCircleHorizontalIcon className="w-4 ml-0.5" />
         </HoverCardPrimitive.Trigger>
 
         <HoverCardPrimitive.Content side="top" align="center" sideOffset={10}>
@@ -97,7 +103,7 @@ export const LinkPreview = ({
           >
             <a
               href={url}
-              className="block p-1 bg-white border border-transparent shadow rounded-xl hover:border-pink-500"
+              className="block p-1 bg-white border-2 border-transparent shadow rounded-xl hover:border-rose-500"
               style={{ fontSize: 0 }}
             >
               <Image

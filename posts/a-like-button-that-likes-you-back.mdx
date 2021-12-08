@@ -3,8 +3,6 @@ title: "A like button that likes you back"
 description: "Inspired by Josh Comeau, I've recreated a like button that delightfully animates and persists state to a database."
 publishedAt: "2021-05-26"
 category: "post"
-source: "https://github.com/delbaoliveira/website/blob/main/ui/LikeButton.tsx"
-image: "blog/a-like-button-that-likes-you-back.png"
 ---
 
 <Playground description="What we're building today">
@@ -19,7 +17,8 @@ I started by writing down everything I noticed with Josh's component and ended u
 
 Although I didn't have the time to recreate everything, I thought I'd try to get the basic functionality down and maybe add some animations. Here's how my version works:
 
-import { LikeButtonDemo } from "../ui/challenge/LikeButtonDemo"
+import { LikeButtonDemo } from "../ui/playgrounds/LikeButtonDemo"
+import { LikeButton } from "../ui/LikeButton"
 
 ### The Heart
 
@@ -74,7 +73,3 @@ To complete the circle, when the user first loads the page, we send a `GET` requ
 ### Conclusion
 
 Not quite Josh Comeau level, but I had fun nonetheless. Comparing my solution to Josh's really shows how you can keep pushing even the most simple UI elements to the next level until they are a joy and delight to use.
-
-P.s. If you have any ideas of what UI element I can tackle next for my 30 day challenge let me know on [Twitter](https://twitter.com/delba_oliveira).
-
-You can find the source code [here](https://github.com/delbaoliveira/website/blob/main/ui/LikeButton.tsx) and... if you liked this post. Give it a like (or 3) 🙃

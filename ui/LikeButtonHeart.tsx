@@ -46,12 +46,11 @@ export const LikeButtonHeart = ({
       ) : null}
 
       {/* Heart SVG */}
-      <motion.svg
-        viewBox="0 0 20 20"
-        className={isLarge ? "w-20" : "w-12"}
+      <motion.div
         // Grow heart from center
         style={{ originX: "50%", originY: "50%" }}
         // Animated onHover and onClick
+        className="p-[2px] bg-white/20 rounded-xl"
         whileHover="hover"
         whileTap="active"
         variants={{
@@ -63,56 +62,54 @@ export const LikeButtonHeart = ({
           },
         }}
       >
-        <defs>
-          {/* Gradient definition */}
-          <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop
-              offset="0%"
-              style={{ stopColor: "#FACC15", stopOpacity: 1 }}
-            />
-            <stop
-              offset="50%"
-              style={{ stopColor: "#EF4444", stopOpacity: 1 }}
-            />
-            <stop
-              offset="100%"
-              style={{ stopColor: "#EC4899", stopOpacity: 1 }}
-            />
-          </linearGradient>
+        <svg viewBox="0 0 20 20" className={isLarge ? "w-20" : "w-12"}>
+          <defs>
+            {/* Gradient definition */}
+            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop
+                offset="20%"
+                style={{ stopColor: "rgb(251, 113, 133)", stopOpacity: 1 }}
+              />
+              <stop
+                offset="80%"
+                style={{ stopColor: "rgb(139, 92, 246)", stopOpacity: 1 }}
+              />
+            </linearGradient>
 
-          {/* Heart shape mask definition */}
-          <mask id="mask" mask-type="alpha" maskUnits="userSpaceOnUse">
-            <path d={HEART_PATH} />
-          </mask>
-        </defs>
+            {/* Heart shape mask definition */}
+            <mask id="mask" mask-type="alpha" maskUnits="userSpaceOnUse">
+              <path d={HEART_PATH} />
+            </mask>
+          </defs>
 
-        {/* Wrap children in the mask */}
-        <g mask="url(#mask)">
-          {/* Heart background */}
-          <rect width={20} height={20} fill="#E5E7EB" />
+          {/* Wrap children in the mask */}
+          <g mask="url(#mask)">
+            {/* Heart background */}
+            <rect width={20} height={20} fill="#0e0c0b" />
 
-          {/* Heart gradient fill */}
-          <motion.rect
-            fill="url(#gradient)"
-            width={16}
-            height={16}
-            x={2}
-            y={2}
-            // `animate` passes a stringified `like` to the variants map below
-            animate={String(likes)}
-            // Move gradient up or down depending on number of likes
-            variants={{
-              // 0 likes
-              "0": { translateY: 17 },
-              // 1 like etc
-              "1": { translateY: 12 },
-              "2": { translateY: 8 },
-              "3": { translateY: 1 },
-            }}
-            initial="0"
-          />
-        </g>
-      </motion.svg>
+            {/* Heart gradient fill */}
+            <motion.rect
+              fill="url(#gradient)"
+              width={16}
+              height={16}
+              x={2}
+              y={2}
+              // `animate` passes a stringified `like` to the variants map below
+              animate={String(likes)}
+              // Move gradient up or down depending on number of likes
+              variants={{
+                // 0 likes
+                "0": { translateY: 17 },
+                // 1 like etc
+                "1": { translateY: 12 },
+                "2": { translateY: 8 },
+                "3": { translateY: 1 },
+              }}
+              initial="0"
+            />
+          </g>
+        </svg>
+      </motion.div>
     </div>
   )
 }
