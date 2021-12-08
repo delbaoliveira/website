@@ -15,7 +15,7 @@
     "@radix-ui/react-hover-card": "^0.1.1",
     "clsx": "^1.1.1",
     "date-fns": "^2.27.0",
-    "fathom-client": "^3.1.0",
+    "fathom-client": "^3.2.0",
     "framer-motion": "^5.4.3",
     "glob": "^7.1.7",
     "gray-matter": "^4.0.3",

@@ -8,8 +8,8 @@ export const useAnalytics = () => {
   useEffect(() => {
     if (process.env.NODE_ENV === "production") {
       Fathom.load(process.env.NEXT_PUBLIC_FATHOM_SITE_ID!, {
-        url: "https://iguana.delbaoliveira.com/script.js",
-        includedDomains: ["www.delbaoliveira.com"],
+        url: "https://iguana.delba.dev/script.js",
+        includedDomains: ["www.delbaoliveira.com", "delba.dev"],
       })
     }
 

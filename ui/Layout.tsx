@@ -25,13 +25,13 @@ export const Layout = ({
       <div className="sticky z-30 w-full h-[72px] px-4 mx-auto sm:h-16 top-6 sm:max-w-screen-sm">
         <Transition
           show={showNav}
-          enter="duration-300 ease-out"
+          className="px-4 h-full sm:px-6 bg-white/[3%] shadow-surface-glass backdrop-filter backdrop-blur rounded-2xl flex items-center justify-between firefox:bg-gray-900 firefox:bg-opacity-90"
+          enter="transition duration-100 ease-in-out"
           enterFrom="opacity-0 scale-90"
           enterTo="opacity-100 scale-100"
-          leave="ease-out"
+          leave="transition ease-in-out"
           leaveFrom="opacity-100 scale-100"
           leaveTo="opacity-0 scale-95"
-          className="transform scale-100 transition px-4 h-full sm:px-6 bg-white/[3%] shadow-surface-glass backdrop-filter backdrop-blur rounded-2xl flex items-center justify-between firefox:bg-gray-900 firefox:bg-opacity-90"
         >
           <div className="flex items-center space-x-6">
             <Link href="/">
