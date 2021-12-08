@@ -1,6 +1,7 @@
 import { getAllPostsMeta } from "@/lib/mdx"
+import { ContentLink } from "@/ui/ContentLink"
 import { Layout } from "@/ui/Layout"
-import { PostPreview } from "@/ui/PostPreview"
+import AnnotationIcon from "@heroicons/react/solid/AnnotationIcon"
 import React from "react"
 import type { PostMeta } from "types/post"
 
@@ -12,19 +13,25 @@ export function getStaticProps() {
 export default function BlogPage({ posts }: { posts: PostMeta[] }) {
   return (
     <Layout>
-      <div className="container px-4 mx-auto mt-24">
-        <h1 className="text-4xl font-extrabold text-gray-800">Blog</h1>
-        <h4 className="mt-2 text-gray-500">
-          Thoughts on what I'm building and learning.
-        </h4>
-        <div className="mt-8 space-y-8">
+      <div className="mt-32">
+        <div className="flex items-center space-x-4">
+          <div className="p-2 bg-gray-900 rounded-2xl shadow-surface-elevation-low">
+            <AnnotationIcon className="w-6 text-gray-600/90" />
+          </div>
+
+          <div>
+            <h1 className="text-2xl text-gray-500/90">Posts</h1>
+          </div>
+        </div>
+        <div className="mt-12 space-y-10">
           {posts.map((post) => (
-            <div
+            <ContentLink
               key={post.slug}
-              className="mt-6 sm:grid sm:grid-cols-2 sm:gap-10"
-            >
-              <PostPreview post={post} />
-            </div>
+              title={post.title}
+              text={post.description}
+              href={`/blog/${post.slug}`}
+              meta={[post.publishedAtFormatted]}
+            />
           ))}
         </div>
       </div>

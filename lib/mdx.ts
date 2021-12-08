@@ -1,3 +1,4 @@
+import { format, parseISO } from "date-fns"
 import fs from "fs"
 import glob from "glob"
 import matter from "gray-matter"
@@ -27,9 +28,15 @@ export const getAllPostsMeta = (category?: PostMeta["category"]) => {
         // Use gray-matter to extract the post meta from post content
         const data = matter(source).data as PostMeta
 
+        const publishedAtFormatted = format(
+          parseISO(data.publishedAt),
+          "dd MMMM, yyyy",
+        )
+
         return {
           ...data,
           slug,
+          publishedAtFormatted,
         }
       })
 
@@ -54,7 +61,8 @@ export const getPostBySlug = async (slug: string) => {
   // Get the content of the file
   const source = fs.readFileSync(path.join(POSTS_PATH, `${slug}.mdx`), "utf8")
 
-  const { code, frontmatter } = await bundleMDX(source, {
+  const { code, frontmatter } = await bundleMDX({
+    source,
     xdmOptions(options) {
       options.remarkPlugins = [
         ...(options?.remarkPlugins ?? []),
@@ -64,10 +72,20 @@ export const getPostBySlug = async (slug: string) => {
 
       return options
     },
+    esbuildOptions(options) {
+      options.target = "esnext"
+      return options
+    },
   })
+
+  const publishedAtFormatted = format(
+    parseISO(frontmatter.publishedAt),
+    "dd MMMM, yyyy",
+  )
 
   const meta = {
     ...frontmatter,
+    publishedAtFormatted,
     slug,
   } as PostMeta
 

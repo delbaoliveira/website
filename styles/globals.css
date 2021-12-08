@@ -1,34 +1,3 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@layer base {
-  html {
-    /* give titles some breathing room when we scroll to them */
-    scroll-padding-top: 120px;
-  }
-
-  /**
-   * The highlight option of the rough-notation package can sometimes bleed
-   * over adjacent words making them unreadable. Use a negative z-index to
-   * place the highlight svg below text.
-   */
-  .rough-annotation {
-    z-index: -1;
-  }
-
-  .polka-bg-white {
-    background-image: radial-gradient(
-      rgba(255, 255, 255, 0.15) 1px,
-      transparent 1px
-    );
-    background-position: 50%;
-    background-size: 20px 20px;
-  }
-
-  .polka-bg-gray {
-    background-image: radial-gradient(#e4e4e7 1px, transparent 1px);
-    background-position: 50%;
-    background-size: 20px 20px;
-  }
-}

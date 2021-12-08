@@ -1,76 +1,65 @@
 import { FOCUS_VISIBLE_OUTLINE } from "@/lib/constants"
+import TwitterIcon from "@/ui/TwitterIcon"
+import AnnotationIcon from "@heroicons/react/solid/AnnotationIcon"
+import VideoCameraIcon from "@heroicons/react/solid/VideoCameraIcon"
 import cx from "clsx"
 import Link from "next/link"
 import React from "react"
 
 export const Navigation = () => {
   return (
-    <div className="sticky top-0 z-20 py-2 bg-white md:py-6 md:mb-6">
-      <div className="container px-4 mx-auto lg:max-w-4xl md:flex md:items-center md:justify-between">
-        <Link href="/">
-          <a
-            className={cx(
-              "font-medium tracking-wider transition-colors text-gray-900 hover:text-sky-500 uppercase",
-              FOCUS_VISIBLE_OUTLINE,
-            )}
-          >
-            Delba de Oliveira
-          </a>
-        </Link>
+    <div className="flex items-center text-lg leading-none space-x-7 text-rose-100/90">
+      <Link href="/videos">
+        <a
+          className={cx(
+            "transition-colors hover:text-rose-200/90 rounded-lg",
+            FOCUS_VISIBLE_OUTLINE,
+          )}
+        >
+          <div className="sm:items-center sm:space-x-2 sm:flex">
+            <div className="flex justify-center mb-1.5 sm:block sm:mb-0">
+              <div className="p-1 rounded-lg bg-gradient-to-tl from-purple-500/60 to-rose-400/60">
+                <VideoCameraIcon className="w-4 text-rose-50/50" />
+              </div>
+            </div>
+            <div>Videos</div>
+          </div>
+        </a>
+      </Link>
+      <Link href="/blog">
+        <a
+          className={cx(
+            "transition-colors hover:text-rose-200/90 rounded-lg",
+            FOCUS_VISIBLE_OUTLINE,
+          )}
+        >
+          <div className="sm:items-center sm:space-x-2 sm:flex">
+            <div className="flex justify-center mb-1.5 sm:block sm:mb-0">
+              <div className="p-1 rounded-lg bg-gradient-to-tl from-purple-500/60 to-rose-400/60">
+                <AnnotationIcon className="w-4 text-rose-50/50" />
+              </div>
+            </div>
+            <div>Posts</div>
+          </div>
+        </a>
+      </Link>
 
-        <div className="flex space-x-4 font-medium text-gray-800">
-          <Link href="/#about">
-            <a
-              className={cx(
-                "transition-colors hover:text-sky-500",
-                FOCUS_VISIBLE_OUTLINE,
-              )}
-            >
-              About
-            </a>
-          </Link>
-          <Link href="/blog">
-            <a
-              className={cx(
-                "transition-colors hover:text-sky-500",
-                FOCUS_VISIBLE_OUTLINE,
-              )}
-            >
-              Blog
-            </a>
-          </Link>
-
-          <div className="text-gray-300">&bull;</div>
-
-          <a
-            href="https://twitter.com/delba_oliveira"
-            className={cx(
-              "transition-colors hover:text-sky-500",
-              FOCUS_VISIBLE_OUTLINE,
-            )}
-          >
-            Twitter
-          </a>
-          <a
-            href="https://www.youtube.com/c/delba"
-            className={cx(
-              "transition-colors hover:text-sky-500",
-              FOCUS_VISIBLE_OUTLINE,
-            )}
-          >
-            YouTube
-          </a>
-          <a
-            href="https://github.com/delbaoliveira"
-            className={cx(
-              "transition-colors hover:text-sky-500",
-              FOCUS_VISIBLE_OUTLINE,
-            )}
-          >
-            GitHub
-          </a>
+      <a
+        className={cx(
+          "transition-colors hover:text-rose-200/90 rounded-lg",
+          FOCUS_VISIBLE_OUTLINE,
+        )}
+        href="https://twitter.com/delba_oliveira"
+      >
+        <div className="sm:items-center sm:space-x-2 sm:flex">
+          <div className="flex justify-center mb-1.5 sm:block sm:mb-0">
+            <div className="p-1 rounded-lg bg-gradient-to-tl from-purple-500/60 to-rose-400/60">
+              <TwitterIcon className="w-4 text-rose-50/50" />
+            </div>
+          </div>
+          <div>Twitter</div>
         </div>
-      </div>
+      </a>
     </div>
   )
 }

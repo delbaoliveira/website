@@ -1,0 +1,87 @@
+---
+title: "Interactive playgrounds"
+description: "A curated list of docs and articles that are merging the lines between static and interactive content; active and passive learning."
+publishedAt: "2021-12-08"
+category: "post"
+---
+
+In December 2021, I delivered a talk at React Conf about how we could leverage the tools we have at our disposal, such as React and MDX, to introduce more **active** learning experiences to our documentation and articles.
+
+This is a follow-up to that talk. Below, you'll find some background thoughts, a curated list of docs and personal blogs that are merging the lines between static and interactive; passive and active. As well as tools and resources to inspire you to build your own.
+
+## Background
+
+I've always loved reading, but when I was learning to code, I often struggled reading technical docs and articles. I used to think it was because of my lack of experience (which was partly true of course) but now that I'm a Developer Advocate, I'm starting to understand that effective knowledge sharing isn't just dependant on the consumer, it's also up to the creator and how clearly they're able to transfer information.
+
+Regardless of your level of experience, your ability to understand new topics will depend on external factors such as how well and clear the information is presented.
+
+When we were children, we learned through play and interaction. Learning felt effortless when it was fun. But as we have grown older, our learning methods changed; from active (interacting, playing, building) to passive (reading, watching, listening) learning.
+
+As the web emerged as a medium, partly limited by technology and the inherited ideas of the previous medium, we started sharing knowledge through text and images. Technology progressed and we added audio and video to the mix. These certainly have their place, but you may have noticed that they are still passive.
+
+One under-utilised opportunity for active learning the web allows for is interaction. Creating interactive content is both more time consuming and more technically challenging. But if active learning is more effective, I think it's worth a shot.
+
+As developers who are already creating rich and interactive components as part of our applications, we're positioned to create more effective learning experiences through "interactive playgrounds".
+
+## Inspiration
+
+**Docs**
+
+- [React Docs](https://beta.reactjs.org/)
+- [Svelte Tutorial](https://svelte.dev/tutorial/basics)
+
+**Articles**
+
+- ["Build your own React"](https://pomb.us/build-your-own-react/) by [Rodrigo Pombo](https://pomb.us/)
+- ["What does 100% means in CSS?"](https://wattenberger.com/blog/css-percents) by [Amelia Wattenberger](https://wattenberger.com/)
+- ["Waveforms"](https://pudding.cool/2018/02/waveforms/) by [Josh Comeau](https://www.joshwcomeau.com/)
+- ["Making things move"](https://varun.ca/torsions/) by [Varun Vachhar](https://varun.ca/writing)
+- ["Noise in Creative Coding"](https://varun.ca/noise/) by [Varun Vachhar](https://varun.ca/writing)
+- ["Which Blend Mode?"](https://www.ctnicholas.dev/articles/which-blend-mode) by [Chris Nicholas](https://twitter.com/ctnicholasdev)
+- ["Dark Mode by Local Sunlight"](https://www.ctnicholas.dev/articles/dark-mode-by-sunlight) by [Chris Nicholas](https://www.ctnicholas.dev/articles/dark-mode-by-sunlight)
+- ["Moving along a curved path in CSS with layered animation"](https://tobiasahlin.com/blog/curved-path-animations-in-css/) by [Tobias Ahlin](https://tobiasahlin.com/blog/)
+- ["How do array work?"](https://nan.fyi/how-arrays-work) by [Nanda](https://nan.fyi/)
+- ["Lights and Shadows"](https://ciechanow.ski/lights-and-shadows/) by [Bartosz Ciechanowski](https://ciechanow.ski/archives/)
+
+**Collections**
+
+- [Pudding.cool](https://pudding.cool/)
+- [Worrydream](http://worrydream.com/) by [Bret Victor](http://worrydream.com/)
+- [Shtuff](https://ncase.me/projects/) by [Nicky Case](https://ncase.me/)
+- [Explorable Explanations](https://explorabl.es/)
+
+## Tutorials
+
+- [Interactive Documentation at scale using MDX and Next.js](https://www.youtube.com/watch?v=4dqPA4FF15A) - Jeff Escalante
+- [The X in MDX](https://www.youtube.com/watch?v=xEu3t-KJVVg) - Rodrigo Pombo
+- [Markdown/MDX with Next.js](https://nextjs.org/blog/markdown) - Lee Rob
+- [Using MDX with Next.js](https://nextjs.org/docs/advanced-features/using-mdx) - Next.js Docs
+- [Code blocks, but better](https://ped.ro/blog/code-blocks-but-better) - Pedro Duarte
+
+## Tools
+
+**Out-of-the-box solutions:**
+
+- **[Code Hike](https://codehike.org/)** - easily build code tutorials with MDX and React.
+- **[Docusaurus](https://docusaurus.io/)** - quickly build documentation sites.
+- **[Nextra](https://nextra.vercel.app/)** - a Next.js static site generator.
+
+**Custom solutions:**
+
+If you're looking to build your own custom solution, there are a couple of different tools and resources that help with the implementation of MDX.
+
+- **[next/mdx](https://www.npmjs.com/package/@next/mdx)** - allows you to create `.mdx` pages extension inside your Next.js `pages/` folder. [Example](https://github.com/vercel/next.js/tree/canary/examples/with-mdx).
+- **[mdx-loader](https://www.npmjs.com/package/mdx-loader)** - a webpack loader to convert Markdown files into React components. [Example](https://github.com/reactjs/reactjs.org/tree/main/beta).
+- **[next-mdx-remote](https://github.com/hashicorp/next-mdx-remote)** - a set of utilities that allow you to load and hydrate MDX with `getStaticProps()` and `getServerSideProps()`. [Example](https://github.com/vercel/next.js/tree/canary/examples/with-mdx-remote).
+- **[mdx-bundler](https://github.com/kentcdodds/mdx-bundler)** - compile and bundle MDX files. Examples with [Next.js](https://github.com/Arcath/arcath.net-next) and [Remix](https://github.com/kentcdodds/kentcdodds.com).
+- **[contentlayer](https://www.npmjs.com/package/contentlayer)** - import MDX and CMS content into your project. [Example](https://github.com/leerob/leerob.io).
+- **[gatsby-plugin-mdx](https://www.gatsbyjs.com/plugins/gatsby-plugin-mdx/)** - The official integration for using MDX with Gatsby. [Example](https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-plugin-mdx).
+- **[MDX Pretty Code](https://github.com/atomiks/mdx-pretty-code)** - Simply beautiful syntax highlighting for your MDX docs
+- **[Sandpack](https://codesandbox.io/post/sandpack-announcement)** - a toolkit for building live coding experiences that run fully in the browser.
+
+In addition to the tools above, you may want to consider looking into plugins that allow you to intercept and manipulate the transformation between markdown and your final output (JSX, JS or HTML).
+
+- [remark](https://github.com/remarkjs/remark)
+- [rehype](https://www.npmjs.com/package/rehype)
+
+Thank you to everyone who shared their favourite examples with me on Twitter and if you've seen any exceptional examples that are not listed here, PRs are welcome.
