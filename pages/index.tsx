@@ -30,9 +30,9 @@ export default function Home({
 
   return (
     <Layout showNav={showNav}>
-      <div className="mt-14 sm:mt-32 space-y-14 sm:space-y-32">
-        <div id="about" ref={intersectionRef}>
-          <div className="space-y-12">
+      <div className="-mt-12 space-y-20 sm:mt-0 sm:space-y-32">
+        <div ref={intersectionRef}>
+          <div className="space-y-8 sm:space-y-12">
             <div className="flex items-center space-x-6">
               <ProfileImage size="large" />
 
@@ -54,53 +54,49 @@ export default function Home({
           </div>
         </div>
 
-        <div id="reel">
-          <div className="">
-            <div className="flex items-center space-x-4">
-              <div className="p-2 bg-gray-900 rounded-2xl shadow-surface-elevation-low">
-                <VideoCameraIcon className="w-6 text-gray-600/90" />
-              </div>
+        <div>
+          <div className="flex items-center space-x-4">
+            <div className="p-2 bg-gray-900 rounded-2xl shadow-surface-elevation-low">
+              <VideoCameraIcon className="w-6 text-gray-600/90" />
+            </div>
 
-              <div>
-                <h2 className="text-2xl text-gray-500/90">Videos</h2>
-              </div>
+            <div>
+              <h2 className="text-2xl text-gray-500/90">Videos</h2>
             </div>
-            <div className="mt-12 space-y-10">
-              {videos.map((post) => (
-                <ContentLink
-                  key={post.url}
-                  title={post.title}
-                  text={post.description}
-                  href={post.url}
-                  meta={[post.category, post.date]}
-                />
-              ))}
-            </div>
+          </div>
+          <div className="mt-12 space-y-10">
+            {videos.map((post) => (
+              <ContentLink
+                key={post.url}
+                title={post.title}
+                text={post.description}
+                href={post.url}
+                meta={[post.category, post.date]}
+              />
+            ))}
           </div>
         </div>
 
-        <div id="blog">
-          <div className="">
-            <div className="flex items-center space-x-4">
-              <div className="p-2 bg-gray-900 rounded-2xl shadow-surface-elevation-low">
-                <AnnotationIcon className="w-6 text-gray-600/90" />
-              </div>
+        <div>
+          <div className="flex items-center space-x-4">
+            <div className="p-2 bg-gray-900 rounded-2xl shadow-surface-elevation-low">
+              <AnnotationIcon className="w-6 text-gray-600/90" />
+            </div>
 
-              <div>
-                <h2 className="text-2xl text-gray-500/90">Posts</h2>
-              </div>
+            <div>
+              <h2 className="text-2xl text-gray-500/90">Posts</h2>
             </div>
-            <div className="mt-12 space-y-10">
-              {posts.map((post) => (
-                <ContentLink
-                  key={post.slug}
-                  title={post.title}
-                  text={post.description}
-                  href={`/blog/${post.slug}`}
-                  meta={[post.publishedAtFormatted]}
-                />
-              ))}
-            </div>
+          </div>
+          <div className="mt-12 space-y-10">
+            {posts.map((post) => (
+              <ContentLink
+                key={post.slug}
+                title={post.title}
+                text={post.description}
+                href={`/blog/${post.slug}`}
+                meta={[post.publishedAtFormatted]}
+              />
+            ))}
           </div>
         </div>
       </div>

@@ -8,17 +8,17 @@ import React from "react"
 
 export const Navigation = () => {
   return (
-    <div className="flex items-center text-lg leading-none space-x-7 text-rose-100/90">
+    <div className="flex items-center leading-none sm:text-lg space-x-7 text-rose-100/90">
       <Link href="/videos">
         <a
           className={cx(
-            "transition-colors hover:text-rose-200/90 rounded-lg",
+            "group transition-colors hover:text-rose-200/90 rounded-lg",
             FOCUS_VISIBLE_OUTLINE,
           )}
         >
           <div className="sm:items-center sm:space-x-2 sm:flex">
             <div className="flex justify-center mb-1.5 sm:block sm:mb-0">
-              <div className="p-1 rounded-lg bg-gradient-to-tl from-purple-500/60 to-rose-400/60">
+              <div className="p-1 rounded-lg bg-gradient-to-tl from-purple-500/60 to-rose-400/60 group-hover:from-purple-500/80 group-hover:to-rose-400/80">
                 <VideoCameraIcon className="w-4 text-rose-50/50" />
               </div>
             </div>
@@ -29,13 +29,13 @@ export const Navigation = () => {
       <Link href="/blog">
         <a
           className={cx(
-            "transition-colors hover:text-rose-200/90 rounded-lg",
+            "group transition-colors hover:text-rose-200/90 rounded-lg",
             FOCUS_VISIBLE_OUTLINE,
           )}
         >
           <div className="sm:items-center sm:space-x-2 sm:flex">
             <div className="flex justify-center mb-1.5 sm:block sm:mb-0">
-              <div className="p-1 rounded-lg bg-gradient-to-tl from-purple-500/60 to-rose-400/60">
+              <div className="p-1 rounded-lg bg-gradient-to-tl from-purple-500/60 to-rose-400/60 group-hover:from-purple-500/80 group-hover:to-rose-400/80">
                 <AnnotationIcon className="w-4 text-rose-50/50" />
               </div>
             </div>
@@ -46,14 +46,14 @@ export const Navigation = () => {
 
       <a
         className={cx(
-          "transition-colors hover:text-rose-200/90 rounded-lg",
+          "group transition-colors hover:text-rose-200/90 rounded-lg",
           FOCUS_VISIBLE_OUTLINE,
         )}
         href="https://twitter.com/delba_oliveira"
       >
         <div className="sm:items-center sm:space-x-2 sm:flex">
           <div className="flex justify-center mb-1.5 sm:block sm:mb-0">
-            <div className="p-1 rounded-lg bg-gradient-to-tl from-purple-500/60 to-rose-400/60">
+            <div className="p-1 rounded-lg bg-gradient-to-tl from-purple-500/60 to-rose-400/60 group-hover:from-purple-500/80 group-hover:to-rose-400/80">
               <TwitterIcon className="w-4 text-rose-50/50" />
             </div>
           </div>

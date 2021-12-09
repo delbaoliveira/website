@@ -83,13 +83,13 @@ export const LinkPreview = ({
         <HoverCardPrimitive.Trigger
           href={url}
           className={cx(
-            "inline-flex transition-colors text-rose-300/90 hover:text-rose-400/90",
+            "transition-colors text-fuchsia-300/90 hover:text-purple-500/90",
             FOCUS_VISIBLE_OUTLINE,
           )}
         >
           {children}
 
-          <DotsCircleHorizontalIcon className="w-4 ml-0.5" />
+          <DotsCircleHorizontalIcon className="inline w-4 mb-0.5 ml-1" />
         </HoverCardPrimitive.Trigger>
 
         <HoverCardPrimitive.Content side="top" align="center" sideOffset={10}>

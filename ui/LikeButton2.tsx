@@ -50,11 +50,16 @@ export const LikeButton2 = ({ id }: { id: string }) => {
             })}
           </div>
 
-          {/* Heart SVG */}
+          {/*
+           * Heart SVG
+           * - z-10 is a fix for safari which ignores border radius when
+           *   overflow is hidden https://stackoverflow.com/a/64885552
+           */}
           <motion.div
-            className={`relative flex items-center justify-center overflow-hidden rounded-lg w-7 h-7 bg-gradient-to-tl from-white/5 to-white/30 ${
+            className={`relative z-10 flex items-center justify-center overflow-hidden rounded-lg w-7 h-7 bg-gradient-to-tl from-white/5 to-white/30 ${
               isLoading && `animate-pulse`
             }`}
+            style={{ willChange: "transformx", transform: "translateZ(0)" }}
             // Animated onHover and onClick
             whileHover="hover"
             whileTap="active"
@@ -89,7 +94,7 @@ export const LikeButton2 = ({ id }: { id: string }) => {
       </button>
 
       {/* Like counter text */}
-      <div className="text-lg text-rose-100/90">
+      <div className="text-lg font-medium text-rose-100/90">
         {isLoading ? <LoadingDots /> : <span>{totalPostLikes}</span>}
       </div>
     </div>

@@ -6,6 +6,7 @@ import { format, parseISO } from "date-fns"
 import { getMDXComponent } from "mdx-bundler/client"
 import { GetStaticProps } from "next"
 import { NextSeo } from "next-seo"
+import Link from "next/link"
 import React from "react"
 import type { Post } from "types/post"
 
@@ -67,13 +68,17 @@ export default function PostPage({ meta, code }: Post) {
       />
 
       <Layout>
-        <div className="mt-36">
+        <div>
           <h1 className="text-2xl font-medium sm:text-4xl text-rose-50/90">
             {meta.title}
           </h1>
 
           <div className="flex items-center mt-2 space-x-2 text-lg text-rose-100/70">
-            <div>Delba</div>
+            <div>
+              <Link href="/">
+                <a className="hover:text-fuchsia-300/90">Delba</a>
+              </Link>
+            </div>
 
             <div className="text-rose-100/30">&middot;</div>
 
