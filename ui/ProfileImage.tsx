@@ -34,7 +34,6 @@ export const ProfileImage = ({
           className="rounded-full"
           width={size === "small" ? 36 : 64}
           height={size === "small" ? 36 : 64}
-          placeholder={size === "large" ? "blur" : undefined}
         />
       </div>
     </div>

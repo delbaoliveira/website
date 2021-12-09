@@ -12,7 +12,7 @@ import React from "react"
 export default function Page() {
   return (
     <Layout>
-      <div className="container px-4 mx-auto space-y-14 pt-36 lg:space-y-32">
+      <div className="space-y-14 lg:space-y-32">
         <h1 className="text-3xl font-extrabold text-gray-400 lg:text-4xl">
           Unicode characters I'm always Googling
         </h1>

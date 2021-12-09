@@ -7,7 +7,7 @@ import React from "react"
 export default function BlogPage() {
   return (
     <Layout>
-      <div className="mt-32">
+      <div>
         <div className="flex items-center space-x-4">
           <div className="p-2 bg-gray-900 rounded-2xl shadow-surface-elevation-low">
             <AnnotationIcon className="w-6 text-gray-600/90" />
