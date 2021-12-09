@@ -1,7 +1,6 @@
 export const videos = [
   {
     title: "Getting Started with React and Next.js",
-    image: "/blog/nqLNe92yIqw.png",
     url: "https://www.youtube.com/watch?v=jsYBiB6Vt9w",
     category: "Next Conf",
     date: "28 Oct 2021",
