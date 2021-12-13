@@ -3,7 +3,6 @@ import { usePostLikes } from "@/lib/usePostLikes"
 import { LoadingDots } from "@/ui/LoadingDots"
 import HeartIcon from "@heroicons/react/solid/HeartIcon"
 import cx from "clsx"
-import { motion } from "framer-motion"
 import React from "react"
 
 const emojis = ["👍", "🙏", "🥰"]
@@ -15,86 +14,62 @@ export const LikeButton2 = ({ id }: { id: string }) => {
   const { currentUserLikes, totalPostLikes, isLoading, increment } =
     usePostLikes(id)
 
+  let [animatedEmojis, setAnimatedEmojis] = React.useState<string[]>(
+    currentUserLikes ? [emojis[currentUserLikes]] : [],
+  )
+
+  const handleClick = () => {
+    increment()
+    if (currentUserLikes <= 2) {
+      setAnimatedEmojis([...animatedEmojis, emojis[currentUserLikes]])
+    }
+  }
+
   return (
     <div className="flex items-center space-x-2">
-      <button
-        className={cx("rounded-lg", FOCUS_VISIBLE_OUTLINE)}
-        onClick={() => {
-          if (isLoading) return
+      <div className="relative">
+        {/* Thank you emojis */}
+        {animatedEmojis.map((emoji, index) => {
+          return (
+            <div
+              key={index}
+              className="absolute w-full text-center opacity-0 animate-emoji"
+            >
+              {emoji}
+            </div>
+          )
+        })}
 
-          increment()
-        }}
-      >
-        <div className="relative">
-          {/* Thank you emojis */}
-          <div className="absolute w-full text-2xl text-center">
-            {emojis.map((item, index) => {
-              return (
-                <motion.div
-                  key={index}
-                  className="absolute w-full"
-                  // Animate each emoji when `likes` equals their index
-                  animate={currentUserLikes === index + 1 ? "show" : "hide"}
-                  variants={{
-                    hide: { translateY: -80, opacity: 0 },
-                    show: {
-                      translateY: [0, -40, -60],
-                      opacity: [0, 1, 0],
-                    },
-                  }}
-                  initial="hide"
-                >
-                  {item}
-                </motion.div>
-              )
+        <button
+          className={cx(
+            "bg-black block rounded-lg transform transition-all overflow-hidden ease-out duration-300 shadow-lg shadow-black/90 hover:shadow-purple-500/50 hover:scale-110 active:translate-y-1 hover:rounded-[10px]",
+            FOCUS_VISIBLE_OUTLINE,
+          )}
+          onClick={handleClick}
+        >
+          <div
+            className={cx("p-1 bg-gradient-to-tl from-white/5 to-white/30", {
+              "animate-pulse": isLoading,
             })}
-          </div>
-
-          {/*
-           * Heart SVG
-           * - z-10 is a fix for safari which ignores border radius when
-           *   overflow is hidden https://stackoverflow.com/a/64885552
-           */}
-          <motion.div
-            className={`relative z-10 flex items-center justify-center overflow-hidden rounded-lg w-7 h-7 bg-gradient-to-tl from-white/5 to-white/30 ${
-              isLoading && `animate-pulse`
-            }`}
-            style={{ willChange: "transformx", transform: "translateZ(0)" }}
-            // Animated onHover and onClick
-            whileHover="hover"
-            whileTap="active"
-            variants={{
-              hover: {
-                scale: 1.15,
-              },
-              active: {
-                scale: 1.3,
-              },
-            }}
           >
-            <motion.div
-              className="absolute w-full h-full inset bg-gradient-to-tl from-purple-500 to-rose-400"
-              // `animate` passes a stringified `like` to the variants map below
-              animate={String(currentUserLikes)}
-              // Move gradient up or down depending on number of likes
-              variants={{
-                // 0 likes
-                "0": { translateY: 25 },
-                // 1 like etc
-                "1": { translateY: 20 },
-                "2": { translateY: 10 },
-                "3": { translateY: 0 },
-              }}
-              initial="0"
+            <div
+              className={cx(
+                "absolute inset-0 transform transition-transform bg-gradient-to-tl from-purple-500 to-rose-400",
+                {
+                  "translate-y-6": currentUserLikes === 0,
+                  "translate-y-4": currentUserLikes === 1,
+                  "translate-y-2": currentUserLikes === 2,
+                },
+              )}
             />
 
             <HeartIcon className="relative w-5 text-rose-100" />
-          </motion.div>
-        </div>
-      </button>
+          </div>
+        </button>
+      </div>
 
       {/* Like counter text */}
-      <div className="text-lg font-medium text-rose-100/90">
+      <div className="text-lg font-medium leading-none text-rose-100/90">
         {isLoading ? <LoadingDots /> : <span>{totalPostLikes}</span>}
       </div>
     </div>

@@ -25,12 +25,23 @@ module.exports = {
         "loading-0": "loading 1.4s ease-in-out infinite",
         "loading-1": "loading 1.4s ease-in-out 0.2s infinite",
         "loading-2": "loading 1.4s ease-in-out 0.4s infinite",
-      },
-      scale: {
-        200: "2",
-        300: "3",
+        emoji: "emoji 0.75s ease-out",
       },
       keyframes: {
+        emoji: {
+          "0%": {
+            opacity: "0",
+            transform: "translateY(0) scale(0)",
+          },
+          "50%": {
+            opacity: "1",
+            transform: "translateY(-40px) scale(1)",
+          },
+          to: {
+            opacity: "0",
+            transform: "translateY(-60px) scale(1.4)",
+          },
+        },
         loading: {
           "0%": {
             opacity: ".2",
@@ -44,6 +55,7 @@ module.exports = {
         },
       },
       boxShadow: {
+        // inspired by https://www.joshwcomeau.com/shadow-palette/
         "surface-glass": `
           inset 0.25px 1px 0 0 rgba(${highlightColor}, 0.02),
           0px 0.3px 0.3px rgba(3, 2, 2, 0.02),
@@ -53,8 +65,6 @@ module.exports = {
           0px 12.8px 14.4px -1.7px rgba(3, 2, 2, 0.02),
           0px 21px 23.6px -2.1px rgba(3, 2, 2, 0.02),
           0px 33.2px 37.4px -2.5px rgba(3, 2, 2, 0.02)`,
-        "surface-highlight": `inset 0.25px 1px 1px 0 rgba(${highlightColor}, 0.9)`,
-        // inspired by https://www.joshwcomeau.com/shadow-palette/
         "surface-elevation-low": `
           inset 0.25px 1px 1px 0 rgba(${highlightColor}, 0.015), 
           0.3px 0.5px 0.7px rgba(3, 2, 2, 0.2),
