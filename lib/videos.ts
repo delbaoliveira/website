@@ -1,5 +1,13 @@
 export const videos = [
   {
+    title: "Interactive playgrounds with React",
+    url: "https://www.youtube.com/watch?v=zL8cz2W0z34",
+    category: "React Conf",
+    date: "8 December 2021",
+    description:
+      "How developers can leverage the tools such as React and MDX to introduce more active learning experiences to docs and articles.",
+  },
+  {
     title: "Getting Started with React and Next.js",
     url: "https://www.youtube.com/watch?v=jsYBiB6Vt9w",
     category: "Next Conf",
