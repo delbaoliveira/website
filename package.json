@@ -31,7 +31,8 @@
     "react-use": "^17.2.4",
     "remark-gfm": "^3.0.1",
     "remark-slug": "^7.0.1",
-    "swr": "^1.1.0"
+    "swr": "^1.1.0",
+    "zod": "^3.11.6"
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.4.0",

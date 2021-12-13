@@ -1,6 +1,7 @@
 import prisma from "@/lib/prisma"
 import { createHash } from "crypto"
 import type { NextApiRequest, NextApiResponse } from "next"
+import { z } from "zod"
 
 export default async function handler(
   req: NextApiRequest,
@@ -48,11 +49,7 @@ export default async function handler(
       }
 
       case "POST": {
-        if (typeof req.body?.count === "undefined") {
-          throw new Error("Please pass a count")
-        }
-
-        const count = Number(req.body.count)
+        const count = z.number().max(3).parse(req.body.count)
 
         // Upsert: if a row exists, update it by incrementing likes. If it
         // doesn't exist, create a new row the number of likes this api route
