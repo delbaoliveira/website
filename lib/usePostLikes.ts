@@ -1,3 +1,5 @@
+import React from "react"
+import { useDebounce } from "react-use"
 import useSWR from "swr"
 
 const API_URL = `/api/likes/`
@@ -27,6 +29,7 @@ async function updatePostLikes(
 // A custom hook to abstract away fetching and updating a user's likes
 export const usePostLikes = (id: string) => {
   const { data, error, mutate } = useSWR(id, getPostLikes)
+  const [batchedLikes, setBatchedLikes] = React.useState(0)
 
   const increment = () => {
     // Prevent the user from liking more than 3 times
@@ -45,11 +48,22 @@ export const usePostLikes = (id: string) => {
       false,
     )
 
-    // update the database and use the data updatePostLikes returns to update
-    // the local cache with database data
-    // TO DO: Fix race condition bug for when a user who has not liked a post rapidly clicks. Possibly fix with debounce?
-    mutate(updatePostLikes(id, 1))
+    // use local state and debounce to batch updates
+    setBatchedLikes(batchedLikes + 1)
   }
+
+  useDebounce(
+    () => {
+      if (batchedLikes === 0) return
+
+      // update the database and use the data updatePostLikes returns to update
+      // the local cache with database data
+      mutate(updatePostLikes(id, batchedLikes))
+      setBatchedLikes(0)
+    },
+    1000,
+    [batchedLikes],
+  )
 
   return {
     currentUserLikes: data?.currentUserLikes || 0,
