@@ -18,7 +18,7 @@ export const Navigation = () => {
         >
           <div className="sm:items-center sm:space-x-2 sm:flex">
             <div className="flex justify-center mb-1.5 sm:block sm:mb-0">
-              <div className="p-1 rounded-lg bg-gradient-to-tl from-purple-500/60 to-rose-400/60 group-hover:from-purple-500/80 group-hover:to-rose-400/80">
+              <div className="p-1 transition-shadow rounded-lg shadow-lg bg-gradient-to-tl from-purple-500/60 to-rose-400/60 group-hover:shadow-rose-500/25">
                 <VideoCameraIcon className="w-4 text-rose-50/50" />
               </div>
             </div>
@@ -35,7 +35,7 @@ export const Navigation = () => {
         >
           <div className="sm:items-center sm:space-x-2 sm:flex">
             <div className="flex justify-center mb-1.5 sm:block sm:mb-0">
-              <div className="p-1 rounded-lg bg-gradient-to-tl from-purple-500/60 to-rose-400/60 group-hover:from-purple-500/80 group-hover:to-rose-400/80">
+              <div className="p-1 transition-shadow rounded-lg shadow-lg bg-gradient-to-tl from-purple-500/60 to-rose-400/60 group-hover:shadow-rose-500/25">
                 <AnnotationIcon className="w-4 text-rose-50/50" />
               </div>
             </div>
@@ -53,7 +53,7 @@ export const Navigation = () => {
       >
         <div className="sm:items-center sm:space-x-2 sm:flex">
           <div className="flex justify-center mb-1.5 sm:block sm:mb-0">
-            <div className="p-1 rounded-lg bg-gradient-to-tl from-purple-500/60 to-rose-400/60 group-hover:from-purple-500/80 group-hover:to-rose-400/80">
+            <div className="p-1 transition-shadow rounded-lg shadow-md shadow-gray-900 bg-gradient-to-tl from-purple-500/60 to-rose-400/60 group-hover:shadow-rose-500/25">
               <TwitterIcon className="w-4 text-rose-50/50" />
             </div>
           </div>

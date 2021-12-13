@@ -6,7 +6,6 @@ const hexToRgb = require("hex-to-rgb")
 const highlightColor = hexToRgb(colors.amber["200"]).join(",")
 
 module.exports = {
-  mode: "jit",
   purge: [
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./ui/**/*.{js,ts,jsx,tsx}",
@@ -20,18 +19,7 @@ module.exports = {
         sans: ["Karla", ...defaultTheme.fontFamily.sans],
       },
       colors: {
-        amber: colors.amber,
-        orange: colors.orange,
-        lime: colors.lime,
-        emerald: colors.emerald,
-        teal: colors.teal,
-        cyan: colors.cyan,
-        lightBlue: colors.lightBlue,
-        violet: colors.violet,
-        fuchsia: colors.fuchsia,
-        rose: colors.rose,
-        sky: colors.sky,
-        gray: colors.warmGray,
+        gray: colors.stone,
       },
       animation: {
         "loading-0": "loading 1.4s ease-in-out infinite",
@@ -87,23 +75,6 @@ module.exports = {
   plugins: [
     require("@tailwindcss/line-clamp"),
     require("@tailwindcss/forms"),
-    plugin(function ({ addUtilities }) {
-      const newUtilities = {
-        ".rounded-tl-xl": {
-          "border-radius-top-left": "1rem",
-        },
-        ".rounded-tr-xl": {
-          "border-radius-top-right": "1rem",
-        },
-        ".rounded-bl-xl": {
-          "border-radius-bottom-left": "1rem",
-        },
-        ".rounded-br-xl": {
-          "border-radius-bottom-right": "1rem",
-        },
-      }
-      addUtilities(newUtilities)
-    }),
     // https://gist.github.com/samselikoff/b3c5126ee4f4e69e60b0af0aa5bfb2e7
     plugin(function ({ addVariant, e, postcss }) {
       addVariant("firefox", ({ container, separator }) => {
