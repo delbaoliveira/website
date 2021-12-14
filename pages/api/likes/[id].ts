@@ -49,11 +49,11 @@ export default async function handler(
       }
 
       case "POST": {
-        const count = z.number().max(3).parse(req.body.count)
+        const count = z.number().min(1).max(3).parse(req.body.count)
 
         // Upsert: if a row exists, update it by incrementing likes. If it
-        // doesn't exist, create a new row the number of likes this api route
-        // receives
+        // doesn't exist, create a new row with the number of likes this api
+        // route receives
         const [post, user] = await Promise.all([
           // increment the number of times everyone has liked this post
           prisma.postMeta.upsert({
