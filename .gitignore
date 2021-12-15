@@ -19,6 +19,7 @@
 .DS_Store
 *.pem
 !types.d.ts
+*.tsbuildinfo
 
 # debug
 npm-debug.log*
