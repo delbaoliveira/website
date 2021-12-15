@@ -31,12 +31,12 @@ export default async function handler(
       case "GET": {
         const [post, user] = await Promise.all([
           // get the number of likes this post has
-          prisma.postMeta.findUnique({
+          prisma.post.findUnique({
             where: { slug: postId },
           }),
 
           // get the number of times the current user has liked this post
-          prisma.likesByUser.findUnique({
+          prisma.session.findUnique({
             where: { id: sessionId },
           }),
         ])
@@ -56,7 +56,7 @@ export default async function handler(
         // route receives
         const [post, user] = await Promise.all([
           // increment the number of times everyone has liked this post
-          prisma.postMeta.upsert({
+          prisma.post.upsert({
             where: { slug: postId },
             create: {
               slug: postId,
@@ -70,7 +70,7 @@ export default async function handler(
           }),
 
           // increment the number of times this user has liked this post
-          prisma.likesByUser.upsert({
+          prisma.session.upsert({
             where: { id: sessionId },
             create: {
               id: sessionId,

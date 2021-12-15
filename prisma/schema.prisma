@@ -2,25 +2,27 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL_PRODUCTION")
+  provider             = "mysql"
+  url                  = env("DATABASE_URL")
+  shadowDatabaseUrl    = env("SHADOW_DATABASE_URL")
+  referentialIntegrity = "prisma"
 }
 
 generator client {
   provider        = "prisma-client-js"
-  previewFeatures = ["orderByRelation", "selectRelationCount"]
+  previewFeatures = ["referentialIntegrity"]
 }
 
-model PostMeta {
+model Post {
   id        String   @id @default(cuid())
   createdAt DateTime @default(now())
   slug      String   @unique
-  likes     Int      @default(1)
+  likes     Int      @default(0)
   views     Int      @default(0)
 }
 
-model LikesByUser {
+model Session {
   id        String   @id
   createdAt DateTime @default(now())
-  likes     Int      @default(1)
+  likes     Int      @default(0)
 }
