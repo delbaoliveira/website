@@ -17,7 +17,7 @@ class MyDocument extends Document {
           <link rel="icon" type="image/png" href="/code.png" />
         </Head>
 
-        <body>
+        <body className="bg-[#0e0c0b]">
           <Main />
           <NextScript />
         </body>
