@@ -10,54 +10,47 @@ export const Navigation = () => {
   return (
     <div className="flex items-center leading-none sm:text-lg space-x-7 text-rose-100/90">
       <Link href="/videos">
-        <a
-          className={cx(
-            "group transition-colors hover:text-rose-200/90 rounded-lg",
-            FOCUS_VISIBLE_OUTLINE,
-          )}
-        >
+        <a className={cx("group rounded-lg", FOCUS_VISIBLE_OUTLINE)}>
           <div className="sm:items-center sm:space-x-2 sm:flex">
             <div className="flex justify-center mb-1.5 sm:block sm:mb-0">
-              <div className="p-1 transition-shadow rounded-lg shadow-lg bg-gradient-to-tl from-purple-500/60 to-rose-400/60 group-hover:shadow-rose-500/25">
-                <VideoCameraIcon className="w-4 text-rose-50/50" />
+              <div className="p-1 transition-all duration-300 ease-out rounded-lg shadow-lg bg-gradient-to-tl from-purple-500/80 to-rose-400/80 hover:scale-[1.2] hover:rounded-[10px] active:scale-100 active:rounded-lg group-hover:shadow-purple-500/50">
+                <VideoCameraIcon className="w-[18px] transition duration-500 ease-out delay-100 transform text-rose-100 hover:scale-110" />
               </div>
             </div>
-            <div>Videos</div>
+            <div className="transition-colors hover:text-rose-200/90">
+              Videos
+            </div>
           </div>
         </a>
       </Link>
       <Link href="/blog">
-        <a
-          className={cx(
-            "group transition-colors hover:text-rose-200/90 rounded-lg",
-            FOCUS_VISIBLE_OUTLINE,
-          )}
-        >
+        <a className={cx("group rounded-lg", FOCUS_VISIBLE_OUTLINE)}>
           <div className="sm:items-center sm:space-x-2 sm:flex">
             <div className="flex justify-center mb-1.5 sm:block sm:mb-0">
-              <div className="p-1 transition-shadow rounded-lg shadow-lg bg-gradient-to-tl from-purple-500/60 to-rose-400/60 group-hover:shadow-rose-500/25">
-                <AnnotationIcon className="w-4 text-rose-50/50" />
+              <div className="p-1 transition-all duration-300 ease-out rounded-lg shadow-lg bg-gradient-to-tl from-purple-500/80 to-rose-400/80 hover:scale-[1.2] hover:rounded-[10px] active:scale-100 active:rounded-lg group-hover:shadow-purple-500/50">
+                <AnnotationIcon className="w-[18px] transition duration-500 ease-out delay-100 transform text-rose-100 hover:scale-110" />
               </div>
             </div>
-            <div>Posts</div>
+            <div className="transition-colors hover:text-rose-200/90">
+              Posts
+            </div>
           </div>
         </a>
       </Link>
 
       <a
-        className={cx(
-          "group transition-colors hover:text-rose-200/90 rounded-lg",
-          FOCUS_VISIBLE_OUTLINE,
-        )}
+        className={cx("group rounded-lg", FOCUS_VISIBLE_OUTLINE)}
         href="https://twitter.com/delba_oliveira"
       >
         <div className="sm:items-center sm:space-x-2 sm:flex">
           <div className="flex justify-center mb-1.5 sm:block sm:mb-0">
-            <div className="p-1 transition-shadow rounded-lg shadow-md shadow-gray-900 bg-gradient-to-tl from-purple-500/60 to-rose-400/60 group-hover:shadow-rose-500/25">
-              <TwitterIcon className="w-4 text-rose-50/50" />
+            <div className="p-1 transition-all duration-300 ease-out rounded-lg shadow-lg bg-gradient-to-tl from-purple-500/80 to-rose-400/80 hover:scale-[1.2] hover:rounded-[10px] active:scale-100 active:rounded-lg group-hover:shadow-purple-500/50">
+              <TwitterIcon className="w-[18px] transition duration-500 ease-out delay-100 transform text-rose-100 hover:scale-110" />
             </div>
           </div>
-          <div>Twitter</div>
+          <div className="transition-colors hover:text-rose-200/90">
+            Twitter
+          </div>
         </div>
       </a>
     </div>

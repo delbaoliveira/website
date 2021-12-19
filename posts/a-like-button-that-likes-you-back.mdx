@@ -6,7 +6,7 @@ category: "post"
 ---
 
 <Playground description="What we're building today">
-  <LikeButton id="a-like-button-that-likes-you-back" />
+  <LikeButton2 id="a-like-button-that-likes-you-back" />
 </Playground>
 
 I'm a big fan of <LinkPreview url="https://www.joshwcomeau.com/">Josh Comeau's work</LinkPreview>. The like button on his blog is one of the most delightful UI elements I've come across. It's also a deceptively complex component (I honestly thought I could re-implement it in an hour, haha) that contains an SVG, sounds, mouse tracking, animations and of course, exploding confetti. 🎉
@@ -18,7 +18,7 @@ I started by writing down everything I noticed with Josh's component and ended u
 Although I didn't have the time to recreate everything, I thought I'd try to get the basic functionality down and maybe add some animations. Here's how my version works:
 
 import { LikeButtonDemo } from "../ui/playgrounds/LikeButtonDemo"
-import { LikeButton } from "../ui/LikeButton"
+import { LikeButton2 } from "../ui/LikeButton2"
 
 ### The Heart
 
@@ -41,7 +41,7 @@ We can make things a little more playful and show our appreciation for the user 
 ### Persisting state
 
 <Playground description="This component persists data, like and refresh the page to see it.">
-  <LikeButton id="a-like-button-that-likes-you-back-db" />
+  <LikeButton2 id="a-like-button-that-likes-you-back-db" />
 </Playground>
 
 A like button is not very useful if users can't see each other's likes or the like count is lost whenever the user leaves the page.
