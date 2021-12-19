@@ -1,4 +1,4 @@
-import { FOCUS_VISIBLE_OUTLINE } from "@/lib/constants"
+import { FOCUS_VISIBLE_OUTLINE, LINK_STYLES } from "@/lib/constants"
 import { Portal, Transition } from "@headlessui/react"
 import DotsCircleHorizontalIcon from "@heroicons/react/solid/DotsCircleHorizontalIcon"
 import * as HoverCardPrimitive from "@radix-ui/react-hover-card"
@@ -82,10 +82,7 @@ export const LinkPreview = ({
       >
         <HoverCardPrimitive.Trigger
           href={url}
-          className={cx(
-            "transition-colors text-fuchsia-300/90 hover:text-purple-500/90",
-            FOCUS_VISIBLE_OUTLINE,
-          )}
+          className={cx(LINK_STYLES, FOCUS_VISIBLE_OUTLINE)}
         >
           {children}
 

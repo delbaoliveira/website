@@ -1,4 +1,4 @@
-import { FOCUS_VISIBLE_OUTLINE } from "@/lib/constants"
+import { FOCUS_VISIBLE_OUTLINE, LINK_STYLES } from "@/lib/constants"
 import { LinkPreview } from "@/ui/LinkPreview"
 import { Playground } from "@/ui/Playground"
 import cx from "clsx"
@@ -26,10 +26,7 @@ export const components = {
     if (href.startsWith("http")) {
       return (
         <a
-          className={cx(
-            "transition-colors text-fuchsia-300/90 hover:text-purple-500/90",
-            FOCUS_VISIBLE_OUTLINE,
-          )}
+          className={cx(LINK_STYLES, FOCUS_VISIBLE_OUTLINE)}
           href={href}
           target="_blank"
           rel="noopener"
@@ -40,13 +37,7 @@ export const components = {
 
     return (
       <NextLink href={href} passHref>
-        <a
-          className={cx(
-            "transition-colors text-fuchsia-300/90 hover:text-purple-500/90",
-            FOCUS_VISIBLE_OUTLINE,
-          )}
-          {...props}
-        />
+        <a className={cx(LINK_STYLES, FOCUS_VISIBLE_OUTLINE)} {...props} />
       </NextLink>
     )
   },

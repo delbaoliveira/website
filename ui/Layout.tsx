@@ -38,7 +38,7 @@ export const Layout = ({
               <div className="flex items-center space-x-6">
                 <Link href="/">
                   <a
-                    title="/"
+                    title="Go to homepage"
                     className={cx("rounded-full", FOCUS_VISIBLE_OUTLINE)}
                   >
                     <ProfileImage size="small" isInteractive />

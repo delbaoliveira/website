@@ -1,7 +1,7 @@
 import { videos } from "@/lib/videos"
 import { ContentLink } from "@/ui/ContentLink"
 import { Layout } from "@/ui/Layout"
-import AnnotationIcon from "@heroicons/react/solid/AnnotationIcon"
+import VideoCameraIcon from "@heroicons/react/solid/VideoCameraIcon"
 import React from "react"
 
 export default function BlogPage() {
@@ -10,7 +10,7 @@ export default function BlogPage() {
       <div>
         <div className="flex items-center space-x-4">
           <div className="p-2 bg-gray-900 rounded-2xl shadow-surface-elevation-low">
-            <AnnotationIcon className="w-6 text-gray-600/90" />
+            <VideoCameraIcon className="w-6 text-gray-600/90" />
           </div>
 
           <div>

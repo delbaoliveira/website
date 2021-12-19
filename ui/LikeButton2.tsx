@@ -42,29 +42,28 @@ export const LikeButton2 = ({ id }: { id: string }) => {
 
         <button
           className={cx(
-            "bg-black block rounded-lg transform transition-all overflow-hidden ease-out duration-300 shadow-lg shadow-black/90 hover:shadow-purple-500/50 hover:scale-110 active:translate-y-1 hover:rounded-[10px]",
+            "block relative p-1 rounded-lg overflow-hidden transform bg-gradient-to-tl from-white/5 to-white/30 transition-all ease-out duration-300 shadow-lgx group hover:scale-[1.2] hover:rounded-[10px] active:scale-100 active:rounded-lg",
             FOCUS_VISIBLE_OUTLINE,
+            {
+              "animate-pulse": isLoading,
+              "hover:shadow-gray-500/30": currentUserLikes === 0,
+              "hover:shadow-purple-500/50": currentUserLikes !== 0,
+            },
           )}
           onClick={handleClick}
         >
           <div
-            className={cx("p-1 bg-gradient-to-tl from-white/5 to-white/30", {
-              "animate-pulse": isLoading,
-            })}
-          >
-            <div
-              className={cx(
-                "absolute inset-0 transform transition-transform bg-gradient-to-tl from-purple-500 to-rose-400",
-                {
-                  "translate-y-6": currentUserLikes === 0,
-                  "translate-y-4": currentUserLikes === 1,
-                  "translate-y-2": currentUserLikes === 2,
-                },
-              )}
-            />
+            className={cx(
+              "absolute inset-0 transform-gpu transition-transform bg-gradient-to-tl from-purple-500 to-rose-400",
+              {
+                "translate-y-8": currentUserLikes === 0,
+                "translate-y-5": currentUserLikes === 1,
+                "translate-y-3": currentUserLikes === 2,
+              },
+            )}
+          />
 
-            <HeartIcon className="relative w-5 text-rose-100" />
-          </div>
+          <HeartIcon className="relative w-5 transition duration-500 ease-out delay-100 transform text-rose-100 group-hover:scale-110" />
         </button>
       </div>
 
