@@ -9,7 +9,7 @@ export const Footer = () => {
           <p>
             Built with{" "}
             <a
-              href="https://twitter.com/delba_oliveira"
+              href="https://nextjs.org"
               className={cx(LINK_SUBTLE_STYLES, FOCUS_VISIBLE_OUTLINE)}
             >
               Next.js

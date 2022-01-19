@@ -1,4 +1,4 @@
-import { getAllPostsMeta } from "@/lib/mdx"
+import { allBlogs } from ".contentlayer/data"
 import { videos } from "@/lib/videos"
 import { ContentLink } from "@/ui/ContentLink"
 import { Layout } from "@/ui/Layout"
@@ -6,12 +6,27 @@ import { Navigation } from "@/ui/Navigation"
 import { ProfileImage } from "@/ui/ProfileImage"
 import AnnotationIcon from "@heroicons/react/solid/AnnotationIcon"
 import VideoCameraIcon from "@heroicons/react/solid/VideoCameraIcon"
+import { pick } from "contentlayer/client"
 import type { InferGetStaticPropsType } from "next"
 import React from "react"
 import { useIntersection } from "react-use"
 
 export const getStaticProps = async () => {
-  const posts = getAllPostsMeta("post")
+  const posts = allBlogs
+    .map((post) =>
+      pick(post, [
+        "slug",
+        "title",
+        "description",
+        "publishedAt",
+        "publishedAtFormatted",
+      ]),
+    )
+    .sort(
+      (a, b) =>
+        Number(new Date(b.publishedAt)) - Number(new Date(a.publishedAt)),
+    )
+
   return { props: { posts } }
 }
 

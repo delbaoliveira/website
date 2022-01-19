@@ -35,5 +35,8 @@ yarn-error.log*
 # vercel
 .vercel
 
-#prisma
+# prisma
 /prisma/.env
+
+# contentlayer
+.contentlayer
