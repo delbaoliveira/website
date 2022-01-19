@@ -1,8 +1,10 @@
 import { allBlogs } from ".contentlayer/data"
 import type { Blog } from ".contentlayer/types"
+import { FormattedTweet, getTweets } from "@/lib/twitter"
 import { Layout } from "@/ui/Layout"
 import { LikeButton2 } from "@/ui/LikeButton2"
 import { components } from "@/ui/MdxComponents"
+import { Tweet } from "@/ui/Tweet"
 import { GetStaticProps, InferGetStaticPropsType } from "next"
 import { useMDXComponent } from "next-contentlayer/hooks"
 import { NextSeo } from "next-seo"
@@ -18,12 +20,15 @@ export const getStaticPaths = () => {
 
 export const getStaticProps: GetStaticProps<{
   post: Blog
+  tweets: FormattedTweet[]
 }> = async ({ params }) => {
   const post = allBlogs.find((post) => post.slug === params?.slug)!
+  const tweets = await getTweets(post.tweetIds)
 
   return {
     props: {
       post,
+      tweets,
     },
   }
 }
@@ -33,6 +38,15 @@ export default function PostPage({
   tweets,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const MDXContent = useMDXComponent(post.body.code)
+
+  const StaticTweet = ({ id }: { id: string }) => {
+    const tweet = tweets.find((tweet) => tweet.id === id)!
+    return (
+      <div className="my-6">
+        <Tweet {...tweet} />
+      </div>
+    )
+  }
 
   return (
     <>
@@ -83,6 +97,7 @@ export default function PostPage({
             <MDXContent
               components={{
                 ...components,
+                StaticTweet,
               }}
             />
           </div>

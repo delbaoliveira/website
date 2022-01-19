@@ -10,6 +10,16 @@ import remarkGfm from "remark-gfm"
 import { HEADING_LINK_ANCHOR } from "./lib/constants"
 
 const computedFields: ComputedFields = {
+  tweetIds: {
+    type: "json",
+    resolve: (doc) => {
+      const tweetMatches = doc.body.raw.match(/<StaticTweet\sid="[0-9]+"\s\/>/g)
+      const tweetIDs = tweetMatches?.map(
+        (tweet: any) => tweet.match(/[0-9]+/g)[0],
+      )
+      return tweetIDs ?? []
+    },
+  },
   publishedAtFormatted: {
     type: "string",
     resolve: (doc) => {

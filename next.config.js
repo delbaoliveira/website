@@ -16,6 +16,7 @@ module.exports = withContentlayer()({
   images: {
     domains: [
       "api.microlink.io", // Link previews
+      "pbs.twimg.com", // Twitter Profile Picture
     ],
   },
 })
