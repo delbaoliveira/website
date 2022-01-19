@@ -6,7 +6,7 @@ const hexToRgb = require("hex-to-rgb")
 const highlightColor = hexToRgb(colors.amber["200"]).join(",")
 
 module.exports = {
-  purge: [
+  content: [
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./ui/**/*.{js,ts,jsx,tsx}",
     "./lib/**/*.{js,ts}",
