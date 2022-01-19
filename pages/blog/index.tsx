@@ -1,16 +1,32 @@
-import { getAllPostsMeta } from "@/lib/mdx"
+import { allBlogs } from ".contentlayer/data"
 import { ContentLink } from "@/ui/ContentLink"
 import { Layout } from "@/ui/Layout"
 import AnnotationIcon from "@heroicons/react/solid/AnnotationIcon"
+import { pick } from "contentlayer/client"
+import type { InferGetStaticPropsType } from "next"
 import React from "react"
-import type { PostMeta } from "types/post"
 
-export function getStaticProps() {
-  const posts = getAllPostsMeta("post")
+export const getStaticProps = async () => {
+  const posts = allBlogs
+    .map((post) =>
+      pick(post, [
+        "slug",
+        "title",
+        "description",
+        "publishedAt",
+        "publishedAtFormatted",
+      ]),
+    )
+    .sort(
+      (a, b) =>
+        Number(new Date(b.publishedAt)) - Number(new Date(a.publishedAt)),
+    )
   return { props: { posts } }
 }
 
-export default function BlogPage({ posts }: { posts: PostMeta[] }) {
+export default function BlogPage({
+  posts,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Layout>
       <div>
