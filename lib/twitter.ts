@@ -19,22 +19,7 @@ export type TweetRaw = {
     quote_count: number
   }
   entities?: {
-    urls?: {
-      start: number
-      end: number
-      url: string
-      expanded_url: string
-      display_url: string
-      images?: {
-        url: string
-        width: number
-        height: number
-      }[]
-      status?: number
-      title?: string
-      description?: string
-      unwound_url?: string
-    }[]
+    urls?: Url[]
     mentions?: {
       start: number
       end: number
@@ -45,6 +30,23 @@ export type TweetRaw = {
   attachments?: {
     media_keys: string[]
   }
+}
+
+type Url = {
+  start: number
+  end: number
+  url: string
+  expanded_url: string
+  display_url: string
+  images?: {
+    url: string
+    width: number
+    height: number
+  }[]
+  status?: number
+  title?: string
+  description?: string
+  unwound_url?: string
 }
 
 export type FormattedTweet = {
@@ -68,8 +70,10 @@ export type FormattedTweet = {
     likes: string
     quotes: string
   }
-  linkedTweets?: FormattedTweet[]
+  quoteTweet?: FormattedTweet
+  linkPreview?: Url
   type?: LinkedTweetType
+  media?: Media[]
 }
 
 type LinkedTweetType = "retweeted" | "quoted" | "replied_to"
@@ -92,6 +96,7 @@ type Media = {
   url: string
   preview_image_url: string
   type: "animated_gif" | "photo" | "video"
+  alt_text?: string
 }
 
 type Includes = {
@@ -111,7 +116,7 @@ const getAuthor = (users: User[], author_id: string | undefined) => {
 }
 
 const getMedia = (media: Media[], media_keys: string[] | undefined) => {
-  if (!media_keys) {
+  if (!media || !media_keys) {
     return undefined
   }
 
@@ -142,7 +147,7 @@ const getReferencedTweets = (includes: Includes, tweet: TweetRaw) => {
 
     if (tweet) {
       referencedTweets.push({
-        ...formatTweet(includes, tweet),
+        ...tweet,
         type: referencedTweet.type,
       })
     }
@@ -158,13 +163,24 @@ const replaceBetween = (
   insertion: string,
 ) => origin.substring(0, startIndex) + insertion + origin.substring(endIndex)
 
-const formatTweet = (includes: Includes, tweet: TweetRaw) => {
+const getStartEnd = (str: string, sub: string) => [
+  str.indexOf(sub),
+  str.indexOf(sub) + sub.length,
+]
+
+const formatTweet = (
+  includes: Includes,
+  tweet: TweetRaw & { type?: LinkedTweetType },
+) => {
   let textFormatted = tweet.text
 
   if (tweet.entities?.urls) {
-    for (const url of tweet.entities?.urls) {
+    for (const url of tweet.entities.urls) {
       let replacement = url.display_url
       if (
+        (url.status && tweet.text.endsWith(url.url)) ||
+        (tweet.text.endsWith(url.url) &&
+          url.display_url.startsWith("pic.twitter.com/")) ||
         tweet.referenced_tweets?.find(
           (x) => x.type === "quoted" && url.expanded_url.endsWith(x.id),
         )
@@ -172,12 +188,9 @@ const formatTweet = (includes: Includes, tweet: TweetRaw) => {
         replacement = ""
       }
 
-      textFormatted = replaceBetween(
-        tweet.text,
-        url.start,
-        url.end,
-        replacement,
-      )
+      const [start, end] = getStartEnd(textFormatted, url.url)
+
+      textFormatted = replaceBetween(textFormatted, start, end, replacement)
     }
   }
 
@@ -218,6 +231,7 @@ const formatTweet = (includes: Includes, tweet: TweetRaw) => {
     replyUrl: `https://twitter.com/intent/tweet?in_reply_to=${tweet.id}`,
     tweetUrl: `https://twitter.com/${author.username}/status/${tweet.id}`,
     ...(media ? { media } : {}),
+    ...(tweet.type ? { type: tweet.type } : {}),
   }
 
   return formattedTweet
@@ -260,6 +274,7 @@ export const getTweets = async (ids: string[]) => {
       "width",
       "url",
       "preview_image_url",
+      "alt_text",
     ].join(","),
   })
 
@@ -275,10 +290,19 @@ export const getTweets = async (ids: string[]) => {
   let tweets: FormattedTweet[] = []
 
   for (const tweet of api.data) {
+    const formattedTweet = formatTweet(api.includes, tweet)
     const referencedTweets = getReferencedTweets(api.includes, tweet)
+    const quoteTweet = referencedTweets?.find((t) => t.type === "quoted")
+    const linkPreview = tweet.entities?.urls?.find(
+      (x) => x.status === 200 && tweet.text.endsWith(x.url),
+    )
+
     tweets.push({
-      ...formatTweet(api.includes, tweet),
-      ...(referencedTweets ? { linkedTweets: referencedTweets } : {}),
+      ...formattedTweet,
+      ...(linkPreview ? { linkPreview } : {}),
+      ...(quoteTweet
+        ? { quoteTweet: formatTweet(api.includes, quoteTweet) }
+        : {}),
     })
   }
 

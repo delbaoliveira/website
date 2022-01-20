@@ -77,14 +77,14 @@ export default function PostPage({
 
       <Layout>
         <div>
-          <h1 className="text-2xl font-medium sm:text-4xl text-rose-50/90">
+          <h1 className="text-2xl font-medium sm:text-4xl text-rose-100/80">
             {post.title}
           </h1>
 
-          <div className="flex items-center mt-2 space-x-2 text-lg text-rose-100/70">
+          <div className="flex items-center mt-2 space-x-2 text-lg text-rose-100/40">
             <div>
               <Link href="/">
-                <a className="hover:text-fuchsia-300/90">Delba</a>
+                <a className="hover:text-rose-200/90">Delba</a>
               </Link>
             </div>
 
@@ -93,7 +93,7 @@ export default function PostPage({
             <div>{post.publishedAtFormatted}</div>
           </div>
 
-          <div className="mt-10 text-lg text-gray-300/90">
+          <div className="mt-10 text-lg text-rose-100/70">
             <MDXContent
               components={{
                 ...components,
