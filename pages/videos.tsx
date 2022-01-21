@@ -1,6 +1,7 @@
 import { videos } from "@/lib/videos"
 import { ContentLink } from "@/ui/ContentLink"
 import { Layout } from "@/ui/Layout"
+import YoutubeIcon from "@/ui/YoutubeIcon"
 import VideoCameraIcon from "@heroicons/react/solid/VideoCameraIcon"
 import React from "react"
 
@@ -25,6 +26,7 @@ export default function BlogPage() {
               text={post.description}
               href={post.url}
               meta={[post.category, post.date]}
+              Icon={YoutubeIcon}
             />
           ))}
         </div>

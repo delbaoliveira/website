@@ -1,21 +1,21 @@
-import Link from "next/link"
-import React from "react"
-import ExternalLinkIcon from "@heroicons/react/solid/ExternalLinkIcon"
 import { FOCUS_VISIBLE_OUTLINE } from "@/lib/constants"
 import clsx from "clsx"
+import Link from "next/link"
+import React from "react"
 
 export function ContentLink({
   href,
   title,
   text,
   meta,
+  Icon,
 }: {
   href: string
   title: string
   text: string
   meta?: string[]
+  Icon?: React.FunctionComponent<any>
 }) {
-  const isExternal = href.startsWith("http")
   return (
     <Link href={href}>
       <a
@@ -24,16 +24,17 @@ export function ContentLink({
           FOCUS_VISIBLE_OUTLINE,
         )}
       >
-        <h3 className="text-xl transition duration-300 line-clamp-2 text-rose-100/80 hover:text-rose-200/90">
-          {title}
+        <div className="flex items-start justify-between">
+          <h3 className="text-xl transition duration-300 line-clamp-2 text-rose-100/80 hover:text-rose-100/90">
+            {title}
+          </h3>
 
-          {isExternal ? (
-            <>
-              {" "}
-              <ExternalLinkIcon className="inline w-5 mb-0.5 align-middle opacity-50" />
-            </>
+          {Icon ? (
+            <div className="mt-1 ml-2 shrink-0">
+              <Icon className="w-5 transition-colors text-rose-100/30 hover:text-rose-100/50" />
+            </div>
           ) : null}
-        </h3>
+        </div>
 
         {meta && meta.length > 0 ? (
           <div className="text-gray-500/90">

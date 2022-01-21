@@ -4,6 +4,7 @@ import { ContentLink } from "@/ui/ContentLink"
 import { Layout } from "@/ui/Layout"
 import { Navigation } from "@/ui/Navigation"
 import { ProfileImage } from "@/ui/ProfileImage"
+import YoutubeIcon from "@/ui/YoutubeIcon"
 import AnnotationIcon from "@heroicons/react/solid/AnnotationIcon"
 import VideoCameraIcon from "@heroicons/react/solid/VideoCameraIcon"
 import { pick } from "contentlayer/client"
@@ -87,6 +88,7 @@ export default function Home({
                 text={post.description}
                 href={post.url}
                 meta={[post.category, post.date]}
+                Icon={YoutubeIcon}
               />
             ))}
           </div>
