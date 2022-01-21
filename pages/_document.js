@@ -3,7 +3,7 @@ import Document, { Html, Head, Main, NextScript } from "next/document"
 class MyDocument extends Document {
   render() {
     return (
-      <Html className="scroll-p-24">
+      <Html lang="en" className="scroll-p-24">
         <Head>
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link
