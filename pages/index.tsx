@@ -9,6 +9,7 @@ import AnnotationIcon from "@heroicons/react/solid/AnnotationIcon"
 import VideoCameraIcon from "@heroicons/react/solid/VideoCameraIcon"
 import { pick } from "contentlayer/client"
 import type { InferGetStaticPropsType } from "next"
+import Link from "next/link"
 import React from "react"
 import { useIntersection } from "react-use"
 
@@ -71,15 +72,35 @@ export default function Home({
         </div>
 
         <div>
-          <div className="flex items-center space-x-4">
-            <div className="p-2 bg-gray-900 rounded-2xl shadow-surface-elevation-low">
-              <VideoCameraIcon className="w-6 text-gray-600/90" />
-            </div>
+          <div className="flex items-center justify-between space-x-4">
+            <a
+              href="https://youtube.com/playlist?list=PLo9a4XFa98CBynQ0HE_UstByk_-KXg6eU"
+              className="flex items-center space-x-4 group"
+              title="Youtube playlist"
+            >
+              <div className="p-2 rounded-2xl shadow-surface-elevation-low transition duration-300 bg-white/[5%] group-hover:bg-white/[7%] group-hover:shadow-surface-elevation-medium">
+                <VideoCameraIcon className="w-6 transition-colors text-rose-100/20 group-hover:text-rose-100/40" />
+              </div>
 
-            <div>
-              <h2 className="text-2xl text-gray-500/90">Videos</h2>
-            </div>
+              <div>
+                <h2 className="text-2xl transition-colors text-rose-100/40 group-hover:text-rose-100/80">
+                  Videos
+                </h2>
+              </div>
+            </a>
+
+            <a
+              href="https://youtube.com/playlist?list=PLo9a4XFa98CBynQ0HE_UstByk_-KXg6eU"
+              className="flex items-center space-x-2 group"
+            >
+              <h2 className="text-lg transition-colors text-rose-100/40 group-hover:text-rose-100/80">
+                Playlist
+              </h2>
+
+              <YoutubeIcon className="w-5 transition-colors shadow-md text-rose-100/20 group-hover:text-red-500/70" />
+            </a>
           </div>
+
           <div className="mt-12 space-y-10">
             {videos.map((post) => (
               <ContentLink
@@ -95,15 +116,20 @@ export default function Home({
         </div>
 
         <div>
-          <div className="flex items-center space-x-4">
-            <div className="p-2 bg-gray-900 rounded-2xl shadow-surface-elevation-low">
-              <AnnotationIcon className="w-6 text-gray-600/90" />
-            </div>
+          <Link href="/blog">
+            <a className="flex items-center space-x-4 group">
+              <div className="p-2 rounded-2xl shadow-surface-elevation-low transition duration-300 bg-white/[5%] group-hover:bg-white/[7%] group-hover:shadow-surface-elevation-medium">
+                <AnnotationIcon className="w-6 transition-colors text-rose-100/20 group-hover:text-rose-100/40" />
+              </div>
 
-            <div>
-              <h2 className="text-2xl text-gray-500/90">Posts</h2>
-            </div>
-          </div>
+              <div>
+                <h2 className="text-2xl transition-colors text-rose-100/40 group-hover:text-rose-100/80">
+                  Posts
+                </h2>
+              </div>
+            </a>
+          </Link>
+
           <div className="mt-12 space-y-10">
             {posts.map((post) => (
               <ContentLink
