@@ -50,7 +50,7 @@ export default function PostPage({
   }
 
   const url = `https://delba.dev/blog/${post.slug}`
-  const title = `${post.title} — delba.dev`
+  const title = `${post.title} — Delba de Oliveira`
   const ogImage = createOgImage({
     title: post.title,
     meta: "delba.dev · " + post.publishedAtFormatted,
