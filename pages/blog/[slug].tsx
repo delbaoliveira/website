@@ -1,5 +1,6 @@
 import { allBlogs } from ".contentlayer/data"
 import type { Blog } from ".contentlayer/types"
+import { createOgImage } from "@/lib/og"
 import { FormattedTweet, getTweets } from "@/lib/twitter"
 import { Layout } from "@/ui/Layout"
 import { LikeButton2 } from "@/ui/LikeButton2"
@@ -48,30 +49,31 @@ export default function PostPage({
     )
   }
 
+  const url = `https://delba.dev/blog/${post.slug}`
+  const title = `${post.title} — delba.dev`
+  const ogImage = createOgImage({
+    title: post.title,
+    meta: "delba.dev · " + post.publishedAtFormatted,
+  })
+
   return (
     <>
       <NextSeo
-        title={`${post.title} • Delba de Oliveira`}
+        title={title}
         description={post.description}
-        canonical={`https://delba.dev/blog/${post.slug}`}
+        canonical={url}
         openGraph={{
-          type: "website",
-          url: `https://delba.dev/blog/${post.slug}`,
-          title: `${post.title} • Delba de Oliveira`,
+          url,
+          title,
           description: post.description,
-          // images: [
-          //   {
-          //     url: `https://delba.dev/${post.image}`,
-          //     width: 1200,
-          //     height: 630,
-          //     alt: post.title,
-          //   },
-          // ],
-          site_name: "Delba de Oliveira",
-        }}
-        twitter={{
-          handle: "@delba_oliveira",
-          cardType: "summary_large_image",
+          images: [
+            {
+              url: ogImage,
+              width: 1600,
+              height: 836,
+              alt: post.title,
+            },
+          ],
         }}
       />
 

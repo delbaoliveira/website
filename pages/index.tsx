@@ -1,4 +1,5 @@
 import { allBlogs } from ".contentlayer/data"
+import { seo } from "@/lib/seo"
 import { videos } from "@/lib/videos"
 import { ContentLink } from "@/ui/ContentLink"
 import { Layout } from "@/ui/Layout"
@@ -61,11 +62,7 @@ export default function Home({
               </div>
             </div>
 
-            <p className="text-xl text-rose-50/80">
-              Welcome to my digital garden where I share what I'm learning about
-              shipping great products, becoming a better developer and growing a
-              career in tech.
-            </p>
+            <p className="text-xl text-rose-50/80">{seo.description}</p>
 
             <Navigation />
           </div>

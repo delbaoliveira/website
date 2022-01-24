@@ -1,6 +1,7 @@
+import { seo } from "@/lib/seo"
 import { useAnalytics } from "@/lib/useAnalytics"
+import { DefaultSeo } from "next-seo"
 import type { AppProps } from "next/app"
-import Head from "next/head"
 import "../styles/globals.css"
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -8,10 +9,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <>
-      <Head>
-        <title>Delba de Oliveira</title>
-      </Head>
-
+      <DefaultSeo {...seo} />
       <Component {...pageProps} />
     </>
   )
