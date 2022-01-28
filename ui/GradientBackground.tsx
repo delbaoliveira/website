@@ -5,7 +5,7 @@ export const GradientBackground = ({
 }) => {
   return (
     <div className="relative">
-      <span className="bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500 absolute z-[-1] opacity-50 sm:opacity-20 pointer-events-none filter blur-3xl top-[-60vw] sm:top-[-6vw] left-0 right-0 bottom-[-6vw] sm:right-[-7vw] sm:left-[-7vw]"></span>
+      <span className="pointer-events-none absolute top-[-60vw] left-0 right-0 bottom-[-6vw] z-[-1] bg-gradient-to-r from-rose-400/20 via-fuchsia-500/20 to-indigo-500/20 blur-3xl filter sm:top-[-6vw] sm:right-[-7vw] sm:left-[-7vw]"></span>
 
       {children}
     </div>
