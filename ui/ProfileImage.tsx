@@ -13,19 +13,19 @@ export const ProfileImage = ({
   return (
     <div
       className={cx(
-        "rounded-full shadow-lg bg-gradient-to-tl from-purple-700/60 to-rose-400/60 ",
+        "rounded-full bg-gradient-to-tl from-purple-700/60 to-rose-400/60 shadow-lg ",
         {
           "p-[3px]": size === "small",
           "p-1 ": size === "large",
-          "group transform ease-out transition hover:scale-105 hover:from-purple-700 hover:to-rose-400 hover:shadow-rose-500/25":
+          "group transform transition ease-out hover:scale-105 hover:from-purple-700 hover:to-rose-400 hover:shadow-rose-500/25":
             isInteractive,
         },
       )}
     >
       <div
-        className={cx("p-[2px] rounded-full bg-black/60", {
-          "w-[38px] h-[38px]": size === "small",
-          "w-[66px] h-[66px]": size === "large",
+        className={cx("rounded-full bg-black/60 p-[2px]", {
+          "h-[38px] w-[38px]": size === "small",
+          "h-[66px] w-[66px]": size === "large",
         })}
       >
         <Image

@@ -79,11 +79,11 @@ export default function PostPage({
 
       <Layout>
         <div>
-          <h1 className="text-2xl font-medium sm:text-4xl text-rose-100/80">
+          <h1 className="text-2xl font-medium text-rose-100/80 sm:text-4xl">
             {post.title}
           </h1>
 
-          <div className="flex items-center mt-2 space-x-2 text-lg text-rose-100/40">
+          <div className="mt-2 flex items-center space-x-2 text-lg text-rose-100/40">
             <div>
               <Link href="/">
                 <a className="hover:text-rose-200/90">Delba</a>

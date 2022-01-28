@@ -86,7 +86,7 @@ export const LinkPreview = ({
         >
           {children}
 
-          <DotsCircleHorizontalIcon className="inline w-4 mb-0.5 ml-1" />
+          <DotsCircleHorizontalIcon className="mb-0.5 ml-1 inline w-4" />
         </HoverCardPrimitive.Trigger>
 
         <HoverCardPrimitive.Content side="top" align="center" sideOffset={10}>
@@ -96,11 +96,11 @@ export const LinkPreview = ({
             enter="transform transition duration-300 origin-bottom ease-out"
             enterFrom="opacity-0 translate-y-2 scale-0"
             enterTo="opacity-100 translate-y-0 scale-100"
-            className="shadow-xl rounded-xl"
+            className="rounded-xl shadow-xl"
           >
             <a
               href={url}
-              className="block p-1 bg-white border-2 border-transparent shadow rounded-xl hover:border-rose-500"
+              className="block rounded-xl border-2 border-transparent bg-white p-1 shadow hover:border-rose-500"
               style={{ fontSize: 0 }}
             >
               <Image

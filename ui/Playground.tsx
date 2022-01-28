@@ -9,7 +9,7 @@ export function Playground({
 }) {
   return (
     <div className="mb-6 md:-mx-10">
-      <div className="flex items-center justify-center px-6 py-12 border bg-black/20 rounded-xl md:px-10 md:py-20 border-black/40">
+      <div className="flex items-center justify-center rounded-xl border border-black/40 bg-black/20 px-6 py-12 md:px-10 md:py-20">
         {children}
       </div>
       {description ? (

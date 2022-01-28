@@ -25,7 +25,7 @@ export const LikeButton = ({ id }: { id: string }) => {
       >
         <div className="relative">
           {/* Thank you emojis */}
-          <div className="absolute w-full text-2xl text-center">
+          <div className="absolute w-full text-center text-2xl">
             {emojis.map((item, index) => {
               return (
                 <motion.div
@@ -50,7 +50,7 @@ export const LikeButton = ({ id }: { id: string }) => {
 
           {/* Heart SVG */}
           <motion.div
-            className={`relative flex items-center justify-center overflow-hidden rounded-lg w-7 h-7 bg-gradient-to-tl from-white/5 to-white/30 ${
+            className={`relative flex h-7 w-7 items-center justify-center overflow-hidden rounded-lg bg-gradient-to-tl from-white/5 to-white/30 ${
               isLoading && `animate-pulse`
             }`}
             // Animated onHover and onClick
@@ -66,7 +66,7 @@ export const LikeButton = ({ id }: { id: string }) => {
             }}
           >
             <motion.div
-              className="absolute w-full h-full inset bg-gradient-to-tl from-purple-500 to-rose-400"
+              className="inset absolute h-full w-full bg-gradient-to-tl from-purple-500 to-rose-400"
               // `animate` passes a stringified `like` to the variants map below
               animate={String(currentUserLikes)}
               // Move gradient up or down depending on number of likes

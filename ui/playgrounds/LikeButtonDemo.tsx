@@ -77,10 +77,10 @@ export const LikeButtonDemo = ({
   if (isLoading) {
     return (
       <div className="flex items-center space-x-4">
-        <div className="text-gray-300 animate-pulse">
+        <div className="animate-pulse text-gray-300">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="w-20 h-20"
+            className="h-20 w-20"
             viewBox="0 0 20 20"
             fill="currentColor"
           >
@@ -108,14 +108,14 @@ export const LikeButtonDemo = ({
       >
         <div className="flex space-x-8 text-center">
           <div>
-            <div className="mb-2 text-[11px] font-bold tracking-wide uppercase text-gray-600 bg-white shadow-sm border px-1 py-0.5 rounded-full">
+            <div className="mb-2 rounded-full border bg-white px-1 py-0.5 text-[11px] font-bold uppercase tracking-wide text-gray-600 shadow-sm">
               Mask off
             </div>
             <LikeButtonHeartSkeleton likes={likes} />
           </div>
 
           <div>
-            <div className="mb-2 text-[11px] font-bold tracking-wide uppercase text-gray-600 bg-white shadow-sm border px-1 py-0.5 rounded-full">
+            <div className="mb-2 rounded-full border bg-white px-1 py-0.5 text-[11px] font-bold uppercase tracking-wide text-gray-600 shadow-sm">
               Mask on
             </div>
             <LikeButtonHeart
@@ -151,7 +151,7 @@ export const LikeButtonDemo = ({
       </button>
 
       {enableCounts ? (
-        <div className="mt-1 font-mono text-3xl font-medium text-transparent decoration-clone bg-clip-text bg-gradient-to-b from-yellow-400 via-red-500 to-pink-500">
+        <div className="mt-1 bg-gradient-to-b from-yellow-400 via-red-500 to-pink-500 decoration-clone bg-clip-text font-mono text-3xl font-medium text-transparent">
           {likes}
         </div>
       ) : null}

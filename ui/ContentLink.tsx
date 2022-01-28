@@ -20,18 +20,18 @@ export function ContentLink({
     <Link href={href}>
       <a
         className={clsx(
-          "block p-7 rounded-2xl transition duration-300 bg-white/[2%] hover:bg-white/[3%] shadow-surface-elevation-low hover:shadow-surface-elevation-medium",
+          "block rounded-2xl bg-white/[2%] p-7 shadow-surface-elevation-low transition duration-300 hover:bg-white/[3%] hover:shadow-surface-elevation-medium",
           FOCUS_VISIBLE_OUTLINE,
         )}
       >
         <div className="flex items-start justify-between">
-          <h3 className="text-xl transition duration-300 line-clamp-2 text-rose-100/80 hover:text-rose-100/90">
+          <h3 className="text-xl text-rose-100/80 transition duration-300 line-clamp-2 hover:text-rose-100/90">
             {title}
           </h3>
 
           {Icon ? (
             <div className="mt-1 ml-2 shrink-0">
-              <Icon className="w-5 transition-colors text-rose-100/30 hover:text-rose-100/50" />
+              <Icon className="w-5 text-rose-100/30 transition-colors hover:text-rose-100/50" />
             </div>
           ) : null}
         </div>

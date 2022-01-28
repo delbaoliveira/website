@@ -55,11 +55,11 @@ export const components = {
   ),
   ul: (props: any) => <ul className="mb-6" {...props} />,
   ol: (props: any) => (
-    <ol className="pl-10 my-12 leading-7 list-decimal" {...props} />
+    <ol className="my-12 list-decimal pl-10 leading-7" {...props} />
   ),
   li: (props: any) => (
     <li
-      className="relative pl-7 my-3 before:absolute before:bg-gray-600 before:rounded-full before:w-1.5 before:h-1.5 before:left-1 before:top-3"
+      className="relative my-3 pl-7 before:absolute before:left-1 before:top-3 before:h-1.5 before:w-1.5 before:rounded-full before:bg-gray-600"
       {...props}
     />
   ),
@@ -84,7 +84,7 @@ export const components = {
   ),
   blockquote: (props: any) => (
     <blockquote
-      className="pl-4 my-5 italic border-l-4 lg:-mx-12 border-rose-300/10 text-rose-100/90"
+      className="my-5 border-l-4 border-rose-300/10 pl-4 italic text-rose-100/90 lg:-mx-12"
       {...props}
     />
   ),
@@ -100,7 +100,7 @@ export const components = {
   },
   code: ({ children }: { children: React.ReactNode }) => {
     return (
-      <code className="px-2 py-0.5 text-sm font-mono bg-gray-700/60 text-gray-300/90 rounded-md">
+      <code className="rounded-md bg-gray-700/60 px-2 py-0.5 font-mono text-sm text-gray-300/90">
         {children}
       </code>
     )

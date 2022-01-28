@@ -21,7 +21,7 @@ export const LikeButtonHeart = ({
     <div className="relative">
       {/* Thank you emojis */}
       {enableEmojis ? (
-        <div className="absolute w-full text-2xl text-center">
+        <div className="absolute w-full text-center text-2xl">
           {emojis.map((item, index) => {
             return (
               <motion.div
@@ -50,7 +50,7 @@ export const LikeButtonHeart = ({
         // Grow heart from center
         style={{ originX: "50%", originY: "50%" }}
         // Animated onHover and onClick
-        className="p-[2px] bg-white/20 rounded-xl"
+        className="rounded-xl bg-white/20 p-[2px]"
         whileHover="hover"
         whileTap="active"
         variants={{

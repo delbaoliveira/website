@@ -33,7 +33,7 @@ export const LikeButton2 = ({ id }: { id: string }) => {
           return (
             <div
               key={index}
-              className="absolute w-full text-center opacity-0 animate-emoji"
+              className="absolute w-full animate-emoji text-center opacity-0"
             >
               {emoji}
             </div>
@@ -42,7 +42,7 @@ export const LikeButton2 = ({ id }: { id: string }) => {
 
         <button
           className={cx(
-            "block relative p-1 rounded-lg overflow-hidden transform bg-gradient-to-tl from-white/5 to-white/30 transition-all ease-out duration-300 shadow-lgx group hover:scale-[1.2] hover:rounded-[10px] active:scale-100 active:rounded-lg",
+            "shadow-lgx group relative block transform overflow-hidden rounded-lg bg-gradient-to-tl from-white/5 to-white/30 p-1 transition-all duration-300 ease-out hover:scale-[1.2] hover:rounded-[10px] active:scale-100 active:rounded-lg",
             FOCUS_VISIBLE_OUTLINE,
             {
               "animate-pulse": isLoading,
@@ -54,7 +54,7 @@ export const LikeButton2 = ({ id }: { id: string }) => {
         >
           <div
             className={cx(
-              "absolute inset-0 transform-gpu transition-transform bg-gradient-to-tl from-purple-500 to-rose-400",
+              "absolute inset-0 transform-gpu bg-gradient-to-tl from-purple-500 to-rose-400 transition-transform",
               {
                 "translate-y-8": currentUserLikes === 0,
                 "translate-y-5": currentUserLikes === 1,
@@ -63,7 +63,7 @@ export const LikeButton2 = ({ id }: { id: string }) => {
             )}
           />
 
-          <HeartIcon className="relative w-5 transition duration-500 ease-out delay-100 transform text-rose-100 group-hover:scale-110" />
+          <HeartIcon className="relative w-5 transform text-rose-100 transition delay-100 duration-500 ease-out group-hover:scale-110" />
         </button>
       </div>
 

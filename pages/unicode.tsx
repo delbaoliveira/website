@@ -17,11 +17,11 @@ export default function Page() {
           Unicode characters I'm always Googling
         </h1>
 
-        <div className="grid grid-cols-6 gap-4 mt-20">
+        <div className="mt-20 grid grid-cols-6 gap-4">
           {items.map((x) => (
             <div
               key={x.char}
-              className="flex items-center justify-center h-24 rounded-2xl transition duration-300 bg-white/[2%] hover:bg-white/[3%] shadow-surface-elevation-low hover:shadow-surface-elevation-medium"
+              className="flex h-24 items-center justify-center rounded-2xl bg-white/[2%] shadow-surface-elevation-low transition duration-300 hover:bg-white/[3%] hover:shadow-surface-elevation-medium"
             >
               <div className="text-6xl font-bold text-white">{x.char}</div>
             </div>
