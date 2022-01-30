@@ -1,5 +1,5 @@
 import { FOCUS_VISIBLE_OUTLINE, LINK_STYLES } from "@/lib/constants"
-import { Portal, Transition } from "@headlessui/react"
+import { Transition } from "@headlessui/react"
 import DotsCircleHorizontalIcon from "@heroicons/react/solid/DotsCircleHorizontalIcon"
 import * as HoverCardPrimitive from "@radix-ui/react-hover-card"
 import cx from "clsx"
@@ -20,6 +20,7 @@ export const LinkPreview = ({
   const width = 200
   const height = 125
   const layout = "fixed"
+  const q = 90
 
   // Simplifies things by encoding our microlink params into a query string.
   const params = encode({
@@ -43,37 +44,16 @@ export const LinkPreview = ({
 
   const [isOpen, setIsOpen] = React.useState(false)
 
-  const [isMounted, setIsMounted] = React.useState(false)
-
+  // Microlink.io can take a few seconds to fetch and generate a screenshot.
+  // Fetch the image url when the component mounts to ensure the image is ready
+  // (screenshot taken, next/image generated and cached) by the time a user
+  // triggers the <LinkPreview>.
   React.useEffect(() => {
-    setIsMounted(true)
+    fetch(`/_next/image?url=${encodeURIComponent(src)}&w=256&q=${q}`)
   }, [])
 
   return (
     <>
-      {/**
-       * Microlink.io + next/image can take a few seconds to fetch and generate
-       * a screenshot. The delay makes <LinkPreview> pointless. As a hacky
-       * solution we create a second <Image> in a Portal after the component has
-       * mounted. This <Image> triggers microlink.io + next/image so that the
-       * image itself is ready by the time the user hovers on a <LinkPreview>.
-       * Not concerned about the performance impact because <Image>'s are cached
-       * after they are generated and the images themselves are tiny (< 10kb).
-       */}
-      {isMounted ? (
-        <Portal>
-          <div className="hidden">
-            <Image
-              src={src}
-              width={width}
-              height={height}
-              layout={layout}
-              priority={true}
-            />
-          </div>
-        </Portal>
-      ) : null}
-
       <HoverCardPrimitive.Root
         openDelay={50}
         onOpenChange={(open) => {
@@ -96,11 +76,11 @@ export const LinkPreview = ({
             enter="transform transition duration-300 origin-bottom ease-out"
             enterFrom="opacity-0 translate-y-2 scale-0"
             enterTo="opacity-100 translate-y-0 scale-100"
-            className="rounded-xl shadow-xl"
+            className="shadow-xl rounded-xl"
           >
             <a
               href={url}
-              className="block rounded-xl border-2 border-transparent bg-white p-1 shadow hover:border-rose-500"
+              className="block p-1 bg-white border-2 border-transparent shadow rounded-xl hover:border-rose-500"
               style={{ fontSize: 0 }}
             >
               <Image
@@ -108,6 +88,7 @@ export const LinkPreview = ({
                 width={width}
                 height={height}
                 layout={layout}
+                quality={q}
                 className="rounded-lg"
               />
             </a>
