@@ -1,8 +1,9 @@
 import { FOCUS_VISIBLE_OUTLINE, LINK_STYLES } from "@/lib/constants"
+import { BlurImage } from "@/ui/BlurImage"
 import { LinkPreview } from "@/ui/LinkPreview"
 import { Playground } from "@/ui/Playground"
 import cx from "clsx"
-import NextImage from "next/image"
+import type { ImageProps } from "next/image"
 import NextLink from "next/link"
 import React from "react"
 
@@ -55,7 +56,7 @@ export const components = {
   ),
   ul: (props: any) => <ul className="mb-6" {...props} />,
   ol: (props: any) => (
-    <ol className="my-12 list-decimal pl-10 leading-7" {...props} />
+    <ol className="pl-10 my-12 leading-7 list-decimal" {...props} />
   ),
   li: (props: any) => (
     <li
@@ -64,27 +65,27 @@ export const components = {
     />
   ),
   strong: (props: any) => <strong className="font-semibold" {...props} />,
-  Img: ({ children, ...props }: { children: React.ReactNode }) => {
+  Img: ({ children, ...props }: { children: React.ReactNode } & ImageProps) => {
     return (
       <figure className="my-8 lg:-mx-12">
-        <NextImage {...(props as any)} className="rounded-xl" />
+        <BlurImage {...props} />
 
-        {children && (
+        {children ? (
           <figcaption className="mt-2 text-sm italic text-gray-500">
             {children}
           </figcaption>
-        )}
+        ) : null}
       </figure>
     )
   },
-  img: ({ children, ...props }: { children: React.ReactNode }) => (
+  img: ({ children, ...props }: { children: React.ReactNode } & ImageProps) => (
     <div className="my-8">
-      <NextImage {...(props as any)} />
+      <BlurImage {...props} />
     </div>
   ),
   blockquote: (props: any) => (
     <blockquote
-      className="my-5 border-l-4 border-rose-300/10 pl-4 italic text-rose-100/90 lg:-mx-12"
+      className="pl-4 my-5 italic border-l-4 border-rose-300/10 text-rose-100/90 lg:-mx-12"
       {...props}
     />
   ),
