@@ -13,7 +13,7 @@ export default async function handler(
       // Fallback for localhost or non Vercel deployments
       "0.0.0.0"
 
-    const postId = req.query.id as string
+    const slug = z.string().parse(req.query.slug)
 
     const currentUserId =
       // Since a users IP address is part of the sessionId in our database, we
@@ -25,14 +25,14 @@ export default async function handler(
         .digest("hex")
 
     // Identify a specific users interactions with a specific post
-    const sessionId = postId + "___" + currentUserId
+    const sessionId = slug + "___" + currentUserId
 
     switch (req.method) {
       case "GET": {
         const [post, user] = await Promise.all([
           // get the number of likes this post has
           prisma.post.findUnique({
-            where: { slug: postId },
+            where: { slug },
           }),
 
           // get the number of times the current user has liked this post
@@ -42,10 +42,11 @@ export default async function handler(
         ])
 
         res.json({
-          totalPostLikes: post?.likes || 0,
+          likes: post?.likes || 0,
           currentUserLikes: user?.likes || 0,
         })
-        return
+
+        break
       }
 
       case "POST": {
@@ -57,9 +58,9 @@ export default async function handler(
         const [post, user] = await Promise.all([
           // increment the number of times everyone has liked this post
           prisma.post.upsert({
-            where: { slug: postId },
+            where: { slug },
             create: {
-              slug: postId,
+              slug,
               likes: count,
             },
             update: {
@@ -85,11 +86,16 @@ export default async function handler(
         ])
 
         res.json({
-          totalPostLikes: post?.likes || 0,
+          likes: post?.likes || 0,
           currentUserLikes: user?.likes || 0,
         })
 
-        return
+        break
+      }
+
+      default: {
+        res.setHeader("Allow", ["GET", "POST"])
+        res.status(405).send("Method Not Allowed")
       }
     }
   } catch (err: any) {

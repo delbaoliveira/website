@@ -9,9 +9,8 @@ const emojis = ["👍", "🙏", "🥰"]
 // A visual component that...
 // 1. Fills a heart shape with a gradient depending on the number of likes passed
 // 2. Animates a thank you emoji as the number of likes increase
-export const LikeButton = ({ id }: { id: string }) => {
-  const { currentUserLikes, totalPostLikes, isLoading, increment } =
-    usePostLikes(id)
+export const LikeButton = ({ slug }: { slug: string }) => {
+  const { currentUserLikes, likes, isLoading, increment } = usePostLikes(slug)
 
   return (
     <div className="flex items-center space-x-2">
@@ -88,7 +87,7 @@ export const LikeButton = ({ id }: { id: string }) => {
 
       {/* Like counter text */}
       <div className="text-lg text-rose-100/90">
-        {isLoading ? <LoadingDots /> : <span>{totalPostLikes}</span>}
+        {isLoading ? <LoadingDots /> : <span>{likes}</span>}
       </div>
     </div>
   )
