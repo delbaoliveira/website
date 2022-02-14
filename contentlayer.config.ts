@@ -23,7 +23,7 @@ const computedFields: ComputedFields = {
   publishedAtFormatted: {
     type: "string",
     resolve: (doc) => {
-      return format(parseISO(doc.publishedAt), "dd MMMM, yyyy")
+      return format(parseISO(doc.publishedAt), "MMMM, yyyy")
     },
   },
   slug: {
