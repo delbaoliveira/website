@@ -33,7 +33,7 @@ export const LikeButton2 = ({ id }: { id: string }) => {
           return (
             <div
               key={index}
-              className="absolute w-full animate-emoji text-center opacity-0"
+              className="absolute w-full animate-[emoji_0.75s_ease-out] text-center opacity-0"
             >
               {emoji}
             </div>

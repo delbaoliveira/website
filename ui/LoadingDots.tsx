@@ -1,11 +1,16 @@
 // Based on the fantastic https://vercel.com/design/loading-dots
-
 export const LoadingDots = () => {
   return (
-    <div className="flex space-x-1">
-      <div className="h-1.5 w-1.5 animate-loading-0 rounded-full bg-gray-600"></div>
-      <div className="h-1.5 w-1.5 animate-loading-1 rounded-full bg-gray-600"></div>
-      <div className="h-1.5 w-1.5 animate-loading-2 rounded-full bg-gray-600"></div>
-    </div>
+    <span className="space-x-1">
+      <span className="inline-flex animate-[loading_1.4s_ease-in-out_infinite] rounded-full">
+        &bull;
+      </span>
+      <span className="inline-flex animate-[loading_1.4s_ease-in-out_0.2s_infinite] rounded-full">
+        &bull;
+      </span>
+      <span className="inline-flex animate-[loading_1.4s_ease-in-out_0.4s_infinite] rounded-full">
+        &bull;
+      </span>
+    </span>
   )
 }

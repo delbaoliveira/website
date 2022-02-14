@@ -21,12 +21,6 @@ module.exports = {
       colors: {
         gray: colors.stone,
       },
-      animation: {
-        "loading-0": "loading 1.4s ease-in-out infinite",
-        "loading-1": "loading 1.4s ease-in-out 0.2s infinite",
-        "loading-2": "loading 1.4s ease-in-out 0.4s infinite",
-        emoji: "emoji 0.75s ease-out",
-      },
       keyframes: {
         emoji: {
           "0%": {
@@ -48,6 +42,7 @@ module.exports = {
           },
           "20%": {
             opacity: "1",
+            transform: "translateX(1px)",
           },
           to: {
             opacity: ".2",
