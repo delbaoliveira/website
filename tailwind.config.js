@@ -4,6 +4,7 @@ const colors = require("tailwindcss/colors")
 const hexToRgb = require("hex-to-rgb")
 
 const highlightColor = hexToRgb(colors.amber["200"]).join(",")
+const highlightColor2 = hexToRgb(colors.rose["200"]).join(",")
 
 module.exports = {
   content: [
@@ -22,6 +23,18 @@ module.exports = {
         gray: colors.stone,
       },
       keyframes: {
+        mutation: {
+          "0%": {
+            background: `rgba(${highlightColor2}, 0)`,
+          },
+          "10%": {
+            background: `rgba(${highlightColor2}, 0.15)`,
+            color: `rgba(${highlightColor2}, 0.75)`,
+          },
+          "100%": {
+            background: `rgba(${highlightColor2}, 0)`,
+          },
+        },
         emoji: {
           "0%": {
             opacity: "0",

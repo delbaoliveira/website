@@ -1,5 +1,5 @@
 import { allBlogs } from ".contentlayer/data"
-import { ContentLink } from "@/ui/ContentLink"
+import { BlogPostPreview } from "@/ui/BlogPostPreview"
 import { Layout } from "@/ui/Layout"
 import AnnotationIcon from "@heroicons/react/solid/AnnotationIcon"
 import { pick } from "contentlayer/client"
@@ -31,7 +31,7 @@ export default function BlogPage({
     <Layout>
       <div>
         <div className="flex items-center space-x-4">
-          <div className="rounded-2xl bg-gray-900 p-2 shadow-surface-elevation-low">
+          <div className="p-2 bg-gray-900 rounded-2xl shadow-surface-elevation-low">
             <AnnotationIcon className="w-6 text-gray-600/90" />
           </div>
 
@@ -41,13 +41,7 @@ export default function BlogPage({
         </div>
         <div className="mt-12 space-y-10">
           {posts.map((post) => (
-            <ContentLink
-              key={post.slug}
-              title={post.title}
-              text={post.description}
-              href={`/blog/${post.slug}`}
-              meta={[post.publishedAtFormatted]}
-            />
+            <BlogPostPreview key={post.slug} {...post} />
           ))}
         </div>
       </div>

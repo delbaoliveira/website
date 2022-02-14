@@ -19,7 +19,7 @@ export const LikeButton2 = ({ slug }: { slug: string }) => {
 
   const handleClick = () => {
     increment()
-    if (currentUserLikes <= 2) {
+    if (currentUserLikes && currentUserLikes <= 2) {
       setAnimatedEmojis([...animatedEmojis, emojis[currentUserLikes]])
     }
   }
@@ -62,7 +62,7 @@ export const LikeButton2 = ({ slug }: { slug: string }) => {
             )}
           />
 
-          <HeartIcon className="relative w-5 transform text-rose-100 transition delay-100 duration-500 ease-out group-hover:scale-110" />
+          <HeartIcon className="relative w-5 transition duration-500 ease-out delay-100 transform text-rose-100 group-hover:scale-110" />
         </button>
       </div>
 

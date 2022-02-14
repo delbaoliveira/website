@@ -24,7 +24,7 @@ export const LikeButton = ({ slug }: { slug: string }) => {
       >
         <div className="relative">
           {/* Thank you emojis */}
-          <div className="absolute w-full text-center text-2xl">
+          <div className="absolute w-full text-2xl text-center">
             {emojis.map((item, index) => {
               return (
                 <motion.div
@@ -65,7 +65,7 @@ export const LikeButton = ({ slug }: { slug: string }) => {
             }}
           >
             <motion.div
-              className="inset absolute h-full w-full bg-gradient-to-tl from-purple-500 to-rose-400"
+              className="absolute w-full h-full inset bg-gradient-to-tl from-purple-500 to-rose-400"
               // `animate` passes a stringified `like` to the variants map below
               animate={String(currentUserLikes)}
               // Move gradient up or down depending on number of likes

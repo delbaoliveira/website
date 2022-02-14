@@ -1,34 +1,50 @@
 import React from "react"
 import { useDebounce } from "react-use"
-import useSWR from "swr"
+import useSWR, { SWRConfiguration } from "swr"
 
-const API_URL = `/api/likes/`
+const API_URL = `/api/likes`
 
 type MetricsPayload = {
   likes: number
   currentUserLikes: number
 }
 
-async function getPostLikes(id: string): Promise<LikesPayload> {
-  const res = await fetch(API_URL + id)
+async function getPostLikes(slug: string): Promise<MetricsPayload> {
+  const res = await fetch(API_URL + `/${slug}`)
+  if (!res.ok) {
+    throw new Error("An error occurred while fetching the data.")
+  }
   return res.json()
 }
 
 async function updatePostLikes(
   slug: string,
   count: number,
-): Promise<LikesPayload> {
-  const res = await fetch(API_URL + id, {
+): Promise<MetricsPayload> {
+  const res = await fetch(API_URL + `/${slug}`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ count }),
   })
+
+  if (!res.ok) {
+    throw new Error("An error occurred while posting the data.")
+  }
+
   return res.json()
 }
 
 // A custom hook to abstract away fetching and updating a user's likes
-export const usePostLikes = (id: string) => {
-  const { data, error, mutate } = useSWR(id, getPostLikes)
+export const usePostLikes = (slug: string, config?: SWRConfiguration) => {
+  const { data, error, mutate } = useSWR(
+    [API_URL, slug],
+    () => getPostLikes(slug),
+    {
+      dedupingInterval: 60000,
+      ...config,
+    },
+  )
+
   const [batchedLikes, setBatchedLikes] = React.useState(0)
 
   const increment = () => {
@@ -69,7 +85,7 @@ export const usePostLikes = (id: string) => {
     currentUserLikes: data?.currentUserLikes,
     likes: data?.likes,
     isLoading: !error && !data,
-    isError: error,
+    isError: !!error,
     increment,
   }
 }

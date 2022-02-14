@@ -1,61 +1,72 @@
 import { FOCUS_VISIBLE_OUTLINE } from "@/lib/constants"
-import clsx from "clsx"
+import cx from "clsx"
 import Link from "next/link"
 import React from "react"
 
 export function ContentLink({
   href,
-  title,
-  text,
-  meta,
-  Icon,
+  children,
 }: {
   href: string
-  title: string
-  text: string
-  meta?: string[]
-  Icon?: React.FunctionComponent<any>
+  children: React.ReactNode
 }) {
   return (
     <Link href={href}>
       <a
-        className={clsx(
+        className={cx(
           "block rounded-2xl bg-white/[2%] p-7 shadow-surface-elevation-low transition duration-300 hover:bg-white/[3%] hover:shadow-surface-elevation-medium",
           FOCUS_VISIBLE_OUTLINE,
         )}
       >
-        <div className="flex items-start justify-between">
-          <h3 className="text-xl text-rose-100/80 transition duration-300 line-clamp-2 hover:text-rose-100/90">
-            {title}
-          </h3>
-
-          {Icon ? (
-            <div className="mt-1 ml-2 shrink-0">
-              <Icon className="w-5 text-rose-100/30 transition-colors hover:text-rose-100/50" />
-            </div>
-          ) : null}
-        </div>
-
-        {meta && meta.length > 0 ? (
-          <div className="text-gray-500/90">
-            {meta.map((x, i) => {
-              return (
-                <React.Fragment key={i}>
-                  {x}
-                  {i + 1 < meta.length ? (
-                    <>
-                      {" "}
-                      <span className="text-gray-500/30">&middot;</span>{" "}
-                    </>
-                  ) : null}
-                </React.Fragment>
-              )
-            })}
-          </div>
-        ) : null}
-
-        <p className="mt-4 text-lg text-gray-400/90 line-clamp-3">{text}</p>
+        {children}
       </a>
     </Link>
   )
 }
+
+function Title({ children }: { children: React.ReactNode }) {
+  return (
+    <h3 className="text-xl transition duration-300 text-rose-100/80 line-clamp-2 hover:text-rose-100/90">
+      {children}
+    </h3>
+  )
+}
+
+function Icon({ Icon }: { Icon: React.FunctionComponent<any> }) {
+  return (
+    <div className="mt-1 ml-2 shrink-0">
+      <Icon className="w-5 transition-colors text-rose-100/30 hover:text-rose-100/50" />
+    </div>
+  )
+}
+
+function Text({ children }: { children: React.ReactNode }) {
+  return (
+    <p className="mt-4 text-lg text-gray-400/90 line-clamp-3">{children}</p>
+  )
+}
+
+function Meta({ items }: { items: string[] }) {
+  return (
+    <div className="text-gray-500/90">
+      {items.map((x, i) => {
+        return (
+          <React.Fragment key={i}>
+            {x}
+            {i + 1 < items.length ? (
+              <>
+                {" "}
+                <span className="text-gray-500/30">&middot;</span>{" "}
+              </>
+            ) : null}
+          </React.Fragment>
+        )
+      })}
+    </div>
+  )
+}
+
+ContentLink.Title = Title
+ContentLink.Icon = Icon
+ContentLink.Text = Text
+ContentLink.Meta = Meta

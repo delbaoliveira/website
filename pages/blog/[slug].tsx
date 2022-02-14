@@ -2,8 +2,13 @@ import { allBlogs } from ".contentlayer/data"
 import type { Blog } from ".contentlayer/types"
 import { createOgImage } from "@/lib/og"
 import { FormattedTweet, getTweets } from "@/lib/twitter"
+import { usePollIfInView } from "@/lib/usePollIfInView"
+import { usePostLikes } from "@/lib/usePostLikes"
+import { usePostViews } from "@/lib/usePostViews"
+import { InlineMetric } from "@/ui/InlineMetric"
 import { Layout } from "@/ui/Layout"
 import { LikeButton2 } from "@/ui/LikeButton2"
+import { LoadingDots } from "@/ui/LoadingDots"
 import { components } from "@/ui/MdxComponents"
 import { Tweet } from "@/ui/Tweet"
 import { GetStaticProps, InferGetStaticPropsType } from "next"
@@ -32,6 +37,62 @@ export const getStaticProps: GetStaticProps<{
       tweets,
     },
   }
+}
+
+const Metrics = ({ slug }: { slug: string }) => {
+  const interval = 5000
+  const { shouldPoll, intersectionRef } = usePollIfInView(interval)
+
+  const {
+    views,
+    isLoading: viewsIsLoading,
+    isError: viewsIsError,
+    increment: incrementViews,
+  } = usePostViews(slug, {
+    // Avoid fetching view count we *know* is stale since increment() mutation
+    // returns view count
+    revalidateOnMount: false,
+    // Only poll when in view
+    refreshInterval: shouldPoll ? interval : 0,
+    // Override `usePostViews` default dedupingInterval for the polling usecase
+    // (refresh interval can never be faster than deduping interval)
+    dedupingInterval: interval,
+  })
+
+  const {
+    likes,
+    isLoading: likesIsLoading,
+    isError: likesIsError,
+  } = usePostLikes(slug, {
+    // only poll when in view
+    refreshInterval: shouldPoll ? interval : 0,
+  })
+
+  React.useEffect(() => {
+    incrementViews()
+  }, [])
+
+  return (
+    <div ref={intersectionRef} className="flex space-x-2 text-gray-500/90">
+      <div>
+        {viewsIsError || viewsIsLoading ? (
+          <LoadingDots />
+        ) : (
+          <InlineMetric key={views} stat={views} text="views" />
+        )}
+      </div>
+
+      <div className="text-rose-100/30">&middot;</div>
+
+      <div>
+        {likesIsError || likesIsLoading ? (
+          <LoadingDots />
+        ) : (
+          <InlineMetric key={likes} stat={likes} text="likes" />
+        )}
+      </div>
+    </div>
+  )
 }
 
 export default function PostPage({
@@ -83,16 +144,22 @@ export default function PostPage({
             {post.title}
           </h1>
 
-          <div className="mt-2 flex items-center space-x-2 text-lg text-rose-100/40">
-            <div>
-              <Link href="/">
-                <a className="hover:text-rose-200/90">Delba</a>
-              </Link>
+          <div className="flex flex-wrap items-center justify-between text-lg text-rose-100/40">
+            <div className="flex mt-2 space-x-2">
+              <div>
+                <Link href="/">
+                  <a className="hover:text-rose-200/90">Delba</a>
+                </Link>
+              </div>
+
+              <div className="text-rose-100/30">&middot;</div>
+
+              <div>{post.publishedAtFormatted}</div>
             </div>
 
-            <div className="text-rose-100/30">&middot;</div>
-
-            <div>{post.publishedAtFormatted}</div>
+            <div className="mt-2">
+              <Metrics slug={post.slug} />
+            </div>
           </div>
 
           <div className="mt-10 text-lg text-rose-100/70">
@@ -105,7 +172,7 @@ export default function PostPage({
           </div>
 
           <div className="mt-16">
-            <LikeButton2 id={post.slug} />
+            <LikeButton2 slug={post.slug} />
           </div>
         </div>
       </Layout>
