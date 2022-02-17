@@ -1,7 +1,7 @@
 import { FOCUS_VISIBLE_OUTLINE } from "@/lib/constants"
 import cx from "clsx"
 import Link from "next/link"
-import React from "react"
+import React, { ElementType } from "react"
 
 export function ContentLink({
   href,
@@ -32,10 +32,10 @@ function Title({ children }: { children: React.ReactNode }) {
   )
 }
 
-function Icon({ Icon }: { Icon: React.FunctionComponent<any> }) {
+function Icon(props: { icon: ElementType }) {
   return (
     <div className="mt-1 ml-2 shrink-0">
-      <Icon className="w-5 transition-colors text-rose-100/30 hover:text-rose-100/50" />
+      <props.icon className="w-5 transition-colors text-rose-100/30 hover:text-rose-100/50" />
     </div>
   )
 }

@@ -1,0 +1,77 @@
+import { getTweets } from "@/lib/twitter"
+import { Layout } from "@/ui/Layout"
+import { Tweet } from "@/ui/Tweet"
+import type { InferGetStaticPropsType } from "next"
+import React from "react"
+
+export const getStaticProps = async () => {
+  // Get tweet ids from a Github project using Github's GraphQL api
+  const response: GithubResponse = await fetch(
+    "https://api.github.com/graphql",
+    {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${process.env.GITHUB_PERSONAL_ACCESS_TOKEN}`,
+      },
+      body: JSON.stringify({
+        query: `query ($columnId: ID!) {
+          node(id: $columnId) {
+            ... on ProjectColumn {
+              cards {
+                nodes {
+                  note
+                }
+              }
+            }
+          }
+        }`,
+        variables: {
+          columnId: "PC_lATOFczi5s4A18MOzgEPohk",
+        },
+      }),
+    },
+  ).then((res) => res.json())
+
+  const tweetIds = response?.data?.node?.cards?.nodes?.map((card) => card.note)
+
+  // Get the actual tweets from Twitter using the Twitter API
+  const tweets =
+    tweetIds && tweetIds.length > 0 ? await getTweets(tweetIds) : []
+
+  return { props: { tweets } }
+}
+
+export default function BlogPage({
+  tweets,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
+  return (
+    <Layout>
+      <div>
+        <div className="flex items-center space-x-4">
+          <div className="flex items-center justify-center w-12 h-12 bg-gray-900 rounded-full shadow-surface-elevation-low">
+            <div className="pr-[0.05rem] text-2xl">✍️</div>
+          </div>
+
+          <div>
+            <h1 className="text-2xl font-medium text-gray-500/90">
+              Inspired Tweets
+            </h1>
+            <div className="text-gray-500/80">
+              Tweets that capture a sentiment I'd like to remember
+              #BlessedTweets
+            </div>
+          </div>
+        </div>
+        <div className="mt-14 space-y-14">
+          {tweets.map((tweet) => (
+            <Tweet key={tweet.id} {...tweet} />
+          ))}
+        </div>
+      </div>
+    </Layout>
+  )
+}
+
+type GithubResponse = {
+  data?: { node: { cards: { nodes: { note: string }[] } } }
+}

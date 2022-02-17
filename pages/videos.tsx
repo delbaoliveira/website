@@ -42,7 +42,7 @@ export default function BlogPage() {
             <ContentLink key={post.url} href={post.url}>
               <div className="flex justify-between">
                 <ContentLink.Title>{post.title}</ContentLink.Title>
-                <ContentLink.Icon Icon={YoutubeIcon} />
+                <ContentLink.Icon icon={YoutubeIcon} />
               </div>
 
               <ContentLink.Meta items={[post.category, post.date]} />
