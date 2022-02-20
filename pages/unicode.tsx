@@ -13,17 +13,27 @@ export default function Page() {
   return (
     <Layout>
       <div className="space-y-14 lg:space-y-32">
-        <h1 className="text-3xl font-extrabold text-gray-400 lg:text-4xl">
-          Unicode characters I'm always Googling
-        </h1>
+        <div>
+          <h1 className="text-3xl font-extrabold text-rose-100/90 lg:text-4xl">
+            Unicode characters
+          </h1>
+          <div className="text-xl text-rose-100/40 lg:text-2xl">
+            I'm always Googling
+          </div>
+        </div>
 
-        <div className="mt-20 grid grid-cols-6 gap-4">
+        <div className="grid grid-cols-6 gap-4 mt-20">
           {items.map((x) => (
             <div
               key={x.char}
               className="flex h-24 items-center justify-center rounded-2xl bg-white/[2%] shadow-surface-elevation-low transition duration-300 hover:bg-white/[3%] hover:shadow-surface-elevation-medium"
             >
-              <div className="text-6xl font-bold text-white">{x.char}</div>
+              <div
+                className="text-6xl font-bold text-rose-100/90 selection:bg-transparent selection:text-rose-300"
+                style={{ marginTop: `${x.offset}px` }}
+              >
+                {x.char}
+              </div>
             </div>
           ))}
         </div>
@@ -40,6 +50,7 @@ const items = [
   {
     char: "◆",
     keywords: ["black", "diamond", "bullet", "twitter"],
+    offset: -10,
   },
   {
     char: "¹",

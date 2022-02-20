@@ -5,7 +5,7 @@ import type { InferGetStaticPropsType } from "next"
 import React from "react"
 
 export const getStaticProps = async () => {
-  // Get tweet ids from a Github project using Github's GraphQL api
+  // Get tweet ids from a Github project using Github's GraphQL API
   const response: GithubResponse = await fetch(
     "https://api.github.com/graphql",
     {
@@ -47,22 +47,16 @@ export default function BlogPage({
   return (
     <Layout>
       <div>
-        <div className="flex items-center space-x-4">
-          <div className="flex items-center justify-center w-12 h-12 bg-gray-900 rounded-full shadow-surface-elevation-low">
-            <div className="pr-[0.05rem] text-2xl">✍️</div>
-          </div>
-
-          <div>
-            <h1 className="text-2xl font-medium text-gray-500/90">
-              Inspired Tweets
-            </h1>
-            <div className="text-gray-500/80">
-              Tweets that capture a sentiment I'd like to remember
-              #BlessedTweets
-            </div>
+        <div>
+          <h1 className="text-3xl font-extrabold text-rose-100/90 lg:text-4xl">
+            Inspired Tweets
+          </h1>
+          <div className="text-lg text-rose-100/40 lg:text-xl">
+            Tweets that capture a sentiment I'd like to remember #BlessedTweets
           </div>
         </div>
-        <div className="mt-14 space-y-14">
+
+        <div className="mt-16 space-y-14">
           {tweets.map((tweet) => (
             <Tweet key={tweet.id} {...tweet} />
           ))}

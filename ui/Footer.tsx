@@ -1,42 +1,47 @@
 import { FOCUS_VISIBLE_OUTLINE, LINK_SUBTLE_STYLES } from "@/lib/constants"
 import cx from "clsx"
+import Link from "next/link"
 
 export const Footer = () => {
   return (
     <div className="mt-36 pb-36">
       <div className="text-gray-500">
         <div className="flex flex-col justify-between lg:flex-row">
-          <p>
-            Built with{" "}
-            <a
-              href="https://nextjs.org"
-              className={cx(LINK_SUBTLE_STYLES, FOCUS_VISIBLE_OUTLINE)}
-            >
-              Next.js
-            </a>
-            ,{" "}
-            <a
-              href="https://mdxjs.com"
-              className={cx(LINK_SUBTLE_STYLES, FOCUS_VISIBLE_OUTLINE)}
-            >
-              MDX
-            </a>
-            ,{" "}
-            <a
-              href="https://tailwindcss.com"
-              className={cx(LINK_SUBTLE_STYLES, FOCUS_VISIBLE_OUTLINE)}
-            >
-              Tailwind
-            </a>{" "}
-            and{" "}
-            <a
-              href="https://vercel.com"
-              className={cx(LINK_SUBTLE_STYLES, FOCUS_VISIBLE_OUTLINE)}
-            >
-              Vercel
-            </a>
-          </p>
-          <div className="space-x-6 pt-2 font-medium lg:pt-0">
+          <div className="flex space-x-4">
+            <div>
+              <Link href="/videos">
+                <a className={cx(LINK_SUBTLE_STYLES, FOCUS_VISIBLE_OUTLINE)}>
+                  Videos
+                </a>
+              </Link>
+            </div>
+
+            <div>
+              <Link href="/posts">
+                <a className={cx(LINK_SUBTLE_STYLES, FOCUS_VISIBLE_OUTLINE)}>
+                  Posts
+                </a>
+              </Link>
+            </div>
+
+            <div>
+              <Link href="/tweets">
+                <a className={cx(LINK_SUBTLE_STYLES, FOCUS_VISIBLE_OUTLINE)}>
+                  Inspired Tweets
+                </a>
+              </Link>
+            </div>
+
+            <div>
+              <Link href="/unicode">
+                <a className={cx(LINK_SUBTLE_STYLES, FOCUS_VISIBLE_OUTLINE)}>
+                  Unicode
+                </a>
+              </Link>
+            </div>
+          </div>
+
+          <div className="pt-2 space-x-6 font-medium lg:pt-0">
             <a
               href="https://twitter.com/delba_oliveira"
               className={cx(LINK_SUBTLE_STYLES, FOCUS_VISIBLE_OUTLINE)}
@@ -58,6 +63,37 @@ export const Footer = () => {
           </div>
         </div>
       </div>
+
+      <p className="mt-8 text-gray-600">
+        Built with{" "}
+        <a
+          href="https://nextjs.org"
+          className={cx(LINK_SUBTLE_STYLES, FOCUS_VISIBLE_OUTLINE)}
+        >
+          Next.js
+        </a>
+        ,{" "}
+        <a
+          href="https://mdxjs.com"
+          className={cx(LINK_SUBTLE_STYLES, FOCUS_VISIBLE_OUTLINE)}
+        >
+          MDX
+        </a>
+        ,{" "}
+        <a
+          href="https://tailwindcss.com"
+          className={cx(LINK_SUBTLE_STYLES, FOCUS_VISIBLE_OUTLINE)}
+        >
+          Tailwind
+        </a>{" "}
+        and{" "}
+        <a
+          href="https://vercel.com"
+          className={cx(LINK_SUBTLE_STYLES, FOCUS_VISIBLE_OUTLINE)}
+        >
+          Vercel
+        </a>
+      </p>
     </div>
   )
 }

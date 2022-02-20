@@ -11,6 +11,11 @@ module.exports = withContentlayer()({
         destination: "/blog/interactive-playgrounds",
         permanent: true,
       },
+      {
+        source: "/uni",
+        destination: "/unicode",
+        permanent: true,
+      },
     ]
   },
   images: {
