@@ -17,7 +17,7 @@ export const Footer = () => {
             </div>
 
             <div>
-              <Link href="/posts">
+              <Link href="/blog">
                 <a className={cx(LINK_SUBTLE_STYLES, FOCUS_VISIBLE_OUTLINE)}>
                   Posts
                 </a>
