@@ -1,5 +1,14 @@
 export const videos = [
   {
+    title:
+      "Next.js 12.1: Regenerate a static page whenever its content changes",
+    url: "https://www.youtube.com/watch?v=-_3gqy7U9zE",
+    category: "YouTube",
+    date: "18 February 2022",
+    description:
+      "A quick demo of On-Demand Incremental Static Regeneration (ISR). Regenerate static pages without having to rebuild the entire site or having to wait for a specific revalidation interval.",
+  },
+  {
     title: "Interactive playgrounds with React",
     url: "https://www.youtube.com/watch?v=zL8cz2W0z34",
     category: "React Conf",
