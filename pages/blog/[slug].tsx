@@ -1,5 +1,5 @@
-import { allBlogs } from ".contentlayer/data"
-import type { Blog } from ".contentlayer/types"
+import { allBlogs } from "contentlayer/generated"
+import type { Blog } from "contentlayer/generated"
 import { createOgImage } from "@/lib/og"
 import { FormattedTweet, getTweets } from "@/lib/twitter"
 import { usePollIfInView } from "@/lib/usePollIfInView"
@@ -145,7 +145,7 @@ export default function PostPage({
           </h1>
 
           <div className="flex flex-wrap items-center justify-between text-lg text-rose-100/40">
-            <div className="flex mt-2 space-x-2">
+            <div className="mt-2 flex space-x-2">
               <div>
                 <Link href="/">
                   <a className="hover:text-rose-200/90">Delba</a>

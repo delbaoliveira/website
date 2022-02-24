@@ -1,4 +1,4 @@
-import { Blog } from ".contentlayer/types"
+import { Blog } from "contentlayer/generated"
 import { useEnabledOnFirstIntersection } from "@/lib/useEnabledOnFirstIntersection"
 import { usePostLikes } from "@/lib/usePostLikes"
 import { usePostViews } from "@/lib/usePostViews"
