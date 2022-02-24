@@ -41,7 +41,7 @@ export const Footer = () => {
             </div>
           </div>
 
-          <div className="pt-2 space-x-6 font-medium lg:pt-0">
+          <div className="space-x-6 pt-2 font-medium lg:pt-0">
             <a
               href="https://twitter.com/delba_oliveira"
               className={cx(LINK_SUBTLE_STYLES, FOCUS_VISIBLE_OUTLINE)}

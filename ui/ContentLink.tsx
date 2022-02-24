@@ -26,7 +26,7 @@ export function ContentLink({
 
 function Title({ children }: { children: React.ReactNode }) {
   return (
-    <h3 className="text-xl transition duration-300 text-rose-100/80 line-clamp-2 hover:text-rose-100/90">
+    <h3 className="text-xl text-rose-100/80 transition duration-300 line-clamp-2 hover:text-rose-100/90">
       {children}
     </h3>
   )
@@ -35,7 +35,7 @@ function Title({ children }: { children: React.ReactNode }) {
 function Icon(props: { icon: ElementType }) {
   return (
     <div className="mt-1 ml-2 shrink-0">
-      <props.icon className="w-5 transition-colors text-rose-100/30 hover:text-rose-100/50" />
+      <props.icon className="w-5 text-rose-100/30 transition-colors hover:text-rose-100/50" />
     </div>
   )
 }

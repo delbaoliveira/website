@@ -56,7 +56,7 @@ export const components = {
   ),
   ul: (props: any) => <ul className="mb-6" {...props} />,
   ol: (props: any) => (
-    <ol className="pl-10 my-12 leading-7 list-decimal" {...props} />
+    <ol className="my-12 list-decimal pl-10 leading-7" {...props} />
   ),
   li: (props: any) => (
     <li
@@ -85,7 +85,7 @@ export const components = {
   ),
   blockquote: (props: any) => (
     <blockquote
-      className="pl-4 my-5 italic border-l-4 border-rose-300/10 text-rose-100/90 lg:-mx-12"
+      className="my-5 border-l-4 border-rose-300/10 pl-4 italic text-rose-100/90 lg:-mx-12"
       {...props}
     />
   ),
