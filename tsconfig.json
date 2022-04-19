@@ -17,10 +17,16 @@
     "paths": {
       "@/ui/*": ["ui/*"],
       "@/lib/*": ["lib/*"],
-      "@/public/*": ["public/*"]
+      "@/public/*": ["public/*"],
+      "contentlayer/generated": ["./.contentlayer/generated"]
     },
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".contentlayer/generated"
+  ],
   "exclude": ["node_modules"]
 }

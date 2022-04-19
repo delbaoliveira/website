@@ -1,5 +1,4 @@
-import { allBlogs } from ".contentlayer/data"
-import type { Blog } from ".contentlayer/types"
+import { allBlogs, Blog } from "contentlayer/generated"
 import { createOgImage } from "@/lib/og"
 import { FormattedTweet, getTweets } from "@/lib/twitter"
 import { usePollIfInView } from "@/lib/usePollIfInView"

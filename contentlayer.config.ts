@@ -35,7 +35,7 @@ const computedFields: ComputedFields = {
 const Blog = defineDocumentType(() => ({
   name: "Blog",
   filePathPattern: "posts/*.mdx",
-  bodyType: "mdx",
+  contentType: "mdx",
   fields: {
     title: { type: "string", required: true },
     publishedAt: { type: "string", required: true },
@@ -48,12 +48,7 @@ const Blog = defineDocumentType(() => ({
 const contentLayerConfig = makeSource({
   contentDirPath: "data",
   documentTypes: [Blog],
-
   mdx: {
-    esbuildOptions(options) {
-      options.target = "esnext"
-      return options
-    },
     remarkPlugins: [remarkGfm],
     rehypePlugins: [
       rehypeSlug,

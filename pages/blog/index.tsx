@@ -1,4 +1,4 @@
-import { allBlogs } from ".contentlayer/data"
+import { allBlogs } from "contentlayer/generated"
 import { BlogPostPreview } from "@/ui/BlogPostPreview"
 import { Layout } from "@/ui/Layout"
 import AnnotationIcon from "@heroicons/react/solid/AnnotationIcon"
