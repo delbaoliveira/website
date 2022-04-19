@@ -34,6 +34,8 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-use": "^17.2.4",
+    "rehype-pretty-code": "^0.2.5",
+    "shiki": "^0.10.1",
     "swr": "^1.2.1",
     "zod": "^3.11.6"
   },

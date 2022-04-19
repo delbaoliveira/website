@@ -90,20 +90,4 @@ export const components = {
     />
   ),
   del: (props: any) => <del className="line-through" {...props} />,
-
-  // TODO:
-  pre: ({ children, ...props }: { children: React.ReactNode }) => {
-    return (
-      <pre className="" {...props}>
-        {children}
-      </pre>
-    )
-  },
-  code: ({ children }: { children: React.ReactNode }) => {
-    return (
-      <code className="rounded-md bg-gray-700/60 px-2 py-0.5 font-mono text-sm text-gray-300/90">
-        {children}
-      </code>
-    )
-  },
 }
