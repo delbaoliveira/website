@@ -13,7 +13,10 @@ import { HEADING_LINK_ANCHOR } from "./lib/constants"
 const rehypePrettyCodeOptions: Partial<Options> = {
   theme: "one-dark-pro",
   tokensMap: {
+    // VScode command palette: Inspect Editor Tokens and Scopes
+    // https://github.com/Binaryify/OneDark-Pro/blob/47c66a2f2d3e5c85490e1aaad96f5fab3293b091/themes/OneDark-Pro.json
     fn: "entity.name.function",
+    objKey: "meta.object-literal.key",
   },
   onVisitLine(node) {
     // Prevent lines from collapsing in `display: grid` mode, and
@@ -35,7 +38,9 @@ const computedFields: ComputedFields = {
   tweetIds: {
     type: "json",
     resolve: (doc) => {
-      const tweetMatches = doc.body.raw.match(/<StaticTweet\sid="[0-9]+"\s\/>/g)
+      const tweetMatches = doc.body.raw.match(
+        /<StaticTweet\sid="[0-9]+"[\s\S]*?\/>/g,
+      )
       const tweetIDs = tweetMatches?.map(
         (tweet: any) => tweet.match(/[0-9]+/g)[0],
       )
@@ -50,7 +55,10 @@ const computedFields: ComputedFields = {
   },
   slug: {
     type: "string",
-    resolve: (doc) => doc._raw.sourceFileName.replace(/\.mdx$/, ""),
+    resolve: (doc) =>
+      doc._raw.sourceFileName
+        // hello-world.mdx => hello-world
+        .replace(/\.mdx$/, ""),
   },
 }
 
@@ -62,7 +70,6 @@ const Blog = defineDocumentType(() => ({
     title: { type: "string", required: true },
     publishedAt: { type: "string", required: true },
     description: { type: "string", required: true },
-    // image: { type: "string", required: true },
   },
   computedFields,
 }))
@@ -71,6 +78,10 @@ const contentLayerConfig = makeSource({
   contentDirPath: "data",
   documentTypes: [Blog],
   mdx: {
+    esbuildOptions(options) {
+      options.target = "esnext"
+      return options
+    },
     remarkPlugins: [remarkGfm],
     rehypePlugins: [
       rehypeSlug,

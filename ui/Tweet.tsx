@@ -23,7 +23,10 @@ export const Tweet = ({
   replyUrl,
   retweetUrl,
   tweetUrl,
-}: FormattedTweet) => {
+  showAttachments = true,
+}: FormattedTweet & {
+  showAttachments?: boolean
+}) => {
   return (
     <div
       className={cx(
@@ -81,7 +84,7 @@ export const Tweet = ({
         {type !== "quoted" ? (
           <a
             href={tweetUrl}
-            className="block ml-auto text-rose-100/30 hover:text-rose-100/80"
+            className="block ml-auto text-blue-400/90 hover:text-blue-500"
           >
             <TwitterIcon className="w-5" />
           </a>
@@ -113,13 +116,13 @@ export const Tweet = ({
       ) : null}
 
       {/* QuoteTweet */}
-      {quoteTweet ? (
+      {showAttachments && quoteTweet ? (
         <div className="mt-4">
           <Tweet {...quoteTweet} />
         </div>
       ) : null}
 
-      {linkPreview ? (
+      {showAttachments && linkPreview ? (
         <div className="mt-4 rounded-xl bg-white/[2%] p-3 shadow-surface-elevation-low">
           <div className="text-sm text-rose-100/50">
             {linkPreview.display_url.split("/")[0]}

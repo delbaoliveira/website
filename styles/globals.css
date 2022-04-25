@@ -30,14 +30,7 @@ div[data-rehype-pretty-code-fragment] .syntax-line {
  * Highlighted line
  */
 div[data-rehype-pretty-code-fragment] .syntax-line--highlighted {
-  @apply border-l-rose-300/80 bg-rose-200/5;
-}
-
-/*
- * Highlighted word
- */
-div[data-rehype-pretty-code-fragment] .syntax-word--highlighted {
-  @apply border-l-2 border-l-rose-300/80 bg-rose-200/10 px-1 py-0.5;
+  @apply border-l-rose-300/60 bg-rose-200/5;
 }
 
 /*
@@ -53,7 +46,7 @@ code[data-line-numbers] .syntax-line::before {
   display: inline-block;
   text-align: right;
 
-  @apply mr-3 w-4 text-white/30;
+  @apply mr-3 w-4 text-white/20;
 }
 
 code[data-line-numbers] .syntax-line--highlighted::before {
@@ -61,16 +54,26 @@ code[data-line-numbers] .syntax-line--highlighted::before {
 }
 
 /*
+ * Highlighted word & inline code block
+ */
+p > code,
+span[data-rehype-pretty-code-fragment],
+div[data-rehype-pretty-code-fragment] .syntax-word--highlighted {
+  @apply rounded-md bg-rose-200/10 px-1.5 py-0.5 font-mono text-sm;
+}
+
+/*
  * inline code block e.g. 
  * `const a = 1{:js}`
  */
+p > code,
 span[data-rehype-pretty-code-fragment] {
-  @apply rounded-md bg-rose-200/5 px-1.5 py-0.5 font-mono text-sm text-rose-100/80;
+  @apply text-rose-200/90;
 }
 
 /*
  * Code block titles
  */
 div[data-rehype-pretty-code-title] {
-  @apply border-b border-white/5 bg-black/20 px-3 py-1 font-mono text-xs text-white/40;
+  @apply mb-0.5 rounded-md bg-rose-200/5 px-3 py-1 font-mono text-xs text-rose-100/50 shadow-sm;
 }

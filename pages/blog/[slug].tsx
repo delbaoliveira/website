@@ -1,4 +1,3 @@
-import { allBlogs, Blog } from "contentlayer/generated"
 import { createOgImage } from "@/lib/og"
 import { FormattedTweet, getTweets } from "@/lib/twitter"
 import { usePollIfInView } from "@/lib/usePollIfInView"
@@ -10,10 +9,10 @@ import { LikeButton2 } from "@/ui/LikeButton2"
 import { LoadingDots } from "@/ui/LoadingDots"
 import { components } from "@/ui/MdxComponents"
 import { Tweet } from "@/ui/Tweet"
+import { allBlogs, Blog } from "contentlayer/generated"
 import { GetStaticProps, InferGetStaticPropsType } from "next"
 import { useMDXComponent } from "next-contentlayer/hooks"
 import { NextSeo } from "next-seo"
-import Link from "next/link"
 import React from "react"
 
 export const getStaticPaths = () => {
@@ -100,11 +99,20 @@ export default function PostPage({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const MDXContent = useMDXComponent(post.body.code)
 
-  const StaticTweet = ({ id }: { id: string }) => {
-    const tweet = tweets.find((tweet) => tweet.id === id)!
+  const StaticTweet = ({
+    id,
+    showAttachments,
+  }: {
+    id: string
+    showAttachments?: boolean
+  }) => {
+    const tweet = tweets.find((tweet) => tweet.id === id)
+    if (!tweet) {
+      return null
+    }
     return (
       <div className="my-6">
-        <Tweet {...tweet} />
+        <Tweet showAttachments={showAttachments} {...tweet} />
       </div>
     )
   }
@@ -143,22 +151,10 @@ export default function PostPage({
             {post.title}
           </h1>
 
-          <div className="flex flex-wrap items-center justify-between text-lg text-rose-100/40">
-            <div className="flex mt-2 space-x-2">
-              <div>
-                <Link href="/">
-                  <a className="hover:text-rose-200/90">Delba</a>
-                </Link>
-              </div>
-
-              <div className="text-rose-100/30">&middot;</div>
-
-              <div>{post.publishedAtFormatted}</div>
-            </div>
-
-            <div className="mt-2">
-              <Metrics slug={post.slug} />
-            </div>
+          <div className="flex mt-2 space-x-2 text-lg text-rose-100/40">
+            <div>{post.publishedAtFormatted}</div>
+            <div className="text-rose-100/30">&middot;</div>
+            <Metrics slug={post.slug} />
           </div>
 
           <div className="mt-10 text-lg text-rose-100/70">

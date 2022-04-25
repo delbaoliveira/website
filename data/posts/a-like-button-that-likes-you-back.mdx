@@ -4,6 +4,9 @@ description: "Inspired by Josh Comeau, I've recreated a like button that delight
 publishedAt: "2021-05-26"
 ---
 
+import { LikeButtonDemo } from "../ui/playgrounds/LikeButtonDemo"
+import { LikeButton2 } from "../ui/LikeButton2"
+
 <Playground description="What we're building today">
   <LikeButton2 slug="a-like-button-that-likes-you-back" />
 </Playground>
@@ -15,9 +18,6 @@ After reading his [How I built my blog](https://www.joshwcomeau.com/blog/how-i-b
 I started by writing down everything I noticed with Josh's component and ended up with a list of 15 things triggered by user interaction (i.e. onClick: changes number color from gray to pink, increments counter, scales heart, shows and fades +1 sign, etc). The attention to detail is ridiculous, but that's what makes it so good.
 
 Although I didn't have the time to recreate everything, I thought I'd try to get the basic functionality down and maybe add some animations. Here's how my version works:
-
-import { LikeButtonDemo } from "../ui/playgrounds/LikeButtonDemo"
-import { LikeButton2 } from "../ui/LikeButton2"
 
 ### The Heart
 

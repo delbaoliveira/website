@@ -12,19 +12,19 @@ export const components = {
   LinkPreview,
   h1: (props: any) => (
     <h1
-      className="mt-12 mb-5 text-5xl font-medium text-rose-100/80"
+      className="mt-12 mb-5 text-3xl font-medium text-rose-100/90"
       {...props}
     />
   ),
   h2: (props: any) => (
     <h2
-      className="mt-12 mb-5 text-3xl font-medium text-rose-100/80"
+      className="mt-12 mb-5 text-2xl font-medium text-rose-100/90"
       {...props}
     />
   ),
   h3: (props: any) => (
     <h3
-      className="mt-12 mb-5 text-2xl font-medium text-rose-100/80"
+      className="mt-12 mb-5 text-xl font-medium text-rose-100/90"
       {...props}
     />
   ),
@@ -85,7 +85,7 @@ export const components = {
   ),
   blockquote: (props: any) => (
     <blockquote
-      className="pl-4 my-5 italic border-l-4 border-rose-300/10 text-rose-100/90 lg:-mx-12"
+      className="pl-4 my-8 italic border-l-4 border-rose-300/10 lg:-mx-12"
       {...props}
     />
   ),
