@@ -57,6 +57,7 @@ code[data-line-numbers] .syntax-line--highlighted::before {
  * Highlighted word & inline code block
  */
 p > code,
+li > code,
 span[data-rehype-pretty-code-fragment],
 div[data-rehype-pretty-code-fragment] .syntax-word--highlighted {
   @apply rounded-md bg-rose-200/10 px-1.5 py-0.5 font-mono text-sm;
@@ -67,6 +68,7 @@ div[data-rehype-pretty-code-fragment] .syntax-word--highlighted {
  * `const a = 1{:js}`
  */
 p > code,
+li > code,
 span[data-rehype-pretty-code-fragment] {
   @apply text-rose-200/90;
 }

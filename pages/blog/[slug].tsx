@@ -76,8 +76,9 @@ const Metrics = ({ slug }: { slug: string }) => {
         {viewsIsError || viewsIsLoading ? (
           <LoadingDots />
         ) : (
-          <InlineMetric key={views} stat={views} text="views" />
-        )}
+          <InlineMetric key={views} stat={views} />
+        )}{" "}
+        views
       </div>
 
       <div className="text-rose-100/30">&middot;</div>
@@ -86,8 +87,9 @@ const Metrics = ({ slug }: { slug: string }) => {
         {likesIsError || likesIsLoading ? (
           <LoadingDots />
         ) : (
-          <InlineMetric key={likes} stat={likes} text="likes" />
-        )}
+          <InlineMetric key={likes} stat={likes} />
+        )}{" "}
+        likes
       </div>
     </div>
   )
