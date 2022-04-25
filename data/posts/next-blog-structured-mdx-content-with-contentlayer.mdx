@@ -15,8 +15,6 @@ publishedAt: "2022-04-25"
 - Part 6: Automated Open Graph Images with 🤫
 - Part 7+: TBA
 
----
-
 The first part of the **building a developer blog with Next.js** series, explores setting up and configuring one of the key components _(or content layer)_ of a Next.js + MDX blogging system.
 
 [Skip intro and get started](#install-and-configure-contentlayer)
@@ -44,13 +42,11 @@ If you'd like to know more about why Contentlayer exists and what problems it el
 
 Or if you really want to dig deep, [this longform interview between Lee Robinson and the creator of Contentlayer](https://www.youtube.com/watch?v=1HnO2EoKeWc).
 
----
-
 ## Install and Configure Contentlayer
 
 Install the Contentlayer packages inside your Next.js project:
 
-```bash
+```bash title="Terminal"
 npm install contentlayer next-contentlayer
 ```
 
@@ -216,7 +212,7 @@ export const getStaticProps = () => {...}
 export default function SinglePostPage() {...}
 ```
 
-Provide `getStaticPaths(){:.fn}` a list of posts to pre-render by mapping over `allPosts{:.objKey}` and transforming each posts filename into a slug:
+Provide `getStaticPaths(){:.fn}` a list of posts to pre-render by mapping over `allPosts{:.objKey}` and transforming each posts file name into a slug:
 
 ```tsx showLineNumbers title="pages/blog/[slug].tsx" {6-8}
 import { allPosts } from "contentlayer/generated"
@@ -265,9 +261,9 @@ export default function SinglePostPage({ post }) {
 
 ## Computed Fields
 
-In addition to Contentlayers automatically generated fields, you can add your own fields to a document type. The first kind of field are **computed fields**. Computed fields are useful for adding a new field to a document that uses its current contents to calculate something new. For instance you could use a posts contents to calculate an estimated read time.
+In addition to Contentlayers automatically generated fields, you can add your own fields to a document type. One type of custom field is a **computed field**. Computed fields are useful for adding a new field to a document that uses its current contents to calculate something new. For instance you could use a posts contents to calculate an estimated read time.
 
-You may have noticed that the `.replace(/\.mdx$/, ""){:js}` logic is currently being run in both `getStaticPaths{:.fn}` and `getStaticProps{:.fn}`. You could move this logic into a single computed field:
+You may have noticed that the `.replace(/\.mdx$/, ""){:js}` logic is currently being used in both `getStaticPaths{:.fn}` and `getStaticProps{:.fn}`. You could move this logic into a single computed field:
 
 ```js showLineNumbers title="contentlayer.config.js" {4-12}
 export const Post = defineDocumentType(() => ({

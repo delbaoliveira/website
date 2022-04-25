@@ -11,25 +11,25 @@ export const components = {
   Playground,
   LinkPreview,
   h1: (props: any) => (
-    <h1
-      className="mt-12 mb-5 text-3xl font-medium text-rose-100/90"
+    <h2
+      className="mt-12 mb-8 text-3xl font-medium border-t-2 pt-9 border-rose-300/10 text-rose-100/90"
       {...props}
     />
   ),
   h2: (props: any) => (
-    <h2
-      className="mt-12 mb-5 text-2xl font-medium text-rose-100/90"
+    <h3
+      className="mt-12 mb-8 text-2xl font-medium border-t-2 pt-9 border-rose-300/10 text-rose-100/90"
       {...props}
     />
   ),
   h3: (props: any) => (
-    <h3
-      className="mt-12 mb-5 text-xl font-medium text-rose-100/90"
+    <h4
+      className="mt-12 mb-8 text-xl font-medium text-rose-100/90"
       {...props}
     />
   ),
   h4: (props: any) => (
-    <h4 className="mt-6 mb-5 text-lg font-medium" {...props} />
+    <h5 className="mt-6 mb-5 text-lg font-medium text-rose-100/90" {...props} />
   ),
   p: (props: any) => <p className="mb-5 leading-7" {...props} />,
   a: ({ href = "", ...props }) => {
@@ -52,7 +52,7 @@ export const components = {
     )
   },
   hr: (props: any) => (
-    <hr {...props} className="my-12 border-t-2 border-rose-300/5" />
+    <hr {...props} className="my-12 border-t-2 border-rose-300/10" />
   ),
   ul: (props: any) => <ul className="mb-6" {...props} />,
   ol: (props: any) => (

@@ -113,7 +113,7 @@ export default function PostPage({
       return null
     }
     return (
-      <div className="my-6">
+      <div className="my-8 lg:-mx-12">
         <Tweet showAttachments={showAttachments} {...tweet} />
       </div>
     )

@@ -10,7 +10,7 @@
  */
 div[data-rehype-pretty-code-fragment] {
   overflow: hidden;
-  @apply my-5 rounded-lg bg-white/[3%] leading-6 shadow-surface-elevation-low;
+  @apply lg:-mx-8 my-8 rounded-lg bg-white/[3%] leading-6 shadow-surface-elevation-low;
 }
 
 div[data-rehype-pretty-code-fragment] pre {

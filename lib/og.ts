@@ -12,5 +12,5 @@ export const createOgImage = ({
     t,
   )},w_1400/fl_layer_apply,g_south_west,x_100,y_160/c_fit,co_rgb:FFFFFF75,l_text:Karla_40:${e(
     m,
-  )},w_1400/fl_layer_apply,g_south_west,x_100,y_100/l_delba/fl_layer_apply,w_140,g_north_west,x_100,y_100/bg.png`
+  )},w_1400/fl_layer_apply,g_south_west,x_100,y_100/l_delba_bw/fl_layer_apply,w_140,g_north_west,x_100,y_100/bg.png`
 }
