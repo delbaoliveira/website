@@ -1,10 +1,10 @@
-import { Blog } from ".contentlayer/types"
 import { useEnabledOnFirstIntersection } from "@/lib/useEnabledOnFirstIntersection"
 import { usePostLikes } from "@/lib/usePostLikes"
 import { usePostViews } from "@/lib/usePostViews"
 import { ContentLink } from "@/ui/ContentLink"
 import { InlineMetric } from "@/ui/InlineMetric"
 import { LoadingDots } from "@/ui/LoadingDots"
+import { Blog } from "contentlayer/generated"
 import React from "react"
 
 const Metrics = ({ slug }: { slug: string }) => {
