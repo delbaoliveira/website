@@ -1,5 +1,38 @@
+import { pick } from "contentlayer/client"
+import { Blog, Video } from "contentlayer/generated"
+
 export const allTagNames = ["Next.js", "MDX", "Next Conf", "React Conf"]
 export const allTagSlugs = ["next", "mdx", "next-conf", "react-conf"]
+
+export const formatVideoPreview = (video: Video) => {
+  const partialVideo = pick(video, ["title", "description", "youtube", "tags"])
+
+  return {
+    ...partialVideo,
+    title: partialVideo.title || partialVideo.youtube.title,
+    type: video.type,
+    publishedAt: partialVideo.youtube.publishedAt,
+    tags: partialVideo.tags || [],
+  }
+}
+
+export const formatPostPreview = (post: Blog) => {
+  const partialPost = pick(post, [
+    "tags",
+    "slug",
+    "title",
+    "description",
+    "publishedAt",
+    "publishedAtFormatted",
+  ])
+
+  return {
+    ...partialPost,
+    type: post.type,
+    tags: partialPost.tags || [],
+  }
+}
+
 export const getVideoDetails = async (id: string) => {
   const res = await fetch(
     `https://www.googleapis.com/youtube/v3/videos?part=contentDetails%2Csnippet%2Cstatistics&id=${id}&key=${process.env.YOUTUBE_DATA_API_KEY}`,
