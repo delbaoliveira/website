@@ -1,18 +1,17 @@
+import { FOCUS_VISIBLE_OUTLINE, LINK_STYLES } from "@/lib/constants"
 import { createOgImage } from "@/lib/og"
 import { FormattedTweet, getTweets } from "@/lib/twitter"
-import { usePollIfInView } from "@/lib/usePollIfInView"
-import { usePostLikes } from "@/lib/usePostLikes"
-import { usePostViews } from "@/lib/usePostViews"
-import { InlineMetric } from "@/ui/InlineMetric"
 import { Layout } from "@/ui/Layout"
 import { LikeButton2 } from "@/ui/LikeButton2"
-import { LoadingDots } from "@/ui/LoadingDots"
 import { components } from "@/ui/MdxComponents"
+import { PostMetrics } from "@/ui/PostMetrics"
 import { Tweet } from "@/ui/Tweet"
+import cx from "clsx"
 import { allBlogs, Blog } from "contentlayer/generated"
 import { GetStaticProps, InferGetStaticPropsType } from "next"
 import { useMDXComponent } from "next-contentlayer/hooks"
 import { NextSeo } from "next-seo"
+import Link from "next/link"
 import React from "react"
 
 export const getStaticPaths = () => {
@@ -22,77 +21,62 @@ export const getStaticPaths = () => {
   }
 }
 
+// don't send fields we don't use to the client
+// the biggest culprit is post.body.raw (the raw MDX source)
+const getPartialPost = ({
+  title,
+  slug,
+  publishedAtFormatted,
+  description,
+  body,
+  series,
+}: Blog) => ({
+  title,
+  slug,
+  publishedAtFormatted,
+  description,
+  body: {
+    code: body.code,
+  },
+  series: series
+    ? {
+        title: series.title,
+        posts: allBlogs
+          .filter((p) => p.series?.title === series.title)
+          .sort(
+            (a, b) =>
+              Number(new Date(a.publishedAt)) - Number(new Date(b.publishedAt)),
+          )
+          .map((p) => {
+            return {
+              title: p.title,
+              slug: p.slug,
+              status: p.status,
+              isCurrent: p.slug === slug,
+            }
+          }),
+      }
+    : null,
+})
+
 export const getStaticProps: GetStaticProps<{
-  post: Blog
+  post: ReturnType<typeof getPartialPost>
   tweets: FormattedTweet[]
 }> = async ({ params }) => {
-  const post = allBlogs.find((post) => post.slug === params?.slug)!
-  const tweets = await getTweets(post.tweetIds)
+  const post = allBlogs.find((post) => post.slug === params?.slug)
+
+  if (!post) {
+    return {
+      notFound: true,
+    }
+  }
 
   return {
     props: {
-      post,
-      tweets,
+      post: getPartialPost(post),
+      tweets: await getTweets(post.tweetIds),
     },
   }
-}
-
-const Metrics = ({ slug }: { slug: string }) => {
-  const interval = 5000
-  const { shouldPoll, intersectionRef } = usePollIfInView(interval)
-
-  const {
-    views,
-    isLoading: viewsIsLoading,
-    isError: viewsIsError,
-    increment: incrementViews,
-  } = usePostViews(slug, {
-    // Avoid fetching view count we *know* is stale since increment() mutation
-    // returns view count
-    revalidateOnMount: false,
-    // Only poll when in view
-    refreshInterval: shouldPoll ? interval : 0,
-    // Override `usePostViews` default dedupingInterval for the polling usecase
-    // (refresh interval can never be faster than deduping interval)
-    dedupingInterval: interval,
-  })
-
-  const {
-    likes,
-    isLoading: likesIsLoading,
-    isError: likesIsError,
-  } = usePostLikes(slug, {
-    // only poll when in view
-    refreshInterval: shouldPoll ? interval : 0,
-  })
-
-  React.useEffect(() => {
-    incrementViews()
-  }, [])
-
-  return (
-    <div ref={intersectionRef} className="flex space-x-2 text-gray-500/90">
-      <div>
-        {viewsIsError || viewsIsLoading ? (
-          <LoadingDots />
-        ) : (
-          <InlineMetric key={views} stat={views} />
-        )}{" "}
-        views
-      </div>
-
-      <div className="text-rose-100/30">&middot;</div>
-
-      <div>
-        {likesIsError || likesIsLoading ? (
-          <LoadingDots />
-        ) : (
-          <InlineMetric key={likes} stat={likes} />
-        )}{" "}
-        likes
-      </div>
-    </div>
-  )
 }
 
 export default function PostPage({
@@ -113,7 +97,7 @@ export default function PostPage({
       return null
     }
     return (
-      <div className="my-8 lg:-mx-12">
+      <div className="my-8 ">
         <Tweet showAttachments={showAttachments} {...tweet} />
       </div>
     )
@@ -156,7 +140,7 @@ export default function PostPage({
           <div className="flex mt-2 space-x-2 text-lg text-rose-100/40">
             <div>{post.publishedAtFormatted}</div>
             <div className="text-rose-100/30">&middot;</div>
-            <Metrics slug={post.slug} />
+            <PostMetrics slug={post.slug} />
           </div>
 
           <div className="mt-10 text-lg text-rose-100/70">
@@ -164,6 +148,7 @@ export default function PostPage({
               components={{
                 ...components,
                 StaticTweet,
+                Series,
               }}
             />
           </div>
