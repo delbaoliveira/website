@@ -122,6 +122,12 @@ export default function PostPage({
           <div className="mt-16">
             <LikeButton2 slug={post.slug} />
           </div>
+
+          {post.series && post.series.posts ? (
+            <div className="mt-24">
+              <PostSeries data={post.series} />
+            </div>
+          ) : null}
         </div>
       </Layout>
     </>
