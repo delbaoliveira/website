@@ -31,7 +31,7 @@ The first part of the **building a developer blog with Next.js** series, explore
 
 [Contentlayer](https://contentlayer.dev) is a tool that helps deal with the chaos of freeform MDX content by transforming it into structured type-safe data and significantly reducing the boilerplate and external tools required to effectively integrate MDX content with the rest of your app. Folks have been describing it as the _"prisma for content"_.
 
-I have been using and enjoying Contentlayer for my own blog and last week it finally went into beta. Judging by the overwhelmingly positive reception, it seems that I'm not the only one who thinks it's a good idea:
+I have been using and enjoying Contentlayer for my own blog and last week it finally went into beta. Judging by the overwhelmingly positive reception, it seems like I'm not the only one who thinks it's a good idea:
 
 <StaticTweet id="1517163485439926272" showAttachments={false} />
 <StaticTweet id="1517130123463454721" showAttachments={false} />
@@ -354,7 +354,7 @@ Warning: Found 1 problem in 1 document.
        • title: string
 ```
 
-Contentlayer will error and _not_ regenerate because it has detected that one of your posts is missing the now required `title{:.objKey}` field. This is how Contentlayer adds some type-safety to your freeform content and protects the integrity of your data.
+Contentlayer will warn you because it has detected that one of your posts is missing the now required `title{:.objKey}` field. This is how Contentlayer adds some type-safety to your freeform content and protects the integrity of your data.
 
 Adding a `title{:.objKey}` to your blog post (in the frontmatter format) will fix the error:
 
@@ -377,7 +377,7 @@ import type { Post } from "contentlayer/generated"
 
 export const getStaticPaths = () => {
   return {
-    paths: allPosts.map((post) => ({ slug: post._raw.flattenedPath })),
+    paths: allPosts.map((post) => ({ slug: post.slug })),
     fallback: false,
   }
 }
@@ -385,7 +385,7 @@ export const getStaticPaths = () => {
 export const getStaticProps: GetStaticProps<{
   post: Blog
 }> = ({ params }) => {
-  const post = allPosts.find((x) => x.slug === params.slug)
+  const post = allPosts.find((post) => post.slug === params.slug)
 
   if (!post) {
     return { notFound: true }
