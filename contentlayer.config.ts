@@ -1,3 +1,4 @@
+import { getVideoDetails } from "@/lib/contentlayer"
 import {
   ComputedFields,
   defineDocumentType,
@@ -10,6 +11,71 @@ import rehypeSlug from "rehype-slug"
 import remarkGfm from "remark-gfm"
 import { HEADING_LINK_ANCHOR } from "./lib/constants"
 
+// eventually we will use contentlayer's remote content feature to generate
+// this from Youtube's API
+const Video = defineDocumentType(() => ({
+  name: "Video",
+  filePathPattern: "video/*.mdx",
+  contentType: "mdx",
+  fields: {
+    title: {
+      type: "string",
+      description: "Override the default Youtube title",
+    },
+    description: { type: "string", required: true },
+  },
+  computedFields: {
+    youtube: {
+      type: "nested",
+      // doesn't generate types yet https://github.com/contentlayerdev/contentlayer/issues/149
+      of: defineNestedType(() => ({
+        name: "YoutubeVideo",
+        fields: {
+          id: {
+            type: "string",
+            required: true,
+          },
+          title: {
+            type: "string",
+            required: true,
+          },
+          views: {
+            type: "string",
+            required: true,
+          },
+          thumbnail: {
+            type: "string",
+            required: true,
+          },
+          url: {
+            type: "string",
+            required: true,
+          },
+          duration: {
+            type: "string",
+            required: true,
+          },
+          publishedAt: {
+            type: "string",
+            required: true,
+          },
+        },
+      })),
+      resolve: async (doc) => {
+        const id = doc._raw.sourceFileName.replace(/\.mdx$/, "")
+
+        const data = await getVideoDetails(id)
+
+        return {
+          id,
+          url: `https://www.youtube.com/watch?v=${id}`,
+          publishedAtFormatted: format(parseISO(data.publishedAt), "MMM, yy"),
+          ...data,
+        }
+      },
+    },
+  },
+}))
 const rehypePrettyCodeOptions: Partial<Options> = {
   theme: "one-dark-pro",
   tokensMap: {
@@ -77,6 +143,7 @@ const Blog = defineDocumentType(() => ({
 const contentLayerConfig = makeSource({
   contentDirPath: "data",
   documentTypes: [Blog],
+  documentTypes: [Blog, Video],
   mdx: {
     esbuildOptions(options) {
       options.target = "esnext"
