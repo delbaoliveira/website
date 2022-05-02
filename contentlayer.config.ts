@@ -1,6 +1,5 @@
 import { getVideoDetails } from "@/lib/contentlayer"
 import {
-  ComputedFields,
   defineDocumentType,
   makeSource,
 } from "contentlayer/source-files"
@@ -76,6 +75,44 @@ const Video = defineDocumentType(() => ({
     },
   },
 }))
+const Blog = defineDocumentType(() => ({
+  name: "Blog",
+  filePathPattern: "posts/*.mdx",
+  contentType: "mdx",
+  fields: {
+    title: { type: "string", required: true },
+    publishedAt: { type: "string", required: true },
+    description: { type: "string", required: true },
+  },
+  computedFields: {
+    tweetIds: {
+      type: "json",
+      resolve: (doc) => {
+        const tweetMatches = doc.body.raw.match(
+          /<StaticTweet\sid="[0-9]+"[\s\S]*?\/>/g,
+        )
+        const tweetIDs = tweetMatches?.map(
+          (tweet: any) => tweet.match(/[0-9]+/g)[0],
+        )
+        return tweetIDs ?? []
+      },
+    },
+    publishedAtFormatted: {
+      type: "string",
+      resolve: (doc) => {
+        return format(parseISO(doc.publishedAt), "MMM, yy")
+      },
+    },
+    slug: {
+      type: "string",
+      resolve: (doc) =>
+        doc._raw.sourceFileName
+          // hello-world.mdx => hello-world
+          .replace(/\.mdx$/, ""),
+    },
+  },
+}))
+
 const rehypePrettyCodeOptions: Partial<Options> = {
   theme: "one-dark-pro",
   tokensMap: {
@@ -100,49 +137,8 @@ const rehypePrettyCodeOptions: Partial<Options> = {
   },
 }
 
-const computedFields: ComputedFields = {
-  tweetIds: {
-    type: "json",
-    resolve: (doc) => {
-      const tweetMatches = doc.body.raw.match(
-        /<StaticTweet\sid="[0-9]+"[\s\S]*?\/>/g,
-      )
-      const tweetIDs = tweetMatches?.map(
-        (tweet: any) => tweet.match(/[0-9]+/g)[0],
-      )
-      return tweetIDs ?? []
-    },
-  },
-  publishedAtFormatted: {
-    type: "string",
-    resolve: (doc) => {
-      return format(parseISO(doc.publishedAt), "MMMM, yyyy")
-    },
-  },
-  slug: {
-    type: "string",
-    resolve: (doc) =>
-      doc._raw.sourceFileName
-        // hello-world.mdx => hello-world
-        .replace(/\.mdx$/, ""),
-  },
-}
-
-const Blog = defineDocumentType(() => ({
-  name: "Blog",
-  filePathPattern: "posts/*.mdx",
-  contentType: "mdx",
-  fields: {
-    title: { type: "string", required: true },
-    publishedAt: { type: "string", required: true },
-    description: { type: "string", required: true },
-  },
-  computedFields,
-}))
-
 const contentLayerConfig = makeSource({
   contentDirPath: "data",
-  documentTypes: [Blog],
   documentTypes: [Blog, Video],
   mdx: {
     esbuildOptions(options) {
