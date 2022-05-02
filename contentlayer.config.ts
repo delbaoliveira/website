@@ -96,6 +96,17 @@ const Video = defineDocumentType(() => ({
     },
   },
 }))
+
+const Series = defineNestedType(() => ({
+  name: "Series",
+  fields: {
+    title: {
+      type: "string",
+      required: true,
+    },
+  },
+}))
+
 const Blog = defineDocumentType(() => ({
   name: "Blog",
   filePathPattern: "posts/*.mdx",
@@ -105,6 +116,10 @@ const Blog = defineDocumentType(() => ({
     publishedAt: { type: "string", required: true },
     description: { type: "string", required: true },
     status: { type: "enum", options: ["draft", "published"], required: true },
+    series: {
+      type: "nested",
+      of: Series,
+    },
     tags: {
       type: "list",
       of: Tag,
