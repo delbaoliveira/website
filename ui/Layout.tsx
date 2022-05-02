@@ -1,4 +1,5 @@
 import { FOCUS_VISIBLE_OUTLINE } from "@/lib/constants"
+import { CurrentFilters } from "@/lib/types"
 import { Footer } from "@/ui/Footer"
 import { GradientBackground } from "@/ui/GradientBackground"
 import { Navigation } from "@/ui/Navigation"
@@ -11,9 +12,11 @@ import React from "react"
 export const Layout = ({
   children,
   showNav = true,
+  currentFilters,
 }: {
   children: React.ReactNode
   showNav?: boolean
+  currentFilters?: CurrentFilters
 }) => {
   return (
     <div className="min-h-screen bg-[#0e0c0b] antialiased selection:bg-purple-600/90 selection:text-white">
@@ -45,7 +48,7 @@ export const Layout = ({
                   </a>
                 </Link>
               </div>
-              <Navigation />
+              <Navigation currentFilters={currentFilters} />
             </div>
           </div>
         </div>
