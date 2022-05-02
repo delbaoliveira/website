@@ -1,4 +1,3 @@
-import { allTagNames, allTagSlugs, getVideoDetails } from "@/lib/contentlayer"
 import {
   defineDocumentType,
   defineNestedType,
@@ -10,6 +9,7 @@ import rehypePrettyCode, { Options } from "rehype-pretty-code"
 import rehypeSlug from "rehype-slug"
 import remarkGfm from "remark-gfm"
 import { HEADING_LINK_ANCHOR } from "./lib/constants"
+import { allTagNames, allTagSlugs, getVideoDetails } from "./lib/contentlayer"
 
 const Tag = defineNestedType(() => ({
   name: "Tag",
