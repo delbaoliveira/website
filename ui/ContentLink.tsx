@@ -14,7 +14,7 @@ export function ContentLink({
     <Link href={href}>
       <a
         className={cx(
-          "block overflow-hidden rounded-2xl bg-white/[2%] shadow-surface-elevation-low transition duration-300 hover:bg-white/[3%] hover:shadow-surface-elevation-medium",
+          "block overflow-hidden rounded-2xl bg-white/[2%] p-7 shadow-surface-elevation-low transition duration-300 hover:bg-white/[3%] hover:shadow-surface-elevation-medium",
           FOCUS_VISIBLE_OUTLINE,
         )}
       >
