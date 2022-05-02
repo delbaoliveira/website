@@ -10,11 +10,12 @@
  */
 div[data-rehype-pretty-code-fragment] {
   overflow: hidden;
-  @apply lg:-mx-8 my-8 rounded-lg bg-white/[3%] leading-6 shadow-surface-elevation-low;
+  @apply my-8 rounded-lg bg-white/[3%] leading-6 shadow-surface-elevation-low lg:-mx-8;
 }
 
 div[data-rehype-pretty-code-fragment] pre {
   overflow-x: auto;
+  color-scheme: dark;
   @apply py-2 text-sm leading-7;
 }
 

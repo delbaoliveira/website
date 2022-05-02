@@ -12,13 +12,13 @@ export const components = {
   LinkPreview,
   h1: (props: any) => (
     <h2
-      className="mt-12 mb-8 text-3xl font-medium border-t-2 pt-9 border-rose-300/10 text-rose-100/90"
+      className="mt-12 mb-8 text-3xl font-medium border-t-2 border-rose-300/10 pt-9 text-rose-100/90"
       {...props}
     />
   ),
   h2: (props: any) => (
     <h3
-      className="mt-12 mb-8 text-2xl font-medium border-t-2 pt-9 border-rose-300/10 text-rose-100/90"
+      className="mt-12 mb-8 text-2xl font-medium border-t-2 border-rose-300/10 pt-9 text-rose-100/90"
       {...props}
     />
   ),
@@ -60,7 +60,7 @@ export const components = {
   ),
   li: (props: any) => (
     <li
-      className="relative my-3 pl-7 before:absolute before:left-1 before:top-3 before:h-1.5 before:w-1.5 before:rounded-full before:bg-gray-600"
+      className="relative my-3 pl-7 before:absolute before:left-1 before:top-3 before:h-1.5 before:w-1.5 before:rounded-full before:bg-rose-100/30"
       {...props}
     />
   ),

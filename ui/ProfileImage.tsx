@@ -17,8 +17,10 @@ export const ProfileImage = ({
         {
           "p-[2px]": size === "small",
           "p-[3px]": size === "large",
-          "group transform transition ease-out hover:scale-105 hover:from-purple-700 hover:to-rose-400 hover:shadow-rose-500/25":
+          "group transform transition ease-out hover:scale-105 hover:from-purple-700 hover:to-rose-400 hover:shadow-rose-500/25 active:translate-y-[1px]":
             isInteractive,
+          "ring-[4px] ring-purple-500/5 ring-offset-1 ring-offset-black/5":
+            !isInteractive,
         },
       )}
     >
@@ -26,6 +28,7 @@ export const ProfileImage = ({
         className={cx("rounded-full p-[1px]", {
           "h-[36px] w-[36px]": size === "small",
           "h-[64px] w-[64px]": size === "large",
+          "transition duration-300 group-hover:scale-105": isInteractive,
         })}
       >
         <Image
