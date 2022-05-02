@@ -1,5 +1,6 @@
 import { FOCUS_VISIBLE_OUTLINE, LINK_STYLES } from "@/lib/constants"
 import { BlurImage } from "@/ui/BlurImage"
+import { Files } from "@/ui/Files"
 import { LinkPreview } from "@/ui/LinkPreview"
 import { Playground } from "@/ui/Playground"
 import cx from "clsx"
@@ -12,13 +13,13 @@ export const components = {
   LinkPreview,
   h1: (props: any) => (
     <h2
-      className="mt-12 mb-8 text-3xl font-medium border-t-2 border-rose-300/10 pt-9 text-rose-100/90"
+      className="mt-12 mb-8 border-t-2 border-rose-300/10 pt-9 text-3xl font-medium text-rose-100/90"
       {...props}
     />
   ),
   h2: (props: any) => (
     <h3
-      className="mt-12 mb-8 text-2xl font-medium border-t-2 border-rose-300/10 pt-9 text-rose-100/90"
+      className="mt-12 mb-8 border-t-2 border-rose-300/10 pt-9 text-2xl font-medium text-rose-100/90"
       {...props}
     />
   ),
@@ -56,7 +57,7 @@ export const components = {
   ),
   ul: (props: any) => <ul className="mb-6" {...props} />,
   ol: (props: any) => (
-    <ol className="pl-10 my-12 leading-7 list-decimal" {...props} />
+    <ol className="my-12 list-decimal pl-10 leading-7" {...props} />
   ),
   li: (props: any) => (
     <li
@@ -85,7 +86,7 @@ export const components = {
   ),
   blockquote: (props: any) => (
     <blockquote
-      className="pl-4 my-8 italic border-l-4 border-rose-300/10 lg:-mx-12"
+      className="my-8 border-l-4 border-rose-300/10 pl-4 italic lg:-mx-12"
       {...props}
     />
   ),

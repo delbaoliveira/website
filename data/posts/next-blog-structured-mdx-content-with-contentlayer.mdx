@@ -7,7 +7,7 @@ series:
   title: "Build a Developer Blog with Next.js"
 ---
 
-The second part of this series on building a developer blog explores setting up and configuring one of the key components _(or content layer)_ of a Next.js + MDX blogging system.
+The second part of this series explores setting up and configuring the content layer of a Next.js + MDX blogging system.
 
 ## The Problem
 
@@ -105,20 +105,48 @@ Generated 1 document in .contentlayer
 
 [Skip to next section](#typescript-and-git-integration) (you don't need to understand this)
 
-```txt showLineNumbers title="Folder structure after generation" {5,10}
-app
-├── .contentlayer
-│   └── generated
-│       ├── Post
-│       │   └── posts__hello-world.mdx.json
-│       ├── index.js
-│       └── types.d.ts
-├── data
-│   └── posts
-│       └── hello-world.mdx
-├── contentlayer.config.js
-└── next.config.js
-```
+<Files
+  title="Folder structure after generation"
+  data={[
+    {
+      name: ".contentlayer",
+      children: [
+        {
+          name: "generated",
+          children: [
+            {
+              name: "Post",
+              children: [
+                { name: "posts__hello-world.mdx.json", isHighlighted: true },
+              ],
+            },
+          ],
+
+        },
+        {name: "index.js"},
+        {name: "types.d.ts"},
+      ],
+    },
+    {
+      name: "data",
+      children: [
+        {
+          name: "posts",
+          children: [
+            { name: "hello-world.mdx", isHighlighted: true },
+          ],
+        },
+      ],
+    },
+    {
+      name:"contentlayer.config.js"
+    },
+    {
+      name: "next.config.js"
+    }
+
+]}
+/>
 
 Contentlayer transforms your posts markdown source file (line 10) into structured data and stores the result as a static `json` file (line 5). In addition, Contentlayer generates type definitions (line 7) and convenience helper functions for accessing post data (line 6).
 
@@ -172,15 +200,35 @@ I'd also recommend adding the `.contentlayer` folder to your `.gitignore` to red
 
 Create a "dynamic template" to handle all your single posts by creating a new dynamic route inside the `pages/blog/` directory:
 
-```txt showLineNumbers {6}
-app
-├── .contentlayer [...]
-├── data [...]
-├── pages
-│   └── blog
-│       └── [slug].tsx
-└── [...]
-```
+<Files
+  data={[
+    {
+      name: ".contentlayer [...]",
+      children: [],
+    },
+    {
+      name: "data [...]",
+      children: [],
+    },
+    {
+      name: "pages",
+      children: [
+        {
+          name: "blog",
+          children: [
+            {
+              name: "[slug].js",
+              isHighlighted: true,
+            },
+          ],
+        },
+      ],
+    },
+    {
+      name: "[...]",
+    },
+  ]}
+/>
 
 ```tsx showLineNumbers title="pages/blog/[slug].tsx"
 export const getStaticPaths = () => {...}
@@ -394,14 +442,27 @@ export default function SinglePostPage({
 
 You can use a similar process to create a list page for all your blog posts:
 
-```txt showLineNumbers {4}
-app
-├── pages
-│   └── blog
-│       ├── index.tsx
-│       └── [slug].tsx
-└── [...]
-```
+<Files
+  data={[
+    {
+      name: "pages",
+      children: [
+        {
+          name: "blog",
+          children: [
+            {
+              name: "index.js",
+              isHighlighted: true,
+            },
+            {
+              name: "[slug].js",
+            },
+          ],
+        },
+      ],
+    },
+  ]}
+/>
 
 ```tsx title="pages/blog/index.tsx"
 import Link from "next/link"
