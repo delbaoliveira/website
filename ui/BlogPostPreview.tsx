@@ -20,7 +20,9 @@ const Metrics = ({ slug }: { slug: string }) => {
   } = usePostLikes(slug)
 
   return (
-    <div className="flex space-x-2 text-gray-500/90">
+    <>
+      <div className="text-rose-100/30">&middot;</div>
+
       <div>
         {viewsIsError || viewsIsLoading ? (
           <LoadingDots />
@@ -40,7 +42,7 @@ const Metrics = ({ slug }: { slug: string }) => {
         )}{" "}
         likes
       </div>
-    </div>
+    </>
   )
 }
 
@@ -54,10 +56,10 @@ export const BlogPostPreview = (
       <ContentLink key={post.slug} href={`/blog/${post.slug}`}>
         <ContentLink.Title>{post.title}</ContentLink.Title>
 
-        <div className="flex items-start justify-between">
-          <ContentLink.Meta items={[post.publishedAtFormatted]} />
+        <ContentLink.Meta>
+          <div>{post.publishedAtFormatted}</div>
           {enabled ? <Metrics slug={post.slug} /> : null}
-        </div>
+        </ContentLink.Meta>
 
         <ContentLink.Text>{post.description}</ContentLink.Text>
       </ContentLink>

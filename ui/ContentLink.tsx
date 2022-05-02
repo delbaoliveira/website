@@ -14,7 +14,7 @@ export function ContentLink({
     <Link href={href}>
       <a
         className={cx(
-          "block rounded-2xl bg-white/[2%] p-7 shadow-surface-elevation-low transition duration-300 hover:bg-white/[3%] hover:shadow-surface-elevation-medium",
+          "block overflow-hidden rounded-2xl bg-white/[2%] shadow-surface-elevation-low transition duration-300 hover:bg-white/[3%] hover:shadow-surface-elevation-medium",
           FOCUS_VISIBLE_OUTLINE,
         )}
       >
@@ -26,7 +26,7 @@ export function ContentLink({
 
 function Title({ children }: { children: React.ReactNode }) {
   return (
-    <h3 className="text-xl transition duration-300 text-rose-100/80 line-clamp-2 hover:text-rose-100/90">
+    <h3 className="text-xl text-rose-100/80 transition duration-300 line-clamp-2 hover:text-rose-100/90">
       {children}
     </h3>
   )
@@ -35,7 +35,7 @@ function Title({ children }: { children: React.ReactNode }) {
 function Icon(props: { icon: ElementType }) {
   return (
     <div className="mt-1 ml-2 shrink-0">
-      <props.icon className="w-5 transition-colors text-rose-100/30 hover:text-rose-100/50" />
+      <props.icon className="w-5 text-rose-100/30 transition-colors hover:text-rose-100/50" />
     </div>
   )
 }
@@ -46,23 +46,9 @@ function Text({ children }: { children: React.ReactNode }) {
   )
 }
 
-function Meta({ items }: { items: string[] }) {
+function Meta({ children }: { children: React.ReactNode }) {
   return (
-    <div className="text-gray-500/90">
-      {items.map((x, i) => {
-        return (
-          <React.Fragment key={i}>
-            {x}
-            {i + 1 < items.length ? (
-              <>
-                {" "}
-                <span className="text-gray-500/30">&middot;</span>{" "}
-              </>
-            ) : null}
-          </React.Fragment>
-        )
-      })}
-    </div>
+    <div className="flex flex-wrap space-x-2 text-gray-500/90">{children}</div>
   )
 }
 
