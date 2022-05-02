@@ -1,3 +1,5 @@
+export const allTagNames = ["Next.js", "MDX", "Next Conf", "React Conf"]
+export const allTagSlugs = ["next", "mdx", "next-conf", "react-conf"]
 export const getVideoDetails = async (id: string) => {
   const res = await fetch(
     `https://www.googleapis.com/youtube/v3/videos?part=contentDetails%2Csnippet%2Cstatistics&id=${id}&key=${process.env.YOUTUBE_DATA_API_KEY}`,

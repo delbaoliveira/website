@@ -1,6 +1,7 @@
-import { getVideoDetails } from "@/lib/contentlayer"
+import { allTagNames, allTagSlugs, getVideoDetails } from "@/lib/contentlayer"
 import {
   defineDocumentType,
+  defineNestedType,
   makeSource,
 } from "contentlayer/source-files"
 import { format, parseISO } from "date-fns"
@@ -10,6 +11,22 @@ import rehypeSlug from "rehype-slug"
 import remarkGfm from "remark-gfm"
 import { HEADING_LINK_ANCHOR } from "./lib/constants"
 
+const Tag = defineNestedType(() => ({
+  name: "Tag",
+  fields: {
+    title: {
+      type: "enum",
+      required: true,
+      options: allTagNames,
+    },
+    slug: {
+      type: "enum",
+      required: true,
+      options: allTagSlugs,
+    },
+  },
+}))
+
 // eventually we will use contentlayer's remote content feature to generate
 // this from Youtube's API
 const Video = defineDocumentType(() => ({
@@ -17,6 +34,10 @@ const Video = defineDocumentType(() => ({
   filePathPattern: "video/*.mdx",
   contentType: "mdx",
   fields: {
+    tags: {
+      type: "list",
+      of: Tag,
+    },
     title: {
       type: "string",
       description: "Override the default Youtube title",
@@ -83,6 +104,10 @@ const Blog = defineDocumentType(() => ({
     title: { type: "string", required: true },
     publishedAt: { type: "string", required: true },
     description: { type: "string", required: true },
+    tags: {
+      type: "list",
+      of: Tag,
+    },
   },
   computedFields: {
     tweetIds: {
