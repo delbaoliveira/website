@@ -150,16 +150,18 @@ export default function Home({
                 </div>
 
                 {currentFilters.type === "videos" ? (
-                  <a
-                    href="https://youtube.com/playlist?list=PLo9a4XFa98CBynQ0HE_UstByk_-KXg6eU"
-                    className="group flex items-center space-x-2"
-                  >
-                    <h2 className="text-lg text-rose-100/40 transition-colors group-hover:text-rose-100/80">
-                      YouTube Playlist
-                    </h2>
+                  <div className="flex">
+                    <a
+                      href="https://youtube.com/playlist?list=PLo9a4XFa98CBynQ0HE_UstByk_-KXg6eU"
+                      className="group flex items-center space-x-2"
+                    >
+                      <span className="text-lg text-rose-100/40 transition-colors group-hover:text-rose-100/80">
+                        YouTube Playlist
+                      </span>
 
-                    <YoutubeIcon className="w-5 text-rose-100/20 shadow-md transition-colors group-hover:text-red-500/70" />
-                  </a>
+                      <YoutubeIcon className="w-5 text-rose-100/20 shadow-md transition-colors group-hover:text-red-500/70" />
+                    </a>
+                  </div>
                 ) : null}
               </>
             ) : null}
