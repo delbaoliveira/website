@@ -10,7 +10,7 @@ export const PostSeries = ({
   data: NonNullable<ReturnType<typeof getPartialPost>["series"]>
 }) => {
   return (
-    <div className="my-8 rounded-2xl bg-white/[2%] p-6 shadow-surface-elevation-low lg:-mx-8 lg:px-8 lg:py-7">
+    <div className="my-8 rounded-2xl bg-white/5 p-6 shadow-surface-elevation-low lg:-mx-8 lg:px-8 lg:py-7">
       <div className="text-sm uppercase text-rose-100/50">Series</div>
       <div className="text-xl font-medium text-rose-100/90">{data.title}</div>
 
@@ -21,7 +21,7 @@ export const PostSeries = ({
           <li
             key={p.slug}
             className={cx(
-              "relative my-3 pl-7 before:absolute before:left-1 before:top-3 before:h-1.5 before:w-1.5 before:rounded-full",
+              "relative my-3 pl-7 before:absolute before:left-1 before:top-[9px] before:h-1.5 before:w-1.5 before:rounded-full",
               {
                 "before:bg-rose-300/90 before:ring-[3px] before:ring-purple-400/20 before:ring-offset-1 before:ring-offset-black/10":
                   p.isCurrent,

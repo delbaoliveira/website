@@ -14,7 +14,7 @@ export function ContentLink({
     <Link href={href}>
       <a
         className={cx(
-          "block overflow-hidden rounded-2xl bg-white/[2%] p-7 shadow-surface-elevation-low transition duration-300 hover:bg-white/[3%] hover:shadow-surface-elevation-medium",
+          "block overflow-hidden rounded-2xl bg-white/5 p-7 shadow-surface-elevation-low transition duration-300 hover:bg-white/10 hover:shadow-surface-elevation-medium",
           FOCUS_VISIBLE_OUTLINE,
         )}
       >
@@ -26,7 +26,7 @@ export function ContentLink({
 
 function Title({ children }: { children: React.ReactNode }) {
   return (
-    <h3 className="text-xl text-rose-100/80 transition duration-300 line-clamp-2 hover:text-rose-100/90">
+    <h3 className="text-xl text-rose-100/90 transition duration-300 line-clamp-2 hover:text-rose-100/90">
       {children}
     </h3>
   )
@@ -42,13 +42,13 @@ function Icon(props: { icon: ElementType }) {
 
 function Text({ children }: { children: React.ReactNode }) {
   return (
-    <p className="mt-4 text-lg text-gray-400/90 line-clamp-3">{children}</p>
+    <p className="mt-4 text-lg text-rose-100/70 line-clamp-3">{children}</p>
   )
 }
 
 function Meta({ children }: { children: React.ReactNode }) {
   return (
-    <div className="flex flex-wrap space-x-2 text-gray-500/90">{children}</div>
+    <div className="flex flex-wrap space-x-2 text-rose-100/50">{children}</div>
   )
 }
 

@@ -10,7 +10,7 @@
  */
 div[data-rehype-pretty-code-fragment] {
   overflow: hidden;
-  @apply my-8 rounded-lg bg-white/[3%] leading-6 shadow-surface-elevation-low lg:-mx-8;
+  @apply my-8 rounded-lg bg-white/5 leading-6 shadow-surface-elevation-low lg:-mx-8;
 }
 
 div[data-rehype-pretty-code-fragment] pre {
@@ -31,7 +31,7 @@ div[data-rehype-pretty-code-fragment] .syntax-line {
  * Highlighted line
  */
 div[data-rehype-pretty-code-fragment] .syntax-line--highlighted {
-  @apply border-l-rose-300/60 bg-rose-200/5;
+  @apply border-l-rose-300/70 bg-rose-200/10;
 }
 
 /*
@@ -61,7 +61,7 @@ p > code,
 li > code,
 span[data-rehype-pretty-code-fragment],
 div[data-rehype-pretty-code-fragment] .syntax-word--highlighted {
-  @apply rounded-md bg-rose-200/10 px-1.5 py-0.5 font-mono text-sm;
+  @apply rounded-full border border-rose-300/10 bg-rose-300/10 px-1.5 py-[1px] font-mono text-[13px];
 }
 
 /*
@@ -71,12 +71,12 @@ div[data-rehype-pretty-code-fragment] .syntax-word--highlighted {
 p > code,
 li > code,
 span[data-rehype-pretty-code-fragment] {
-  @apply text-rose-200/90;
+  @apply whitespace-nowrap text-rose-300/90;
 }
 
 /*
  * Code block titles
  */
 div[data-rehype-pretty-code-title] {
-  @apply mb-0.5 rounded-md bg-rose-200/5 px-3 py-1 font-mono text-xs text-rose-100/50 shadow-sm;
+  @apply mb-0.5 rounded-md bg-rose-100/10 px-3 py-1 font-mono text-xs text-rose-100/70 shadow-sm;
 }

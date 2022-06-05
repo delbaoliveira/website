@@ -94,11 +94,11 @@ export default function PostPage({
 
       <Layout>
         <div>
-          <h1 className="text-2xl font-medium text-rose-100/80 sm:text-4xl">
+          <h1 className="text-2xl font-medium text-rose-100/90 sm:text-4xl">
             {post.title}
           </h1>
 
-          <div className="mt-2 flex space-x-2 text-lg text-rose-100/40">
+          <div className="mt-2 flex space-x-2 text-lg text-rose-100/50">
             <div>{post.publishedAtFormatted}</div>
             <div className="text-rose-100/30">&middot;</div>
             <PostMetrics slug={post.slug} />
@@ -110,7 +110,7 @@ export default function PostPage({
             </div>
           ) : null}
 
-          <div className="mt-10 text-lg text-rose-100/70">
+          <div className="mt-10 text-lg text-rose-100/80">
             <MDXContent
               components={{
                 ...components,

@@ -117,7 +117,7 @@ export default function Home({
                   <ProfileImage size="large" />
 
                   <div>
-                    <h1 className="text-4xl font-medium text-rose-50/80">
+                    <h1 className="text-4xl font-medium text-rose-100/80">
                       Delba
                     </h1>
                     <h2 className="text-lg text-rose-100/60">
@@ -126,7 +126,7 @@ export default function Home({
                   </div>
                 </div>
 
-                <p className="text-xl text-rose-50/80">{seo.description}</p>
+                <p className="text-xl text-rose-100/90">{seo.description}</p>
 
                 <Navigation />
               </div>
@@ -143,7 +143,7 @@ export default function Home({
               <>
                 <div className="flex space-x-2">
                   {currentFilters.tag ? (
-                    <div className="rounded-lg bg-white/5 py-0.5 px-2 text-rose-100/90">
+                    <div className="rounded-full border border-rose-100/5 py-0.5 px-2 text-rose-100/90">
                       {currentFilters.tag}
                     </div>
                   ) : null}
