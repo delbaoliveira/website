@@ -1,4 +1,4 @@
-import { format } from "date-fns"
+import { formatShortDate } from "@/lib/formatShortDate"
 import { encode } from "qss"
 
 export type TweetRaw = {
@@ -197,7 +197,7 @@ const formatTweet = (
   const author = getAuthor(includes.users, tweet.author_id)
   const media = getMedia(includes.media, tweet.attachments?.media_keys)
 
-  const createdAtFormatted = format(new Date(tweet.created_at), "MMM d, y")
+  const createdAtFormatted = formatShortDate(tweet.created_at)
 
   const metricsFormatted = {
     replies: tweet.public_metrics?.reply_count

@@ -3,13 +3,13 @@ import {
   defineNestedType,
   makeSource,
 } from "contentlayer/source-files"
-import { format, parseISO } from "date-fns"
 import rehypeAutolinkHeadings from "rehype-autolink-headings"
 import rehypePrettyCode, { Options } from "rehype-pretty-code"
 import rehypeSlug from "rehype-slug"
 import remarkGfm from "remark-gfm"
 import { HEADING_LINK_ANCHOR } from "./lib/constants"
 import { allTagNames, allTagSlugs, getVideoDetails } from "./lib/contentlayer"
+import { formatShortDate } from "./lib/formatShortDate"
 
 const Tag = defineNestedType(() => ({
   name: "Tag",
@@ -89,7 +89,7 @@ const Video = defineDocumentType(() => ({
         return {
           id,
           url: `https://www.youtube.com/watch?v=${id}`,
-          publishedAtFormatted: format(parseISO(data.publishedAt), "MMM, yy"),
+          publishedAtFormatted: formatShortDate(data.publishedAt),
           ...data,
         }
       },
@@ -141,7 +141,7 @@ const Blog = defineDocumentType(() => ({
     publishedAtFormatted: {
       type: "string",
       resolve: (doc) => {
-        return format(parseISO(doc.publishedAt), "MMM, yy")
+        return formatShortDate(doc.publishedAt)
       },
     },
     slug: {
