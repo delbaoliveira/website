@@ -9,14 +9,14 @@ series:
 
 The second part of this series explores setting up and configuring the content layer of a Next.js + MDX blogging system.
 
-## The Problem
+## Problem
 
 - Most current MDX solutions leave integrating transformed data inside page templates up to the developer. This creates repetitive boilerplate that relies on file-system APIs and additional third party packages like `glob`, `path` and `gray-matter`.
 - The freeform nature of markdown files makes it difficult to maintain and guarantee structure as the number of posts grow.
 - The only way to extend the MDX processing is through the `unified`, `rehype` and `remark` ecosystem which is powerful but complicated.
 - The combined complexity of related options and configuration scattered across a project is a pain to manage.
 
-## The Solution
+## Solution
 
 [Contentlayer](https://contentlayer.dev) is a tool that helps deal with the chaos of freeform MDX content by transforming it into structured type-safe data and significantly reducing the boilerplate and external tools required to effectively integrate MDX content with the rest of your app. Folks have been describing it as the _"prisma for content"_.
 
@@ -54,11 +54,12 @@ export default withContentlayer(
 
 Create the schema for your blog post document type:
 
-```js showLineNumbers title="contentlayer.config.js" {4,8}
+```js showLineNumbers title="contentlayer.config.js" {4-5,8}
 import { defineDocumentType, makeSource } from "contentlayer/source-files"
 
 export const Post = defineDocumentType(() => ({
   name: "Post",
+  contentType: "mdx",
 }))
 
 export default makeSource({
@@ -68,13 +69,18 @@ export default makeSource({
 
 And tell `contentlayer` where your posts source MDX files will live:
 
-```js showLineNumbers title="contentlayer.config.js" {6,11}
+```js showLineNumbers title="contentlayer.config.js" {7,16}
 import { defineDocumentType, makeSource } from "contentlayer/source-files"
 
 export const Post = defineDocumentType(() => ({
   name: "Post",
+  contentType: "mdx",
   // Location of Post source files (relative to `contentDirPath`)
   filePathPattern: "posts/*.mdx",
+  // At the time of writing, we also have to define the `fields`
+  // option to prevent an error on generation. We'll discuss
+  // this option later. For now, we'll add an empty object.
+  fields: {},
 }))
 
 export default makeSource({
@@ -252,15 +258,17 @@ export default function SinglePostPage() {...}
 
 Provide `getStaticPaths(){:.fn}` a list of posts to pre-render by mapping over `allPosts{:.objKey}` and transforming each posts file name into a slug:
 
-```tsx showLineNumbers title="pages/blog/[slug].tsx" {6-8}
+```tsx showLineNumbers title="pages/blog/[slug].tsx" {5-11}
 import { allPosts } from "contentlayer/generated"
 
 export const getStaticPaths = () => {
   return {
     paths: allPosts.map((post) => ({
-      slug: post._raw.sourceFileName
-        // hello-world.mdx => hello-world
-        .replace(/\.mdx$/, ""),
+      params: {
+        slug: post._raw.sourceFileName
+          // hello-world.mdx => hello-world
+          .replace(/\.mdx$/, ""),
+      },
     })),
     fallback: false,
   }
@@ -283,7 +291,7 @@ export const getStaticProps = ({ params }) => {
     props: {
       post: allPosts.find(
         (post) =>
-          post._raw.sourceFileName.replace(/\.mdx$/, "") === params.slug,
+          post._raw.sourceFileName.replace(/\.mdx$/, "") === params?.slug,
       ),
     },
   }
@@ -336,8 +344,10 @@ Saving the config file will trigger a regeneration resulting in the generated `j
 export const getStaticPaths = () => {
   return {
     paths: allPosts.map((post) => ({
--     slug: post._raw.sourceFileName.replace(/\.mdx$/, ""),
-+     slug: post.slug,
+      params: {
+-       slug: post._raw.sourceFileName.replace(/\.mdx$/, ""),
++       slug: post.slug,
+      },
     })),
     fallback: false,
   }
@@ -348,9 +358,9 @@ export const getStaticProps = ({ params }) => {
     props: {
 -     post: allPosts.find(
 -       (post) =>
--         post._raw.sourceFileName.replace(/\.mdx$/, "") === params.slug,
+-         post._raw.sourceFileName.replace(/\.mdx$/, "") === params?.slug,
 -     ),
-+     post: allPosts.find((post) => post.slug === params.slug),
++     post: allPosts.find((post) => post.slug === params?.slug),
     },
   }
 }
@@ -395,34 +405,32 @@ Contentlayer will warn you because it has detected that one of your posts is mis
 
 Adding a `title{:.objKey}` to your blog post (in the frontmatter format) will fix the error:
 
-```md title="data/posts/hello-world.mdx" {2}
----
-title: "Hello World"
----
-
-# Hello World
+```diff title="data/posts/hello-world.mdx"
+- # Hello World
++ ---
++ title: "Hello World"
++ ---
 
 This is my first post...
 ```
 
 You can use the type definitions from Contentlayer and Next.js to ensure that the `post{:.objKey}` object passed to your `SinglePostPage{:.fn}` component is type-safe.
 
-```tsx showLineNumbers title="pages/blog/[slug].tsx" {2-3, 12-14, 24-26}
-import { allPosts } from "contentlayer/generated"
-import type { GetStaticProps, InferGetStaticPropsType } from "next"
-import type { Post } from "contentlayer/generated"
+```tsx showLineNumbers title="pages/blog/[slug].tsx" {1-2, 11-13, 23-25}
+import { allPosts, type Post } from "contentlayer/generated"
+import { type GetStaticProps, type InferGetStaticPropsType } from "next"
 
 export const getStaticPaths = () => {
   return {
-    paths: allPosts.map((post) => ({ slug: post.slug })),
+    paths: allPosts.map((post) => ({ params: { slug: post.slug } })),
     fallback: false,
   }
 }
 
 export const getStaticProps: GetStaticProps<{
-  post: Blog
+  post: Post
 }> = ({ params }) => {
-  const post = allPosts.find((post) => post.slug === params.slug)
+  const post = allPosts.find((post) => post.slug === params?.slug)
 
   if (!post) {
     return { notFound: true }
@@ -465,11 +473,12 @@ You can use a similar process to create a list page for all your blog posts:
 />
 
 ```tsx title="pages/blog/index.tsx"
+import { allPosts, type Post } from "contentlayer/generated"
+import { type GetStaticProps, type InferGetStaticPropsType } from "next"
 import Link from "next/link"
-import { allPosts } from "contentlayer/generated"
 
 export const getStaticProps: GetStaticProps<{
-  posts: Blog[]
+  posts: Post[]
 }> = () => {
   return { props: { posts: allPosts } }
 }
@@ -499,11 +508,10 @@ export default function PostListPage({
 
 The ability to use React.js components inside markdown is the main motivation for using MDX. You can use the `useMDXComponent(){:.fn}` hook to render the current posts "MDX enriched" markdown inside the `SinglePostPage{:.fn}` component:
 
-```tsx showLineNumbers title="pages/blog/[slug].tsx" {2, 13, 18}
-import { allPosts } from "contentlayer/generated"
+```tsx showLineNumbers title="pages/blog/[slug].tsx" {3, 12, 17}
+import { allPosts, type Post } from "contentlayer/generated"
+import { type GetStaticProps, type InferGetStaticPropsType } from "next"
 import { useMDXComponent } from "next-contentlayer/hooks"
-import type { GetStaticProps, InferGetStaticPropsType } from "next"
-import type { Post } from "contentlayer/generated"
 
 export const getStaticPaths = () => {...}
 

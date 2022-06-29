@@ -186,9 +186,9 @@ const contentLayerConfig = makeSource({
       options.target = "esnext"
       return options
     },
-    remarkPlugins: [remarkGfm],
+    remarkPlugins: [[remarkGfm]],
     rehypePlugins: [
-      rehypeSlug,
+      [rehypeSlug],
       [rehypePrettyCode, rehypePrettyCodeOptions],
       [
         rehypeAutolinkHeadings,
