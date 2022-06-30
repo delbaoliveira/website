@@ -8,6 +8,7 @@ series:
 ---
 
 import { Files } from "../ui/Files"
+import { Code } from "../ui/Code"
 
 The second part of this series explores setting up and configuring the content layer of a Next.js + MDX blogging system.
 
@@ -33,6 +34,10 @@ If you'd like to know more about why Contentlayer exists and what problems it el
 <StaticTweet id="1517126728711213056" showAttachments={false} />
 
 Or if you really want to dig deep, [this longform interview between Lee Robinson and the creator of Contentlayer](https://www.youtube.com/watch?v=1HnO2EoKeWc).
+
+## Code
+
+You're welcome to follow along this step by step walkthrough or if you just want the [complete code](#complete-code) you can find it at the bottom of this post.
 
 ## Install and Configure Contentlayer
 
@@ -535,7 +540,7 @@ export default function SinglePostPage({
 
 There is a lot more to MDX components that we will explore in detail in the next post — including how to embed interactive components, re-map markdown constructs to custom React.js components and style your MDX content. Follow me on [twitter](https://twitter.com/delba_oliveira) for updates.
 
-## Closing Thoughts
+# Closing Thoughts
 
 This covers the majority of setup and configuration. As you've hopefully realized, Contentlayer greatly simplifies the process of implementing MDX.
 
@@ -543,9 +548,149 @@ We didn't have to choose and configure an mdx processor like `mdx-bundler`, we d
 
 On top of that, Contentlayer adds much more to the table like type-safety, convenience functions for dealing with your content and a single and structured place to define and customize your freeform data.
 
-**Further reading**
+# Complete code
 
-- [40 minute interview with the creator of Contentlayer](https://www.youtube.com/watch?v=1HnO2EoKeWc)
-- [Contentlayer Docs](https://www.contentlayer.dev/docs)
-- [Next.js docs](https://nextjs.org/docs)
-- [MDX Docs](https://mdxjs.com/docs/)
+The final completed code of all the steps discussed in this post.
+
+<Code>
+
+```js showLineNumbers title="contentlayer.config.js"
+import { defineDocumentType, makeSource } from "contentlayer/source-files"
+
+const Post = defineDocumentType(() => ({
+  name: "Post",
+  contentType: "mdx",
+  // Location of Post source files (relative to `contentDirPath`)
+  filePathPattern: `posts/*.mdx`,
+  fields: {
+    title: {
+      type: "string",
+      required: true,
+    },
+  },
+  computedFields: {
+    slug: {
+      type: "string",
+      resolve: (post) =>
+        post._raw.sourceFileName
+          // hello-world.mdx => hello-world
+          .replace(/\.mdx$/, ""),
+    },
+  },
+}))
+
+export default makeSource({
+  // Location of source files for all defined documentTypes
+  contentDirPath: "data",
+  documentTypes: [Post],
+})
+```
+
+```js showLineNumbers title="next.config.js"
+const { withContentlayer } = require("next-contentlayer")
+
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  reactStrictMode: true,
+}
+
+module.exports = withContentlayer(nextConfig)
+```
+
+```js showLineNumbers title="tsconfig.js"
+{
+  "compilerOptions": {
+    // ...
+    "baseUrl": ".",
+    "paths": {
+      "contentlayer/generated": ["./.contentlayer/generated"]
+    }
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".contentlayer/generated"
+  ]
+}
+```
+
+```markdown showLineNumbers title="data/posts/hello-world.mdx"
+---
+title: "Hello World"
+---
+
+This is my first post...
+```
+
+```tsx showLineNumbers title="pages/blog/index.tsx"
+import { allPosts, type Post } from "contentlayer/generated"
+import type { GetStaticProps, InferGetStaticPropsType } from "next"
+import Link from "next/link"
+
+export const getStaticProps: GetStaticProps<{
+  posts: Post[]
+}> = () => {
+  return { props: { posts: allPosts } }
+}
+
+export default function PostListPage({
+  posts,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
+  return (
+    <div>
+      <h1>Blog</h1>
+
+      {posts.map((post) => (
+        <div key={post.slug}>
+          <h2>
+            <Link href={`/blog/${post.slug}`}>
+              <a>{post.title}</a>
+            </Link>
+          </h2>
+        </div>
+      ))}
+    </div>
+  )
+}
+```
+
+```tsx showLineNumbers title="pages/blog/[slug].tsx"
+import { allPosts, type Post } from "contentlayer/generated"
+import { type GetStaticProps, type InferGetStaticPropsType } from "next"
+import { useMDXComponent } from "next-contentlayer/hooks"
+
+export const getStaticPaths = () => {
+  return {
+    paths: allPosts.map((post) => ({ params: { slug: post.slug } })),
+    fallback: false,
+  }
+}
+
+export const getStaticProps: GetStaticProps<{
+  post: Post
+}> = ({ params }) => {
+  const post = allPosts.find((post) => post.slug === params?.slug)
+
+  if (!post) {
+    return { notFound: true }
+  }
+
+  return { props: { post } }
+}
+
+export default function SinglePostPage({
+  post,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
+  const MDXContent = useMDXComponent(post.body.code)
+
+  return (
+    <div>
+      <h1>{post.title}</h1>
+      <MDXContent />
+    </div>
+  )
+}
+```
+
+</Code>
