@@ -1,6 +1,5 @@
 import { FOCUS_VISIBLE_OUTLINE, LINK_STYLES } from "@/lib/constants"
 import { BlurImage } from "@/ui/BlurImage"
-import { Files } from "@/ui/Files"
 import { LinkPreview } from "@/ui/LinkPreview"
 import { Playground } from "@/ui/Playground"
 import cx from "clsx"
