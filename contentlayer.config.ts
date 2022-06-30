@@ -168,13 +168,12 @@ const rehypePrettyCodeOptions: Partial<Options> = {
     if (node.children.length === 0) {
       node.children = [{ type: "text", value: " " }]
     }
-    node.properties.className.push("syntax-line")
   },
   onVisitHighlightedLine(node) {
-    node.properties.className.push("syntax-line--highlighted")
+    node.properties.className.push("line--highlighted")
   },
   onVisitHighlightedWord(node) {
-    node.properties.className = ["syntax-word--highlighted"]
+    node.properties.className = ["word--highlighted"]
   },
 }
 
