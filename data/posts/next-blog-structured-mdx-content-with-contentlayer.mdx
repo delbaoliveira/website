@@ -163,7 +163,7 @@ Generated 1 document in .contentlayer
 
 Contentlayer transforms your posts markdown source file (line 9) into structured data and stores the result as a static `json` file (line 4). In addition, Contentlayer generates type definitions (line 6) and convenience helper functions for accessing post data (line 5).
 
-The processed `json` file includes the raw markdown content, the processed MDX code and generated fields such as the file's name. It will also include custom fields we will add later:
+The processed `json` file includes the raw markdown content, the processed MDX code and generated fields such as the file's name. It will also include custom fields which we will add later:
 
 ```json title="Truncated .contentlayer/generated/Post/posts__hello-world.mdx.json"
 {
@@ -413,10 +413,12 @@ Contentlayer will warn you because it has detected that one of your posts is mis
 Adding a `title{:.objKey}` to your blog post (in the frontmatter format) will fix the error:
 
 ```diff title="data/posts/hello-world.mdx"
-- # Hello World
 + ---
 + title: "Hello World"
 + ---
+
+- # Hello World
++ # A Captivating Title
 
 This is my first post...
 ```
@@ -538,7 +540,41 @@ export default function SinglePostPage({
 }
 ```
 
-There is a lot more to MDX components that we will explore in detail in the next post — including how to embed interactive components, re-map markdown constructs to custom React.js components and style your MDX content. Follow me on [twitter](https://twitter.com/delba_oliveira) for updates.
+If we visit `/blog/hello-world` we will see the post content that we wrote in `markdown` has been transformed into `HTML`.
+
+Essentially, we wrote a post in `MDX` (markdown):
+
+```markdown title="hello-world.mdx"
+# A Captivating Title
+
+This is my first post...
+```
+
+Which Contentlayer (using a bundler under the hood) transformed into `JSX` and cached as static `json`:
+
+```jsx title="Truncated unstringified code from contentlayer hello-world.mdx.json"
+var Component = (() => {
+  // ...
+  function m(t) {
+    let n = Object.assign({ h1: "h1", p: "p" }, t.components)
+    return (0, e.jsxs)(e.Fragment, {
+      children: [
+        (0, e.jsx)(n.h1, { children: "A Captivating Title" }),
+        (0, e.jsx)(n.p, { children: "This is my first post..." }),
+      ],
+    })
+  }
+  // ...
+})()
+return Component
+```
+
+Which React rendered and Next.js cached as static `HTML`:
+
+```html title="Truncated static generation payload"
+<h1>A Captivating Post</h1>
+<p>This is my first post...</p>
+```
 
 # Closing Thoughts
 
@@ -547,6 +583,8 @@ This covers the majority of setup and configuration. As you've hopefully realize
 We didn't have to choose and configure an mdx processor like `mdx-bundler`, we didn't use any file-system APIs or have to install third party `glob` or `path` packages, we didn't even have to think about ASTs or the complex `unified`, `remark` or `rehype` ecosystem.
 
 On top of that, Contentlayer adds much more to the table like type-safety, convenience functions for dealing with your content and a single and structured place to define and customize your freeform data.
+
+There is a lot more to MDX components that we will explore in detail in the next post — including how to embed interactive components, re-map markdown constructs to custom React.js components and style your MDX content.
 
 # Complete code
 
@@ -619,6 +657,8 @@ module.exports = withContentlayer(nextConfig)
 ---
 title: "Hello World"
 ---
+
+# A Captivating Title
 
 This is my first post...
 ```
