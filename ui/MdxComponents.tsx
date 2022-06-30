@@ -9,7 +9,6 @@ import NextLink from "next/link"
 import React from "react"
 
 export const components = {
-  Files,
   Playground,
   LinkPreview,
   h1: (props: any) => (

@@ -7,6 +7,8 @@ series:
   title: "Build a Developer Blog with Next.js"
 ---
 
+import { Files } from "../ui/Files"
+
 The second part of this series explores setting up and configuring the content layer of a Next.js + MDX blogging system.
 
 ## Problem
@@ -154,7 +156,7 @@ Generated 1 document in .contentlayer
 ]}
 />
 
-Contentlayer transforms your posts markdown source file (line 10) into structured data and stores the result as a static `json` file (line 5). In addition, Contentlayer generates type definitions (line 7) and convenience helper functions for accessing post data (line 6).
+Contentlayer transforms your posts markdown source file (line 9) into structured data and stores the result as a static `json` file (line 4). In addition, Contentlayer generates type definitions (line 6) and convenience helper functions for accessing post data (line 5).
 
 The processed `json` file includes the raw markdown content, the processed MDX code and generated fields such as the file's name. It will also include custom fields we will add later:
 
