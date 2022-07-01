@@ -22,7 +22,7 @@ export default function Page() {
           </div>
         </div>
 
-        <div className="grid grid-cols-6 gap-4 mt-20">
+        <div className="mt-20 grid grid-cols-6 gap-4">
           {items.map((x) => (
             <div
               key={x.char}
