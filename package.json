@@ -25,7 +25,7 @@
     "date-fns": "^2.27.0",
     "fathom-client": "^3.2.0",
     "framer-motion": "^5.4.3",
-    "next": "12.1.6-canary.6",
+    "next": "^12.2.0",
     "next-contentlayer": "0.2.4",
     "next-seo": "^4.26.0",
     "next-themes": "^0.0.15",
