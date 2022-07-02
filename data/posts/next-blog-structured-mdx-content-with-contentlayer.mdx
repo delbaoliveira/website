@@ -14,9 +14,9 @@ The second part of this series explores setting up and configuring the content l
 
 ## Problem
 
-- Most current MDX solutions leave integrating transformed data inside page templates up to the developer. This creates repetitive boilerplate that relies on file-system APIs and additional third party packages like `glob`, `path` and `gray-matter`.
-- The freeform nature of markdown files makes it difficult to maintain and guarantee structure as the number of posts grow.
-- The only way to extend the MDX processing is through the `unified`, `rehype` and `remark` ecosystem which is powerful but complicated.
+- Most current MDX solutions leave integrating transformed data inside page templates up to the developer. This creates repetitive boilerplate that relies on file-system APIs and additional third-party packages like `glob`, `path`, and `gray-matter`.
+- The freeform nature of markdown files makes it difficult to maintain and guarantee structure as the number of posts grows.
+- The only way to extend the MDX processing is through the `unified`, `rehype`, and `remark` ecosystem which is powerful but complicated.
 - The combined complexity of related options and configuration scattered across a project is a pain to manage.
 
 ## Solution
@@ -33,11 +33,11 @@ If you'd like to know more about why Contentlayer exists and what problems it el
 
 <StaticTweet id="1517126728711213056" showAttachments={false} />
 
-Or if you really want to dig deep, [this longform interview between Lee Robinson and the creator of Contentlayer](https://www.youtube.com/watch?v=1HnO2EoKeWc).
+Or if you want to dig deep, [this longform interview between Lee Robinson and the creator of Contentlayer](https://www.youtube.com/watch?v=1HnO2EoKeWc).
 
 ## Code
 
-You're welcome to follow along this step by step walkthrough or if you just want the [complete code](#complete-code) you can find it at the bottom of this post.
+You're welcome to follow along with this step-by-step walkthrough or if you just want the [complete code](#complete-code) you can find it at the bottom of this post.
 
 ## Install and Configure Contentlayer
 
@@ -163,7 +163,7 @@ Generated 1 document in .contentlayer
 
 Contentlayer transforms your posts markdown source file (line 9) into structured data and stores the result as a static `json` file (line 4). In addition, Contentlayer generates type definitions (line 6) and convenience helper functions for accessing post data (line 5).
 
-The processed `json` file includes the raw markdown content, the processed MDX code and generated fields such as the file's name. It will also include custom fields which we will add later:
+The processed `json` file includes the raw markdown content, the processed MDX code, and generated fields such as the file's name. It will also include custom fields which we will add later:
 
 ```json title="Truncated .contentlayer/generated/Post/posts__hello-world.mdx.json"
 {
@@ -314,7 +314,7 @@ export default function SinglePostPage({ post }) {
 
 ## Computed Fields
 
-In addition to Contentlayers automatically generated fields, you can add your own fields to a document type. One type of custom field is a **computed field**. Computed fields are useful for adding a new field to a document that uses its current contents to calculate something new. For instance you could use a posts contents to calculate an estimated read time.
+In addition to Contentlayer's automatically generated fields, you can add your own fields to a document type. One type of custom field is a **computed field**. Computed fields are useful for adding a new field to a document that uses its current contents to calculate something new. For instance, you could use the contents of a post to calculate an estimated read time.
 
 You may have noticed that the `.replace(/\.mdx$/, ""){:js}` logic is currently being used in both `getStaticPaths{:.fn}` and `getStaticProps{:.fn}`. You could move this logic into a single computed field:
 
@@ -377,7 +377,7 @@ export default function SinglePostPage() {...}
 
 ## Custom Fields
 
-Similarly to computed fields, you can add custom fields to a document type. These are useful for post metadata such as a title, date or category.
+Similarly to computed fields, you can add custom fields to a document type. These are useful for post metadata such as a title, date, or category.
 
 You can require all posts to have a `title{:.objKey}` field:
 
@@ -580,11 +580,11 @@ Which React rendered and Next.js cached as static `HTML`:
 
 This covers the majority of setup and configuration. As you've hopefully realized, Contentlayer greatly simplifies the process of implementing MDX.
 
-We didn't have to choose and configure an mdx processor like `mdx-bundler`, we didn't use any file-system APIs or have to install third party `glob` or `path` packages, we didn't even have to think about ASTs or the complex `unified`, `remark` or `rehype` ecosystem.
+We didn't have to choose and configure an MDX processor like `mdx-bundler`, we didn't use any file-system APIs or have to install third-party `glob` or `path` packages, we didn't even have to think about ASTs or the complex `unified`, `remark` or `rehype` ecosystem.
 
-On top of that, Contentlayer adds much more to the table like type-safety, convenience functions for dealing with your content and a single and structured place to define and customize your freeform data.
+On top of that, Contentlayer adds much more to the table like type-safety, convenience functions for dealing with your content, and a single and structured place to define and customize your freeform data.
 
-There is a lot more to MDX components that we will explore in detail in the next post — including how to embed interactive components, re-map markdown constructs to custom React.js components and style your MDX content.
+There is a lot more to MDX components that we will explore in detail in the next post — including how to embed interactive components, re-map markdown constructs to custom React.js components, and style your MDX content.
 
 # Complete code
 
