@@ -7,18 +7,42 @@ export const Code = ({ children }: { children: React.ReactNode }) => {
 
   let titles: string[] = []
 
-  React.Children.forEach(children, (child) => {
-    if (child.props?.["data-rehype-pretty-code-fragment"]) {
+  if (React.Children.count(children) === 0) {
+    return null
+  }
+
+  const slides = React.Children.map(children, (child, index) => {
+    if (
+      !React.isValidElement(child) ||
+      typeof child.props?.["data-rehype-pretty-code-fragment"] === "undefined"
+    ) {
       return null
     }
 
-    let title = child.props.children[0].props.children.split("/")
+    if (
+      typeof child.props.children?.[0]?.props?.[
+        "data-rehype-pretty-code-title"
+      ] !== "undefined"
+    ) {
+      let title = child.props.children[0].props.children.split("/")
+      titles.push(title[title.length - 1])
+    }
 
-    titles.push(title[title.length - 1])
+    return (
+      <div
+        key={index}
+        className={clsx({
+          block: index === slide,
+          hidden: index !== slide,
+        })}
+      >
+        {child}
+      </div>
+    )
   })
 
   return (
-    <div className="lg:-mx-8">
+    <div className="my-8 lg:-mx-8">
       <div className="flex flex-wrap">
         {titles.map((title, index) => {
           return (
@@ -40,19 +64,7 @@ export const Code = ({ children }: { children: React.ReactNode }) => {
         })}
       </div>
 
-      <div className="-mt-4 lg:mx-8">
-        {React.Children.map(children, (child, index) => (
-          <div
-            key={index}
-            className={clsx({
-              block: index === slide,
-              hidden: index !== slide,
-            })}
-          >
-            {child}
-          </div>
-        ))}
-      </div>
+      <div className="-mt-4 lg:mx-8">{slides}</div>
     </div>
   )
 }
