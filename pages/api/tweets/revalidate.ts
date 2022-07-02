@@ -22,7 +22,7 @@ export default async function handler(
   try {
     // ♻️ Regenerate the `/tweets` page and push the resulting static files to
     // the edge
-    await res.unstable_revalidate("/tweets")
+    await res.revalidate("/tweets")
 
     // ✅ Inform Github that we've successfully revalidated the page
     return res.json({ revalidated: true })
