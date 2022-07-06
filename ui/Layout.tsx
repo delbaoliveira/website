@@ -21,7 +21,6 @@ export const Layout = ({
   return (
     <div className="min-h-screen bg-[#0e0c0b] antialiased selection:bg-purple-600/90 selection:text-white">
       <div className="relative z-10 mx-auto w-full sm:max-w-screen-sm">
-        {/* TODO: Subtly animate based on mouse position */}
         <GradientBackground />
       </div>
 
@@ -37,7 +36,7 @@ export const Layout = ({
       >
         <div className="fixed top-6 z-30 w-full">
           <div className="mx-auto w-full px-[15px] sm:max-w-screen-sm">
-            <div className="flex items-center justify-between rounded-2xl bg-white/[3%] px-4 py-2.5 shadow-surface-glass backdrop-blur backdrop-filter firefox:bg-gray-900 firefox:bg-opacity-90">
+            <div className="flex items-center justify-between rounded-2xl bg-gray-900/90 px-4 py-2.5 shadow-surface-glass backdrop-blur [@supports(backdrop-filter:blur(0px))]:bg-white/[3%]">
               <div className="flex items-center space-x-6">
                 <Link href="/">
                   <a
