@@ -10,10 +10,10 @@ export default function Document() {
           rel="stylesheet"
         />
         <link rel="icon" type="image/png" href="/assets/favicon.png?v=1" />
-        <meta name="theme-color" content="#0e0c0b" />
+        <meta name="theme-color" content="#1c1917" />
       </Head>
 
-      <body className="bg-[#0e0c0b]">
+      <body className="bg-gray-900">
         <Main />
         <NextScript />
       </body>
