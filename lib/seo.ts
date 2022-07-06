@@ -1,4 +1,4 @@
-import { createOgImage } from "@/lib/og"
+import { createOgImage } from "@/lib/createOgImage"
 import type { DefaultSeoProps } from "next-seo"
 
 const title = `Delba de Oliveira`
