@@ -19,7 +19,7 @@ export const Layout = ({
   currentFilters?: CurrentFilters
 }) => {
   return (
-    <div className="min-h-screen bg-[#0e0c0b] antialiased selection:bg-purple-600/90 selection:text-white">
+    <div className="min-h-screen antialiased selection:bg-purple-500/90 selection:text-white">
       <div className="relative z-10 mx-auto w-full sm:max-w-screen-sm">
         <GradientBackground />
       </div>
