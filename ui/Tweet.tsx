@@ -1,9 +1,7 @@
-import { FOCUS_VISIBLE_OUTLINE } from "@/lib/constants"
 import type { FormattedTweet } from "@/lib/twitter"
 import { BlurImage } from "@/ui/BlurImage"
 import TwitterIcon from "@/ui/TwitterIcon"
 import { BadgeCheckIcon } from "@heroicons/react/solid"
-import cx from "clsx"
 import Image from "next/image"
 /**
  * Supports plain text, quote tweets.
@@ -28,12 +26,7 @@ export const Tweet = ({
   showAttachments?: boolean
 }) => {
   return (
-    <div
-      className={cx(
-        "rounded-2xl bg-white/5 p-6 shadow-surface-elevation-low",
-        FOCUS_VISIBLE_OUTLINE,
-      )}
-    >
+    <div className="rounded-2xl bg-white/5 p-6 shadow-surface-elevation-low">
       {/* Author meta */}
       <div className="flex items-start text-lg">
         <div className="flex min-w-0 flex-wrap items-center">
