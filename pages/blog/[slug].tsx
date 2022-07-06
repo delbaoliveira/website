@@ -109,7 +109,7 @@ export default function PostPage({
             </div>
           ) : null}
 
-          <div className="mt-10 text-lg text-rose-100/80">
+          <div className="mt-10 text-lg text-rose-100/90">
             <MDXContent
               components={{
                 ...components,
