@@ -42,7 +42,7 @@ export const Code = ({ children }: { children: React.ReactNode }) => {
   })
 
   return (
-    <div className="my-8 lg:-mx-8">
+    <div className="my-8 lg:-mx-12">
       <div className="flex flex-wrap">
         {titles.map((title, index) => {
           return (
@@ -64,7 +64,7 @@ export const Code = ({ children }: { children: React.ReactNode }) => {
         })}
       </div>
 
-      <div className="-mt-4 lg:mx-8">{slides}</div>
+      <div className="-mt-4 lg:mx-12">{slides}</div>
     </div>
   )
 }
