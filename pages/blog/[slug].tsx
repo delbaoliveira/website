@@ -105,7 +105,7 @@ export default function PostPage({
 
           {post.series && post.series.posts ? (
             <div className="mt-10">
-              <PostSeries data={post.series} />
+              <PostSeries data={post.series} isInteractive={true} />
             </div>
           ) : null}
 
