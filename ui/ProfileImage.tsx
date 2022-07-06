@@ -1,7 +1,5 @@
-import delbaImg from "@/public/delba-oliveira.jpg"
 import cx from "clsx"
-import Image from "next/image"
-import React from "react"
+import Image from "next/future/image"
 
 export const ProfileImage = ({
   size = "large",
@@ -32,8 +30,9 @@ export const ProfileImage = ({
         })}
       >
         <Image
-          src={delbaImg}
+          src="https://res.cloudinary.com/delba/image/twitter_name/c_thumb,g_face,h_380,w_380,q_100/delba_oliveira.jpg"
           alt="A photo of Delba"
+          quality={95}
           priority={true}
           className="rounded-full"
           width={size === "small" ? 36 : 64}
