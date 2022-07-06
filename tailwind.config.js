@@ -8,7 +8,7 @@ module.exports = {
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./ui/**/*.{js,ts,jsx,tsx}",
     "./lib/**/*.{js,ts}",
-    "./posts/**/*.mdx",
+    "./data/posts/**/*.mdx",
   ],
   darkMode: "class",
   theme: {
