@@ -6,8 +6,8 @@ export const Footer = () => {
   return (
     <div className="mt-36 pb-36">
       <div className="text-gray-500">
-        <div className="flex flex-col justify-between lg:flex-row">
-          <div className="flex space-x-4">
+        <div className="flex flex-col justify-between font-medium lg:flex-row">
+          <div className="flex space-x-5">
             <div>
               <Link href="/videos">
                 <a className={cx(LINK_SUBTLE_STYLES, FOCUS_VISIBLE_OUTLINE)}>
@@ -41,7 +41,7 @@ export const Footer = () => {
             </div>
           </div>
 
-          <div className="space-x-6 pt-2 font-medium lg:pt-0">
+          <div className="space-x-5 pt-2 lg:pt-0">
             <a
               href="https://twitter.com/delba_oliveira"
               className={cx(LINK_SUBTLE_STYLES, FOCUS_VISIBLE_OUTLINE)}

@@ -48,11 +48,11 @@ export default function BlogPage({
     <Layout>
       <div>
         <div>
-          <h1 className="text-3xl font-extrabold text-rose-100/90 lg:text-4xl">
+          <h1 className="text-3xl font-medium text-rose-100/90 lg:text-4xl">
             Inspired Tweets
           </h1>
-          <div className="text-lg text-rose-100/40 lg:text-xl">
-            Tweets that capture a sentiment I'd like to remember #BlessedTweets
+          <div className="mt-2 text-lg text-rose-100/40 lg:text-xl">
+            Tweets that capture a sentiment I'd like to remember
           </div>
         </div>
 
