@@ -65,9 +65,17 @@ export const components = {
     />
   ),
   strong: (props: any) => <strong className="font-semibold" {...props} />,
-  Img: ({ children, ...props }: { children: React.ReactNode } & ImageProps) => {
+  Img: ({
+    children,
+    bleed = true,
+    ...props
+  }: { children: React.ReactNode; bleed?: boolean } & ImageProps) => {
     return (
-      <figure className="my-8 lg:-mx-12">
+      <figure
+        className={cx("my-8", {
+          "lg:-mx-12": bleed === true,
+        })}
+      >
         <BlurImage {...props} />
 
         {children ? (
@@ -78,11 +86,6 @@ export const components = {
       </figure>
     )
   },
-  img: ({ children, ...props }: { children: React.ReactNode } & ImageProps) => (
-    <div className="my-8">
-      <BlurImage {...props} />
-    </div>
-  ),
   blockquote: (props: any) => (
     <blockquote
       className="my-8 border-l-4 border-rose-200/10 pl-4 italic lg:-mx-12"
