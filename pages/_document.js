@@ -19,7 +19,6 @@ export default function Document() {
       </Head>
 
       <body className="bg-gray-900">
-        <div className="pointer-events-none absolute inset-0 top-[-400pxx] bg-[url('https://res.cloudinary.com/delba/image/upload/h_500/bg_gradient_pfosr9')] bg-top bg-no-repeat opacity-[0.3]"></div>
         <svg
           className="pointer-events-none fixed isolate z-50 opacity-40 mix-blend-soft-light"
           width="100%"
@@ -39,6 +38,8 @@ export default function Document() {
             filter="url(#pedroduarteisalegend)"
           ></rect>
         </svg>
+
+        <div className="pointer-events-none absolute inset-0 bg-[url('https://res.cloudinary.com/delba/image/upload/h_500/bg_gradient_pfosr9')] bg-top bg-no-repeat opacity-[0.3]"></div>
 
         <Main />
         <NextScript />
