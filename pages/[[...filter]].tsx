@@ -120,11 +120,13 @@ export default function Home({
                     <h1 className="text-4xl font-medium text-rose-100/80">
                       Delba
                     </h1>
-                    <h2 className="align-middle text-lg text-rose-100/50">
+                    <h2 className="align-middle text-lg leading-6 text-rose-100/50">
                       Developer Experience at{" "}
                       <span className="font-medium text-rose-100/70">
                         <span className="mr-[1px] align-middle">
-                          <span className="text-[24px]">▲</span>
+                          <span className="-my-2 inline-block text-[24px]">
+                            ▲
+                          </span>
                         </span>
                         Vercel
                       </span>

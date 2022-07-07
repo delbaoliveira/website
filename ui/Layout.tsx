@@ -1,7 +1,6 @@
 import { FOCUS_VISIBLE_OUTLINE } from "@/lib/constants"
 import { CurrentFilters } from "@/lib/types"
 import { Footer } from "@/ui/Footer"
-import { GradientBackground } from "@/ui/GradientBackground"
 import { Navigation } from "@/ui/Navigation"
 import { ProfileImage } from "@/ui/ProfileImage"
 import { Transition } from "@headlessui/react"
