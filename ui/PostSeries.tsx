@@ -37,11 +37,12 @@ export const PostSeries = ({
           <Title>
             {data.title}
             <span className="font-normal text-rose-100/50">
+              {" "}
               &middot; {currentIndex} of {data.posts.length}
             </span>
           </Title>
 
-          <div className="ml-auto">
+          <div className="ml-auto pl-4">
             <div className="rounded-full bg-rose-100/10 p-2 text-white group-hover:bg-rose-100/25">
               {isOpen ? (
                 <ChevronUpIcon className="w-5" />

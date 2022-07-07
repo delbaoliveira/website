@@ -120,8 +120,8 @@ export default function Home({
                     <h1 className="text-4xl font-medium text-rose-100/80">
                       Delba
                     </h1>
-                    <h2 className="text-lg text-rose-100/60">
-                      Developer Advocate at Vercel
+                    <h2 className="text-lg text-rose-100/50">
+                      Developer Experience at Vercel
                     </h2>
                   </div>
                 </div>
