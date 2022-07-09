@@ -17,8 +17,7 @@ export const ProfileImage = ({
           "p-[3px]": size === "large",
           "group transform transition ease-out hover:scale-105 hover:from-purple-700 hover:to-rose-400 hover:shadow-rose-500/25 active:translate-y-[1px]":
             isInteractive,
-          "ring-[4px] ring-purple-500/5 ring-offset-1 ring-offset-black/5":
-            !isInteractive,
+          "ring-[5px] ring-purple-500/10": !isInteractive,
         },
       )}
     >

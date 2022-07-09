@@ -98,10 +98,11 @@ export default function Home({
   const intersectionRef = React.useRef(null)
   const intersection = useIntersection(intersectionRef, {
     root: null,
+    rootMargin: "-100px",
   })
 
   let showNav = false
-  if ((intersection && !intersection.isIntersecting) || currentFilters) {
+  if (currentFilters || (intersection && !intersection.isIntersecting)) {
     showNav = true
   }
 
@@ -112,7 +113,15 @@ export default function Home({
         <div className="-mt-12 sm:mt-0">
           <div ref={intersectionRef}>
             {!currentFilters ? (
-              <div className="space-y-8 sm:space-y-12">
+              <div
+                className={cx(
+                  "space-y-8 transition duration-300 sm:space-y-12",
+                  {
+                    "opacity-0": showNav,
+                    "opacity-100": !showNav,
+                  },
+                )}
+              >
                 <div className="flex items-center space-x-6">
                   <ProfileImage size="large" />
 

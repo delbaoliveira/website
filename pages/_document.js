@@ -39,8 +39,6 @@ export default function Document() {
           ></rect>
         </svg>
 
-        <div className="pointer-events-none absolute inset-0 bg-[url('https://res.cloudinary.com/delba/image/upload/h_500/bg_gradient_pfosr9')] bg-top bg-no-repeat opacity-[0.3]"></div>
-
         <Main />
         <NextScript />
       </body>
