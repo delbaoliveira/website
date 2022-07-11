@@ -64,12 +64,12 @@ export type FormattedTweet = {
     username: string
     verified: boolean
   }
-  metrics: {
-    replies: string
-    retweets: string
-    likes: string
-    quotes: string
-  }
+  // metrics: {
+  //   replies: string
+  //   retweets: string
+  //   likes: string
+  //   quotes: string
+  // }
   quoteTweet?: FormattedTweet
   linkPreview?: Url
   type?: LinkedTweetType
@@ -199,20 +199,20 @@ const formatTweet = (
 
   const createdAtFormatted = formatShortDate(tweet.created_at)
 
-  const metricsFormatted = {
-    replies: tweet.public_metrics?.reply_count
-      ? tweet.public_metrics.reply_count.toLocaleString()
-      : "0",
-    retweets: tweet.public_metrics?.retweet_count
-      ? tweet.public_metrics.retweet_count.toLocaleString()
-      : "0",
-    likes: tweet.public_metrics?.like_count
-      ? tweet.public_metrics.like_count.toLocaleString()
-      : "0",
-    quotes: tweet.public_metrics?.quote_count
-      ? tweet.public_metrics.quote_count.toLocaleString()
-      : "0",
-  }
+  // const metricsFormatted = {
+  //   replies: tweet.public_metrics?.reply_count
+  //     ? tweet.public_metrics.reply_count.toLocaleString()
+  //     : "0",
+  //   retweets: tweet.public_metrics?.retweet_count
+  //     ? tweet.public_metrics.retweet_count.toLocaleString()
+  //     : "0",
+  //   likes: tweet.public_metrics?.like_count
+  //     ? tweet.public_metrics.like_count.toLocaleString()
+  //     : "0",
+  //   quotes: tweet.public_metrics?.quote_count
+  //     ? tweet.public_metrics.quote_count.toLocaleString()
+  //     : "0",
+  // }
 
   const formattedTweet: FormattedTweet = {
     id: tweet.id,
@@ -225,7 +225,7 @@ const formatTweet = (
     },
     text: textFormatted.trim(),
     createdAt: createdAtFormatted,
-    metrics: metricsFormatted,
+    // metrics: metricsFormatted,
     likeUrl: `https://twitter.com/intent/like?tweet_id=${tweet.id}`,
     retweetUrl: `https://twitter.com/intent/retweet?tweet_id=${tweet.id}`,
     replyUrl: `https://twitter.com/intent/tweet?in_reply_to=${tweet.id}`,
