@@ -23,7 +23,7 @@ module.exports = {
       keyframes: ({ theme }) => ({
         mutation: {
           "0%": {
-            background: theme("colors.rose.200"),
+            background: theme("colors.rose.200 / 3%"),
           },
           "10%": {
             background: theme("colors.rose.200 / 15%"),
