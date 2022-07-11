@@ -1,8 +1,322 @@
 ---
-title: "Planned: Automated Open Graph Images with TBA"
-description: "..."
-publishedAt: "2022-10-01"
-status: "draft"
+title: "(WIP) Automatically Generate Branded Open Graph (OG) Images for Your Blog Posts"
+description: "Draft: Use Cloudinary to automatically generate a branded OG image for each post."
+publishedAt: "2022-07-05"
+status: "published"
 series:
   title: "Build a Developer Blog with Next.js"
 ---
+
+import { createOgImage } from "../lib/createOgImage"
+import { Code } from "../ui/Code"
+import { FauxTweet } from "../ui/lab/FauxTweet"
+
+export const variables = {
+  title:
+    "Automatically Generate Branded Open Graph (OG) Images for Your Blog Posts",
+  meta: "delba.dev · 4 Jul · #next · #cloudinary",
+}
+
+export const e = (str) => encodeURIComponent(encodeURIComponent(str))
+
+<Aside styled={true} title="Heads up! This is an incomplete early draft">
+  I publish drafts in case someone will find them useful. You can find the final
+  code towards the end but some explanations are missing.
+</Aside>
+
+An Open Graph (OG) image is the image social networks (such as Twitter and Facebook) pull from your website to create a preview when someone shares a link to your website.
+
+Regardless of the effectiveness of a post title or the quality of the actual post content, an OG image is usually the first thing people notice about a shared post as they browse their feed.
+
+In theory, a better OG image should increase how often people click through to your website and re-share the original shared post.
+
+## Problem
+
+- Creating a custom OG image for each post takes time and energy away from writing posts.
+- Automating OG image generation can be difficult to implement or costs money to use a service.
+
+## Solution
+
+Use Cloudinary's generous free tier to automatically generate a branded OG image for each post.
+
+- **Powerful URL-based API** — No custom infra needed, pass a URL and get a generated image.
+- **Dynamic** — Pull dynamic post details such as title and meta to generate the final image.
+- **Flexible design** — Render multiple text or image layers on top of each other.
+- **Custom transformations** — Manipulate a layer's position, size, crop, color, opacity, etc.
+- **Rich typography options** — Use custom fonts (including Google fonts), color, letter spacing, etc to match website brand.
+- **Fetch images from external sources** — Fetch and sync headshot with a live Twitter profile image (updating Twitter image will eventually update all OG images).
+
+Below is an example of the generated OG image and how it would look once shared
+on a social network:
+
+<FauxTweet>
+  <Img
+    src={createOgImage({
+      title: variables.title,
+      meta: variables.meta,
+    })}
+    width={1600}
+    height={836}
+  />
+</FauxTweet>
+
+<Aside side="right" styled={true}>
+  In this post we will discuss how to create this example, but if you prefer you
+  can jump straight to the [final code](#final-code).
+</Aside>
+
+# What is Cloudinary?
+
+Cloudinary is primarily an image hosting service and CDN. On top of their incredible CDN they also provide a powerful [REST image manipulation and generation API](https://cloudinary.com/documentation/cloudinary_references). Think of it as a simplified URL-based Figma or Photoshop: you provide arguments as URL paths and it generates, caches, and returns an image file.
+
+For example, the following URL generated the image above:
+
+<div className="break-words p-6 bg-white/5 rounded-xl my-4">
+[https://res.cloudinary.com/delba/image/upload/w_1600,h_836,q_100/l_text:Karla_72_bold:Title...,co_rgb:ffe4e6,c_fit,w_1400,h_240/fl_layer_apply,g_south_west,x_100,y_180/l_text:Karla_48:Meta...,co_rgb:ffe4e680,c_fit,w_1400/fl_layer_apply,g_south_west,x_100,y_100/l_twitter_name:delba_oliveira/c_thumb,g_face,r_max,w_380,h_380,q_100/fl_layer_apply,w_140,g_north_west,x_100,y_100/grain-gradient.png](<https://res.cloudinary.com/delba/image/upload/w_1600,h_836,q_100/l_text:Karla_72_bold:Automatically%2520Generated%2520Branded%2520Open%2520Graph%2520(OG)%2520Images%2520for%2520Blog%2520Posts,co_rgb:ffe4e6,c_fit,w_1400,h_240/fl_layer_apply,g_south_west,x_100,y_180/l_text:Karla_48:delba.dev%2520%25C2%25B7%2520Oct%25201,co_rgb:ffe4e680,c_fit,w_1400/fl_layer_apply,g_south_west,x_100,y_100/l_twitter_name:delba_oliveira/c_thumb,g_face,r_max,w_380,h_380,q_100/fl_layer_apply,w_140,g_north_west,x_100,y_100/grain-gradient.png>)
+</div>
+
+This might look a bit complex at first but we will break it down below.
+
+# Step 1: The Canvas
+
+First, upload an image to your Cloudinary account that will be used as the base layer for the generated image.
+
+<Img
+  src={[
+    `https://res.cloudinary.com/delba/image/upload`,
+    `w_1600,h_836,q_100`,
+    `grain.png`,
+  ].join("/")}
+  width={1600}
+  height={836}
+/>
+
+Create a utility function that returns a URL string of the composed transformations. For the sake of readability, we use an array of transformations that we `join(){:js}` before returning.
+
+```ts showLineNumbers
+const createOgImage = () => {
+  return (
+    [
+      // prefix: <domain/account/file_type/source_type>
+      `https://res.cloudinary.com/delba/image/upload`,
+      // transform image: width, height, quality
+      `w_1600,h_836,q_100`,
+      // base image: <cloudinary_public_id>
+      `grain.png`,
+    ]
+      // join parameters with slash to form a valid URL
+      // [a, b, c] => "a/b/c"
+      .join("/")
+  )
+}
+```
+
+- **Width and Height** — Set the dimensions and ratio of the generated image to something appropriate for social networks. The base image you uploaded will be scaled to match these dimensions. You can use the [crop mode](https://cloudinary.com/documentation/transformation_reference#c_crop_resize) to decide what kind of scaling will be applied.
+- **Quality** — Cloudinary significantly reduces image file sizes by automatically compressing images. This is good for adding images to your website, but not ideal for an OG image because social networks apply their own compression. We can override the default setting using the [quality](https://cloudinary.com/documentation/transformation_reference#q_quality) option.
+
+# Step 2: Text
+
+Cloudinary allows you to place text and image layers that can be individually transformed and positioned on top of a base image. For example, we can render "Hello" in Arial with a font size of 100 on top of our `grain.png` image by adding `l_text:Arial_100:Hello` to the URL.
+
+<Aside>
+  <Img
+    src={[
+      `https://res.cloudinary.com/delba/image/upload`,
+      `w_1600,h_836,q_100`,
+      `l_text:Arial_100:${e(
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      )}`,
+      `grain.png`,
+    ].join("/")}
+    width={1600}
+    height={836}
+  />
+</Aside>
+
+```ts showLineNumbers {5-7}
+const createOgImage = () => {
+  return [
+    `https://res.cloudinary.com/delba/image/upload`,
+    `w_1600,h_836,q_100`,
+    `l_text:Arial_100:${e(
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    )}`,
+    `grain.png`,
+  ].join("/")
+}
+```
+
+Oh dear, Not exactly what we're looking for! The text is overlapping the background image. By default, if a layer (image or text) has a larger width or height than the base image, the delivered image canvas is resized to display the entire layer.
+
+<Aside>
+  <Img
+    src={[
+      `https://res.cloudinary.com/delba/image/upload`,
+      `w_1600,h_836,q_100`,
+      `c_fit,w_1400,l_text:Arial_64:${e(
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed iaculis tortor sapien, sit amet feugiat ante feugiat nec. Phasellus pharetra efficitur felis commodo iaculis.",
+      )},co_rgb:fff`,
+      `grain.png`,
+    ].join("/")}
+    width={1600}
+    height={836}
+  />
+</Aside>
+
+### Text wrapping
+
+- Limit the size of the text layer so it fits inside the image using the width parameter `w_`.
+- Force text to wrap to multiple lines rather than scaling to the width we just set using the `fit` crop mode.
+- Reduce the font size to better fit the background image.
+
+### Text escaping
+
+- Double escape
+
+<Aside>
+  <Img
+    src={[
+      `https://res.cloudinary.com/delba/image/upload`,
+      `w_1600,h_836,q_100`,
+      `c_fit,w_1400,l_text:Arial_64:${e(
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed iaculis tortor sapien, sit amet feugiat ante feugiat nec. Phasellus pharetra efficitur felis commodo iaculis.",
+      )},co_rgb:fff`,
+      `grain.png`,
+    ].join("/")}
+    width={1600}
+    height={836}
+  />
+</Aside>
+
+### Branding
+
+- Font
+- Color
+
+<Aside>
+  <Img
+    src={[
+      `https://res.cloudinary.com/delba/image/upload`,
+      `w_1600,h_836,q_100`,
+      `c_fit,w_1400,l_text:Arial_64:${e(
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed iaculis tortor sapien, sit amet feugiat ante feugiat nec. Phasellus pharetra efficitur felis commodo iaculis.",
+      )},co_rgb:fff`,
+      `grain.png`,
+    ].join("/")}
+    width={1600}
+    height={836}
+  />
+</Aside>
+
+# Positioning
+
+<Aside>
+  <Img
+    src={[
+      `https://res.cloudinary.com/delba/image/upload`,
+      `w_1600,h_836,q_100`,
+      `c_fit,w_1400,l_text:Arial_64:${e(
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed iaculis tortor sapien, sit amet feugiat ante feugiat nec. Phasellus pharetra efficitur felis commodo iaculis.",
+      )},co_rgb:fff`,
+      `grain.png`,
+    ].join("/")}
+    width={1600}
+    height={836}
+  />
+</Aside>
+
+# Profile Image
+
+- `l_<public_id of image>`
+
+# Notes
+
+- Accommodating varying title lengths
+- Contrast with the background image
+- If your posts have their own "hero image", you could use Cloudinary's remote fetching to render that image onto your og:design.
+- Transformation parameters are separated by slashes. that can be composed to create dynamic images that Cloudinary will render and cache.
+- Double escape text to not break URLs and Cloudinary's arguments API.
+- Avoid double compression across platforms - Cloudinary, Twitter, and Next.js
+- Cross-link to synced site headshot.
+- Consider showing how to create noise and grain in Figma.
+  - Optimize the strength of grain for smaller sizes and compression on social networks of the grain for a smaller size.
+
+# Final code
+
+<Code>
+```ts showLineNumbers title="lib/createOgImage.ts"
+export const createOgImage = ({
+  title,
+  meta,
+}: {
+  title: string
+  meta: string
+}) =>
+  [
+    // ACCOUNT PREFIX
+    `https://res.cloudinary.com/delba/image/upload`,
+    // Composed Image Transformations
+    `w_1600,h_836,q_100`,
+
+    // TITLE
+    // Karla google font in light rose
+    `l_text:Karla_72_bold:${e(title)},co_rgb:ffe4e6,c_fit,w_1400,h_240`,
+    // Positioning
+    `fl_layer_apply,g_south_west,x_100,y_180`,
+
+    // META
+    // Karla, but smaller
+    `l_text:Karla_48:${e(meta)},co_rgb:ffe4e680,c_fit,w_1400`,
+    // Positioning
+    `fl_layer_apply,g_south_west,x_100,y_100`,
+
+    // PROFILE IMAGE
+    // dynamically fetched from my twitter profile
+    `l_twitter_name:delba_oliveira`,
+    // Transformations
+    `c_thumb,g_face,r_max,w_380,h_380,q_100`,
+    // Positioning
+    `fl_layer_apply,w_140,g_north_west,x_100,y_100`,
+
+    // BG
+    `grain-gradient.png`,
+
+].join("/")
+
+// double escape for commas and slashes
+const e = (str: string) => encodeURIComponent(encodeURIComponent(str))
+
+````
+
+```tsx showLineNumbers title="pages/blog/[slug].tsx"
+import { createOgImage } from "@/lib/createOrgImage"
+import Head from "next/head"
+
+export default function Page({ post }) {
+  const ogImage = createOgImage({
+    title: post.title,
+    meta: ["delba.dev", post.publishedAt, ...post.tags].join(" · "),
+  })
+
+  return (
+    <>
+      <Head>
+        <meta property="og:image" content={ogImage} />
+        <meta property="og:image:width" content="1600" />
+        <meta property="og:image:height" content="836" />
+        <meta property="og:image:alt" content={post.title} />
+        <meta name="twitter:card" content="summary_large_image" />
+      </Head>
+
+      {/* ... */}
+    </>
+  )
+}
+````
+
+</Code>
+
+<Aside side="right">
+  We can tell crawlers what image to use by adding the `
+  <meta property="og:image" content="..." />` meta tag in the HTML of our pages.
+</Aside>
