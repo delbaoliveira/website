@@ -45,6 +45,7 @@ export const Code = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
       <Aside>
+        <div className="mb-2 text-sm font-medium">Select a file</div>
         <div className="flex flex-wrap">
           {titles.map((title, index) => {
             return (

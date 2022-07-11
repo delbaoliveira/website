@@ -57,7 +57,7 @@ export const Layout = ({
         ></rect>
       </svg>
 
-      <div className="fixed top-6 z-30 grid w-full grid-cols-[1fr,min(640px,calc(100%-2rem)),1fr]">
+      <div className="fixed top-6 z-30 grid w-full grid-cols-[1fr,min(640px,100%),1fr] px-4">
         <Transition
           className="col-start-2 -mx-px rounded-2xl bg-gray-800/95 px-4 py-2.5 shadow-surface-glass backdrop-blur will-change-transform [@supports(backdrop-filter:blur(0px))]:bg-white/[3%]"
           show={showNav}
@@ -84,7 +84,7 @@ export const Layout = ({
         </Transition>
       </div>
 
-      <main className="relative z-10 grid grid-cols-[1fr,min(640px,calc(100%-2rem)),1fr] gap-x-4 gap-y-8 pt-48 xl:grid-cols-[1fr,minmax(auto,200px),min(640px,100%),200px,1fr] xl:gap-x-8 [&>*]:col-start-2 xl:[&>*]:col-start-3">
+      <main className="relative z-10 grid grid-cols-[1fr,min(640px,100%),1fr] gap-y-8 px-4 pt-48 text-lg text-rose-100/90 xl:grid-cols-[1fr,minmax(auto,280px),min(640px,100%),minmax(auto,280px),1fr] xl:gap-x-8 xl:px-0 [&>*]:col-start-2 xl:[&>*]:col-start-3">
         {children}
 
         <Footer />

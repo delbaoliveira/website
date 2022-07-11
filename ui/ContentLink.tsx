@@ -48,7 +48,9 @@ function Text({ children }: { children: React.ReactNode }) {
 
 function Meta({ children }: { children: React.ReactNode }) {
   return (
-    <div className="flex flex-wrap space-x-2 text-rose-100/50">{children}</div>
+    <div className="flex flex-wrap space-x-2 text-base text-rose-100/50">
+      {children}
+    </div>
   )
 }
 
