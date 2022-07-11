@@ -36,6 +36,7 @@
     "rehype-pretty-code": "0.3.2",
     "shiki": "^0.10.1",
     "swr": "1.3.0",
+    "unist-util-visit": "^4.1.0",
     "zod": "^3.11.6"
   },
   "devDependencies": {

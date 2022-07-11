@@ -1,6 +1,3 @@
 @tailwind base;
-
-@import "./syntax-highlighting.css";
-
 @tailwind components;
 @tailwind utilities;
