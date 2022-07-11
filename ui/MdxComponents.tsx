@@ -1,4 +1,5 @@
-import { FOCUS_VISIBLE_OUTLINE, LINK_STYLES } from "@/lib/constants"
+import { LINE_BREAK, FOCUS_VISIBLE_OUTLINE, LINK_STYLES } from "@/lib/constants"
+import { Aside } from "@/ui/Aside"
 import { BlurImage } from "@/ui/BlurImage"
 import { LinkPreview } from "@/ui/LinkPreview"
 import { Playground } from "@/ui/Playground"
@@ -10,28 +11,38 @@ import React from "react"
 export const components = {
   Playground,
   LinkPreview,
+  Aside,
   h1: (props: any) => (
     <h2
-      className="mt-12 mb-8 border-t-2 border-rose-100/[15%] pt-9 text-3xl font-medium text-rose-100/90"
+      className={cx(
+        "relative mt-3 pt-9 text-xl font-medium text-rose-100/90 sm:text-3xl",
+        LINE_BREAK,
+      )}
       {...props}
     />
   ),
   h2: (props: any) => (
     <h3
-      className="mt-12 mb-8 border-t-2 border-rose-100/[15%] pt-9 text-2xl font-medium text-rose-100/90"
+      className={cx(
+        "relative mt-3 pt-9 text-xl font-medium text-rose-100/90 sm:text-2xl",
+        LINE_BREAK,
+      )}
       {...props}
     />
   ),
   h3: (props: any) => (
-    <h4
-      className="mt-12 mb-8 text-xl font-medium text-rose-100/90"
+    <h4 className="text-xl font-medium text-rose-100/90" {...props} />
+  ),
+  h4: (props: any) => (
+    <h5 className="text-lg font-medium text-rose-100/90" {...props} />
+  ),
+  hr: (props: any) => (
+    <hr
+      className={cx("relative border-0 pt-9 sm:pt-10", LINE_BREAK)}
       {...props}
     />
   ),
-  h4: (props: any) => (
-    <h5 className="mt-6 mb-5 text-lg font-medium text-rose-100/90" {...props} />
-  ),
-  p: (props: any) => <p className="mb-5 leading-7" {...props} />,
+  p: (props: any) => <p className="text-lg text-rose-100/90" {...props} />,
   a: ({ href = "", ...props }) => {
     if (href.startsWith("http")) {
       return (
@@ -51,16 +62,15 @@ export const components = {
       </NextLink>
     )
   },
-  hr: (props: any) => (
-    <hr {...props} className="my-12 border-t-2 border-rose-100/[15%]" />
+  ul: (props: any) => (
+    <ul
+      className="space-y-3 text-lg text-rose-100/90 [&>li]:relative [&>li]:pl-7 before:[&>li]:absolute before:[&>li]:left-1 before:[&>li]:top-3 before:[&>li]:h-1.5 before:[&>li]:w-1.5 before:[&>li]:rounded-full before:[&>li]:bg-rose-100/20"
+      {...props}
+    />
   ),
-  ul: (props: any) => <ul className="mb-6" {...props} />,
   ol: (props: any) => (
-    <ol className="my-12 list-decimal pl-10 leading-7" {...props} />
-  ),
-  li: (props: any) => (
-    <li
-      className="relative my-3 pl-7 before:absolute before:left-1 before:top-3 before:h-1.5 before:w-1.5 before:rounded-full before:bg-rose-100/20"
+    <ol
+      className="list-decimal space-y-3 pl-10 text-lg leading-7 text-rose-100/90"
       {...props}
     />
   ),
@@ -68,27 +78,29 @@ export const components = {
   Img: ({
     children,
     bleed = true,
+    caption,
     ...props
-  }: { children: React.ReactNode; bleed?: boolean } & ImageProps) => {
+  }: {
+    children: React.ReactNode
+    bleed?: boolean
+    caption?: string
+  } & ImageProps) => {
     return (
-      <figure
-        className={cx("my-8", {
-          "lg:-mx-12": bleed === true,
-        })}
-      >
-        <BlurImage {...props} />
-
-        {children ? (
-          <figcaption className="mt-2 text-sm italic text-gray-500">
-            {children}
-          </figcaption>
-        ) : null}
-      </figure>
+      <>
+        <div
+          className={cx({
+            "xl:!col-start-2 xl:!col-end-4": bleed === true,
+          })}
+        >
+          <BlurImage {...props} />
+        </div>
+        {caption ? <Aside side="right">{caption}</Aside> : null}
+      </>
     )
   },
   blockquote: (props: any) => (
     <blockquote
-      className="my-8 border-l-4 border-rose-200/10 pl-4 italic lg:-mx-12"
+      className="border-l-2 border-rose-200/10 pl-4 text-xl italic xl:!col-end-5"
       {...props}
     />
   ),

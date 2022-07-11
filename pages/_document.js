@@ -11,29 +11,14 @@ export default function Document() {
         />
         <link rel="icon" type="image/png" href="/assets/favicon.png?v=1" />
         <meta name="theme-color" content="#1c1917" />
+        <link
+          rel="preload"
+          as="image"
+          href="https://res.cloudinary.com/delba/image/upload/h_500/bg_gradient_pfosr9"
+        />
       </Head>
 
-      <body className="bg-gray-900">
-        <svg
-          className="pointer-events-none fixed isolate z-50 opacity-60 mix-blend-soft-light"
-          width="100%"
-          height="100%"
-        >
-          <filter id="pedroduarteisalegend">
-            <feTurbulence
-              type="fractalNoise"
-              baseFrequency="0.70"
-              numOctaves="4"
-              stitchTiles="stitch"
-            />
-          </filter>
-          <rect
-            width="100%"
-            height="100%"
-            filter="url(#pedroduarteisalegend)"
-          ></rect>
-        </svg>
-
+      <body className="bg-gray-900 antialiased selection:bg-purple-500/90 selection:text-white">
         <Main />
         <NextScript />
       </body>

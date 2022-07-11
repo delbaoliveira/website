@@ -98,10 +98,11 @@ export default function Home({
   const intersectionRef = React.useRef(null)
   const intersection = useIntersection(intersectionRef, {
     root: null,
+    rootMargin: "-100px",
   })
 
   let showNav = false
-  if ((intersection && !intersection.isIntersecting) || currentFilters) {
+  if (currentFilters || (intersection && !intersection.isIntersecting)) {
     showNav = true
   }
 
@@ -112,23 +113,49 @@ export default function Home({
         <div className="-mt-12 sm:mt-0">
           <div ref={intersectionRef}>
             {!currentFilters ? (
-              <div className="space-y-8 sm:space-y-12">
+              <div
+                className={cx("transition duration-300", {
+                  "opacity-0": showNav,
+                  "opacity-100": !showNav,
+                })}
+              >
                 <div className="flex items-center space-x-6">
                   <ProfileImage size="large" />
 
                   <div>
-                    <h1 className="text-4xl font-medium text-rose-100/80">
+                    <h1 className="text-3xl font-medium text-rose-100/80 sm:text-4xl">
                       Delba
                     </h1>
-                    <h2 className="text-lg text-rose-100/60">
-                      Developer Advocate at Vercel
+                    <h2 className="align-middle text-lg leading-6 text-rose-100/50">
+                      <span className="hidden sm:inline">
+                        Developer Experience
+                      </span>
+                      <span
+                        className="inline sm:hidden"
+                        title="Developer Experience"
+                      >
+                        DX
+                      </span>{" "}
+                      at{" "}
+                      <span className="font-medium text-rose-100/70">
+                        <span className="mr-px align-middle">
+                          <span className="-my-2 inline-block text-[24px]">
+                            ▲
+                          </span>
+                        </span>
+                        Vercel
+                      </span>
                     </h2>
                   </div>
                 </div>
 
-                <p className="text-xl text-rose-100/90">{seo.description}</p>
+                <p className="mt-7 text-xl text-rose-100/90 sm:mt-9">
+                  {seo.description}
+                </p>
 
-                <Navigation />
+                <div className="mt-8 sm:mt-12">
+                  <Navigation />
+                </div>
               </div>
             ) : null}
           </div>

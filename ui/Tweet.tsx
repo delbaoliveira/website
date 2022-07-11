@@ -13,7 +13,7 @@ export const Tweet = ({
   author,
   media,
   createdAt,
-  metrics,
+  // metrics,
   quoteTweet,
   linkPreview,
   type,
@@ -130,9 +130,8 @@ export const Tweet = ({
       ) : null}
 
       {/* Actions */}
-      {!type ? (
+      {/* {!type ? (
         <div className="mt-4 flex text-rose-100/50">
-          {/* Replies */}
           <a
             className="flex w-28 items-center text-rose-100/50 hover:underline hover:decoration-rose-100/30 hover:underline-offset-2"
             href={replyUrl}
@@ -147,7 +146,7 @@ export const Tweet = ({
             </svg>
             <span className="text-sm">{metrics.replies}</span>
           </a>
-          {/* Retweet */}
+
           <a
             className="flex w-28 items-center text-rose-100/50 hover:underline hover:decoration-rose-100/30 hover:underline-offset-2"
             href={retweetUrl}
@@ -162,7 +161,7 @@ export const Tweet = ({
             </svg>
             <span className="text-sm">{metrics.retweets}</span>
           </a>
-          {/* Like */}
+
           <a
             className="flex w-28 items-center text-rose-100/50 hover:underline hover:decoration-rose-100/30 hover:underline-offset-2"
             href={likeUrl}
@@ -178,7 +177,7 @@ export const Tweet = ({
             <span className="text-sm">{metrics.likes}</span>
           </a>
         </div>
-      ) : null}
+      ) : null} */}
     </div>
   )
 }

@@ -1,6 +1,7 @@
 import { getPartialPost } from "@/lib/contentlayer"
 import { createOgImage } from "@/lib/createOgImage"
 import { FormattedTweet, getTweets } from "@/lib/twitter"
+import { Aside } from "@/ui/Aside"
 import { Layout } from "@/ui/Layout"
 import { LikeButton2 } from "@/ui/LikeButton2"
 import { components } from "@/ui/MdxComponents"
@@ -56,15 +57,11 @@ export default function PostPage({
     if (!tweet) {
       return null
     }
-    return (
-      <div className="my-8 ">
-        <Tweet showAttachments={showAttachments} {...tweet} />
-      </div>
-    )
+    return <Tweet showAttachments={showAttachments} {...tweet} />
   }
 
   const url = `https://delba.dev/blog/${post.slug}`
-  const title = `${post.title} — Delba de Oliveira`
+  const title = `${post.title} | delba.dev`
   const ogImage = createOgImage({
     title: post.title,
     meta: "delba.dev · " + post.publishedAtFormatted,
@@ -102,32 +99,27 @@ export default function PostPage({
             <div className="text-rose-100/30">&middot;</div>
             <PostMetrics slug={post.slug} />
           </div>
-
-          {post.series && post.series.posts ? (
-            <div className="mt-10">
-              <PostSeries data={post.series} />
-            </div>
-          ) : null}
-
-          <div className="mt-10 text-lg text-rose-100/90">
-            <MDXContent
-              components={{
-                ...components,
-                StaticTweet,
-              }}
-            />
-          </div>
-
-          <div className="mt-16">
-            <LikeButton2 slug={post.slug} />
-          </div>
-
-          {post.series && post.series.posts ? (
-            <div className="mt-24">
-              <PostSeries data={post.series} />
-            </div>
-          ) : null}
         </div>
+
+        {post.series && post.series.posts ? (
+          <PostSeries data={post.series} isInteractive={true} />
+        ) : null}
+
+        <MDXContent
+          components={{
+            ...components,
+            StaticTweet,
+          }}
+        />
+
+        <div className="mt-16">
+          <LikeButton2 slug={post.slug} />
+        </div>
+        {post.series && post.series.posts ? (
+          <div className="mt-16">
+            <PostSeries data={post.series} />
+          </div>
+        ) : null}
       </Layout>
     </>
   )
