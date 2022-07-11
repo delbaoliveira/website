@@ -1,3 +1,4 @@
+import { Aside } from "@/ui/Aside"
 import clsx from "clsx"
 import React from "react"
 
@@ -42,29 +43,31 @@ export const Code = ({ children }: { children: React.ReactNode }) => {
   })
 
   return (
-    <div className="my-8 lg:-mx-12">
-      <div className="flex flex-wrap">
-        {titles.map((title, index) => {
-          return (
-            <button
-              key={index}
-              className={clsx(
-                "mr-2 mb-2 rounded-lg px-2 py-1 text-sm font-medium",
-                {
-                  " bg-rose-100/10 text-rose-100/70 hover:bg-rose-100/20 hover:text-rose-100":
-                    index !== slide,
-                  "bg-rose-100/30 text-white": index === slide,
-                },
-              )}
-              onClick={() => setSlide(index)}
-            >
-              {title}
-            </button>
-          )
-        })}
-      </div>
+    <>
+      <Aside>
+        <div className="flex flex-wrap">
+          {titles.map((title, index) => {
+            return (
+              <button
+                key={index}
+                className={clsx(
+                  "mr-2 mb-2 rounded-lg px-2 py-1 text-sm font-medium",
+                  {
+                    " bg-rose-100/10 text-rose-100/70 hover:bg-rose-100/20 hover:text-rose-100":
+                      index !== slide,
+                    "bg-rose-100/30 text-white": index === slide,
+                  },
+                )}
+                onClick={() => setSlide(index)}
+              >
+                {title}
+              </button>
+            )
+          })}
+        </div>
+      </Aside>
 
-      <div className="-mt-4 lg:mx-12">{slides}</div>
-    </div>
+      <div>{slides}</div>
+    </>
   )
 }

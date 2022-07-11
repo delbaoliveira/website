@@ -138,7 +138,7 @@ export default function Home({
                       </span>{" "}
                       at{" "}
                       <span className="font-medium text-rose-100/70">
-                        <span className="mr-[1px] align-middle">
+                        <span className="mr-px align-middle">
                           <span className="-my-2 inline-block text-[24px]">
                             ▲
                           </span>

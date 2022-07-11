@@ -26,7 +26,7 @@ export const PostSeries = ({
   const currentIndex = data.posts.findIndex((post) => post.isCurrent) + 1
 
   return (
-    <div className="my-8 rounded-2xl bg-white/5 p-6 shadow-surface-elevation-low lg:-mx-8 lg:px-8 lg:py-7">
+    <div className="rounded-2xl bg-white/5 p-6 shadow-surface-elevation-low lg:px-8 lg:py-7">
       {isInteractive ? (
         <button
           className="group flex w-full items-center text-left"

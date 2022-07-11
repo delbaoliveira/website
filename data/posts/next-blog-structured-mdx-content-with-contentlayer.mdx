@@ -25,15 +25,12 @@ The second part of this series explores setting up and configuring the content l
 
 I have been using and enjoying Contentlayer for my own blog and last week it finally went into beta. Judging by the overwhelmingly positive reception, it seems like I'm not the only one who thinks it's a good idea:
 
-<StaticTweet id="1517163485439926272" showAttachments={false} />
-<StaticTweet id="1517130123463454721" showAttachments={false} />
-<StaticTweet id="1517177294443499520" showAttachments={false} />
-
-If you'd like to know more about why Contentlayer exists and what problems it elegantly solves, I'd recommend this thread:
-
-<StaticTweet id="1517126728711213056" showAttachments={false} />
-
-Or if you want to dig deep, [this longform interview between Lee Robinson and the creator of Contentlayer](https://www.youtube.com/watch?v=1HnO2EoKeWc).
+<div className="!col-start-1 !col-end-[-1] mt-3 grid auto-cols-[min(400px,80%)] grid-flow-col gap-5 overflow-x-auto px-4 pb-4 [color-scheme:dark]">
+  <StaticTweet id="1517163485439926272" showAttachments={false} />
+  <StaticTweet id="1517130123463454721" showAttachments={false} />
+  <StaticTweet id="1517177294443499520" showAttachments={false} />
+  <StaticTweet id="1517126728711213056" showAttachments={false} />
+</div>
 
 ## Code
 
@@ -309,8 +306,9 @@ export default function SinglePostPage({ post }) {
 }
 ```
 
-> 🐣  
-> Next.js will pre-render each post by looping through the list of posts you provided to `getStaticPaths(){:.fn}`, fetching the processed data from Contentlayer, passing the data down to your page component as props via `getStaticProps(){:.fn}`, rendering the `SinglePostPage(){:.fn}` page component and saving the result as static files ready for deployment.
+<Aside emoji="🐣" side="right">
+Next.js will pre-render each post by looping through the list of posts you provided to `getStaticPaths(){:.fn}`, fetching the processed data from Contentlayer, passing the data down to your page component as props via `getStaticProps(){:.fn}`, rendering the `SinglePostPage(){:.fn}` page component and saving the result as static files ready for deployment.
+</Aside>
 
 ## Computed Fields
 
