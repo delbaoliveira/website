@@ -10,7 +10,9 @@ const Title = ({ children }: { children: React.ReactNode }) => {
   return (
     <div>
       <div className="text-sm uppercase text-rose-100/50">Series</div>
-      <div className="text-xl font-medium text-rose-100/90">{children}</div>
+      <div className="text-lg font-medium text-rose-100/90 sm:text-xl">
+        {children}
+      </div>
     </div>
   )
 }
@@ -26,7 +28,7 @@ export const PostSeries = ({
   const currentIndex = data.posts.findIndex((post) => post.isCurrent) + 1
 
   return (
-    <div className="rounded-2xl bg-white/5 p-6 shadow-surface-elevation-low lg:px-8 lg:py-7">
+    <div className="rounded-2xl bg-white/5 p-5 shadow-surface-elevation-low lg:px-8 lg:py-7">
       {isInteractive ? (
         <button
           className="group flex w-full items-center text-left"
@@ -62,9 +64,9 @@ export const PostSeries = ({
           block: isOpen,
         })}
       >
-        <hr className="my-5 border-t-2 border-rose-300/5" />
+        <hr className="my-5 border-t-2 border-rose-200/5" />
 
-        <ul>
+        <ul className="text-base">
           {data.posts.map((p) => (
             <li
               key={p.slug}

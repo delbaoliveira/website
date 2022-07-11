@@ -7,9 +7,9 @@ export const createOgImage = ({
 }: {
   title: string
   meta: string
-}) => {
-  return [
-    // Account prefix
+}) =>
+  [
+    // ACCOUNT PREFIX
     `https://res.cloudinary.com/delba/image/upload`,
     // Composed Image Transformations
     `w_1600,h_836,q_100`,
@@ -37,4 +37,3 @@ export const createOgImage = ({
     // BG
     `grain-gradient.png`,
   ].join("/")
-}

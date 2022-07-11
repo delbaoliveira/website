@@ -2,9 +2,9 @@ import React from "react"
 
 export const FauxTweet = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="rounded-2xl bg-white/5 px-6 py-8 shadow-surface-elevation-low">
+    <div className="rounded-2xl bg-white/5 px-4 py-5 shadow-surface-elevation-low sm:px-6 sm:py-8">
       <div className="flex">
-        <div className="mr-4 h-14 w-14 shrink-0 rounded-full bg-rose-100/10"></div>
+        <div className="mr-4 h-10 w-10 shrink-0 rounded-full bg-rose-100/10 sm:h-14 sm:w-14"></div>
         <div>
           <div className="flex items-center space-x-3">
             <div className="h-3 w-32 rounded-lg bg-rose-100/40"></div>
@@ -17,8 +17,8 @@ export const FauxTweet = ({ children }: { children: React.ReactNode }) => {
             <div className="h-3 w-1/2 rounded-lg bg-rose-100/20"></div>
           </div>
 
-          <div className="my-6 rounded-xl bg-white/5 px-3 pt-3 pb-5">
-            <div className="-mb-4 -mt-8 lg:mx-12">{children}</div>
+          <div className="my-6 rounded-xl bg-white/5 px-2 pt-2 pb-4 sm:px-3 sm:pt-3 sm:pb-5">
+            <div className="mb-4">{children}</div>
 
             <div>
               <div className="h-3 w-24 rounded-lg bg-rose-100/10"></div>
