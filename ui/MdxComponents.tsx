@@ -84,7 +84,9 @@ export const components = {
         >
           <BlurImage {...props} />
         </div>
-        {caption ? <Aside side="right">{caption}</Aside> : null}
+        {caption ? (
+          <div className="mt-2 text-sm italic text-rose-100/60">{caption}</div>
+        ) : null}
       </>
     )
   },
