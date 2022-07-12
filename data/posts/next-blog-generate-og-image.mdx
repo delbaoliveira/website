@@ -69,29 +69,48 @@ on a social network:
 
 Cloudinary is primarily an image hosting service and CDN. On top of their incredible CDN they also provide a powerful [REST image manipulation and generation API](https://cloudinary.com/documentation/cloudinary_references). Think of it as a simplified URL-based Figma or Photoshop: you provide arguments as URL paths and it generates, caches, and returns an image file.
 
-For example, the following URL generated the image above:
+For example, the example we started with is generated with the following URL:
 
-<div className="break-words p-6 bg-white/5 rounded-xl my-4">
-[https://res.cloudinary.com/delba/image/upload/w_1600,h_836,q_100/l_text:Karla_72_bold:Title...,co_rgb:ffe4e6,c_fit,w_1400,h_240/fl_layer_apply,g_south_west,x_100,y_180/l_text:Karla_48:Meta...,co_rgb:ffe4e680,c_fit,w_1400/fl_layer_apply,g_south_west,x_100,y_100/l_twitter_name:delba_oliveira/c_thumb,g_face,r_max,w_380,h_380,q_100/fl_layer_apply,w_140,g_north_west,x_100,y_100/grain-gradient.png](<https://res.cloudinary.com/delba/image/upload/w_1600,h_836,q_100/l_text:Karla_72_bold:Automatically%2520Generated%2520Branded%2520Open%2520Graph%2520(OG)%2520Images%2520for%2520Blog%2520Posts,co_rgb:ffe4e6,c_fit,w_1400,h_240/fl_layer_apply,g_south_west,x_100,y_180/l_text:Karla_48:delba.dev%2520%25C2%25B7%2520Oct%25201,co_rgb:ffe4e680,c_fit,w_1400/fl_layer_apply,g_south_west,x_100,y_100/l_twitter_name:delba_oliveira/c_thumb,g_face,r_max,w_380,h_380,q_100/fl_layer_apply,w_140,g_north_west,x_100,y_100/grain-gradient.png>)
+<Aside>
+  <Img
+    caption="Generated image"
+    src={createOgImage({
+      title: variables.title,
+      meta: variables.meta,
+    })}
+    width={1600}
+    height={836}
+  />
+</Aside>
+
+<div>
+  <div className="break-words rounded-xl bg-white/5 px-5 pt-4 pb-5">
+    [https://res.cloudinary.com/delba/image/upload/w_1600,h_836,q_100/l_text:Karla_72_bold:Automatically%2520Generated[...],co_rgb:ffe4e6,c_fit,w_1400,h_240/fl_layer_apply,g_south_west,x_100,y_180/l_text:Karla_48:delba.dev[...],co_rgb:ffe4e680,c_fit,w_1400/fl_layer_apply,g_south_west,x_100,y_100/l_twitter_name:delba_oliveira/c_thumb,g_face,r_max,w_380,h_380,q_100/fl_layer_apply,w_140,g_north_west,x_100,y_100/grain-gradient.png](https://res.cloudinary.com/delba/image/upload/w_1600,h_836,q_100/l_text:Karla_72_bold:Automatically%2520Generate%2520Branded%2520Open%2520Graph%2520(OG)%2520Images%2520for%2520Your%2520Blog%2520Posts,co_rgb:ffe4e6,c_fit,w_1400,h_240/fl_layer_apply,g_south_west,x_100,y_180/l_text:Karla_48:delba.dev%2520%25C2%25B7%25204%2520Jul%2520%25C2%25B7%2520%2523next%2520%25C2%25B7%2520%2523cloudinary,co_rgb:ffe4e680,c_fit,w_1400/fl_layer_apply,g_south_west,x_100,y_100/l_twitter_name:delba_oliveira/c_thumb,g_face,r_max,w_380,h_380,q_100/fl_layer_apply,w_140,g_north_west,x_100,y_100/grain-gradient.png)
+  </div>
+  <div className="mt-2 text-sm italic text-rose-100/60">
+    URL to generate image. It may seem a bit complex at first but we will break
+    it down below.
+  </div>
 </div>
 
-This might look a bit complex at first but we will break it down below.
+# Step 1: Canvas
 
-# Step 1: The Canvas
-
-First, upload an image to your Cloudinary account that will be used as the base layer for the generated image.
-
-<Img
-  src={[
-    `https://res.cloudinary.com/delba/image/upload`,
-    `w_1600,h_836,q_100`,
-    `grain.png`,
-  ].join("/")}
-  width={1600}
-  height={836}
-/>
+Upload an image to your Cloudinary account that will be used as the base layer for the generated image.
 
 Create a utility function that returns a URL string of the composed transformations. For the sake of readability, we use an array of transformations that we `join(){:js}` before returning.
+
+<Aside>
+  <Img
+    caption="Background base layer"
+    src={[
+      `https://res.cloudinary.com/delba/image/upload`,
+      `w_1600,h_836,q_100`,
+      `grain.png`,
+    ].join("/")}
+    width={1600}
+    height={836}
+  />
+</Aside>
 
 ```ts showLineNumbers
 const createOgImage = () => {
@@ -101,7 +120,7 @@ const createOgImage = () => {
       `https://res.cloudinary.com/delba/image/upload`,
       // transform image: width, height, quality
       `w_1600,h_836,q_100`,
-      // base image: <cloudinary_public_id>
+      // background image: <cloudinary_public_id>
       `grain.png`,
     ]
       // join parameters with slash to form a valid URL
@@ -111,8 +130,9 @@ const createOgImage = () => {
 }
 ```
 
-- **Width and Height** — Set the dimensions and ratio of the generated image to something appropriate for social networks. The base image you uploaded will be scaled to match these dimensions. You can use the [crop mode](https://cloudinary.com/documentation/transformation_reference#c_crop_resize) to decide what kind of scaling will be applied.
-- **Quality** — Cloudinary significantly reduces image file sizes by automatically compressing images. This is good for adding images to your website, but not ideal for an OG image because social networks apply their own compression. We can override the default setting using the [quality](https://cloudinary.com/documentation/transformation_reference#q_quality) option.
+- **Width and Height (Line 7)** — Set the dimensions and ratio of the generated image to something appropriate for social networks. The base image you uploaded will be scaled to match these dimensions. You can use the [crop mode](https://cloudinary.com/documentation/transformation_reference#c_crop_resize) to decide what kind of scaling will be applied.
+- **Quality (Line 7)** — Cloudinary significantly reduces image file sizes by automatically compressing images. This is good for adding images to your website, but not ideal for an OG image because social networks apply their own compression. We can override the default setting using the [quality](https://cloudinary.com/documentation/transformation_reference#q_quality) option.
+- **Background Image (Line 9)** — The public id of the image we uploaded to Cloudinary.
 
 # Step 2: Text
 
@@ -172,6 +192,10 @@ Oh dear, Not exactly what we're looking for! The text is overlapping the backgro
 ### Text escaping
 
 - Double escape
+
+```ts
+export const e = (str: string) => encodeURIComponent(encodeURIComponent(str))
+```
 
 <Aside>
   <Img
@@ -316,7 +340,7 @@ export default function Page({ post }) {
 
 </Code>
 
-<Aside side="right">
+<Aside side="right" styled>
   We can tell crawlers what image to use by adding the `
-  <meta property="og:image" content="..." />` meta tag in the HTML of our pages.
+  <meta property="og:image" />{:html}` meta tag in the HTML of our pages.
 </Aside>
