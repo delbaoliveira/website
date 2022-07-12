@@ -118,8 +118,11 @@ const createOgImage = () => {
     [
       // prefix: <domain/account/file_type/source_type>
       `https://res.cloudinary.com/delba/image/upload`,
-      // transform image: width, height, quality
+      // transform composed image: width, height, quality
       `w_1600,h_836,q_100`,
+      // -------------------------
+      // WE WILL PLACE LAYERS HERE
+      // -------------------------
       // background image: <cloudinary_public_id>
       `grain.png`,
     ]
@@ -131,8 +134,8 @@ const createOgImage = () => {
 ```
 
 - **Width and Height (Line 7)** — Set the dimensions and ratio of the generated image to something appropriate for social networks. The base image you uploaded will be scaled to match these dimensions. You can use the [crop mode](https://cloudinary.com/documentation/transformation_reference#c_crop_resize) to decide what kind of scaling will be applied.
-- **Quality (Line 7)** — Cloudinary significantly reduces image file sizes by automatically compressing images. This is good for adding images to your website, but not ideal for an OG image because social networks apply their own compression. We can override the default setting using the [quality](https://cloudinary.com/documentation/transformation_reference#q_quality) option.
-- **Background Image (Line 9)** — The public id of the image we uploaded to Cloudinary.
+- **Quality (Line 7)** — Cloudinary significantly reduces image file sizes by automatically compressing images. This is good for adding images to your website, something we want to avoid for an OG image because social networks apply their own compression. We can override the default setting using the [quality](https://cloudinary.com/documentation/transformation_reference#q_quality) option.
+- **Background Image (Line 12)** — The public id of the image we uploaded to Cloudinary.
 
 # Step 2: Text
 
