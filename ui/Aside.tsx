@@ -20,7 +20,7 @@ export const Aside = ({
       })}
     >
       <div
-        className={clsx("relative xl:absolute xl:top-0 xl:left-0", {
+        className={clsx("relative xl:absolute xl:top-0 xl:left-0 xl:right-0", {
           "border-l-2 border-rose-200/5 pl-4 xl:border-y-2 xl:border-l-0 xl:py-6 xl:pl-0":
             styled,
         })}

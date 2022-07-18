@@ -58,6 +58,11 @@ module.exports = {
             opacity: ".2",
           },
         },
+        shimmer: {
+          "100%": {
+            transform: "translateX(100%)",
+          },
+        },
       }),
       boxShadow: ({ theme }) => ({
         // inspired by https://www.joshwcomeau.com/shadow-palette/

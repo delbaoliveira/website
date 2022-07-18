@@ -1,0 +1,117 @@
+---
+title: "Shimmer Loading Animation in Tailwind CSS"
+description: "..."
+publishedAt: "2022-07-18"
+status: "published"
+series:
+  title: "Quick Tip"
+---
+
+import { LoadingSkeleton } from "../ui/lab/LoadingSkeleton"
+
+# Solution
+
+<div className="grid grid-cols-3 gap-8">
+  <LoadingSkeleton />
+  <LoadingSkeleton delay={1} />
+  <LoadingSkeleton delay={2} />
+</div>
+
+# Create a Skeleton
+
+<Aside>
+  <div className="space-y-5 rounded-2xl bg-white/5 p-4 shadow-xl shadow-black/5">
+    <div className="h-24 rounded-lg bg-rose-100/10"></div>
+    <div className="space-y-3">
+      <div className="h-3 w-3/5 rounded-lg bg-rose-100/10"></div>
+      <div className="h-3 w-4/5 rounded-lg bg-rose-100/20"></div>
+      <div className="h-3 w-2/5 rounded-lg bg-rose-100/20"></div>
+    </div>
+  </div>
+</Aside>
+
+```tsx
+<div className="space-y-5 rounded-2xl bg-white/5 p-4 shadow-xl shadow-black/5">
+  <div className="h-24 rounded-lg bg-rose-100/10"></div>
+  <div className="space-y-3">
+    <div className="h-3 w-3/5 rounded-lg bg-rose-100/10"></div>
+    <div className="h-3 w-4/5 rounded-lg bg-rose-100/20"></div>
+    <div className="h-3 w-2/5 rounded-lg bg-rose-100/20"></div>
+  </div>
+</div>
+```
+
+# Create a Gradient Overlay
+
+<Aside>
+  <div className="relative h-48 rounded-2xl bg-gradient-to-r from-transparent via-rose-100/10 to-transparent"></div>
+</Aside>
+
+- Use the `from-<color>`, `via-<color>`, and `to-<color>` gradient color stops to create a gradient that fades from transparent to white and back to transparent:
+
+```tsx
+<div className="relative h-48 rounded-2xl bg-gradient-to-r from-transparent via-rose-100/10 to-transparent"></div>
+```
+
+# Create the Animation
+
+- Reposition the **overlay** 100% to the left using the `translate` utility: `-translate-x-full`
+- Apply `overlay: hidden` to the parent element to hide the overlay when it's out of view.
+- Define a CSS Keyframe Animation in the `tailwind.config.js` file:
+
+<Aside>
+  <div className="overflow-hidden">
+    <div className="relative h-48 -translate-x-full animate-[shimmer_2s_infinite] rounded-2xl bg-gradient-to-r from-transparent via-rose-100/10 to-transparent"></div>
+  </div>
+</Aside>
+
+```js
+module.exports = {
+  theme: {
+    extend: {
+      keyframes: {
+        shimmer: {
+          "100%": {
+            transform: "translateX(100%)",
+          },
+        },
+      },
+    },
+  },
+}
+```
+
+- Use Tailwind's arbitrary values to apply the keyframe animation to the **overlay** element.
+
+```tsx
+<div className="overflow-hidden">
+  <div className="relative h-48 -translate-x-full animate-[shimmer_2s_infinite] rounded-2xl bg-gradient-to-r from-transparent via-rose-100/10 to-transparent"></div>
+</div>
+```
+
+# Combine the Skeleton and the Overlay Animation
+
+<Aside>
+  <div className="relative space-y-5 overflow-hidden rounded-2xl bg-white/5 p-4 shadow-xl shadow-black/5 before:absolute before:inset-0 before:-translate-x-full  before:animate-[shimmer_2s_infinite] before:border-t before:border-white/10 before:bg-gradient-to-r before:from-transparent before:via-rose-100/10 before:to-transparent">
+    <div className="h-24 rounded-lg bg-rose-100/10"></div>
+    <div className="space-y-3">
+      <div className="h-3 w-3/5 rounded-lg bg-rose-100/10"></div>
+      <div className="h-3 w-4/5 rounded-lg bg-rose-100/20"></div>
+      <div className="h-3 w-2/5 rounded-lg bg-rose-100/20"></div>
+    </div>
+  </div>
+</Aside>
+
+- Add the **overlay** to the `:before` pseudo-element of the **skeleton** wrapper using Tailwinds `before:` modifier: `before:absolute before:inset-0 [...]`
+- Add a white border to the top of the Overlay to simulate light.
+
+```tsx
+<div className="relative space-y-5 overflow-hidden rounded-2xl bg-white/5 p-4 shadow-xl shadow-black/5 before:absolute before:inset-0 before:-translate-x-full  before:animate-[shimmer_2s_infinite] before:border-t before:border-white/10 before:bg-gradient-to-r before:from-transparent before:via-rose-100/10 before:to-transparent">
+  <div className="h-24 rounded-lg bg-rose-100/10"></div>
+  <div className="space-y-3">
+    <div className="h-3 w-3/5 rounded-lg bg-rose-100/10"></div>
+    <div className="h-3 w-4/5 rounded-lg bg-rose-100/20"></div>
+    <div className="h-3 w-2/5 rounded-lg bg-rose-100/20"></div>
+  </div>
+</div>
+```
