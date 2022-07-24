@@ -71,12 +71,12 @@ export default function PostPage({
     <>
       <NextSeo
         title={title}
-        description={post.description}
+        description={post.description ?? undefined}
         canonical={url}
         openGraph={{
           url,
           title,
-          description: post.description,
+          description: post.description ?? undefined,
           images: [
             {
               url: ogImage,
