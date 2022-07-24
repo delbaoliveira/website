@@ -101,7 +101,7 @@ export default function PostPage({
           </div>
         </div>
 
-        {post.series && post.series.posts ? (
+        {post.series && post.series.posts.length > 1 ? (
           <PostSeries data={post.series} isInteractive={true} />
         ) : null}
 
@@ -115,7 +115,7 @@ export default function PostPage({
         <div className="mt-16">
           <LikeButton2 slug={post.slug} />
         </div>
-        {post.series && post.series.posts ? (
+        {post.series && post.series.posts.length > 1 ? (
           <div className="mt-16">
             <PostSeries data={post.series} />
           </div>

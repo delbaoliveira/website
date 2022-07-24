@@ -8,8 +8,6 @@ series:
 
 import { LoadingSkeleton } from "../ui/lab/LoadingSkeleton"
 
-# Solution
-
 <div className="grid grid-cols-2 gap-6 sm:grid-cols-3">
   <div>
     <LoadingSkeleton />
@@ -22,7 +20,7 @@ import { LoadingSkeleton } from "../ui/lab/LoadingSkeleton"
   </div>
 </div>
 
-# Skeleton
+# 1. Skeleton
 
 - Use Tailwind's range of utility classes to create a skeleton that roughly resembles the content you're about to load.
 
@@ -49,7 +47,7 @@ import { LoadingSkeleton } from "../ui/lab/LoadingSkeleton"
   ```
 </div>
 
-# Gradient overlay
+# 2. Gradient overlay
 
 - Use Tailwind's gradient color stops to create a gradient that fades from transparent to white and back to transparent.
 
@@ -68,7 +66,7 @@ import { LoadingSkeleton } from "../ui/lab/LoadingSkeleton"
   ```
 </div>
 
-# Animation
+# 3. Animation
 
 - Define a CSS keyframe animation that translates elements 100% to the right in the extend keyframes object of `tailwind.config.js`.
 - Use Tailwind's arbitrary values to apply the keyframe animation to the overlay element.
@@ -95,7 +93,7 @@ import { LoadingSkeleton } from "../ui/lab/LoadingSkeleton"
   ```
 </div>
 
-# Combine the skeleton and overlay animation
+# 4. Combine the skeleton and overlay animation
 
 - Add the overlay to a pseudo-element of the skeleton wrapper using Tailwind's `before:` modifier.
 
@@ -128,16 +126,17 @@ import { LoadingSkeleton } from "../ui/lab/LoadingSkeleton"
   ```
 </div>
 
-# Finishing touches
+# 5. Finishing touches
 
 - Hide the overlay while it's positioned outside the skeleton.
 - Add a shadow to the skeleton.
 - Add a subtle border to the top of the overlay to simulate reflecting light.
+- You can fix Safari overflowing the animation on rounded corners with `isolate`.
 
 <div className="space-y-2">
   <div className="flex justify-center rounded-lg bg-rose-100/[1%] p-8 ring-1 ring-inset ring-rose-100/[3%]">
     <div className="w-[200px]">
-      <div className="relative space-y-5 overflow-hidden rounded-2xl bg-white/5 p-4 shadow-xl shadow-black/5 before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t before:border-rose-100/10 before:bg-gradient-to-r before:from-transparent before:via-rose-100/10 before:to-transparent">
+      <div className="relative isolate space-y-5 overflow-hidden rounded-2xl bg-white/5 p-4 shadow-xl shadow-black/5 before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t before:border-rose-100/10 before:bg-gradient-to-r before:from-transparent before:via-rose-100/10 before:to-transparent">
         <div className="h-24 rounded-lg bg-rose-100/10"></div>
         <div className="space-y-3">
           <div className="h-3 w-3/5 rounded-lg bg-rose-100/10"></div>
@@ -151,6 +150,7 @@ import { LoadingSkeleton } from "../ui/lab/LoadingSkeleton"
   <div
     class="
       [...]
+      isolate
       overflow-hidden
       shadow-xl shadow-black/5
       before:border-t before:border-rose-100/10"
