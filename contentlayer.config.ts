@@ -157,7 +157,7 @@ const Blog = defineDocumentType(() => ({
 
 // div.BLOCK > pre.PRE > code.CODE
 const BLOCK =
-  "overflow-hidden rounded-lg bg-white/5 leading-6 shadow-surface-elevation-low"
+  "overflow-hidden rounded-lg bg-rose-100/5 leading-6 shadow-surface-elevation-low ring-1 ring-rose-100/[3%] ring-inset"
 const TITLE =
   "mb-0.5 rounded-md bg-rose-100/10 px-3 py-1 font-mono text-xs text-rose-100/70 shadow-sm"
 const PRE = "overflow-x-auto py-2 text-[13px] [color-scheme:dark]"
