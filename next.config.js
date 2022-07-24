@@ -34,7 +34,7 @@ module.exports = withContentlayer({
       // changed slugs
       {
         source: "/blog/shimmer-loading-animation-with-tailwind-css",
-        destination: "/blog/animating-loading-skeletons-with-tailwind",
+        destination: "/blog/animated-loading-skeletons-with-tailwind",
         permanent: true,
       },
     ]
