@@ -115,7 +115,7 @@ const Blog = defineDocumentType(() => ({
   fields: {
     title: { type: "string", required: true },
     publishedAt: { type: "string", required: true },
-    description: { type: "string", required: true },
+    description: { type: "string" },
     status: { type: "enum", options: ["draft", "published"], required: true },
     series: {
       type: "nested",

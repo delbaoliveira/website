@@ -29,6 +29,7 @@ export const formatPostPreview = (post: Blog) => {
   return {
     ...partialPost,
     type: post.type,
+    description: partialPost.description ?? null,
     tags: partialPost.tags || [],
   }
 }
@@ -86,7 +87,7 @@ export const getPartialPost = (
   title,
   slug,
   publishedAtFormatted,
-  description,
+  description: description ?? null,
   body: {
     code: body.code,
   },

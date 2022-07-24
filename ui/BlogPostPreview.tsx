@@ -1,3 +1,4 @@
+import { formatPostPreview } from "@/lib/contentlayer"
 import { useEnabledOnFirstIntersection } from "@/lib/useEnabledOnFirstIntersection"
 import { usePostLikes } from "@/lib/usePostLikes"
 import { usePostViews } from "@/lib/usePostViews"
@@ -46,9 +47,7 @@ const Metrics = ({ slug }: { slug: string }) => {
   )
 }
 
-export const BlogPostPreview = (
-  post: Pick<Blog, "slug" | "title" | "publishedAtFormatted" | "description">,
-) => {
+export const BlogPostPreview = (post: ReturnType<typeof formatPostPreview>) => {
   const { enabled, intersectionRef } = useEnabledOnFirstIntersection()
 
   return (
@@ -61,7 +60,9 @@ export const BlogPostPreview = (
           {enabled ? <Metrics slug={post.slug} /> : null}
         </ContentLink.Meta>
 
-        <ContentLink.Text>{post.description}</ContentLink.Text>
+        {post.description ? (
+          <ContentLink.Text>{post.description}</ContentLink.Text>
+        ) : null}
       </ContentLink>
     </div>
   )
