@@ -1,3 +1,4 @@
+import { FOCUS_VISIBLE_OUTLINE, LINK_STYLES } from "@/lib/constants"
 import { getPartialPost } from "@/lib/contentlayer"
 import { createOgImage } from "@/lib/createOgImage"
 import { FormattedTweet, getTweets } from "@/lib/twitter"
@@ -8,6 +9,7 @@ import { components } from "@/ui/MdxComponents"
 import { PostMetrics } from "@/ui/PostMetrics"
 import { PostSeries } from "@/ui/PostSeries"
 import { Tweet } from "@/ui/Tweet"
+import clsx from "clsx"
 import { allBlogs } from "contentlayer/generated"
 import { GetStaticProps, InferGetStaticPropsType } from "next"
 import { useMDXComponent } from "next-contentlayer/hooks"
@@ -98,6 +100,36 @@ export default function PostPage({
             <div>{post.publishedAtFormatted}</div>
             <div className="text-rose-100/30">&middot;</div>
             <PostMetrics slug={post.slug} />
+          </div>
+        </div>
+
+        <div className="sticky top-6 !col-start-4 row-span-6 mt-1.5 hidden xl:block">
+          <div className="space-y-10">
+            {post.headings ? (
+              <div className="space-y-2 text-sm">
+                <div className="uppercase text-rose-100/30">On this page</div>
+
+                {post.headings.map((heading) => {
+                  return (
+                    <div>
+                      <a
+                        href={`#${heading.slug}`}
+                        className={clsx(
+                          "block text-rose-100/50 underline-offset-2 transition-all hover:text-rose-100 hover:underline hover:decoration-rose-200/50",
+                          {
+                            "pl-2": heading.heading === 2,
+                            "pl-4": heading.heading === 3,
+                          },
+                        )}
+                      >
+                        {heading.text}
+                      </a>
+                    </div>
+                  )
+                })}
+              </div>
+            ) : null}
+            <LikeButton2 slug={post.slug} />
           </div>
         </div>
 

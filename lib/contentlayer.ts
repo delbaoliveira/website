@@ -81,7 +81,15 @@ export const getVideoDetails = async (id: string) => {
 // don't send fields we don't use to the client
 // the biggest culprit is post.body.raw (the raw MDX source)
 export const getPartialPost = (
-  { title, slug, publishedAtFormatted, description, body, series }: Blog,
+  {
+    title,
+    slug,
+    publishedAtFormatted,
+    description,
+    body,
+    series,
+    headings,
+  }: Blog,
   allBlogs: Blog[],
 ) => ({
   title,
@@ -91,6 +99,8 @@ export const getPartialPost = (
   body: {
     code: body.code,
   },
+  headings:
+    (headings as { heading: number; text: string; slug: string }[]) ?? null,
   series: series
     ? {
         title: series.title,
