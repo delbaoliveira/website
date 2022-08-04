@@ -3,7 +3,7 @@ const { withContentlayer } = require("next-contentlayer")
 /**
  * @type {import('next').NextConfig}
  */
-module.exports = withContentlayer({
+const nextConfig = {
   experimental: {
     images: {
       allowFutureImage: true,
@@ -39,4 +39,6 @@ module.exports = withContentlayer({
       },
     ]
   },
-})
+}
+
+module.exports = withContentlayer(nextConfig)

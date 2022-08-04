@@ -47,11 +47,11 @@ npm install contentlayer next-contentlayer
 Stitch Next.js and Contentlayer together by using the `next-contentlayer` plugin to hook into the `next dev` and `next build` processes. This automatically runs the Contentlayer CLI while you're developing locally or building your app for deployment:
 
 ```js showLineNumbers title="next.config.js"
-import { withContentlayer } from "next-contentlayer"
+const { withContentlayer } = require("next-contentlayer")
 
-export default withContentlayer(
-  {}, // Next.js config here
-)
+const nextConfig = {}
+
+module.exports = withContentlayer(nextConfig)
 ```
 
 # Define a Document Type

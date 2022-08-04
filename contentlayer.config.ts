@@ -5,7 +5,7 @@ import {
 } from "contentlayer/source-files"
 import GithubSlugger from "github-slugger"
 import rehypeAutolinkHeadings from "rehype-autolink-headings"
-import rehypePrettyCode, { Options } from "rehype-pretty-code"
+import rehypePrettyCode, { type Options } from "rehype-pretty-code"
 import rehypeSlug from "rehype-slug"
 import remarkGfm from "remark-gfm"
 import { visit } from "unist-util-visit"
