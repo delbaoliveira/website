@@ -1,5 +1,5 @@
 import { pick } from "contentlayer/client"
-import { Blog, Video } from "contentlayer/generated"
+import { Post, Video } from "contentlayer/generated"
 
 export const allTagNames = ["Next.js", "MDX", "Next Conf", "React Conf"]
 export const allTagSlugs = ["next", "mdx", "next-conf", "react-conf"]
@@ -16,7 +16,7 @@ export const formatVideoPreview = (video: Video) => {
   }
 }
 
-export const formatPostPreview = (post: Blog) => {
+export const formatPostPreview = (post: Post) => {
   const partialPost = pick(post, [
     "tags",
     "slug",
@@ -89,8 +89,8 @@ export const getPartialPost = (
     body,
     series,
     headings,
-  }: Blog,
-  allBlogs: Blog[],
+  }: Post,
+  allPosts: Post[],
 ) => ({
   title,
   slug,
@@ -104,7 +104,7 @@ export const getPartialPost = (
   series: series
     ? {
         title: series.title,
-        posts: allBlogs
+        posts: allPosts
           .filter((p) => p.series?.title === series.title)
           .sort(
             (a, b) =>
