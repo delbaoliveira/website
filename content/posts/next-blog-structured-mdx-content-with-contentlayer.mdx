@@ -89,14 +89,14 @@ export const Post = defineDocumentType(() => ({
 
 export default makeSource({
   // Location of source files for all defined documentTypes
-  contentDirPath: "data",
+  contentDirPath: "content",
   documentTypes: [Post],
 })
 ```
 
-Lastly, create a "hello world" post inside the configured directory for your post document e.g. `contentDirPath{:js}` + `filePathPattern{:js}` = `/data/posts`
+Lastly, create a "hello world" post inside the configured directory for your post document e.g. `contentDirPath{:js}` + `filePathPattern{:js}` = `/content/posts`
 
-```md title="data/posts/hello-world.mdx"
+```md title="content/posts/hello-world.mdx"
 # Hello World
 
 This is my first post...
@@ -107,7 +107,7 @@ Saving this post file while `next dev` is running will incrementally generate ty
 
 ```txt title="next dev terminal output" {3}
 wait - compiling...
-File updated: data/posts/hello-world.mdx
+File updated: content/posts/hello-world.mdx
 Generated 1 document in .contentlayer
 ```
 
@@ -138,7 +138,7 @@ Generated 1 document in .contentlayer
       ],
     },
     {
-      name: "data",
+      name: "content",
       children: [
         {
           name: "posts",
@@ -217,7 +217,7 @@ Create a "dynamic template" to handle all your single posts by creating a new dy
       children: [],
     },
     {
-      name: "data [...]",
+      name: "content [...]",
       children: [],
     },
     {
@@ -402,7 +402,7 @@ Warning: Found 1 problem in 1 document.
 
  └── Missing required fields for 1 document.
 
-     • "data/posts/hello-world.mdx" is missing the following required fields:
+     • "content/posts/hello-world.mdx" is missing the following required fields:
        • title: string
 ```
 
@@ -410,7 +410,7 @@ Contentlayer will warn you because it has detected that one of your posts is mis
 
 Adding a `title{:.objKey}` to your blog post (in the frontmatter format) will fix the error:
 
-```diff title="data/posts/hello-world.mdx"
+```diff title="content/posts/hello-world.mdx"
 + ---
 + title: "Hello World"
 + ---
@@ -617,7 +617,7 @@ const Post = defineDocumentType(() => ({
 
 export default makeSource({
   // Location of source files for all defined documentTypes
-  contentDirPath: "data",
+  contentDirPath: "content",
   documentTypes: [Post],
 })
 ```
@@ -651,7 +651,7 @@ module.exports = withContentlayer(nextConfig)
 }
 ```
 
-```markdown showLineNumbers title="data/posts/hello-world.mdx"
+```markdown showLineNumbers title="content/posts/hello-world.mdx"
 ---
 title: "Hello World"
 ---

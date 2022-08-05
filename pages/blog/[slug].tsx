@@ -10,14 +10,14 @@ import { PostMetrics } from "@/ui/PostMetrics"
 import { PostSeries } from "@/ui/PostSeries"
 import { Tweet } from "@/ui/Tweet"
 import clsx from "clsx"
-import { allBlogs } from "contentlayer/generated"
+import { allPosts } from "contentlayer/generated"
 import { GetStaticProps, InferGetStaticPropsType } from "next"
 import { useMDXComponent } from "next-contentlayer/hooks"
 import { NextSeo } from "next-seo"
 
 export const getStaticPaths = () => {
   return {
-    paths: allBlogs.map((p) => ({ params: { slug: p.slug } })),
+    paths: allPosts.map((p) => ({ params: { slug: p.slug } })),
     fallback: false,
   }
 }
@@ -26,7 +26,7 @@ export const getStaticProps: GetStaticProps<{
   post: ReturnType<typeof getPartialPost>
   tweets: FormattedTweet[]
 }> = async ({ params }) => {
-  const post = allBlogs.find((post) => post.slug === params?.slug)
+  const post = allPosts.find((post) => post.slug === params?.slug)
 
   if (!post) {
     return {
@@ -36,7 +36,7 @@ export const getStaticProps: GetStaticProps<{
 
   return {
     props: {
-      post: getPartialPost(post, allBlogs),
+      post: getPartialPost(post, allPosts),
       tweets: await getTweets(post.tweetIds),
     },
   }

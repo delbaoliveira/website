@@ -12,7 +12,7 @@ import { ProfileImage } from "@/ui/ProfileImage"
 import { VideoPostPreview } from "@/ui/VideoPostPreview"
 import YoutubeIcon from "@/ui/YoutubeIcon"
 import cx from "clsx"
-import { allBlogs, allVideos, Tag } from "contentlayer/generated"
+import { allPosts, allVideos, Tag } from "contentlayer/generated"
 import type { GetStaticProps, InferGetStaticPropsType } from "next"
 import { NextSeo } from "next-seo"
 import React from "react"
@@ -51,7 +51,7 @@ export const getStaticProps: GetStaticProps<{
 }> = async ({ params }) => {
   let posts = [
     ...allVideos.map(formatVideoPreview),
-    ...allBlogs.filter((p) => p.status === "published").map(formatPostPreview),
+    ...allPosts.filter((p) => p.status === "published").map(formatPostPreview),
   ].sort(
     (a, b) => Number(new Date(b.publishedAt)) - Number(new Date(a.publishedAt)),
   )
@@ -72,7 +72,7 @@ export const getStaticProps: GetStaticProps<{
         tag = params.filter[2] as Tag["slug"]
       }
     } else if (params.filter[0] === "blog") {
-      posts = posts.filter((p) => p.type === "Blog")
+      posts = posts.filter((p) => p.type === "Post")
 
       currentFilters.type = "blog"
       if (params.filter[1] === "tag" && params.filter[2]) {
@@ -198,7 +198,7 @@ export default function Home({
                 return <VideoPostPreview key={post.youtube.id} {...post} />
               }
 
-              if (post.type === "Blog") {
+              if (post.type === "Post") {
                 return <BlogPostPreview key={post.slug} {...post} />
               }
             })}
