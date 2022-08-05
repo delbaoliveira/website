@@ -7,7 +7,7 @@ module.exports = {
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./ui/**/*.{js,ts,jsx,tsx}",
     "./lib/**/*.{js,ts}",
-    "./data/posts/**/*.mdx",
+    "./content/posts/**/*.mdx",
     "./contentlayer.config.ts",
   ],
   darkMode: "class",
