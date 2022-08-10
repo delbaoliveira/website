@@ -1,16 +1,12 @@
 import { FOCUS_VISIBLE_OUTLINE, LINK_STYLES } from "@/lib/constants"
 import { Aside } from "@/ui/Aside"
 import { BlurImage } from "@/ui/BlurImage"
-import { LinkPreview } from "@/ui/LinkPreview"
-import { Playground } from "@/ui/Playground"
 import cx from "clsx"
 import type { ImageProps } from "next/image"
 import NextLink from "next/link"
 import React from "react"
 
 export const components = {
-  Playground,
-  LinkPreview,
   Aside,
   h1: (props: any) => (
     <h2
