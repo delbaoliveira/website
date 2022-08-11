@@ -3,20 +3,20 @@ import React from "react"
 
 export const Aside = ({
   children,
-  side = "left",
+  position = "left",
   styled = false,
   title,
 }: {
   children: React.ReactNode
-  side?: "left" | "right"
+  position?: "left" | "right"
   styled?: boolean
   title?: string
 }) => {
   return (
     <div
       className={clsx("relative", {
-        "xl:!col-start-2": side === "left",
-        "xl:!col-start-4": side === "right",
+        "xl:!col-start-2": position === "left",
+        "xl:!col-start-4": position === "right",
       })}
     >
       <div

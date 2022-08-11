@@ -1,6 +1,6 @@
 ---
-title: "(WIP) Automatically Generate Branded Open Graph (OG) Images for Your Blog Posts"
-description: "Draft: Use Cloudinary to automatically generate a branded OG image for each post."
+title: "Automatically Generate Branded Open Graph (OG) Images for Your Blog Posts"
+description: "Use Cloudinary to automatically generate a branded OG image for each post."
 publishedAt: "2022-07-05"
 status: "published"
 series:
@@ -19,35 +19,29 @@ export const variables = {
 
 export const e = (str) => encodeURIComponent(encodeURIComponent(str))
 
-<Aside styled={true} title="Heads up! This is an incomplete early draft">
-  I publish drafts in case someone will find them useful. You can find the final
-  code towards the end but some explanations are missing.
-</Aside>
-
 An Open Graph (OG) image is the image social networks (such as Twitter and Facebook) pull from your website to create a preview when someone shares a link to your website.
 
 Regardless of the effectiveness of a post title or the quality of the actual post content, an OG image is usually the first thing people notice about a shared post as they browse their feed.
 
 In theory, a better OG image should increase how often people click through to your website and re-share the original shared post.
 
-## Problem
+# Problem
 
-- Creating a custom OG image for each post takes time and energy away from writing posts.
+- Manually creating a custom OG image for each post takes time and energy away from writing posts.
 - Automating OG image generation can be difficult to implement or costs money to use a service.
 
-## Solution
+# Solution
 
 Use Cloudinary's generous free tier to automatically generate a branded OG image for each post.
 
 - **Powerful URL-based API** — No custom infra needed, pass a URL and get a generated image.
-- **Dynamic** — Pull dynamic post details such as title and meta to generate the final image.
+- **Dynamic** — Use dynamic post details such as a title and meta to generate the final image.
 - **Flexible design** — Render multiple text or image layers on top of each other.
 - **Custom transformations** — Manipulate a layer's position, size, crop, color, opacity, etc.
 - **Rich typography options** — Use custom fonts (including Google fonts), color, letter spacing, etc to match website brand.
-- **Fetch images from external sources** — Fetch and sync headshot with a live Twitter profile image (updating Twitter image will eventually update all OG images).
+- **Fetch images from external sources** — Fetch and sync headshot with a live Twitter profile image (updating your Twitter image will eventually update all OG images).
 
-Below is an example of the generated OG image and how it would look once shared
-on a social network:
+Below is the OG image we will use Cloudinary to generate. You're welcome to follow along with this step-by-step walkthrough or if you just want the complete code you can find it at the bottom of this post.
 
 <FauxTweet>
   <Img
@@ -60,16 +54,15 @@ on a social network:
   />
 </FauxTweet>
 
-<Aside side="right" styled={true}>
-  In this post we will discuss how to create this example, but if you prefer you
-  can jump straight to the [final code](#final-code).
+<Aside position="right" styled={true}>
+  How an OG image could look once shared on social media
 </Aside>
 
 # What is Cloudinary?
 
 Cloudinary is primarily an image hosting service and CDN. On top of their incredible CDN they also provide a powerful [REST image manipulation and generation API](https://cloudinary.com/documentation/cloudinary_references). Think of it as a simplified URL-based Figma or Photoshop: you provide arguments as URL paths and it generates, caches, and returns an image file.
 
-For example, the example we started with is generated with the following URL:
+For example, the image on the left is generated with the following URL:
 
 <Aside>
   <Img
@@ -85,19 +78,18 @@ For example, the example we started with is generated with the following URL:
 
 <div>
   <div className="break-words rounded-xl bg-white/5 px-5 pt-4 pb-5">
-    [https://res.cloudinary.com/delba/image/upload/w_1600,h_836,q_100/l_text:Karla_72_bold:Automatically%2520Generated[...],co_rgb:ffe4e6,c_fit,w_1400,h_240/fl_layer_apply,g_south_west,x_100,y_180/l_text:Karla_48:delba.dev[...],co_rgb:ffe4e680,c_fit,w_1400/fl_layer_apply,g_south_west,x_100,y_100/l_twitter_name:delba_oliveira/c_thumb,g_face,r_max,w_380,h_380,q_100/fl_layer_apply,w_140,g_north_west,x_100,y_100/grain-gradient.png](https://res.cloudinary.com/delba/image/upload/w_1600,h_836,q_100/l_text:Karla_72_bold:Automatically%2520Generate%2520Branded%2520Open%2520Graph%2520(OG)%2520Images%2520for%2520Your%2520Blog%2520Posts,co_rgb:ffe4e6,c_fit,w_1400,h_240/fl_layer_apply,g_south_west,x_100,y_180/l_text:Karla_48:delba.dev%2520%25C2%25B7%25204%2520Jul%2520%25C2%25B7%2520%2523next%2520%25C2%25B7%2520%2523cloudinary,co_rgb:ffe4e680,c_fit,w_1400/fl_layer_apply,g_south_west,x_100,y_100/l_twitter_name:delba_oliveira/c_thumb,g_face,r_max,w_380,h_380,q_100/fl_layer_apply,w_140,g_north_west,x_100,y_100/grain-gradient.png)
+    [https://res.cloudinary.com/[cloudinaryId]/image/upload/w_1600,h_836,q_100/l_text:Karla_72_bold:Automatically%2520Generated[...],co_rgb:ffe4e6,c_fit,w_1400,h_240/fl_layer_apply,g_south_west,x_100,y_180/l_text:Karla_48:delba.dev[...],co_rgb:ffe4e680,c_fit,w_1400/fl_layer_apply,g_south_west,x_100,y_100/l_twitter_name:delba_oliveira/c_thumb,g_face,r_max,w_380,h_380,q_100/fl_layer_apply,w_140,g_north_west,x_100,y_100/grain-gradient.png](https://res.cloudinary.com/delba/image/upload/w_1600,h_836,q_100/l_text:Karla_72_bold:Automatically%2520Generate%2520Branded%2520Open%2520Graph%2520(OG)%2520Images%2520for%2520Your%2520Blog%2520Posts,co_rgb:ffe4e6,c_fit,w_1400,h_240/fl_layer_apply,g_south_west,x_100,y_180/l_text:Karla_48:delba.dev%2520%25C2%25B7%25204%2520Jul%2520%25C2%25B7%2520%2523next%2520%25C2%25B7%2520%2523cloudinary,co_rgb:ffe4e680,c_fit,w_1400/fl_layer_apply,g_south_west,x_100,y_100/l_twitter_name:delba_oliveira/c_thumb,g_face,r_max,w_380,h_380,q_100/fl_layer_apply,w_140,g_north_west,x_100,y_100/grain-gradient.png)
   </div>
   <div className="mt-2 text-sm italic text-rose-100/60">
-    URL to generate image. It may seem a bit complex at first but we will break
-    it down below.
+    URL to generate the image. It may seem a bit complex at first but we will
+    break it down below.
   </div>
 </div>
 
-# Step 1: Canvas
+# Base Image
 
-Upload an image to your Cloudinary account that will be used as the base layer for the generated image.
-
-Create a utility function that returns a URL string of the composed transformations. For the sake of readability, we use an array of transformations that we `join(){:js}` before returning.
+- Upload an image to your Cloudinary account that will be used as the base layer for the generated image.
+- Create a utility function that returns a URL string of the composed transformations. For the sake of readability, we use an array of transformations that we `join(){:js}` before returning.
 
 <Aside>
   <Img
@@ -105,7 +97,7 @@ Create a utility function that returns a URL string of the composed transformati
     src={[
       `https://res.cloudinary.com/delba/image/upload`,
       `w_1600,h_836,q_100`,
-      `grain.png`,
+      `grain-gradient.png`,
     ].join("/")}
     width={1600}
     height={836}
@@ -117,14 +109,14 @@ const createOgImage = () => {
   return (
     [
       // prefix: <domain/account/file_type/source_type>
-      `https://res.cloudinary.com/delba/image/upload`,
+      `https://res.cloudinary.com/[cloudinaryId]/image/upload`,
       // transform composed image: width, height, quality
       `w_1600,h_836,q_100`,
       // -------------------------
       // WE WILL PLACE LAYERS HERE
       // -------------------------
       // background image: <cloudinary_public_id>
-      `grain.png`,
+      `grain-gradient.png`,
     ]
       // join parameters with slash to form a valid URL
       // [a, b, c] => "a/b/c"
@@ -133,13 +125,25 @@ const createOgImage = () => {
 }
 ```
 
+<Aside position="right" styled={true}>
+  The path we send to Cloudinary must form a valid URL. Arguments are separated
+  by commas: `w_1600,h_836,q_100`. Transformation layers can be chained and are
+  separated by slashes: `w_1600,h_836,q_100/grain.png`
+</Aside>
+
 - **Width and Height (Line 7)** — Set the dimensions and ratio of the generated image to something appropriate for social networks. The base image you uploaded will be scaled to match these dimensions. You can use the [crop mode](https://cloudinary.com/documentation/transformation_reference#c_crop_resize) to decide what kind of scaling will be applied.
-- **Quality (Line 7)** — Cloudinary significantly reduces image file sizes by automatically compressing images. This is good for adding images to your website, something we want to avoid for an OG image because social networks apply their own compression. We can override the default setting using the [quality](https://cloudinary.com/documentation/transformation_reference#q_quality) option.
+- **Quality (Line 7)** — Cloudinary significantly reduces image file sizes by automatically compressing images. This is great for adding images to your website. But something we want to avoid for an OG image because we don't want to double compress the image (social networks apply their own compression). We can override the default setting using the [quality](https://cloudinary.com/documentation/transformation_reference#q_quality) option.
 - **Background Image (Line 12)** — The public id of the image we uploaded to Cloudinary.
 
-# Step 2: Text
+# Overlays
 
-Cloudinary allows you to place text and image layers that can be individually transformed and positioned on top of a base image. For example, we can render "Hello" in Arial with a font size of 100 on top of our `grain.png` image by adding `l_text:Arial_100:Hello` to the URL.
+Cloudinary allows you to place text and image layers that can be individually transformed and positioned on top of a base image.
+
+Overlays consist of two components the `l_` layer that starts the overlay definition and includes layer transformations and an `fl_layer_apply` flag that closes the definition and includes placement qualifiers.
+
+`l_<public_id>/<transformations>/fl_layer_apply,<placement qualifiers>`
+
+# Text layer
 
 <Aside>
   <Img
@@ -148,127 +152,226 @@ Cloudinary allows you to place text and image layers that can be individually tr
       `w_1600,h_836,q_100`,
       `l_text:Arial_100:${e(
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      )}`,
-      `grain.png`,
+      )},co_rgb:fff`,
+      `grain-gradient.png`,
     ].join("/")}
     width={1600}
     height={836}
   />
 </Aside>
 
-```ts showLineNumbers {5-7}
+```ts showLineNumbers {7-9}
+const e = (str: string) => encodeURIComponent(encodeURIComponent(str))
+
 const createOgImage = () => {
   return [
-    `https://res.cloudinary.com/delba/image/upload`,
+    `https://res.cloudinary.com/[cloudinaryId]/image/upload`,
     `w_1600,h_836,q_100`,
     `l_text:Arial_100:${e(
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     )}`,
-    `grain.png`,
+    `grain-gradient.png`,
   ].join("/")
 }
 ```
 
-Oh dear, Not exactly what we're looking for! The text is overlapping the background image. By default, if a layer (image or text) has a larger width or height than the base image, the delivered image canvas is resized to display the entire layer.
+- Create a new text layer using `l_text`.
+- Set the font family, color and size.
+- Create and use a utility function to escape the dynamic text. Any text we want to render needs to be double escaped because it might contain characters that are not URL safe or characters that have special significance (such as comma's) in Cloudinary's API.
+
+### Text wrapping
+
+By default, if a layer (image or text) has a larger width or height than the base image, the delivered image canvas is resized to display the entire layer.
 
 <Aside>
   <Img
     src={[
       `https://res.cloudinary.com/delba/image/upload`,
       `w_1600,h_836,q_100`,
-      `c_fit,w_1400,l_text:Arial_64:${e(
+      `l_text:Arial_64:${e(
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed iaculis tortor sapien, sit amet feugiat ante feugiat nec. Phasellus pharetra efficitur felis commodo iaculis.",
-      )},co_rgb:fff`,
-      `grain.png`,
+      )},co_rgb:fff,c_fit,w_1400`,
+      `grain-gradient.png`,
     ].join("/")}
     width={1600}
     height={836}
   />
 </Aside>
 
-### Text wrapping
+```ts showLineNumbers
+const createOgImage = () => {
+  return [
+    // ...
+    `l_text:Arial_100:${e("...")},c_fit,w_1400`,
+    // ...
+  ].join("/")
+}
+```
 
 - Limit the size of the text layer so it fits inside the image using the width parameter `w_`.
 - Force text to wrap to multiple lines rather than scaling to the width we just set using the `fit` crop mode.
 - Reduce the font size to better fit the background image.
 
-### Text escaping
-
-- Double escape
-
-```ts
-export const e = (str: string) => encodeURIComponent(encodeURIComponent(str))
-```
-
-<Aside>
-  <Img
-    src={[
-      `https://res.cloudinary.com/delba/image/upload`,
-      `w_1600,h_836,q_100`,
-      `c_fit,w_1400,l_text:Arial_64:${e(
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed iaculis tortor sapien, sit amet feugiat ante feugiat nec. Phasellus pharetra efficitur felis commodo iaculis.",
-      )},co_rgb:fff`,
-      `grain.png`,
-    ].join("/")}
-    width={1600}
-    height={836}
-  />
-</Aside>
-
 ### Branding
 
-- Font
-- Color
+You can make your OG image fit your brand by customizing the font and color. One powerful Cloudinary feature is that you can use any typeface listed on Google fonts. In this case I am using the same font and color as my website.
 
 <Aside>
   <Img
     src={[
       `https://res.cloudinary.com/delba/image/upload`,
       `w_1600,h_836,q_100`,
-      `c_fit,w_1400,l_text:Arial_64:${e(
+      // TITLE
+      // Karla google font in light rose
+      `l_text:Karla_72_bold:${e(
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed iaculis tortor sapien, sit amet feugiat ante feugiat nec. Phasellus pharetra efficitur felis commodo iaculis.",
-      )},co_rgb:fff`,
-      `grain.png`,
+      )},co_rgb:ffe4e6,c_fit,w_1400`,
+      `grain-gradient.png`,
     ].join("/")}
     width={1600}
     height={836}
   />
 </Aside>
 
-# Positioning
+```ts showLineNumbers
+const createOgImage = () => {
+  return [
+    // ...
+    `l_text:Karla_72_bold:${e("...")},co_rgb:ffe4e6,c_fit,w_1400`,
+    // ...
+  ].join("/")
+}
+```
+
+- Customize the font using `l_text` [(docs)](https://cloudinary.com/documentation/transformation_reference#l_text) to supply some font styling options. For some reason the API docs don't discuss that you can use a Google Fonts id here.
+- Customize the text color using the `co_rgb` [(docs)](https://cloudinary.com/documentation/transformation_reference#co_color) option to pass an RGB hex value.
+
+### Positioning
 
 <Aside>
   <Img
     src={[
       `https://res.cloudinary.com/delba/image/upload`,
       `w_1600,h_836,q_100`,
-      `c_fit,w_1400,l_text:Arial_64:${e(
+      // TITLE
+      // Karla google font in light rose
+      `l_text:Karla_72_bold:${e(
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed iaculis tortor sapien, sit amet feugiat ante feugiat nec. Phasellus pharetra efficitur felis commodo iaculis.",
-      )},co_rgb:fff`,
-      `grain.png`,
+      )},co_rgb:ffe4e6,c_fit,w_1400,h_240`,
+      // Positioning
+      `fl_layer_apply,g_south_west,x_100,y_180`,
+      `grain-gradient.png`,
     ].join("/")}
     width={1600}
     height={836}
   />
 </Aside>
+
+```ts showLineNumbers
+const createOgImage = () => {
+  return [
+    // ...
+    `l_text:Karla_72_bold:${e("...")},co_rgb:ffe4e6,c_fit,w_1400,h_240`,
+    `fl_layer_apply,g_south_west,x_100,y_180`,
+    // ...
+  ].join("/")
+}
+```
+
+- Use `h_` to limit the text layer to a certain height. This will automatically truncate longer titles that would otherwise overflow the height.
+- Add a `fl_layer_apply` [(docs)](https://cloudinary.com/documentation/transformation_reference#fl_layer_apply) transformation to position the `l_text` layer.
+- Use the `g_` [(gravity)](https://cloudinary.com/documentation/transformation_reference#g_gravity) option to position the layer. Follows the point of a compass, north for top, south for bottom, etc.
+- Use `x` and `y` coordinates to vertically and horizontally offset the layer from the point of gravity.
+
+### Multiple text elements
+
+You can use what we've learned to create a new text layer to house post details such as the author, publish date, and category.
+
+<Aside>
+  <Img
+    src={[
+      `https://res.cloudinary.com/delba/image/upload`,
+      `w_1600,h_836,q_100`,
+      `l_text:Karla_72_bold:${e(
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed iaculis tortor sapien, sit amet feugiat ante feugiat nec. Phasellus pharetra efficitur felis commodo iaculis.",
+      )},co_rgb:ffe4e6,c_fit,w_1400,h_240`,
+      `fl_layer_apply,g_south_west,x_100,y_180`,
+      `l_text:Karla_48:${e(
+        "Phasellus pharetra efficitur felis",
+      )},co_rgb:ffe4e680,c_fit,w_1400`,
+      `fl_layer_apply,g_south_west,x_100,y_100`,
+      `grain-gradient.png`,
+    ].join("/")}
+    width={1600}
+    height={836}
+  />
+</Aside>
+
+```ts showLineNumbers {6-7}
+const createOgImage = () => {
+  return [
+    // ...
+    `l_text:Karla_72_bold:${e("...")},co_rgb:ffe4e6,c_fit,w_1400,h_240`,
+    `fl_layer_apply,g_south_west,x_100,y_180`,
+    `l_text:Karla_48:${e("...")},co_rgb:ffe4e680,c_fit,w_1400`,
+    `fl_layer_apply,g_south_west,x_100,y_100`,
+    // ...
+  ].join("/")
+}
+```
 
 # Profile Image
 
-- `l_<public_id of image>`
+You can use image layers to embed other images into your composition. These images can be fetched from your Cloudinary media library, an external URL, or even a user's profile image on a social network.
 
-# Notes
+We'll use the latter to create an author image that dynamically syncs with a user's Twitter profile image. An updated profile image on Twitter will eventually (after caches expire) propagate to all OG images.
 
-- Accommodating varying title lengths
-- Contrast with the background image
-- If your posts have their own "hero image", you could use Cloudinary's remote fetching to render that image onto your og:design.
-- Transformation parameters are separated by slashes. that can be composed to create dynamic images that Cloudinary will render and cache.
-- Double escape text to not break URLs and Cloudinary's arguments API.
-- Avoid double compression across platforms - Cloudinary, Twitter, and Next.js
-- Cross-link to synced site headshot.
-- Consider showing how to create noise and grain in Figma.
-  - Optimize the strength of grain for smaller sizes and compression on social networks of the grain for a smaller size.
+<Aside>
+  <Img
+    src={[
+      `https://res.cloudinary.com/delba/image/upload`,
+      `w_1600,h_836,q_100`,
+      `l_text:Karla_72_bold:${e(
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed iaculis tortor sapien, sit amet feugiat ante feugiat nec. Phasellus pharetra efficitur felis commodo iaculis.",
+      )},co_rgb:ffe4e6,c_fit,w_1400,h_240`,
+      `fl_layer_apply,g_south_west,x_100,y_180`,
+      `l_text:Karla_48:${e(
+        "Phasellus pharetra efficitur felis",
+      )},co_rgb:ffe4e680,c_fit,w_1400`,
+      `fl_layer_apply,g_south_west,x_100,y_100`,
+      `l_twitter_name:delba_oliveira`,
+      `c_thumb,g_face,r_max,w_380,h_380,q_100`,
+      `fl_layer_apply,w_140,g_north_west,x_100,y_100`,
+      `grain-gradient.png`,
+    ].join("/")}
+    width={1600}
+    height={836}
+  />
+</Aside>
+
+```ts showLineNumbers
+const createOgImage = () => {
+  return [
+    // ...
+    // dynamically fetched from my twitter profile
+    `l_twitter_name:delba_oliveira`,
+    // Transformations
+    `c_thumb,g_face,r_max,w_380,h_380,q_100`,
+    // Positioning
+    `fl_layer_apply,w_140,g_north_west,x_100,y_100`,
+    // ...
+  ].join("/")
+}
+```
+
+- Use `l_twitter_name` to fetch a user's 400px by 400px Twitter profile image.
+- Use `c_thumb`, `g_face`, `w_380`, and `h_380` to slightly crop the image using the thumbnail preset and a human face as the ideal focal point.
+- Use `r_max` to create a maximum border radius (essentially cropping the image to a circle).
+- Use previous knowledge to position the image in the top left.
 
 # Final code
+
+There is a lot more you can do with Cloudinary's powerful URL based API. Hopefully this was enough to get your started.
 
 <Code>
 ```ts showLineNumbers title="lib/createOgImage.ts"
@@ -281,7 +384,8 @@ export const createOgImage = ({
 }) =>
   [
     // ACCOUNT PREFIX
-    `https://res.cloudinary.com/delba/image/upload`,
+    // Add your own Cloudinary account ID.
+    `https://res.cloudinary.com/[cloudinaryId]/image/upload`,
     // Composed Image Transformations
     `w_1600,h_836,q_100`,
 
@@ -342,8 +446,3 @@ export default function Page({ post }) {
 ````
 
 </Code>
-
-<Aside side="right" styled>
-  We can tell crawlers what image to use by adding the `
-  <meta property="og:image" />{:html}` meta tag in the HTML of our pages.
-</Aside>

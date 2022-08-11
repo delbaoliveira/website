@@ -111,7 +111,7 @@ export default function PostPage({
 
                 {post.headings.map((heading) => {
                   return (
-                    <div>
+                    <div key={heading.slug}>
                       <a
                         href={`#${heading.slug}`}
                         className={clsx(

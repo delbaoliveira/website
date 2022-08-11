@@ -306,7 +306,7 @@ export default function SinglePostPage({ post }) {
 }
 ```
 
-<Aside title="🐣" side="right" styled>
+<Aside title="🐣" position="right" styled>
   Next.js will pre-render each post by looping through the list of posts you provided to `getStaticPaths(){:.fn}`, fetching the processed data from Contentlayer, passing the data down to your page component as props via `getStaticProps(){:.fn}`, rendering the `SinglePostPage(){:.fn}` page component and saving the result as static files ready for deployment.
 </Aside>
 
