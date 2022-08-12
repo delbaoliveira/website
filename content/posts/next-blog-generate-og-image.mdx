@@ -21,27 +21,9 @@ export const e = (str) => encodeURIComponent(encodeURIComponent(str))
 
 An Open Graph (OG) image is the image social networks (such as Twitter and Facebook) pull from your website to create a preview when someone shares a link to your website.
 
-Regardless of the effectiveness of a post title or the quality of the actual post content, an OG image is usually the first thing people notice about a shared post as they browse their feed.
+Regardless of the effectiveness of the tweet or the quality of the actual linked content, an OG image is usually the first thing people notice about a shared post on social media.
 
 In theory, a better OG image should increase how often people click through to your website and re-share the original shared post.
-
-# Problem
-
-- Manually creating a custom OG image for each post takes time and energy away from writing posts.
-- Automating OG image generation can be difficult to implement or costs money to use a service.
-
-# Solution
-
-Use Cloudinary's generous free tier to automatically generate a branded OG image for each post.
-
-- **Powerful URL-based API** — No custom infra needed, pass a URL and get a generated image.
-- **Dynamic** — Use dynamic post details such as a title and meta to generate the final image.
-- **Flexible design** — Render multiple text or image layers on top of each other.
-- **Custom transformations** — Manipulate a layer's position, size, crop, color, opacity, etc.
-- **Rich typography options** — Use custom fonts (including Google fonts), color, letter spacing, etc to match website brand.
-- **Fetch images from external sources** — Fetch and sync headshot with a live Twitter profile image (updating your Twitter image will eventually update all OG images).
-
-Below is the OG image we will use Cloudinary to generate. You're welcome to follow along with this step-by-step walkthrough or if you just want the complete code you can find it at the bottom of this post.
 
 <FauxTweet>
   <Img
@@ -54,13 +36,30 @@ Below is the OG image we will use Cloudinary to generate. You're welcome to foll
   />
 </FauxTweet>
 
-<Aside position="right" styled={true}>
-  How an OG image could look once shared on social media
-</Aside>
+<div className="-mt-4 text-sm italic text-rose-100/60">
+  The OG image we will be creating and how it could look once shared on social
+  media.
+</div>
+
+# Problem
+
+- Manually creating a custom OG image for each post takes time and energy away from writing posts.
+- Automating OG image generation can be difficult to implement or costs money to use a service.
+
+# Solution
+
+Use Cloudinary's generous free tier and flexible API to automatically generate a branded OG image for each post.
+
+- **Powerful URL-based API** — No custom infra needed, pass a URL and get a generated image.
+- **Dynamic** — Use dynamic post details such as a title and publish date to generate the final image.
+- **Flexible design** — Render multiple text or image layers on top of each other.
+- **Custom transformations** — Manipulate a layer's position, size, crop, color, opacity, etc.
+- **Fetch images from external sources** — Use a remote image's URL to fetch, embed and transform it into your composition.
+- **Rich typography options** — Use custom fonts (including Google fonts), color, letter spacing, etc to match your website's brand.
 
 # What is Cloudinary?
 
-Cloudinary is primarily an image hosting service and CDN. On top of their incredible CDN they also provide a powerful [REST image manipulation and generation API](https://cloudinary.com/documentation/cloudinary_references). Think of it as a simplified URL-based Figma or Photoshop: you provide arguments as URL paths and it generates, caches, and returns an image file.
+Cloudinary is primarily an image hosting service and CDN. They also provide a powerful [REST image manipulation and generation API](https://cloudinary.com/documentation/cloudinary_references). Think of it as a simplified URL-based Figma or Photoshop: you provide arguments as URL paths and it generates, caches, and returns an image file.
 
 For example, the image on the left is generated with the following URL:
 
@@ -78,13 +77,17 @@ For example, the image on the left is generated with the following URL:
 
 <div>
   <div className="break-words rounded-xl bg-white/5 px-5 pt-4 pb-5">
-    [https://res.cloudinary.com/[cloudinaryId]/image/upload/w_1600,h_836,q_100/l_text:Karla_72_bold:Automatically%2520Generated[...],co_rgb:ffe4e6,c_fit,w_1400,h_240/fl_layer_apply,g_south_west,x_100,y_180/l_text:Karla_48:delba.dev[...],co_rgb:ffe4e680,c_fit,w_1400/fl_layer_apply,g_south_west,x_100,y_100/l_twitter_name:delba_oliveira/c_thumb,g_face,r_max,w_380,h_380,q_100/fl_layer_apply,w_140,g_north_west,x_100,y_100/grain-gradient.png](https://res.cloudinary.com/delba/image/upload/w_1600,h_836,q_100/l_text:Karla_72_bold:Automatically%2520Generate%2520Branded%2520Open%2520Graph%2520(OG)%2520Images%2520for%2520Your%2520Blog%2520Posts,co_rgb:ffe4e6,c_fit,w_1400,h_240/fl_layer_apply,g_south_west,x_100,y_180/l_text:Karla_48:delba.dev%2520%25C2%25B7%25204%2520Jul%2520%25C2%25B7%2520%2523next%2520%25C2%25B7%2520%2523cloudinary,co_rgb:ffe4e680,c_fit,w_1400/fl_layer_apply,g_south_west,x_100,y_100/l_twitter_name:delba_oliveira/c_thumb,g_face,r_max,w_380,h_380,q_100/fl_layer_apply,w_140,g_north_west,x_100,y_100/grain-gradient.png)
+    [https://res.cloudinary.com/demo/image/upload/w_1600,h_836,q_100/l_text:Karla_72_bold:Automatically%2520Generated[...],co_rgb:ffe4e6,c_fit,w_1400,h_240/fl_layer_apply,g_south_west,x_100,y_180/l_text:Karla_48:delba.dev[...],co_rgb:ffe4e680,c_fit,w_1400/fl_layer_apply,g_south_west,x_100,y_100/l_twitter_name:delba_oliveira/c_thumb,g_face,r_max,w_380,h_380,q_100/fl_layer_apply,w_140,g_north_west,x_100,y_100/grain-gradient.png](https://res.cloudinary.com/delba/image/upload/w_1600,h_836,q_100/l_text:Karla_72_bold:Automatically%2520Generate%2520Branded%2520Open%2520Graph%2520(OG)%2520Images%2520for%2520Your%2520Blog%2520Posts,co_rgb:ffe4e6,c_fit,w_1400,h_240/fl_layer_apply,g_south_west,x_100,y_180/l_text:Karla_48:delba.dev%2520%25C2%25B7%25204%2520Jul%2520%25C2%25B7%2520%2523next%2520%25C2%25B7%2520%2523cloudinary,co_rgb:ffe4e680,c_fit,w_1400/fl_layer_apply,g_south_west,x_100,y_100/l_twitter_name:delba_oliveira/c_thumb,g_face,r_max,w_380,h_380,q_100/fl_layer_apply,w_140,g_north_west,x_100,y_100/grain-gradient.png)
   </div>
-  <div className="mt-2 text-sm italic text-rose-100/60">
+  <div className="mt-4 text-sm italic text-rose-100/60">
     URL to generate the image. It may seem a bit complex at first but we will
     break it down below.
   </div>
 </div>
+
+# Choose your journey
+
+You're welcome to follow along with this step-by-step walkthrough or if you just want the complete code you can find it at the bottom of this post.
 
 # Base Image
 
@@ -108,8 +111,8 @@ For example, the image on the left is generated with the following URL:
 const createOgImage = () => {
   return (
     [
-      // prefix: <domain/account/file_type/source_type>
-      `https://res.cloudinary.com/[cloudinaryId]/image/upload`,
+      // prefix: <domain/yourCloudinaryId/file_type/source_type>
+      `https://res.cloudinary.com/<cloudinaryId>/image/upload`,
       // transform composed image: width, height, quality
       `w_1600,h_836,q_100`,
       // -------------------------
@@ -118,7 +121,7 @@ const createOgImage = () => {
       // background image: <cloudinary_public_id>
       `grain-gradient.png`,
     ]
-      // join parameters with slash to form a valid URL
+      // join parameters with a slash to form a valid URL
       // [a, b, c] => "a/b/c"
       .join("/")
   )
@@ -165,7 +168,7 @@ const e = (str: string) => encodeURIComponent(encodeURIComponent(str))
 
 const createOgImage = () => {
   return [
-    `https://res.cloudinary.com/[cloudinaryId]/image/upload`,
+    `https://res.cloudinary.com/<cloudinaryId>/image/upload`,
     `w_1600,h_836,q_100`,
     `l_text:Arial_100:${e(
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
@@ -175,9 +178,8 @@ const createOgImage = () => {
 }
 ```
 
-- Create a new text layer using `l_text`.
-- Set the font family, color and size.
-- Create and use a utility function to escape the dynamic text. Any text we want to render needs to be double escaped because it might contain characters that are not URL safe or characters that have special significance (such as comma's) in Cloudinary's API.
+- Create a new text layer using `l_text` and `<font family>_<font size>`
+- Create and use a utility function to escape the dynamic text. Any text we want to render needs to be double escaped because it might contain characters that are not URL safe or characters that have special significance (such as commas) in Cloudinary's API.
 
 ### Text wrapping
 
@@ -212,9 +214,9 @@ const createOgImage = () => {
 - Force text to wrap to multiple lines rather than scaling to the width we just set using the `fit` crop mode.
 - Reduce the font size to better fit the background image.
 
-### Branding
+### Text styling
 
-You can make your OG image fit your brand by customizing the font and color. One powerful Cloudinary feature is that you can use any typeface listed on Google fonts. In this case I am using the same font and color as my website.
+You can make your OG image fit your brand by customizing the font and color. One powerful Cloudinary feature is that you can use any typeface listed on Google fonts. In this case, I am using the same font and color as my website.
 
 <Aside>
   <Img
@@ -243,10 +245,10 @@ const createOgImage = () => {
 }
 ```
 
-- Customize the font using `l_text` [(docs)](https://cloudinary.com/documentation/transformation_reference#l_text) to supply some font styling options. For some reason the API docs don't discuss that you can use a Google Fonts id here.
-- Customize the text color using the `co_rgb` [(docs)](https://cloudinary.com/documentation/transformation_reference#co_color) option to pass an RGB hex value.
+- Customize the font using `l_text` [(docs)](https://cloudinary.com/documentation/transformation_reference#l_text) to supply some font styling options. For some reason, the API docs don't discuss that you can use a Google Fonts id here.
+- Customize the text color using the `co_rgb` [(docs)](https://cloudinary.com/documentation/transformation_reference#co_color) to change the color of the layer.
 
-### Positioning
+### Positioning layers
 
 <Aside>
   <Img
@@ -267,7 +269,7 @@ const createOgImage = () => {
   />
 </Aside>
 
-```ts showLineNumbers
+```ts showLineNumbers {5}
 const createOgImage = () => {
   return [
     // ...
@@ -283,7 +285,7 @@ const createOgImage = () => {
 - Use the `g_` [(gravity)](https://cloudinary.com/documentation/transformation_reference#g_gravity) option to position the layer. Follows the point of a compass, north for top, south for bottom, etc.
 - Use `x` and `y` coordinates to vertically and horizontally offset the layer from the point of gravity.
 
-### Multiple text elements
+# Multiple layers
 
 You can use what we've learned to create a new text layer to house post details such as the author, publish date, and category.
 
@@ -320,11 +322,13 @@ const createOgImage = () => {
 }
 ```
 
-# Profile Image
+# Image layers
 
 You can use image layers to embed other images into your composition. These images can be fetched from your Cloudinary media library, an external URL, or even a user's profile image on a social network.
 
-We'll use the latter to create an author image that dynamically syncs with a user's Twitter profile image. An updated profile image on Twitter will eventually (after caches expire) propagate to all OG images.
+### Profile image
+
+We'll use the latter to add a headshot to our OG image that dynamically syncs with a user's Twitter profile image. Changing the profile image on Twitter will eventually (after caches expire) update the headshots of all generated OG images.
 
 <Aside>
   <Img
@@ -353,7 +357,7 @@ We'll use the latter to create an author image that dynamically syncs with a use
 const createOgImage = () => {
   return [
     // ...
-    // dynamically fetched from my twitter profile
+    // dynamically fetched from my Twitter profile
     `l_twitter_name:delba_oliveira`,
     // Transformations
     `c_thumb,g_face,r_max,w_380,h_380,q_100`,
@@ -369,9 +373,11 @@ const createOgImage = () => {
 - Use `r_max` to create a maximum border radius (essentially cropping the image to a circle).
 - Use previous knowledge to position the image in the top left.
 
-# Final code
+# Closing thoughts
 
-There is a lot more you can do with Cloudinary's powerful URL based API. Hopefully this was enough to get your started.
+There is a lot more you can do with Cloudinary's URL-based API. Hopefully, this is a good starting point for you to create your own unique OG images that stand out and lead to more people viewing your content.
+
+# Final code
 
 <Code>
 ```ts showLineNumbers title="lib/createOgImage.ts"
@@ -385,7 +391,7 @@ export const createOgImage = ({
   [
     // ACCOUNT PREFIX
     // Add your own Cloudinary account ID.
-    `https://res.cloudinary.com/[cloudinaryId]/image/upload`,
+    `https://res.cloudinary.com/cloudinaryId/image/upload`,
     // Composed Image Transformations
     `w_1600,h_836,q_100`,
 
