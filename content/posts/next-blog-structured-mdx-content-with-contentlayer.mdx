@@ -32,9 +32,9 @@ I have been using and enjoying Contentlayer for my own blog and last week it fin
   <StaticTweet id="1517126728711213056" showAttachments={false} />
 </div>
 
-# Code
+# Choose your journey
 
-You're welcome to follow along with this step-by-step walkthrough or if you just want the [complete code](#complete-code) you can find it at the bottom of this post.
+Follow along the step-by-step walkthrough or jump straight to the complete code at the bottom of the post.
 
 # Install and Configure Contentlayer
 
@@ -44,7 +44,7 @@ Install the Contentlayer packages inside your Next.js project:
 npm install contentlayer next-contentlayer
 ```
 
-Stitch Next.js and Contentlayer together by using the `next-contentlayer` plugin to hook into the `next dev` and `next build` processes. This automatically runs the Contentlayer CLI while you're developing locally or building your app for deployment:
+Stitch Next.js and Contentlayer together using the `next-contentlayer` plugin to hook into the `next dev` and `next build` processes. This automatically runs the Contentlayer CLI while you're developing locally or building your app for deployment:
 
 ```js showLineNumbers title="next.config.js"
 const { withContentlayer } = require("next-contentlayer")
@@ -180,7 +180,7 @@ The processed `json` file includes the raw markdown content, the processed MDX c
 
 # TypeScript and Git Integration
 
-Add Contentlayer to your TypeScript configuration to make it easier to import type definition and helper functions:
+Add Contentlayer to your TypeScript configuration to make it easier to import type definitions and helper functions:
 
 ```json showLineNumbers title="tsconfig.json" {5,13}
 {
@@ -200,11 +200,7 @@ Add Contentlayer to your TypeScript configuration to make it easier to import ty
 }
 ```
 
-I'd also recommend adding the `.contentlayer` folder to your `.gitignore` to reduce the git commit and diff noise from generated files:
-
-```gitignore title=".gitignore"
-.contentlayer
-```
+~~I'd also recommend adding the `.contentlayer` folder to your `.gitignore` to reduce the git commit and diff noise from generated files.~~ **Update:** This is now handled automatically when you first generate a document.
 
 # Single Blog Post Page
 

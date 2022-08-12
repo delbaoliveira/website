@@ -92,5 +92,7 @@ export const components = {
       {...props}
     />
   ),
-  del: (props: any) => <del className="line-through" {...props} />,
+  del: (props: any) => (
+    <del className="text-rose-100/70 line-through" {...props} />
+  ),
 }
