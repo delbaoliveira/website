@@ -1,15 +1,17 @@
 ---
 title: "Build-Time Syntax Highlighting: Zero Client-Side JS, Support for 100+ Languages and Any VSCode Theme"
-description: "..."
-publishedAt: "2022-08-21"
-# absurdClaims:
-#   - "Explain your code"
-#   - "Win the respect of your peers"
+description: "Leverage VS Code's ecosystem to generate highly accurate syntax highlighting at build time. With zero performance cost and access to the entire VS Code theme catalog."
+publishedAt: "2022-08-24"
 status: "published"
 series:
-  order: 5
+  order: 6
   title: "Build a Developer Blog with Next.js"
 ---
+
+<Aside styled>
+  Note: This post is not finished. I sometimes publish early in case it will be
+  helpful to someone.
+</Aside>
 
 If you're writing about code, your blog probably needs...
 
@@ -55,7 +57,7 @@ export default function SinglePostPage(
 
 # How It Works
 
-As discussed in a previous [post](blog/next-blog-structured-mdx-content-with-contentlayer), we're using Contentlayer to integrate MDX and manage our content. Today we'll use the **[Pretty Code plugin](https://github.com/atomiks/rehype-pretty-code)** to add syntax highlighting to code blocks in our markdown posts.
+As discussed in a previous [post](/blog/next-blog-structured-mdx-content-with-contentlayer), we're using Contentlayer to integrate MDX and manage our content. Today we'll use the [Pretty Code plugin](https://github.com/atomiks/rehype-pretty-code) to add syntax highlighting to code blocks in our markdown posts.
 
 Here is how it works:
 
