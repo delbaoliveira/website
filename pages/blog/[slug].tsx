@@ -14,6 +14,8 @@ import { allPosts } from "contentlayer/generated"
 import { GetStaticProps, InferGetStaticPropsType } from "next"
 import { useMDXComponent } from "next-contentlayer/hooks"
 import { NextSeo } from "next-seo"
+import Link from "next/link"
+import { useRouter } from "next/router"
 
 export const getStaticPaths = () => {
   return {
@@ -47,6 +49,7 @@ export default function PostPage({
   tweets,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const MDXContent = useMDXComponent(post.body.code)
+  const router = useRouter()
 
   const StaticTweet = ({
     id,
@@ -62,7 +65,9 @@ export default function PostPage({
     return <Tweet showAttachments={showAttachments} {...tweet} />
   }
 
-  const url = `https://delba.dev/blog/${post.slug}`
+  const path = `/blog/${post.slug}`
+
+  const url = `https://delba.dev${path}`
   const title = `${post.title} | delba.dev`
   const ogImage = createOgImage({
     title: post.title,
@@ -129,7 +134,23 @@ export default function PostPage({
                 })}
               </div>
             ) : null}
-            <LikeButton2 slug={post.slug} />
+
+            <div className="border-t border-rose-200/10"></div>
+
+            <div className="flex items-center justify-between">
+              <LikeButton2 slug={post.slug} />
+              <div className="">
+                <button
+                  className="text-sm text-rose-100/30 hover:text-rose-100/60"
+                  onClick={() => {
+                    window.scrollTo({ top: 0 })
+                    router.push(path, undefined, { shallow: true })
+                  }}
+                >
+                  Back to top
+                </button>
+              </div>
+            </div>
           </div>
         </div>
 
