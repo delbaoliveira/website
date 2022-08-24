@@ -108,7 +108,8 @@ export const getPartialPost = (
           .filter((p) => p.series?.title === series.title)
           .sort(
             (a, b) =>
-              Number(new Date(a.publishedAt)) - Number(new Date(b.publishedAt)),
+              Number(new Date(a.series!.order)) -
+              Number(new Date(b.series!.order)),
           )
           .map((p) => {
             return {

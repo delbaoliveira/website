@@ -7,5 +7,9 @@ export const Series = defineNestedType(() => ({
       type: "string",
       required: true,
     },
+    order: {
+      type: "number",
+      required: true,
+    },
   },
 }))
