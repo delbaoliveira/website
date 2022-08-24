@@ -91,7 +91,7 @@ export default function PostPage({
       />
 
       <Layout>
-        <div>
+        <div className="xl:!col-end-5">
           <h1 className="text-2xl font-medium text-rose-100/90 sm:text-4xl">
             {post.title}
           </h1>
@@ -103,8 +103,8 @@ export default function PostPage({
           </div>
         </div>
 
-        <div className="sticky top-6 !col-start-4 row-span-6 mt-1.5 hidden xl:block">
-          <div className="space-y-10">
+        <div className="sticky top-6 hidden h-0 xl:!col-start-4 xl:row-start-2 xl:block">
+          <div className="space-y-6">
             {post.headings ? (
               <div className="space-y-2 text-sm">
                 <div className="uppercase text-rose-100/30">On this page</div>

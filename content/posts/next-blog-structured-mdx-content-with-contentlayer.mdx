@@ -1,6 +1,6 @@
 ---
-title: "Turn Freeform MDX Content into Structured Data with Contentlayer"
-description: "Deal with the chaos of freeform MDX content by transforming it into structured type-safe data and reduce the boilerplate and external tools required to effectively manage MDX content."
+title: "Integrate MDX with a single tool and less boilerplate. Manage content with type-safe data and helper functions."
+description: "Effortlessly integrate MDX and manage content effectively. Validate and transform markdown posts into type-safe data your app can import."
 publishedAt: "2022-04-25"
 status: "published"
 series:
@@ -58,7 +58,7 @@ module.exports = withContentlayer(nextConfig)
 
 Create the schema for your blog post document type:
 
-```js showLineNumbers title="contentlayer.config.js" {4-5,8}
+```js showLineNumbers title="contentlayer.config.js" {4-5,9}
 import { defineDocumentType, makeSource } from "contentlayer/source-files"
 
 export const Post = defineDocumentType(() => ({

@@ -3,10 +3,10 @@ import { visit } from "unist-util-visit"
 
 // div.BLOCK > pre.PRE > code.CODE
 const BLOCK =
-  "overflow-hidden rounded-lg bg-rose-100/5 leading-6 shadow-surface-elevation-low ring-1 ring-rose-100/[3%] ring-inset"
+  "overflow-hidden rounded-lg bg-rose-100/5 shadow-surface-elevation-low ring-1 ring-rose-100/[3%] ring-inset"
 const TITLE =
   "mb-0.5 rounded-md bg-rose-100/10 px-3 py-1 font-mono text-xs text-rose-100/70 shadow-sm"
-const PRE = "overflow-x-auto py-2 text-[13px] [color-scheme:dark]"
+const PRE = "overflow-x-auto py-2 text-[13px] leading-6 [color-scheme:dark]"
 const CODE =
   "grid [&>span]:border-l-4 [&>span]:border-l-transparent [&>span]:pl-2 [&>span]:pr-3"
 const INLINE_BLOCK =
@@ -14,7 +14,6 @@ const INLINE_BLOCK =
 const INLINE_CODE = ""
 const NUMBERED_LINES =
   "[counter-reset:line] before:[&>span]:mr-3 before:[&>span]:inline-block before:[&>span]:w-4 before:[&>span]:text-right before:[&>span]:text-white/20 before:[&>span]:![content:counter(line)] before:[&>span]:[counter-increment:line]"
-
 const HIGHLIGHTED_LINE =
   "!border-l-rose-300/70 bg-rose-200/10 before:!text-white/70"
 

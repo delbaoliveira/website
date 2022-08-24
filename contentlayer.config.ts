@@ -14,7 +14,7 @@ import {
   rehypePrettyCodeOptions,
 } from "./lib/rehyePrettyCode"
 
-const contentLayerConfig = makeSource({
+export default makeSource({
   contentDirPath: "content",
   documentTypes: [Post, Video],
   mdx: {
@@ -39,5 +39,3 @@ const contentLayerConfig = makeSource({
     ],
   },
 })
-
-export default contentLayerConfig
