@@ -46,9 +46,11 @@ export const components = {
     }
 
     return (
-      <NextLink href={href} passHref>
-        <a className={cx(LINK_STYLES, FOCUS_VISIBLE_OUTLINE)} {...props} />
-      </NextLink>
+      <NextLink
+        href={href}
+        className={cx(LINK_STYLES, FOCUS_VISIBLE_OUTLINE)}
+        {...props}
+      />
     )
   },
   ul: (props: any) => (

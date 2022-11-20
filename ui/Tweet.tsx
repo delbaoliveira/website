@@ -98,7 +98,7 @@ export const Tweet = ({
             return (
               <div key={m.media_key}>
                 <BlurImage
-                  alt={m.alt_text}
+                  alt={m.alt_text!}
                   height={m.height}
                   width={m.width}
                   className="rounded-lg"

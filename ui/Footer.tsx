@@ -9,39 +9,23 @@ export const Footer = () => {
         <div className="flex flex-col justify-between font-medium lg:flex-row">
           <div className="flex space-x-5">
             <div>
-              <Link href="/videos">
-                <a className={cx(LINK_SUBTLE_STYLES, FOCUS_VISIBLE_OUTLINE)}>
-                  Videos
-                </a>
+              <Link
+                href="/videos"
+                className={cx(LINK_SUBTLE_STYLES, FOCUS_VISIBLE_OUTLINE)}
+              >
+                Videos
               </Link>
             </div>
 
             <div>
-              <Link href="/blog">
-                <a className={cx(LINK_SUBTLE_STYLES, FOCUS_VISIBLE_OUTLINE)}>
-                  Posts
-                </a>
+              <Link
+                href="/blog"
+                className={cx(LINK_SUBTLE_STYLES, FOCUS_VISIBLE_OUTLINE)}
+              >
+                Posts
               </Link>
             </div>
 
-            <div>
-              <Link href="/tweets">
-                <a className={cx(LINK_SUBTLE_STYLES, FOCUS_VISIBLE_OUTLINE)}>
-                  Inspired Tweets
-                </a>
-              </Link>
-            </div>
-
-            <div>
-              <Link href="/unicode">
-                <a className={cx(LINK_SUBTLE_STYLES, FOCUS_VISIBLE_OUTLINE)}>
-                  Unicode
-                </a>
-              </Link>
-            </div>
-          </div>
-
-          <div className="space-x-5 pt-2 lg:pt-0">
             <a
               href="https://twitter.com/delba_oliveira"
               className={cx(LINK_SUBTLE_STYLES, FOCUS_VISIBLE_OUTLINE)}

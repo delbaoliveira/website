@@ -1,5 +1,5 @@
 import cx from "clsx"
-import Image from "next/future/image"
+import Image from "next/image"
 
 export const ProfileImage = ({
   size = "large",

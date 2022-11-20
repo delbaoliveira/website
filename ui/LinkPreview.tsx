@@ -90,6 +90,7 @@ export const LinkPreview = ({
                 layout={layout}
                 quality={q}
                 className="rounded-lg"
+                alt=""
               />
             </a>
           </Transition>
