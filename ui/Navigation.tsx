@@ -14,7 +14,7 @@ export const Navigation = ({
   currentFilters?: CurrentFilters
 }) => {
   return (
-    <div className="flex items-center space-x-7 text-base font-medium leading-none text-rose-100/90 sm:text-lg">
+    <div className="flex items-center space-x-7 text-base font-semibold leading-none text-rose-100/90">
       <Link href="/videos" className={cx("group", FOCUS_VISIBLE_OUTLINE)}>
         <div className="sm:flex sm:items-center sm:space-x-2">
           <div className="mb-1.5 flex justify-center sm:mb-0 sm:block">
