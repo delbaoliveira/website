@@ -1,8 +1,6 @@
-import { FOCUS_VISIBLE_OUTLINE, LINK_STYLES } from "@/lib/constants"
 import { getPartialPost } from "@/lib/contentlayer"
 import { createOgImage } from "@/lib/createOgImage"
 import { FormattedTweet, getTweets } from "@/lib/twitter"
-import { Aside } from "@/ui/Aside"
 import { Layout } from "@/ui/Layout"
 import { LikeButton2 } from "@/ui/LikeButton2"
 import { components } from "@/ui/MdxComponents"
@@ -14,7 +12,6 @@ import { allPosts } from "contentlayer/generated"
 import { GetStaticProps, InferGetStaticPropsType } from "next"
 import { useMDXComponent } from "next-contentlayer/hooks"
 import { NextSeo } from "next-seo"
-import Link from "next/link"
 import { useRouter } from "next/router"
 
 export const getStaticPaths = () => {
