@@ -1,6 +1,6 @@
 import cx from "clsx"
 import type { ImageProps } from "next/image"
-import NextImage from "next/future/image"
+import NextImage from "next/image"
 import React from "react"
 
 export const BlurImage = (props: ImageProps) => {

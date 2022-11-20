@@ -70,13 +70,12 @@ export const Layout = ({
         >
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-6">
-              <Link href="/">
-                <a
-                  title="View home page"
-                  className={cx("rounded-full", FOCUS_VISIBLE_OUTLINE)}
-                >
-                  <ProfileImage size="small" isInteractive />
-                </a>
+              <Link
+                href="/"
+                title="View home page"
+                className={cx("rounded-full", FOCUS_VISIBLE_OUTLINE)}
+              >
+                <ProfileImage size="small" isInteractive />
               </Link>
             </div>
             <Navigation currentFilters={currentFilters} />

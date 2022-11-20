@@ -85,10 +85,11 @@ export const PostSeries = ({
                 p.isCurrent ? (
                   <span className="text-rose-50/90">{p.title}</span>
                 ) : (
-                  <Link href={`/blog/${p.slug}`}>
-                    <a className={cx(LINK_STYLES, FOCUS_VISIBLE_OUTLINE)}>
-                      {p.title}
-                    </a>
+                  <Link
+                    href={`/blog/${p.slug}`}
+                    className={cx(LINK_STYLES, FOCUS_VISIBLE_OUTLINE)}
+                  >
+                    {p.title}
                   </Link>
                 )
               ) : (

@@ -11,15 +11,14 @@ export function ContentLink({
   children: React.ReactNode
 }) {
   return (
-    <Link href={href}>
-      <a
-        className={cx(
-          "block overflow-hidden rounded-2xl bg-white/5 p-7 shadow-surface-elevation-low transition duration-300 hover:bg-white/10 hover:shadow-surface-elevation-medium",
-          FOCUS_VISIBLE_OUTLINE,
-        )}
-      >
-        {children}
-      </a>
+    <Link
+      href={href}
+      className={cx(
+        "block overflow-hidden rounded-2xl bg-white/5 p-7 shadow-surface-elevation-low transition duration-300 hover:bg-white/10 hover:shadow-surface-elevation-medium",
+        FOCUS_VISIBLE_OUTLINE,
+      )}
+    >
+      {children}
     </Link>
   )
 }
