@@ -1,12 +1,30 @@
 import { FOCUS_VISIBLE_OUTLINE, LINK_STYLES } from "@/lib/constants"
 import { Aside } from "@/ui/Aside"
 import { BlurImage } from "@/ui/BlurImage"
+import { Code } from "@/ui/Code"
+import { Files } from "@/ui/Files"
+import { FauxTweet } from "@/ui/lab/FauxTweet"
+import { LikeButtonDemo } from "@/ui/lab/LikeButtonDemo"
+import { LoadingSkeleton } from "@/ui/lab/LoadingSkeleton"
+import { LikeButton2 } from "@/ui/LikeButton2"
+import { Playground } from "@/ui/Playground"
 import cx from "clsx"
 import type { ImageProps } from "next/image"
 import NextLink from "next/link"
 import React from "react"
 
 export const components = {
+  // 🥴🥴 Nested Component imports via MDX are suddenly not JSX transformed 🥴🥴
+  // https://github.com/contentlayerdev/contentlayer/issues/309
+  LoadingSkeleton,
+  LikeButtonDemo,
+  LikeButton2,
+  Playground,
+  Code,
+  Files,
+  FauxTweet,
+
+  //
   Aside,
   h1: (props: any) => (
     <h2
