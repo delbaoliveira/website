@@ -51,18 +51,6 @@ export const Post = defineDocumentType(() => ({
         return headings
       },
     },
-    tweetIds: {
-      type: "json",
-      resolve: (doc) => {
-        const tweetMatches = doc.body.raw.match(
-          /<StaticTweet\sid="[0-9]+"[\s\S]*?\/>/g,
-        )
-        const tweetIDs = tweetMatches?.map(
-          (tweet: any) => tweet.match(/[0-9]+/g)[0],
-        )
-        return tweetIDs ?? []
-      },
-    },
     publishedAtFormatted: {
       type: "string",
       resolve: (doc) => {

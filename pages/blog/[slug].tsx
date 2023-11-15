@@ -6,7 +6,6 @@ import { LikeButton2 } from "@/ui/LikeButton2"
 import { components } from "@/ui/MdxComponents"
 import { PostMetrics } from "@/ui/PostMetrics"
 import { PostSeries } from "@/ui/PostSeries"
-import { Tweet } from "@/ui/Tweet"
 import clsx from "clsx"
 import { allPosts } from "contentlayer/generated"
 import { GetStaticProps, InferGetStaticPropsType } from "next"
@@ -23,7 +22,6 @@ export const getStaticPaths = () => {
 
 export const getStaticProps: GetStaticProps<{
   post: ReturnType<typeof getPartialPost>
-  tweets: FormattedTweet[]
 }> = async ({ params }) => {
   const post = allPosts.find((post) => post.slug === params?.slug)
 
@@ -36,31 +34,15 @@ export const getStaticProps: GetStaticProps<{
   return {
     props: {
       post: getPartialPost(post, allPosts),
-      tweets: await getTweets(post.tweetIds),
     },
   }
 }
 
 export default function PostPage({
   post,
-  tweets,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const MDXContent = useMDXComponent(post.body.code)
   const router = useRouter()
-
-  const StaticTweet = ({
-    id,
-    showAttachments,
-  }: {
-    id: string
-    showAttachments?: boolean
-  }) => {
-    const tweet = tweets.find((tweet) => tweet.id === id)
-    if (!tweet) {
-      return null
-    }
-    return <Tweet showAttachments={showAttachments} {...tweet} />
-  }
 
   const path = `/blog/${post.slug}`
 
@@ -158,7 +140,6 @@ export default function PostPage({
         <MDXContent
           components={{
             ...components,
-            StaticTweet,
           }}
         />
 
