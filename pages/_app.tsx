@@ -1,5 +1,5 @@
 import { seo } from "@/lib/seo"
-import localFont from "@next/font/local"
+import localFont from "next/font/local"
 import cx from "clsx"
 import { DefaultSeo } from "next-seo"
 import type { AppProps } from "next/app"
