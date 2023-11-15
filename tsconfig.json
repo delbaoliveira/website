@@ -21,13 +21,19 @@
       "@/styles/*": ["styles/*"],
       "contentlayer/generated": ["./.contentlayer/generated"]
     },
-    "incremental": true
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".contentlayer/generated"
+    ".contentlayer/generated",
+    ".next/types/**/*.ts"
   ],
   "exclude": ["node_modules"]
 }
