@@ -18,6 +18,7 @@
       "@/ui/*": ["ui/*"],
       "@/lib/*": ["lib/*"],
       "@/public/*": ["public/*"],
+      "@/styles/*": ["styles/*"],
       "contentlayer/generated": ["./.contentlayer/generated"]
     },
     "incremental": true
