@@ -5,6 +5,9 @@ import { DefaultSeo } from "next-seo"
 import type { AppProps } from "next/app"
 import "../styles/globals.css"
 
+// Fully migrated to /app, keeping it so it doesn't break the current routes
+// Delete once fully migrated
+
 const hubot = localFont({
   src: "../public/assets/HubotSans.woff2",
   variable: "--font-hubot",

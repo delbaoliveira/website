@@ -1,5 +1,8 @@
 import { Html, Head, Main, NextScript } from "next/document"
 
+// Fully migrated to /app, keeping it so it doesn't break the current routes
+// Delete once fully migrated
+
 export default function Document() {
   return (
     <Html lang="en" className="scroll-p-24">
