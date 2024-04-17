@@ -1,4 +1,3 @@
-import { PreloadResources } from "@/app/preload-resources"
 import { meta } from "@/lib/constants"
 import { createOgImage } from "@/lib/createOgImage"
 import "@/styles/globals.css"
@@ -6,6 +5,7 @@ import { SiteFooter } from "@/ui/SiteFooter"
 import localFont from "next/font/local"
 import clsx from "clsx"
 import { Metadata, Viewport } from "next"
+import { PreloadResources } from "@/lib/preload-resources"
 
 export const viewport: Viewport = {
   themeColor: "#1c1917",
