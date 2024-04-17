@@ -1,13 +1,15 @@
 const defaultTheme = require("tailwindcss/defaultTheme")
 const colors = require("tailwindcss/colors")
+const plugin = require("tailwindcss/plugin")
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./pages/**/*.{js,ts,jsx,tsx}",
-    "./app/**/*.{js,ts,jsx,tsx}",
-    "./ui/**/*.{js,ts,jsx,tsx}",
-    "./lib/**/*.{js,ts}",
+    "./app/**/*.{ts,tsx}",
+    "./pages/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
+    "./ui/**/*.{ts,tsx}",
+    "./lib/**/*.{ts,tsx}",
     "./content/posts/**/*.mdx",
   ],
   darkMode: "class",
@@ -92,5 +94,21 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins: [require("@tailwindcss/forms")],
+  plugins: [
+    plugin(function ({ addBase, theme }) {
+      addBase({
+        ".layout-sm": {
+          "grid-template-columns": `1fr min(${theme("screens.sm")},100%) 1fr`,
+        },
+        ".layout-xl": {
+          "grid-template-columns": `1fr minmax(auto,${theme(
+            "spacing.60",
+          )}) min(${theme("screens.sm")},100%) minmax(auto,${theme(
+            "spacing.60",
+          )}) 1fr`,
+        },
+      })
+    }),
+    require("@tailwindcss/forms"),
+  ],
 }

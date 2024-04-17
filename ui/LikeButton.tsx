@@ -1,6 +1,6 @@
 import { usePostLikes } from "@/lib/usePostLikes"
 import { LoadingDots } from "@/ui/LoadingDots"
-import HeartIcon from "@heroicons/react/solid/HeartIcon"
+import { HeartIcon } from "@heroicons/react/24/solid"
 import { motion } from "framer-motion"
 import React from "react"
 

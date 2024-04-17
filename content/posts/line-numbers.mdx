@@ -1,0 +1,417 @@
+---
+title: "CSS Only Line Numbers for Code Blocks"
+description: "Add line numbers to your code blocks using CSS counters."
+publishedAt: "2023-01-01"
+status: "draft"
+series:
+  order: 2
+  title: "Quick Tip"
+---
+
+# Result
+
+CSS only line numbers with CSS counters.
+...
+
+<Grid x="aside">
+  <div className="valkyrie overflow-hidden rounded-lg">
+    <pre className="relative py-2 text-sm leading-7 before:pointer-events-none before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-transparent before:to-gray-900/90">
+      {/* prettier-ignore */}
+      <code className="grid [&>span]:px-3">
+        <span>
+          <span style={{ color: "rgb(198, 120, 221)" }}>export</span><span style={{ color: "rgb(171, 178, 191)" }}> </span><span style={{ color: "rgb(198, 120, 221)" }}>default</span><span style={{ color: "rgb(171, 178, 191)" }}> </span><span style={{ color: "rgb(198, 120, 221)" }}>function</span><span style={{ color: "rgb(171, 178, 191)" }}> </span><span style={{ color: "rgb(97, 175, 239)" }}>Page</span><span style={{ color: "rgb(171, 178, 191)" }}>() &lcub;</span>
+        </span>
+        <span>
+          <span style={{ color: "rgb(171, 178, 191)" }}> </span><span style={{ color: "rgb(198, 120, 221)" }}>return</span><span style={{ color: "rgb(171, 178, 191)" }}> &lt;</span><span style={{ color: "rgb(224, 108, 117)" }}>h1</span><span style={{ color: "rgb(171, 178, 191)" }}>&gt;Hello world!&lt;/</span><span style={{ color: "rgb(224, 108, 117)" }}>h1</span><span style={{ color: "rgb(171, 178, 191)" }}>&gt;</span>
+        </span>
+        <span>
+          <span style={{ color: "rgb(171, 178, 191)" }}>&rcub;</span>
+        </span>
+      </code>
+    </pre>
+  </div>
+</Grid>
+
+```html
+<pre>
+  <code>
+    <span>export default function Page() {</span>
+    <span> return &lt;h1&gt;Hello world!&lt;/h1&gt;</span>
+    <span>}</span>
+  </code>
+</pre>
+```
+
+# Step 1
+
+Let's start simple. Style the pseudo-element that will house our line numbers using the `:before` modifier.
+
+<Grid x="aside">
+  <div className="valkyrie overflow-hidden rounded-lg">
+    <pre className="relative py-2 text-sm leading-7 before:pointer-events-none before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-transparent before:to-gray-900/90">
+      {/* prettier-ignore */}
+      <code className="grid [&>span]:px-3">
+        <span className="before:mr-3 before:text-gray-500 before:[content:'1']">
+          <span style={{ color: "rgb(198, 120, 221)" }}>export</span><span style={{ color: "rgb(171, 178, 191)" }}> </span><span style={{ color: "rgb(198, 120, 221)" }}>default</span><span style={{ color: "rgb(171, 178, 191)" }}> </span><span style={{ color: "rgb(198, 120, 221)" }}>function</span><span style={{ color: "rgb(171, 178, 191)" }}> </span><span style={{ color: "rgb(97, 175, 239)" }}>Page</span><span style={{ color: "rgb(171, 178, 191)" }}>() &lcub;</span>
+        </span>
+        <span>
+          <span style={{ color: "rgb(171, 178, 191)" }}> </span><span style={{ color: "rgb(198, 120, 221)" }}>return</span><span style={{ color: "rgb(171, 178, 191)" }}> &lt;</span><span style={{ color: "rgb(224, 108, 117)" }}>h1</span><span style={{ color: "rgb(171, 178, 191)" }}>&gt;Hello world!&lt;/</span><span style={{ color: "rgb(224, 108, 117)" }}>h1</span><span style={{ color: "rgb(171, 178, 191)" }}>&gt;</span>
+        </span>
+        <span>
+          <span style={{ color: "rgb(171, 178, 191)" }}>&rcub;</span>
+        </span>
+      </code>
+    </pre>
+  </div>
+</Grid>
+
+```html
+<pre>
+  <code>
+    <span className="before:mr-3 before:text-gray-500 before:[content-'1']">
+      export default function Page() {
+    </span>
+    <span> return &lt;h1&gt;Hello world!&lt;/h1&gt;</span>
+    <span>}</span>
+  </code>
+</pre>
+```
+
+Regardless of how you create your code blocks, it is unlikely you will have direct access to the class of each line of code. We can move our line number styling to the parent `<code>` element and use Tailwind's x to target child elements.
+
+We can target direct `<span>` descendants of our `<code>` element using the special Tailwind `[&>span]` selector. This will allow us to target each line of code from the parent element. Look Ma, we're vanilla CSS now.
+
+<Grid x="aside">
+  <div className="valkyrie overflow-hidden rounded-lg">
+    <pre className="relative py-2 text-sm leading-7 before:pointer-events-none before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-transparent before:to-gray-900/90">
+      {/* prettier-ignore */}
+      <code className="grid [&>span]:px-3 [&>span]:before:mr-3 [&>span]:before:text-gray-500 [&>span]:before:[content:'1']">
+        <span>
+          <span style={{ color: "rgb(198, 120, 221)" }}>export</span><span style={{ color: "rgb(171, 178, 191)" }}> </span><span style={{ color: "rgb(198, 120, 221)" }}>default</span><span style={{ color: "rgb(171, 178, 191)" }}> </span><span style={{ color: "rgb(198, 120, 221)" }}>function</span><span style={{ color: "rgb(171, 178, 191)" }}> </span><span style={{ color: "rgb(97, 175, 239)" }}>Page</span><span style={{ color: "rgb(171, 178, 191)" }}>() &lcub;</span>
+        </span>
+        <span>
+          <span style={{ color: "rgb(171, 178, 191)" }}> </span><span style={{ color: "rgb(198, 120, 221)" }}>return</span><span style={{ color: "rgb(171, 178, 191)" }}> &lt;</span><span style={{ color: "rgb(224, 108, 117)" }}>h1</span><span style={{ color: "rgb(171, 178, 191)" }}>&gt;Hello world!&lt;/</span><span style={{ color: "rgb(224, 108, 117)" }}>h1</span><span style={{ color: "rgb(171, 178, 191)" }}>&gt;</span>
+        </span>
+        <span>
+          <span style={{ color: "rgb(171, 178, 191)" }}>&rcub;</span>
+        </span>
+      </code>
+    </pre>
+  </div>
+</Grid>
+
+```html
+<pre>
+  <code className="
+    [&>span]:px-3
+    [&>span]:before:mr-3 [&>span]:before:text-gray-500
+    [&>span]:before:[content:'1']">
+    <span>
+      export default function Page() {
+    </span>
+    <span> return &lt;h1&gt;Hello world!&lt;/h1&gt;</span>
+    <span>}</span>
+  </code>
+</pre>
+```
+
+The question is, how do we create dynamic values in CSS? CSS counters to the rescue.
+
+<Grid x="aside">
+  <div className="valkyrie overflow-hidden rounded-lg">
+    <pre className="relative py-2 text-sm leading-7 before:pointer-events-none before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-transparent before:to-gray-900/90">
+      {/* prettier-ignore */}
+      <code className="
+        grid
+        [counter-reset:line]
+
+        [&>span]:px-3 [&>span]:before:mr-3
+        [&>span]:before:text-gray-500
+
+        [&>span]:before:[counter-increment:line]
+        [&>span]:before:[content:counter(line)]">
+        <span>
+          <span style={{ color: "rgb(198, 120, 221)" }}>export</span><span style={{ color: "rgb(171, 178, 191)" }}> </span><span style={{ color: "rgb(198, 120, 221)" }}>default</span><span style={{ color: "rgb(171, 178, 191)" }}> </span><span style={{ color: "rgb(198, 120, 221)" }}>function</span><span style={{ color: "rgb(171, 178, 191)" }}> </span><span style={{ color: "rgb(97, 175, 239)" }}>Page</span><span style={{ color: "rgb(171, 178, 191)" }}>() &lcub;</span>
+        </span>
+        <span>
+          <span style={{ color: "rgb(171, 178, 191)" }}> </span><span style={{ color: "rgb(198, 120, 221)" }}>return</span><span style={{ color: "rgb(171, 178, 191)" }}> &lt;</span><span style={{ color: "rgb(224, 108, 117)" }}>h1</span><span style={{ color: "rgb(171, 178, 191)" }}>&gt;Hello world!&lt;/</span><span style={{ color: "rgb(224, 108, 117)" }}>h1</span><span style={{ color: "rgb(171, 178, 191)" }}>&gt;</span>
+        </span>
+        <span>
+          <span style={{ color: "rgb(171, 178, 191)" }}>&rcub;</span>
+        </span>
+      </code>
+    </pre>
+
+  </div>
+</Grid>
+
+```html
+<pre>
+  <code className="
+    grid
+    [&>span]:px-3
+    [&>span]:before:mr-3 [&>span]:before:text-gray-500
+
+    [counter-reset:line]
+    [&>span]:before:[content:counter(line)]
+    [&>span]:before:[counter-increment:line]
+  ">
+    <span>
+      export default function Page() {
+    </span>
+    <span> return &lt;h1&gt;Hello world!&lt;/h1&gt;</span>
+    <span>}</span>
+  </code>
+</pre>
+```
+
+# Finishing touches
+
+<Grid x="aside">
+  <div className="valkyrie overflow-hidden rounded-lg">
+    <pre className="relative py-2 text-sm leading-7 before:pointer-events-none before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-transparent before:to-gray-900/90">
+      {/* prettier-ignore */}
+      <code className="
+        grid
+        [&>span]:px-3
+        [&>span]:before:mr-3 [&>span]:before:text-gray-500
+        [&>span]:before:inline-block [&>span]:before:w-4 [&>span]:before:text-right
+        [&>span]:before:tabular-nums
+        [&>span]:before:font-mono
+
+        [counter-reset:line]
+        [&>span]:before:[content:counter(line)]
+        [&>span]:before:[counter-increment:line]
+      ">
+        <span>
+          <span style={{ color: "rgb(198, 120, 221)" }}>export</span><span style={{ color: "rgb(171, 178, 191)" }}> </span><span style={{ color: "rgb(198, 120, 221)" }}>default</span><span style={{ color: "rgb(171, 178, 191)" }}> </span><span style={{ color: "rgb(198, 120, 221)" }}>function</span><span style={{ color: "rgb(171, 178, 191)" }}> </span><span style={{ color: "rgb(97, 175, 239)" }}>Page</span><span style={{ color: "rgb(171, 178, 191)" }}>() &lcub;</span>
+        </span>
+        <span>
+          <span style={{ color: "rgb(171, 178, 191)" }}> </span><span style={{ color: "rgb(198, 120, 221)" }}>return</span><span style={{ color: "rgb(171, 178, 191)" }}> &lt;</span><span style={{ color: "rgb(224, 108, 117)" }}>h1</span><span style={{ color: "rgb(171, 178, 191)" }}>&gt;Hello world!&lt;/</span><span style={{ color: "rgb(224, 108, 117)" }}>h1</span><span style={{ color: "rgb(171, 178, 191)" }}>&gt;</span>
+        </span>
+        <span>
+          <span style={{ color: "rgb(171, 178, 191)" }}>&rcub;</span>
+        </span>
+      </code>
+    </pre>
+
+  </div>
+</Grid>
+
+```html
+<pre>
+  <code className="
+    grid
+    [&>span]:px-3
+    [&>span]:before:mr-3 [&>span]:before:text-gray-500
+    [&>span]:before:inline-block [&>span]:before:w-4 [&>span]:before:text-right
+
+    [counter-reset:line]
+    [&>span]:before:[content:counter(line)]
+    [&>span]:before:[counter-increment:line]
+  ">
+    <span>
+      export default function Page() {
+    </span>
+    <span> return &lt;h1&gt;Hello world!&lt;/h1&gt;</span>
+    <span>}</span>
+  </code>
+</pre>
+```
+
+- Account for two digits
+- Right align so numbers
+
+---
+
+Add a placeholder, we'll figure out how to make it dynamic later.
+
+- To keep things simple at the start, we'll style a single line of code
+- Style the pseudo-element of
+- Establish
+- Create a new pseudo-element to house the line numbers using the `:before` modifier.
+- Arbitrary values allow use to add custom CSS rules not included in Tailwind's pre-defined utility classes.
+- Fill the `content` of the pseudo-element with a placeholder value for now.
+
+Arbitrary values allow us to add custom CSS rules not included in Tailwind's pre-defined utility classes. We can use this feature to add a placeholder value to the `content` of a pseudo-element.
+
+```tsx
+<pre>
+  <code>
+    <span className="before:mr-3 before:inline-block before:w-4 before:text-gray-500 before:[content:'1']">
+      Line
+    </span>
+  </code>
+</pre>
+```
+
+# XXX
+
+I know I should go to jail for this, but I prefer inline Tailwind classes and will go to extreme lengths not to touch a CSS file. If you find this abhorrent, you can find the vanilla CSS code below.
+
+However, this simply adds a data attribute to indicate the option should be enabled and doesn't add any HTML elements to the code block.
+
+Instead, we can make clever use of the `counter()` CSS function to add line numbers to our code blocks.
+
+```css showLineNumbers title="./styles/syntax-highlighting.css"
+code[data-line-numbers] {
+  counter-reset: lineNumber;
+}
+
+code[data-line-numbers] .line::before {
+  counter-increment: lineNumber;
+  content: counter(lineNumber);
+  display: inline-block;
+  text-align: right;
+
+  /* stylistic preferences */
+  margin-right: 0.75rem;
+  width: 1rem;
+  color: rgb(255 255 255 / 0.2);
+}
+```
+
+- (5): Add a `:before` pseudo element to house our line numbers
+- (6): Increment the `lineNumber` counter by 1 for every instance of the elements
+- (7): Populate the contents of the pseudo element with the current `lineNumber` value
+- (2): Reset the `lineNumber` counter each instance of a code block
+
+# Skeleton
+
+- Use Tailwind's range of utility classes to create a skeleton that roughly resembles the content you're about to load.
+
+<div className="space-y-2">
+  <div className="flex justify-center rounded-lg bg-rose-100/[1%] p-8 ring-1 ring-inset ring-rose-100/[3%]">
+    <div className="w-[200px] space-y-5 rounded-2xl bg-white/5 p-4">
+      <div className="h-24 rounded-lg bg-rose-100/10"></div>
+      <div className="space-y-3">
+        <div className="h-3 w-3/5 rounded-lg bg-rose-100/10"></div>
+        <div className="h-3 w-4/5 rounded-lg bg-rose-100/20"></div>
+        <div className="h-3 w-2/5 rounded-lg bg-rose-100/20"></div>
+      </div>
+    </div>
+  </div>
+  ```html
+  <div class="space-y-5 rounded-2xl bg-white/5 p-4">
+    <div class="h-24 rounded-lg bg-rose-100/10"></div>
+    <div class="space-y-3">
+      <div class="h-3 w-3/5 rounded-lg bg-rose-100/10"></div>
+      <div class="h-3 w-4/5 rounded-lg bg-rose-100/20"></div>
+      <div class="h-3 w-2/5 rounded-lg bg-rose-100/20"></div>
+    </div>
+  </div>
+  ```
+</div>
+
+# Gradient overlay
+
+- Use Tailwind's gradient color stops to create a gradient that fades from transparent to white and back to transparent.
+
+<div className="space-y-2">
+  <div className="flex justify-center rounded-lg bg-rose-100/[1%] p-8 ring-1 ring-inset ring-rose-100/[3%]">
+    <div className="w-[200px]">
+      <div className="h-48 bg-gradient-to-r from-transparent via-rose-100/20 to-transparent"></div>
+    </div>
+  </div>
+  ```html
+  <div
+    class="
+      [...]
+      bg-gradient-to-r from-transparent via-rose-100/10 to-transparent"
+  ></div>
+  ```
+</div>
+
+# Animation
+
+- Define a CSS keyframe animation that translates elements 100% to the right in the extend keyframes object of `tailwind.config.js`.
+- Use Tailwind's arbitrary values to apply the keyframe animation to the overlay element.
+
+<div className="space-y-2">
+  <div className="flex justify-center rounded-lg bg-rose-100/[1%] p-8 ring-1 ring-inset ring-rose-100/[3%]">
+    <div className="w-[200px]">
+      <div className="relative h-48 -translate-x-full animate-[shimmer_2s_infinite] bg-gradient-to-r from-transparent via-rose-100/20 to-transparent"></div>
+    </div>
+  </div>
+  ```json
+  {
+    "keyframes": {
+      "shimmer": {
+        "100%": {
+          "transform": "translateX(100%)",
+        },
+      },
+    }
+  },
+  ```
+  ```html
+  <div class="[...] -translate-x-full animate-[shimmer_2s_infinite]"></div>
+  ```
+</div>
+
+# Combine the skeleton and overlay animation
+
+- Add the overlay to a pseudo-element of the skeleton wrapper using Tailwind's `before:` modifier.
+
+<div className="space-y-2">
+  <div className="flex justify-center rounded-lg bg-rose-100/[1%] p-8 ring-1 ring-inset ring-rose-100/[3%]">
+    <div className="w-[200px]">
+      <div className="relative space-y-5 rounded-2xl bg-white/5 p-4 before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:bg-gradient-to-r before:from-transparent before:via-rose-100/10 before:to-transparent">
+        <div className="h-24 rounded-lg bg-rose-100/10"></div>
+        <div className="space-y-3">
+          <div className="h-3 w-3/5 rounded-lg bg-rose-100/10"></div>
+          <div className="h-3 w-4/5 rounded-lg bg-rose-100/20"></div>
+          <div className="h-3 w-2/5 rounded-lg bg-rose-100/20"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  ```html
+  <div
+    class="
+      [...]
+      relative 
+      before:absolute before:inset-0
+      before:-translate-x-full
+      before:animate-[shimmer_2s_infinite]
+      before:bg-gradient-to-r
+      before:from-transparent before:via-rose-100/10 before:to-transparent"
+  >
+    [...]
+  </div>
+  ```
+</div>
+
+# Finishing touches
+
+- Hide the overlay while it's positioned outside the skeleton.
+- Add a shadow to the skeleton.
+- Add a subtle border to the top of the overlay to simulate reflecting light.
+- You can fix Safari overflowing the animation on rounded corners with `isolate`.
+
+<div className="space-y-2">
+  <div className="flex justify-center rounded-lg bg-rose-100/[1%] p-8 ring-1 ring-inset ring-rose-100/[3%]">
+    <div className="w-[200px]">
+      <div className="relative isolate space-y-5 overflow-hidden rounded-2xl bg-white/5 p-4 shadow-xl shadow-black/5 before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t before:border-rose-100/10 before:bg-gradient-to-r before:from-transparent before:via-rose-100/10 before:to-transparent">
+        <div className="h-24 rounded-lg bg-rose-100/10"></div>
+        <div className="space-y-3">
+          <div className="h-3 w-3/5 rounded-lg bg-rose-100/10"></div>
+          <div className="h-3 w-4/5 rounded-lg bg-rose-100/20"></div>
+          <div className="h-3 w-2/5 rounded-lg bg-rose-100/20"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  ```html
+  <div
+    class="
+      [...]
+      isolate
+      overflow-hidden
+      shadow-xl shadow-black/5
+      before:border-t before:border-rose-100/10"
+  >
+    [...]
+  </div>
+  ```
+</div>

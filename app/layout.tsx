@@ -1,46 +1,43 @@
-import localFont from "next/font/local"
-import cx from "clsx"
-import "@/styles/globals.css"
-import type { Metadata, Viewport } from "next"
+import { meta } from "@/lib/constants"
 import { createOgImage } from "@/lib/createOgImage"
-import { PreloadResources } from "@/lib/preload"
-
-const title = `Delba`
-const description = `Welcome to my digital garden where I share what I'm learning about shipping great products, becoming a better developer and growing a career in tech.`
-const domain = `delba.dev`
-const twitterHandle = `@delba_oliveira`
-const meta = `Developer Experience at ▲ Vercel and Next.js`
+import "@/styles/globals.css"
+import { SiteFooter } from "@/ui/SiteFooter"
+import localFont from "next/font/local"
+import clsx from "clsx"
+import { Metadata, Viewport } from "next"
+import { PreloadResources } from "@/lib/preload-resources"
 
 export const viewport: Viewport = {
   themeColor: "#1c1917",
 }
-
-export const metadata: Metadata = {
-  title: { template: `%s | ${title}`, default: title },
-  description: description,
-  twitter: {
-    creator: twitterHandle,
-  },
-  openGraph: {
-    title: "Delba",
-    url: `https://${domain}/`,
-    siteName: "Delba",
-    // TODO: Migrate OG image to use ImageResponse
-    images: [
-      {
-        url: createOgImage({ title, meta }),
-        width: 1600,
-        height: 836,
-        alt: "Delba",
-      },
-    ],
-  },
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: { template: "Delba | %s", default: "Delba" },
+    metadataBase: new URL(`https://${meta.domain}`),
+    openGraph: {
+      title: meta.name,
+      siteName: meta.name,
+      type: "website",
+      url: `https://${meta.domain}`,
+      images: [
+        {
+          url: createOgImage({ title: meta.name, meta: meta.tagline }),
+          width: 1600,
+          height: 836,
+          alt: meta.name,
+        },
+      ],
+    },
+    twitter: {
+      creator: meta.twitterHandle,
+      card: "summary_large_image",
+    },
+  }
 }
 
 const hubot = localFont({
   src: "../public/assets/HubotSans.woff2",
   variable: "--font-hubot",
-  display: "swap",
   weight: "400 900",
 })
 
@@ -50,15 +47,39 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="scroll-p-24">
+    <html className="[color-scheme:dark]">
       <body
-        className={cx(
-          "antialiased font-sans bg-gray-900 selection:bg-purple-500/90 selection:text-white",
+        className={clsx(
+          "font-sans overscroll-y-none bg-gray-900 antialiased selection:bg-violet-600/90 selection:text-white",
           hubot.variable,
         )}
       >
         <PreloadResources />
-        {children}
+        <svg
+          className="pointer-events-none fixed isolate z-50 opacity-70 mix-blend-soft-light"
+          width="100%"
+          height="100%"
+        >
+          <filter id="noise">
+            <feTurbulence
+              type="fractalNoise"
+              baseFrequency="0.80"
+              numOctaves="4"
+              stitchTiles="stitch"
+            />
+          </filter>
+          <rect width="100%" height="100%" filter="url(#noise)" />
+        </svg>
+
+        <div className="layout-sm relative z-10 grid gap-y-8 px-4 pt-12 text-rose-200/90 xl:layout-xl xl:gap-x-9 xl:px-0 [&>*]:col-start-2 xl:[&>*]:col-start-3">
+          {children}
+
+          <SiteFooter />
+        </div>
+
+        <div className="pointer-events-none absolute inset-0 overflow-hidden">
+          <div className="h-full bg-[url('https://res.cloudinary.com/delba/image/upload/h_500/bg_gradient_pfosr9')] bg-top bg-no-repeat opacity-[0.3]" />
+        </div>
       </body>
     </html>
   )

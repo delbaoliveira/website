@@ -29,7 +29,8 @@ export const Post = defineDocumentType(() => ({
     headings: {
       type: "json",
       resolve: async (doc) => {
-        // use same package as rehypeSlug so toc and sluggified headings match
+        // use same package as rehypeSlug so table of contents and sluggified
+        // headings match
         // https://github.com/rehypejs/rehype-slug/blob/main/package.json#L36
         const slugger = new GithubSlugger()
 
