@@ -61,7 +61,7 @@ Cloudinary is primarily an image hosting service and CDN. They also provide a po
 
 For example, the image on the left is generated with the following URL:
 
-<Aside>
+<Grid x="aside">
   <Img
     caption="Generated image"
     src={createOgImage({
@@ -71,7 +71,7 @@ For example, the image on the left is generated with the following URL:
     width={1600}
     height={836}
   />
-</Aside>
+</Grid>
 
 <div>
   <div className="break-words rounded-xl bg-white/5 px-5 pt-4 pb-5">
@@ -92,7 +92,7 @@ Follow along the step-by-step walkthrough or jump straight to the complete code 
 - Upload an image to your Cloudinary account that will be used as the base layer for the generated image.
 - Create a utility function that returns a URL string of the composed transformations. For the sake of readability, we use an array of transformations that we `join(){:js}` before returning.
 
-<Aside>
+<Grid x="aside">
   <Img
     caption="Background base layer"
     src={[
@@ -103,7 +103,7 @@ Follow along the step-by-step walkthrough or jump straight to the complete code 
     width={1600}
     height={836}
   />
-</Aside>
+</Grid>
 
 ```ts showLineNumbers
 const createOgImage = () => {
@@ -126,11 +126,13 @@ const createOgImage = () => {
 }
 ```
 
-<Aside position="right" styled={true}>
-  The path we send to Cloudinary must form a valid URL. Arguments are separated
-  by commas: `w_1600,h_836,q_100`. Transformation layers can be chained and are
-  separated by slashes: `w_1600,h_836,q_100/grain.png`
-</Aside>
+<Grid x="aside">
+  <Aside>
+    The path we send to Cloudinary must form a valid URL. Arguments are
+    separated by commas: `w_1600,h_836,q_100`. Transformation layers can be
+    chained and are separated by slashes: `w_1600,h_836,q_100/grain.png`
+  </Aside>
+</Grid>
 
 - **Width and Height (Line 7)** — Set the dimensions and ratio of the generated image to something appropriate for social networks. The base image you uploaded will be scaled to match these dimensions. You can use the [crop mode](https://cloudinary.com/documentation/transformation_reference#c_crop_resize) to decide what kind of scaling will be applied.
 - **Quality (Line 7)** — Cloudinary significantly reduces image file sizes by automatically compressing images. This is great for adding images to your website. But something we want to avoid for an OG image because we don't want to double compress the image (social networks apply their own compression). We can override the default setting using the [quality](https://cloudinary.com/documentation/transformation_reference#q_quality) option.
@@ -146,7 +148,7 @@ Overlays consist of two components the `l_` layer that starts the overlay defini
 
 # Text layer
 
-<Aside>
+<Grid x="aside">
   <Img
     src={[
       `https://res.cloudinary.com/delba/image/upload`,
@@ -159,7 +161,7 @@ Overlays consist of two components the `l_` layer that starts the overlay defini
     width={1600}
     height={836}
   />
-</Aside>
+</Grid>
 
 ```ts showLineNumbers {7-9}
 const e = (str: string) => encodeURIComponent(encodeURIComponent(str))
@@ -183,7 +185,7 @@ const createOgImage = () => {
 
 By default, if a layer (image or text) has a larger width or height than the base image, the delivered image canvas is resized to display the entire layer.
 
-<Aside>
+<Grid x="aside">
   <Img
     src={[
       `https://res.cloudinary.com/delba/image/upload`,
@@ -196,7 +198,7 @@ By default, if a layer (image or text) has a larger width or height than the bas
     width={1600}
     height={836}
   />
-</Aside>
+</Grid>
 
 ```ts showLineNumbers
 const createOgImage = () => {
@@ -216,7 +218,7 @@ const createOgImage = () => {
 
 You can make your OG image fit your brand by customizing the font and color. One powerful Cloudinary feature is that you can use any typeface listed on Google fonts. In this case, I am using the same font and color as my website.
 
-<Aside>
+<Grid x="aside">
   <Img
     src={[
       `https://res.cloudinary.com/delba/image/upload`,
@@ -231,7 +233,7 @@ You can make your OG image fit your brand by customizing the font and color. One
     width={1600}
     height={836}
   />
-</Aside>
+</Grid>
 
 ```ts showLineNumbers
 const createOgImage = () => {
@@ -248,7 +250,7 @@ const createOgImage = () => {
 
 ### Positioning layers
 
-<Aside>
+<Grid x="aside">
   <Img
     src={[
       `https://res.cloudinary.com/delba/image/upload`,
@@ -265,7 +267,7 @@ const createOgImage = () => {
     width={1600}
     height={836}
   />
-</Aside>
+</Grid>
 
 ```ts showLineNumbers {5}
 const createOgImage = () => {
@@ -287,7 +289,7 @@ const createOgImage = () => {
 
 You can use what we've learned to create a new text layer to house post details such as the author, publish date, and category.
 
-<Aside>
+<Grid x="aside">
   <Img
     src={[
       `https://res.cloudinary.com/delba/image/upload`,
@@ -305,7 +307,7 @@ You can use what we've learned to create a new text layer to house post details 
     width={1600}
     height={836}
   />
-</Aside>
+</Grid>
 
 ```ts showLineNumbers {6-7}
 const createOgImage = () => {
@@ -328,7 +330,7 @@ You can use image layers to embed other images into your composition. These imag
 
 We'll use the latter to add a headshot to our OG image that dynamically syncs with a user's Twitter profile image. Changing the profile image on Twitter will eventually (after caches expire) update the headshots of all generated OG images.
 
-<Aside>
+<Grid x="aside">
   <Img
     src={[
       `https://res.cloudinary.com/delba/image/upload`,
@@ -349,7 +351,7 @@ We'll use the latter to add a headshot to our OG image that dynamically syncs wi
     width={1600}
     height={836}
   />
-</Aside>
+</Grid>
 
 ```ts showLineNumbers
 const createOgImage = () => {

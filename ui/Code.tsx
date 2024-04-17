@@ -1,3 +1,5 @@
+"use client"
+
 import { Aside } from "@/ui/Aside"
 import clsx from "clsx"
 import React from "react"

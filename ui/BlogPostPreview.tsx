@@ -1,3 +1,5 @@
+"use client"
+
 import { formatPostPreview } from "@/lib/contentlayer"
 import { useEnabledOnFirstIntersection } from "@/lib/useEnabledOnFirstIntersection"
 import { usePostLikes } from "@/lib/usePostLikes"
@@ -55,7 +57,7 @@ export const BlogPostPreview = (post: ReturnType<typeof formatPostPreview>) => {
 
         <ContentLink.Meta>
           <div>{post.publishedAtFormatted}</div>
-          {enabled ? <Metrics slug={post.slug} /> : null}
+          {/* {enabled ? <Metrics slug={post.slug} /> : null} */}
         </ContentLink.Meta>
 
         {post.description ? (

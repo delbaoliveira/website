@@ -1,3 +1,5 @@
+"use client"
+
 import { usePollIfInView } from "@/lib/usePollIfInView"
 import { usePostLikes } from "@/lib/usePostLikes"
 import { usePostViews } from "@/lib/usePostViews"

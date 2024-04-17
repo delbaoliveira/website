@@ -1,5 +1,5 @@
 import { FOCUS_VISIBLE_OUTLINE } from "@/lib/constants"
-import cx from "clsx"
+import clsx from "clsx"
 import Link from "next/link"
 import React, { ElementType } from "react"
 
@@ -13,7 +13,7 @@ export function ContentLink({
   return (
     <Link
       href={href}
-      className={cx(
+      className={clsx(
         "block overflow-hidden rounded-2xl bg-white/5 p-7 shadow-surface-elevation-low transition duration-300 hover:bg-white/10 hover:shadow-surface-elevation-medium",
         FOCUS_VISIBLE_OUTLINE,
       )}

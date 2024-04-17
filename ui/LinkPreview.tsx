@@ -1,8 +1,8 @@
 import { FOCUS_VISIBLE_OUTLINE, LINK_STYLES } from "@/lib/constants"
 import { Transition } from "@headlessui/react"
-import DotsCircleHorizontalIcon from "@heroicons/react/solid/DotsCircleHorizontalIcon"
+import { EllipsisHorizontalCircleIcon } from "@heroicons/react/24/solid"
 import * as HoverCardPrimitive from "@radix-ui/react-hover-card"
-import cx from "clsx"
+import clsx from "clsx"
 import { useTheme } from "next-themes"
 import Image from "next/image"
 import { encode } from "qss"
@@ -62,11 +62,11 @@ export const LinkPreview = ({
       >
         <HoverCardPrimitive.Trigger
           href={url}
-          className={cx(LINK_STYLES, FOCUS_VISIBLE_OUTLINE)}
+          className={clsx(LINK_STYLES, FOCUS_VISIBLE_OUTLINE)}
         >
           {children}
 
-          <DotsCircleHorizontalIcon className="mb-0.5 ml-1 inline w-4" />
+          <EllipsisHorizontalCircleIcon className="mb-0.5 ml-1 inline w-4" />
         </HoverCardPrimitive.Trigger>
 
         <HoverCardPrimitive.Content side="top" align="center" sideOffset={10}>

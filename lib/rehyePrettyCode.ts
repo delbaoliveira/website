@@ -2,20 +2,21 @@ import { type Options } from "rehype-pretty-code"
 import { visit } from "unist-util-visit"
 
 // div.BLOCK > pre.PRE > code.CODE
-const BLOCK =
-  "overflow-hidden rounded-lg bg-rose-100/5 shadow-surface-elevation-low ring-1 ring-rose-100/[3%] ring-inset"
+// TODO, move this to vanilla css, its too much to send for every code block.
+const BLOCK = "valkyrie rounded-lg overflow-hidden"
 const TITLE =
-  "mb-0.5 rounded-md bg-rose-100/10 px-3 py-1 font-mono text-xs text-rose-100/70 shadow-sm"
-const PRE = "overflow-x-auto py-2 text-[13px] leading-6 [color-scheme:dark]"
+  "rounded-t-md border-b border-rose-100/[3%] bg-rose-100/[2%] px-2.5 py-1 font-mono text-xs text-rose-100/60"
+const PRE =
+  "overflow-x-auto py-2 text-[13px] leading-6 [color-scheme:dark] [&::-webkit-scrollbar]:h-[12px] [&::-webkit-scrollbar-track]:transparent [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:border-[3px] [&::-webkit-scrollbar-thumb]:border-solid [&::-webkit-scrollbar-thumb]:border-transparent [&::-webkit-scrollbar-thumb]:bg-gray-700/30 hover:[&::-webkit-scrollbar-thumb]:transition hover:[&::-webkit-scrollbar-thumb]:bg-gray-700/80 [&::-webkit-scrollbar-thumb]:bg-clip-padding selection:bg-blue-700/70 selection:text-inherit"
 const CODE =
-  "grid [&>span]:border-l-4 [&>span]:border-l-transparent [&>span]:pl-2 [&>span]:pr-3"
+  "grid [&>span]:border-l-[3px] [&>span]:border-l-transparent [&>span]:pl-2 [&>span]:pr-3"
 const INLINE_BLOCK =
   "whitespace-nowrap border border-rose-200/10 px-1.5 py-px text-[12px] rounded-full bg-white/5 whitespace-nowrap text-rose-300/90"
 const INLINE_CODE = ""
 const NUMBERED_LINES =
-  "[counter-reset:line] before:[&>span]:mr-3 before:[&>span]:inline-block before:[&>span]:w-4 before:[&>span]:text-right before:[&>span]:text-white/20 before:[&>span]:![content:counter(line)] before:[&>span]:[counter-increment:line]"
+  "[counter-reset:line] [&>span]:before:mr-3 [&>span]:before:inline-block [&>span]:before:w-4 [&>span]:before:text-right [&>span]:before:text-white/20 [&>span]:before:![content:counter(line)] [&>span]:before:[counter-increment:line]"
 const HIGHLIGHTED_LINE =
-  "!border-l-rose-300/70 bg-rose-200/10 before:!text-white/70"
+  "!border-l-blue-700/80 bg-blue-800/[15%] before:!text-blue-200/80"
 
 export function rehypePrettyCodeClasses() {
   return (tree: any) => {

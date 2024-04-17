@@ -1,3 +1,5 @@
+"use client"
+
 import { useEnabledOnFirstIntersection } from "@/lib/useEnabledOnFirstIntersection"
 import { useVideoMetrics } from "@/lib/useVideoMetrics"
 import { ContentLink } from "@/ui/ContentLink"
@@ -73,7 +75,7 @@ export const VideoPostPreview = (
 
           <div>{post.youtube.duration}</div>
 
-          {enabled ? (
+          {/* {enabled ? (
             <Metrics
               id={post.youtube.id}
               fallbackData={{
@@ -81,7 +83,7 @@ export const VideoPostPreview = (
                 likes: post.youtube.likes,
               }}
             />
-          ) : null}
+          ) : null} */}
         </ContentLink.Meta>
 
         <ContentLink.Text>{post.description}</ContentLink.Text>
