@@ -13,7 +13,8 @@ export const generateStaticParams = () => {
   return getParams()
 }
 
-export default async function Page({ params }: { params: PostParams }) {
+export default async function Page(props: { params: Promise<PostParams> }) {
+  const params = await props.params;
   const { posts, filters } = getPosts(params)
 
   return (
