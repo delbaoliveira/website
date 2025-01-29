@@ -1,7 +1,8 @@
-export default function Page() {
+
+export default function Home() {
   return (
-    <main className="h-screen w-screen flex items-center justify-center">
-      <p>Cooking.</p>
-    </main>
-  )
+    <div className="h-screen w-screen flex items-center justify-center">
+      Cooking.
+    </div>
+  );
 }
